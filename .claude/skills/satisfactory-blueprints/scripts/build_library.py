@@ -290,6 +290,130 @@ def modern_sources(root, saves):
 SAVE_SKIP = re.compile(r'^(StandaloneWidgetSign|SignPole|Billboard)')
 
 
+def _element_tags(blob, start, end):
+    """Tags of one struct element inside an array value (1.2 layout): list of span dicts."""
+    from sbp import Reader
+    r, out = Reader(blob, start), []
+    while r.o < end:
+        s = r.o
+        name = r.string()
+        if name == 'None':
+            return out, r.o
+        _type_tree(r)
+        size_at = r.o; size = r.i32()
+        flags = blob[r.o]; r.o += 1
+        if flags & 0x01: r.o += 4
+        if flags & 0x02: r.o += 16
+        v = r.o; r.o += size
+        out.append(dict(name=name, start=s, size_at=size_at, value=v, end=r.o))
+    raise ValueError('unterminated struct element')
+
+
+def empty_inventory(blob):
+    """Clear every slot of a 1.2 inventory component: no item, count 0. Slot layout and size
+    limits stay; only the contents go (samples come from real worlds and saves)."""
+    sp = _span(blob, 'mInventoryStacks', True)
+    if not sp:
+        return blob
+    v0, end = sp['value'], sp['end']
+    count = struct.unpack_from('<i', blob, v0)[0]
+    pos, elems = v0 + 4, []
+    for _ in range(count):
+        tags, after = _element_tags(blob, pos, end)
+        parts = []
+        for t in tags:
+            head = bytearray(blob[t['start']:t['value']])
+            if t['name'] == 'Item':
+                struct.pack_into('<i', head, t['size_at'] - t['start'], 12)
+                parts.append(bytes(head) + bytes(12))          # empty InventoryItem
+            elif t['name'] == 'NumItems':
+                parts.append(bytes(head) + struct.pack('<i', 0))
+            else:
+                parts.append(blob[t['start']:t['end']])
+        elems.append(b''.join(parts) + _fstr('None'))
+        pos = after
+    value = struct.pack('<i', count) + b''.join(elems)
+    head = bytearray(blob[:v0])
+    struct.pack_into('<i', head, sp['size_at'], len(value))
+    return bytes(head) + value + blob[end:]
+
+
+def sanitize(objs):
+    """Make samples neutral: empty all inventories (no free items, shards or Somersloops) and
+    reset clock speed and production boost to 100% / none."""
+    from sbp import find_prop
+    for o in objs:
+        if 'Inventory' in o['cls']:
+            o['data'] = empty_inventory(o['data'])
+        for name in ('mCurrentPotential', 'mPendingPotential', 'mCurrentProductionBoost', 'mPendingProductionBoost'):
+            off, t = find_prop(o['data'], name)
+            if off is not None and t == 'FloatProperty':
+                b = bytearray(o['data']); struct.pack_into('<f', b, off, 1.0); o['data'] = bytes(b)
+    return objs
+
+
+def learn_ports(saves, sample_comps):
+    """Where each machine's belt/pipe ports sit, in the machine's own frame (cm), learned from
+    the ends of belts and pipes plugged into machines in the given saves. `sample_comps` maps a
+    machine type to its port component names; ports never seen plugged in are filled by
+    mirroring a sibling port across the machine's centre (marked inferred)."""
+    import statistics
+    import sav as savmod
+    from sbp import qrotate, qconj
+    obs = defaultdict(list)
+    tags = re.compile(rb'(Location|ArriveTangent|LeaveTangent)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00\x08', re.S)
+    for f in saves:
+        s = savmod.Save(f)
+        pairs = list(s.buildings())
+        actors = {a['path']: a for a, _ in pairs}
+        for a, comps in pairs:
+            if a['object_version'] < NEW_TAGS_FROM or not re.match(r'ConveyorBeltMk\d|Pipeline(MK2)?(_NoIndicator)?$', short(a['cls'])):
+                continue
+            sp = _span(a['data'], 'mSplineData', True)
+            if not sp:
+                continue
+            v = a['data'][sp['value']:sp['end']]
+            vals = [(m.group(1).decode(), struct.unpack_from('<3d', v, m.end())) for m in tags.finditer(v)]
+            pts = [dict(vals[i:i + 3]) for i in range(0, len(vals), 3)]
+            if len(pts) < 2:
+                continue
+            for c in comps:
+                m = re.search(rb'PersistentLevel\.(Build_\w+?_C_\d+)\.(\w+)\x00', c['data'])
+                target = m and actors.get('Persistent_Level:PersistentLevel.' + m.group(1).decode())
+                if not target:
+                    continue
+                first = c['path'].endswith('0')
+                p = pts[0] if first else pts[-1]
+                world = [a['pos'][i] + d for i, d in enumerate(qrotate(a['rot'], p['Location']))]
+                local = qrotate(qconj(target['rot']), [world[i] - target['pos'][i] for i in range(3)])
+                tan = qrotate(qconj(target['rot']), qrotate(a['rot'], p['LeaveTangent'] if first else p['ArriveTangent']))
+                obs[(short(target['cls']), m.group(2).decode())].append((local, tan))
+    ports = defaultdict(dict)
+    for (t, port), L in obs.items():
+        pos = [round(statistics.median(o[0][i] for o in L), 1) for i in range(3)]
+        spread = max(statistics.pstdev(o[0][i] for o in L) for i in range(3)) if len(L) > 1 else 0
+        if spread > 5:          # belts/splitters snap anywhere along a belt: not a fixed port
+            continue
+        ports[t][port] = dict(pos=pos, seen=len(L))
+    # mirror unseen ports from a sibling of the same kind (Input1 <- Input0 at -x)
+    for t, names in sample_comps.items():
+        known = ports.get(t, {})
+        if not known:
+            continue
+        for n in names:
+            if n in known:
+                continue
+            kind = re.sub(r'\d+$', '', n)
+            sib = [k for k in known if re.sub(r'\d+$', '', k) == kind]
+            for k in sib:
+                p = known[k]['pos']
+                cand = [-p[0], p[1], p[2]]
+                if all(abs(cand[0] - q['pos'][0]) > 50 or abs(cand[1] - q['pos'][1]) > 50 for q in known.values()):
+                    ports[t][n] = dict(pos=cand, seen=0, inferred=True)
+                    break
+    return {t: dict(sorted(p.items())) for t, p in sorted(ports.items())}
+
+
 def main(root, out_dir, saves=()):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -404,6 +528,7 @@ def main(root, out_dir, saves=()):
         e.setdefault('source', 'save' if origin == 'save' else 'blueprint')
         if group[1:]:
             e['companions'] = sorted({short(g['cls']) for g, _ in group[1:]})
+    sanitize(lib.objects)
     lib.dims = [int(cols * GRID / 800) + 2, int((len(keys) // cols + 1) * GRID / 800) + 2, 4]
     lib.recipes = sorted(recipes)
     for old in out_dir.glob('donors-v*.sbp'):
@@ -418,6 +543,18 @@ def main(root, out_dir, saves=()):
                                                  path.stat().st_size / 1024))
     import build_assets
     build_assets.write_markdown(json.loads((out_dir / 'assets.json').read_text(encoding='utf-8')))
+    if saves:
+        sample_comps = {}
+        for o in lib.actors():
+            names = [c['path'].rsplit('.', 1)[1] for c in lib.components_of(o)
+                     if re.search(r'FactoryConnection|PipeConnection', c['cls'])]
+            if names:
+                sample_comps[short(o['cls'])] = names
+        ports = learn_ports(saves, sample_comps)
+        (out_dir / 'ports.json').write_text(json.dumps(ports, indent=1))
+        print('ports: %d machine types (%d ports, %d inferred)' % (
+            len(ports), sum(len(p) for p in ports.values()),
+            sum(1 for p in ports.values() for q in p.values() if q.get('inferred'))))
 
 
 if __name__ == '__main__':

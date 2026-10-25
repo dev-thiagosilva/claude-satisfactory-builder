@@ -146,6 +146,22 @@ In code, use `from calc import plan, find_item, find_recipe, format_plan`, or ad
 studio also serves a visual **Production planner** at `/planner`, like satisfactory-calculator.com:
 add items, switch each step's recipe, and set max clock, miner tier and node purity.
 
+## Production lines
+
+`scripts/factory.py` turns a plan into a ready-to-place production line: rows of machines set to
+their recipe and clock, splitter/merger manifolds, overhead belt lanes linking the rows, raw
+inputs as open belt ends, products into storage, and a foundation floor. Belts are real splines
+with both ends connected; a collision check and layout retries keep belts from touching.
+
+```bash
+python -I scripts/factory.py "Reinforced Iron Plate" 5 [--use "Stitched Iron Plate"] [--name "RIP Line"] [--out file.sbp]
+```
+
+In code: `factory.build_best(calc.plan(...), name)` returns `(Factory, report)`, and you save
+`factory.bp`. Machine ports come from `library/ports.json`. Not yet included: pipes for fluids,
+power, and byproducts fed back in. The studio planner's **Build this factory** button does the
+same.
+
 ## Formats and details
 
 Read `references/format.md` for the byte layout (header, chunk variants, object headers,

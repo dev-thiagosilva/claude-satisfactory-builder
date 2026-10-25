@@ -4395,66 +4395,154 @@
  },
  "machines": {
   "AssemblerMk1": {
+   "clearance": [
+    -450.0,
+    -800.0,
+    0.0,
+    450.0,
+    800.0,
+    300.0
+   ],
    "exponent": 1.321929,
    "name": "Assembler",
    "power": 15.0,
    "variable": false
   },
   "Blender": {
+   "clearance": [
+    -900.0,
+    -500.0,
+    0.0,
+    300.0,
+    500.0,
+    680.0
+   ],
    "exponent": 1.321929,
    "name": "Blender",
    "power": 75.0,
    "variable": false
   },
   "ConstructorMk1": {
+   "clearance": [
+    -400.0,
+    -500.0,
+    0.0,
+    400.0,
+    500.0,
+    600.0
+   ],
    "exponent": 1.321929,
    "name": "Constructor",
    "power": 4.0,
    "variable": false
   },
   "Converter": {
+   "clearance": [
+    -800.0,
+    -800.0,
+    0.0,
+    800.0,
+    800.0,
+    400.0
+   ],
    "exponent": 1.321929,
    "name": "Converter",
    "power": 0.0,
    "variable": true
   },
   "FoundryMk1": {
+   "clearance": [
+    -500.0,
+    -500.0,
+    0.0,
+    500.0,
+    500.0,
+    450.0
+   ],
    "exponent": 1.321929,
    "name": "Foundry",
    "power": 16.0,
    "variable": false
   },
   "HadronCollider": {
+   "clearance": [
+    900.0,
+    300.0,
+    0.0,
+    1900.0,
+    1300.0,
+    800.0
+   ],
    "exponent": 1.321929,
    "name": "Particle Accelerator",
    "power": 0.0,
    "variable": true
   },
   "ManufacturerMk1": {
+   "clearance": [
+    -900.0,
+    -300.0,
+    0.0,
+    900.0,
+    900.0,
+    1100.0
+   ],
    "exponent": 1.321929,
    "name": "Manufacturer",
    "power": 55.0,
    "variable": false
   },
   "OilRefinery": {
+   "clearance": [
+    -500.0,
+    -1100.0,
+    0.0,
+    500.0,
+    1100.0,
+    1500.0
+   ],
    "exponent": 1.321929,
    "name": "Refinery",
    "power": 30.0,
    "variable": false
   },
   "Packager": {
+   "clearance": [
+    -400.0,
+    -400.0,
+    -600.0,
+    400.0,
+    400.0,
+    600.0
+   ],
    "exponent": 1.321929,
    "name": "Packager",
    "power": 10.0,
    "variable": false
   },
   "QuantumEncoder": {
+   "clearance": [
+    -800.0,
+    -2100.0,
+    0.0,
+    800.0,
+    -1000.0,
+    450.0
+   ],
    "exponent": 1.321929,
    "name": "Quantum Encoder",
    "power": 0.0,
    "variable": true
   },
   "SmelterMk1": {
+   "clearance": [
+    -250.0,
+    -500.0,
+    0.0,
+    250.0,
+    500.0,
+    450.0
+   ],
    "exponent": 1.321929,
    "name": "Smelter",
    "power": 4.0,
@@ -4493,6 +4581,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_AILimiter.Recipe_AILimiter_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4513,6 +4602,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_AlienDNACapsule.Recipe_AlienDNACapsule_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4549,6 +4639,7 @@
      24.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/QuantumEncoder/Recipe_AlienPowerFuel.Recipe_AlienPowerFuel_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -4573,6 +4664,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_AILimiter_Plastic.Recipe_Alternate_AILimiter_Plastic_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4597,6 +4689,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_AdheredIronPlate.Recipe_Alternate_AdheredIronPlate_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4621,6 +4714,7 @@
      15.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_AlcladCasing.Recipe_Alternate_AlcladCasing_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4641,6 +4735,7 @@
      7.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_AluminumRod.Recipe_Alternate_AluminumRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4665,6 +4760,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_AutomatedMiner.Recipe_Alternate_AutomatedMiner_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4689,6 +4785,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_BoltedFrame.Recipe_Alternate_BoltedFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4713,6 +4810,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Cable_1.Recipe_Alternate_Cable_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4737,6 +4835,7 @@
      11.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Cable_2.Recipe_Alternate_Cable_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4761,6 +4860,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_CateriumIngot_Leached.Recipe_Alternate_CateriumIngot_Leached_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4785,6 +4885,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_CateriumIngot_Tempered.Recipe_Alternate_CateriumIngot_Tempered_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4809,6 +4910,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_CircuitBoard_1.Recipe_Alternate_CircuitBoard_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4833,6 +4935,7 @@
      7.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_CircuitBoard_2.Recipe_Alternate_CircuitBoard_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4865,6 +4968,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_ClassicBattery.Recipe_Alternate_ClassicBattery_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4885,6 +4989,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Coal_1.Recipe_Alternate_Coal_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4905,6 +5010,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Coal_2.Recipe_Alternate_Coal_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4929,6 +5035,7 @@
      9.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CoatedCable.Recipe_Alternate_CoatedCable_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4953,6 +5060,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CoatedIronCanister.Recipe_Alternate_CoatedIronCanister_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -4977,6 +5085,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CoatedIronPlate.Recipe_Alternate_CoatedIronPlate_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5001,6 +5110,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CokeSteelIngot.Recipe_Alternate_CokeSteelIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5029,6 +5139,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Computer_1.Recipe_Alternate_Computer_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5053,6 +5164,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Computer_2.Recipe_Alternate_Computer_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5077,6 +5189,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Concrete.Recipe_Alternate_Concrete_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5105,6 +5218,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_CoolingDevice.Recipe_Alternate_CoolingDevice_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5129,6 +5243,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CopperAlloyIngot.Recipe_Alternate_CopperAlloyIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5153,6 +5268,7 @@
      22.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_CopperIngot_Leached.Recipe_Alternate_CopperIngot_Leached_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5177,6 +5293,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_CopperIngot_Tempered.Recipe_Alternate_CopperIngot_Tempered_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5201,6 +5318,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CopperRotor.Recipe_Alternate_CopperRotor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5229,6 +5347,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_CrystalOscillator.Recipe_Alternate_CrystalOscillator_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5249,6 +5368,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_DarkMatter_Crystallization.Recipe_Alternate_DarkMatter_Crystallization_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -5273,6 +5393,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_DarkMatter_Trap.Recipe_Alternate_DarkMatter_Trap_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -5297,6 +5418,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_Diamond_Cloudy.Recipe_Alternate_Diamond_Cloudy_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -5317,6 +5439,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_Diamond_OilBased.Recipe_Alternate_Diamond_OilBased_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -5337,6 +5460,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_Diamond_Petroleum.Recipe_Alternate_Diamond_Petroleum_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -5361,6 +5485,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_Diamond_Pink.Recipe_Alternate_Diamond_Pink_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -5385,6 +5510,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_Diamond_Turbo.Recipe_Alternate_Diamond_Turbo_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -5409,6 +5535,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_DilutedFuel.Recipe_Alternate_DilutedFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5433,6 +5560,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_DilutedPackagedFuel.Recipe_Alternate_DilutedPackagedFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5457,6 +5585,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_ElectricMotor.Recipe_Alternate_ElectricMotor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5485,6 +5614,7 @@
      7.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_ElectroAluminumScrap.Recipe_Alternate_ElectroAluminumScrap_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5509,6 +5639,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_ElectrodeCircuitBoard.Recipe_Alternate_ElectrodeCircuitBoard_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5533,6 +5664,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_ElectromagneticControlRod_1.Recipe_Alternate_ElectromagneticControlRod_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5557,6 +5689,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_EncasedIndustrialBeam.Recipe_Alternate_EncasedIndustrialBeam_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5581,6 +5714,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_EnrichedCoal.Recipe_Alternate_EnrichedCoal_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5617,6 +5751,7 @@
      8.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_FertileUranium.Recipe_Alternate_FertileUranium_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5645,6 +5780,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_FlexibleFramework.Recipe_Alternate_FlexibleFramework_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5669,6 +5805,7 @@
      30.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_FusedWire.Recipe_Alternate_FusedWire_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5693,6 +5830,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Gunpowder_1.Recipe_Alternate_Gunpowder_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5725,6 +5863,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_HeatFusedFrame.Recipe_Alternate_HeatFusedFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5749,6 +5888,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_HeatSink_1.Recipe_Alternate_HeatSink_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5781,6 +5921,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_HeavyFlexibleFrame.Recipe_Alternate_HeavyFlexibleFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5805,6 +5946,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_HeavyOilResidue.Recipe_Alternate_HeavyOilResidue_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5833,6 +5975,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_HighSpeedConnector.Recipe_Alternate_HighSpeedConnector_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5861,6 +6004,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_HighSpeedWiring.Recipe_Alternate_HighSpeedWiring_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5885,6 +6029,7 @@
      15.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_IngotIron.Recipe_Alternate_IngotIron_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5909,6 +6054,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_IngotSteel_1.Recipe_Alternate_IngotSteel_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5933,6 +6079,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_IngotSteel_2.Recipe_Alternate_IngotSteel_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -5957,6 +6104,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_InstantPlutoniumCell.Recipe_Alternate_InstantPlutoniumCell_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -5993,6 +6141,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_InstantScrap.Recipe_Alternate_InstantScrap_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6021,6 +6170,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_IonizedFuel_Dark.Recipe_Alternate_IonizedFuel_Dark_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -6045,6 +6195,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_IronIngot_Basic.Recipe_Alternate_IronIngot_Basic_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6069,6 +6220,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_IronIngot_Leached.Recipe_Alternate_IronIngot_Leached_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6093,6 +6245,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_ModularFrame.Recipe_Alternate_ModularFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6125,6 +6278,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_ModularFrameHeavy.Recipe_Alternate_ModularFrameHeavy_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6153,6 +6307,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Motor_1.Recipe_Alternate_Motor_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6185,6 +6340,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_NuclearFuelRod_1.Recipe_Alternate_NuclearFuelRod_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6209,6 +6365,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_OCSupercomputer.Recipe_Alternate_OCSupercomputer_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6237,6 +6394,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PlasticSmartPlating.Recipe_Alternate_PlasticSmartPlating_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6261,6 +6419,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Plastic_1.Recipe_Alternate_Plastic_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6285,6 +6444,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_PlutoniumFuelUnit.Recipe_Alternate_PlutoniumFuelUnit_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6309,6 +6469,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PolyesterFabric.Recipe_Alternate_PolyesterFabric_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6333,6 +6494,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PolymerResin.Recipe_Alternate_PolymerResin_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6357,6 +6519,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PureCateriumIngot.Recipe_Alternate_PureCateriumIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6381,6 +6544,7 @@
      15.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PureCopperIngot.Recipe_Alternate_PureCopperIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6405,6 +6569,7 @@
      13.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PureIronIngot.Recipe_Alternate_PureIronIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6429,6 +6594,7 @@
      7.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_PureQuartzCrystal.Recipe_Alternate_PureQuartzCrystal_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6453,6 +6619,7 @@
      18.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_Quartz_Fused.Recipe_Alternate_Quartz_Fused_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6481,6 +6648,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_Quartz_Purified.Recipe_Alternate_Quartz_Purified_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6505,6 +6673,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Quickwire.Recipe_Alternate_Quickwire_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6537,6 +6706,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_RadioControlSystem.Recipe_Alternate_RadioControlSystem_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6565,6 +6735,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_RadioControlUnit_1.Recipe_Alternate_RadioControlUnit_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6589,6 +6760,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_RecycledRubber.Recipe_Alternate_RecycledRubber_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6613,6 +6785,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_ReinforcedIronPlate_1.Recipe_Alternate_ReinforcedIronPlate_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6637,6 +6810,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_ReinforcedIronPlate_2.Recipe_Alternate_ReinforcedIronPlate_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6673,6 +6847,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Alt_Tier9/Recipe_Alternate_RocketFuel_Nitro.Recipe_Alternate_RocketFuel_Nitro_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6697,6 +6872,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Rotor.Recipe_Alternate_Rotor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6721,6 +6897,7 @@
      9.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_RubberConcrete.Recipe_Alternate_RubberConcrete_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6741,6 +6918,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Screw.Recipe_Alternate_Screw_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6761,6 +6939,7 @@
      52.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Screw_2.Recipe_Alternate_Screw_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6785,6 +6964,7 @@
      7.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Silica.Recipe_Alternate_Silica_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6817,6 +6997,7 @@
      8.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9_Ingots/Recipe_Alternate_Silica_Distilled.Recipe_Alternate_Silica_Distilled_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6841,6 +7022,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_SloppyAlumina.Recipe_Alternate_SloppyAlumina_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6865,6 +7047,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Stator.Recipe_Alternate_Stator_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6889,6 +7072,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_SteamedCopperSheet.Recipe_Alternate_SteamedCopperSheet_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6909,6 +7093,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_SteelBeam_Aluminum.Recipe_Alternate_SteelBeam_Aluminum_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6933,6 +7118,7 @@
      9.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_SteelBeam_Molded.Recipe_Alternate_SteelBeam_Molded_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6953,6 +7139,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_SteelCanister.Recipe_Alternate_SteelCanister_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6977,6 +7164,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_SteelCastedPlate.Recipe_Alternate_SteelCastedPlate_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -6997,6 +7185,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_SteelPipe_Iron.Recipe_Alternate_SteelPipe_Iron_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7021,6 +7210,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update9/Recipe_Alternate_SteelPipe_Molded.Recipe_Alternate_SteelPipe_Molded_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7041,6 +7231,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_SteelRod.Recipe_Alternate_SteelRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7073,6 +7264,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_SuperStateComputer.Recipe_Alternate_SuperStateComputer_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7105,6 +7297,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_TurboBlendFuel.Recipe_Alternate_TurboBlendFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7129,6 +7322,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_TurboHeavyFuel.Recipe_Alternate_TurboHeavyFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7161,6 +7355,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_TurboMotor_1.Recipe_Alternate_TurboMotor_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7193,6 +7388,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/Recipe_Alternate_TurboPressureMotor.Recipe_Alternate_TurboPressureMotor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7217,6 +7413,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Turbofuel.Recipe_Alternate_Turbofuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7249,6 +7446,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_UraniumCell_1.Recipe_Alternate_UraniumCell_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7273,6 +7471,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_WetConcrete.Recipe_Alternate_WetConcrete_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7293,6 +7492,7 @@
      9.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Wire_1.Recipe_Alternate_Wire_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7313,6 +7513,7 @@
      8.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/Parts/Recipe_Alternate_Wire_2.Recipe_Alternate_Wire_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7341,6 +7542,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_AluminaSolution.Recipe_AluminaSolution_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7361,6 +7563,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_AluminumCasing.Recipe_AluminumCasing_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7389,6 +7592,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_AluminumScrap.Recipe_AluminumScrap_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7413,6 +7617,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_AluminumSheet.Recipe_AluminumSheet_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7445,6 +7650,7 @@
      1.5
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_Battery.Recipe_Battery_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7469,6 +7675,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Bauxite_Caterium.Recipe_Bauxite_Caterium_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7493,6 +7700,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Bauxite_Copper.Recipe_Bauxite_Copper_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7513,6 +7721,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Biofuel.Recipe_Biofuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7533,6 +7742,7 @@
      100.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Biomass_AlienProtein.Recipe_Biomass_AlienProtein_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7553,6 +7763,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Biomass_Leaves.Recipe_Biomass_Leaves_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7573,6 +7784,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Biomass_Mycelia.Recipe_Biomass_Mycelia_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7593,6 +7805,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Biomass_Wood.Recipe_Biomass_Wood_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7613,6 +7826,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Cable.Recipe_Cable_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7633,6 +7847,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_CandyCane.Recipe_CandyCane_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7657,6 +7872,7 @@
      15.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_Cartridge.Recipe_Cartridge_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7685,6 +7901,7 @@
      50.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/Rifle/Ammo/Recipe_CartridgeChaos.Recipe_CartridgeChaos_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7713,6 +7930,7 @@
      50.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/Rifle/Ammo/Recipe_CartridgeChaos_Packaged.Recipe_CartridgeChaos_Packaged_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7737,6 +7955,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/Rifle/Ammo/Recipe_CartridgeSmart.Recipe_CartridgeSmart_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7761,6 +7980,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Caterium_Copper.Recipe_Caterium_Copper_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7785,6 +8005,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Caterium_Quartz.Recipe_Caterium_Quartz_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7809,6 +8030,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_CircuitBoard.Recipe_CircuitBoard_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7833,6 +8055,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Coal_Iron.Recipe_Coal_Iron_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7857,6 +8080,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Coal_Limestone.Recipe_Coal_Limestone_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -7885,6 +8109,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_Computer.Recipe_Computer_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7917,6 +8142,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_ComputerSuper.Recipe_ComputerSuper_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7937,6 +8163,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Concrete.Recipe_Concrete_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7969,6 +8196,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Blender/Recipe_CoolingSystem.Recipe_CoolingSystem_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -7989,6 +8217,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_CopperDust.Recipe_CopperDust_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8009,6 +8238,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_CopperSheet.Recipe_CopperSheet_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8033,6 +8263,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Copper_Quartz.Recipe_Copper_Quartz_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8057,6 +8288,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Copper_Sulfur.Recipe_Copper_Sulfur_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8085,6 +8317,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_CrystalOscillator.Recipe_CrystalOscillator_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8105,6 +8338,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_DarkEnergy.Recipe_DarkEnergy_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8129,6 +8363,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/HadronCollider/Recipe_DarkMatter.Recipe_DarkMatter_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -8149,6 +8384,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/HadronCollider/Recipe_Diamond.Recipe_Diamond_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -8173,6 +8409,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_ElectromagneticControlRod.Recipe_ElectromagneticControlRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8197,6 +8434,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_EncasedIndustrialBeam.Recipe_EncasedIndustrialBeam_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8221,6 +8459,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Fabric.Recipe_Fabric_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8245,6 +8484,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_FicsiteIngot_AL.Recipe_FicsiteIngot_AL_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8269,6 +8509,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_FicsiteIngot_CAT.Recipe_FicsiteIngot_CAT_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8293,6 +8534,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_FicsiteIngot_Iron.Recipe_FicsiteIngot_Iron_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8313,6 +8555,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_FicsiteMesh.Recipe_FicsiteMesh_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8341,6 +8584,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_Ficsonium.Recipe_Ficsonium_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -8377,6 +8621,7 @@
      20.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/HadronCollider/Recipe_FicsoniumFuelRod.Recipe_FicsoniumFuelRod_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -8405,6 +8650,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_FilterGasMask.Recipe_FilterGasMask_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8433,6 +8679,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_FilterHazmat.Recipe_FilterHazmat_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8457,6 +8704,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Fireworks/Recipe_Fireworks_01.Recipe_Fireworks_01_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8481,6 +8729,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Fireworks/Recipe_Fireworks_02.Recipe_Fireworks_02_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8505,6 +8754,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Fireworks/Recipe_Fireworks_03.Recipe_Fireworks_03_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8525,6 +8775,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_FluidCanister.Recipe_FluidCanister_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8549,6 +8800,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_Fuel.Recipe_Fuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8577,6 +8829,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Blender/Recipe_FusedModularFrame.Recipe_FusedModularFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8597,6 +8850,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_GasTank.Recipe_GasTank_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8621,6 +8875,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_Gunpowder.Recipe_Gunpowder_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8645,6 +8900,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_GunpowderMK2.Recipe_GunpowderMK2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8669,6 +8925,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_HeatSink.Recipe_HeatSink_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8697,6 +8954,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_HighSpeedConnector.Recipe_HighSpeedConnector_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8721,6 +8979,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotAluminum.Recipe_IngotAluminum_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8741,6 +9000,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotCaterium.Recipe_IngotCaterium_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8761,6 +9021,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotCopper.Recipe_IngotCopper_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8781,6 +9042,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotIron.Recipe_IngotIron_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8801,6 +9063,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotSAM.Recipe_IngotSAM_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8825,6 +9088,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotSteel.Recipe_IngotSteel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8853,6 +9117,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_IonizedFuel.Recipe_IonizedFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8873,6 +9138,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_IronPlate.Recipe_IronPlate_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8897,6 +9163,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_IronPlateReinforced.Recipe_IronPlateReinforced_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8917,6 +9184,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_IronRod.Recipe_IronRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -8941,6 +9209,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Iron_Limestone.Recipe_Iron_Limestone_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8965,6 +9234,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Limestone_Sulfur.Recipe_Limestone_Sulfur_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -8989,6 +9259,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_LiquidBiofuel.Recipe_LiquidBiofuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9013,6 +9284,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_LiquidFuel.Recipe_LiquidFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9037,6 +9309,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_ModularFrame.Recipe_ModularFrame_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9069,6 +9342,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_ModularFrameHeavy.Recipe_ModularFrameHeavy_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9093,6 +9367,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_Motor.Recipe_Motor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9125,6 +9400,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_MotorTurbo.Recipe_MotorTurbo_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9153,6 +9429,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Blender/Recipe_NitricAcid.Recipe_NitricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9177,6 +9454,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Nitrogen_Bauxite.Recipe_Nitrogen_Bauxite_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -9201,6 +9479,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Nitrogen_Caterium.Recipe_Nitrogen_Caterium_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -9225,6 +9504,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_Nobelisk.Recipe_Nobelisk_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9249,6 +9529,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/NobeliskDetonator/Ammo/Recipe_NobeliskCluster.Recipe_NobeliskCluster_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9273,6 +9554,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/NobeliskDetonator/Ammo/Recipe_NobeliskGas.Recipe_NobeliskGas_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9305,6 +9587,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/NobeliskDetonator/Ammo/Recipe_NobeliskNuke.Recipe_NobeliskNuke_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9329,6 +9612,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/NobeliskDetonator/Ammo/Recipe_NobeliskShockwave.Recipe_NobeliskShockwave_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9365,6 +9649,7 @@
      6.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Blender/Recipe_NonFissileUranium.Recipe_NonFissileUranium_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9393,6 +9678,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_NuclearFuelRod.Recipe_NuclearFuelRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9417,6 +9703,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedAlumina.Recipe_PackagedAlumina_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9441,6 +9728,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PackagedBiofuel.Recipe_PackagedBiofuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9465,6 +9753,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PackagedCrudeOil.Recipe_PackagedCrudeOil_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9489,6 +9778,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedIonizedFuel.Recipe_PackagedIonizedFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9513,6 +9803,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedNitricAcid.Recipe_PackagedNitricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9537,6 +9828,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedNitrogen.Recipe_PackagedNitrogen_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9561,6 +9853,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PackagedOilResidue.Recipe_PackagedOilResidue_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9585,6 +9878,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedRocketFuel.Recipe_PackagedRocketFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9609,6 +9903,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_PackagedSulfuricAcid.Recipe_PackagedSulfuricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9633,6 +9928,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PackagedTurboFuel.Recipe_PackagedTurboFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9657,6 +9953,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PackagedWater.Recipe_PackagedWater_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9677,6 +9974,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_PetroleumCoke.Recipe_PetroleumCoke_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9701,6 +9999,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_Plastic.Recipe_Plastic_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9725,6 +10024,7 @@
      30.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/HadronCollider/Recipe_Plutonium.Recipe_Plutonium_C",
    "power_const": 250.0,
    "power_factor": 500.0
   },
@@ -9749,6 +10049,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_PlutoniumCell.Recipe_PlutoniumCell_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9781,6 +10082,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_PlutoniumFuelRod.Recipe_PlutoniumFuelRod_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9801,6 +10103,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_PowerCrystalShard_1.Recipe_PowerCrystalShard_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9821,6 +10124,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_PowerCrystalShard_2.Recipe_PowerCrystalShard_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9841,6 +10145,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_PowerCrystalShard_3.Recipe_PowerCrystalShard_3_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9865,6 +10170,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_PressureConversionCube.Recipe_PressureConversionCube_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9885,6 +10191,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Protein_Crab.Recipe_Protein_Crab_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9905,6 +10212,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Protein_Hog.Recipe_Protein_Hog_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9925,6 +10233,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Protein_Spitter.Recipe_Protein_Spitter_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9945,6 +10254,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Protein_Stinger.Recipe_Protein_Stinger_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9965,6 +10275,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_PureAluminumIngot.Recipe_PureAluminumIngot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -9980,6 +10291,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_QuantumEnergy.Recipe_QuantumEnergy_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -10000,6 +10312,7 @@
      3.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_QuartzCrystal.Recipe_QuartzCrystal_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10024,6 +10337,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Quartz_Bauxite.Recipe_Quartz_Bauxite_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -10048,6 +10362,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Quartz_Coal.Recipe_Quartz_Coal_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -10068,6 +10383,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Quickwire.Recipe_Quickwire_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10096,6 +10412,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Manufacturer/Recipe_RadioControlUnit.Recipe_RadioControlUnit_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10124,6 +10441,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/RebarGun/Ammo/Recipe_Rebar_Explosive.Recipe_Rebar_Explosive_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10148,6 +10466,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/RebarGun/Ammo/Recipe_Rebar_Spreadshot.Recipe_Rebar_Spreadshot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10172,6 +10491,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Equipment/RebarGun/Ammo/Recipe_Rebar_Stunshot.Recipe_Rebar_Stunshot_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10192,6 +10512,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_ResidualFuel.Recipe_ResidualFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10216,6 +10537,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_ResidualPlastic.Recipe_ResidualPlastic_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10240,6 +10562,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_ResidualRubber.Recipe_ResidualRubber_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10268,6 +10591,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Blender/Recipe_RocketFuel.Recipe_RocketFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10292,6 +10616,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_Rotor.Recipe_Rotor_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10316,6 +10641,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_Rubber.Recipe_Rubber_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10344,6 +10670,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_SAMFluctuator.Recipe_SAMFluctuator_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10364,6 +10691,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Screw.Recipe_Screw_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10384,6 +10712,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Silica.Recipe_Silica_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10416,6 +10745,7 @@
      10.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/HadronCollider/Recipe_SingularityCell.Recipe_SingularityCell_C",
    "power_const": 0.0,
    "power_factor": 0.0
   },
@@ -10436,6 +10766,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_Snow.Recipe_Snow_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10456,6 +10787,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Holiday/Recipe_Snowball.Recipe_Snowball_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10480,6 +10812,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_1.Recipe_SpaceElevatorPart_1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10508,6 +10841,7 @@
      4.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_10.Recipe_SpaceElevatorPart_10_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -10540,6 +10874,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_11.Recipe_SpaceElevatorPart_11_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -10576,6 +10911,7 @@
      25.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_12.Recipe_SpaceElevatorPart_12_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -10600,6 +10936,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_2.Recipe_SpaceElevatorPart_2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10624,6 +10961,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_3.Recipe_SpaceElevatorPart_3_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10652,6 +10990,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_4.Recipe_SpaceElevatorPart_4_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10684,6 +11023,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_5.Recipe_SpaceElevatorPart_5_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10708,6 +11048,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_6.Recipe_SpaceElevatorPart_6_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10732,6 +11073,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_7.Recipe_SpaceElevatorPart_7_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10764,6 +11106,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_8.Recipe_SpaceElevatorPart_8_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10788,6 +11131,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_9.Recipe_SpaceElevatorPart_9_C",
    "power_const": 500.0,
    "power_factor": 1000.0
   },
@@ -10808,6 +11152,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Equipment/Recipe_SpikedRebar.Recipe_SpikedRebar_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10832,6 +11177,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_Stator.Recipe_Stator_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10852,6 +11198,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_SteelBeam.Recipe_SteelBeam_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10872,6 +11219,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_SteelPipe.Recipe_SteelPipe_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10896,6 +11244,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Sulfur_Coal.Recipe_Sulfur_Coal_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -10920,6 +11269,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Sulfur_Iron.Recipe_Sulfur_Iron_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -10944,6 +11294,7 @@
      5.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_SulfuricAcid.Recipe_SulfuricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -10980,6 +11331,7 @@
      25.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/QuantumEncoder/Recipe_SuperpositionOscillator.Recipe_SuperpositionOscillator_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -11016,6 +11368,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/QuantumEncoder/Recipe_SyntheticPowerShard.Recipe_SyntheticPowerShard_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -11052,6 +11405,7 @@
      25.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/QuantumEncoder/Recipe_TemporalProcessor.Recipe_TemporalProcessor_C",
    "power_const": 0.0,
    "power_factor": 2000.0
   },
@@ -11072,6 +11426,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/Recipe_TimeCrystal.Recipe_TimeCrystal_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -11096,6 +11451,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageAlumina.Recipe_UnpackageAlumina_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11120,6 +11476,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageBioFuel.Recipe_UnpackageBioFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11144,6 +11501,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageFuel.Recipe_UnpackageFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11168,6 +11526,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageIonizedFuel.Recipe_UnpackageIonizedFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11192,6 +11551,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageNitricAcid.Recipe_UnpackageNitricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11216,6 +11576,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageNitrogen.Recipe_UnpackageNitrogen_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11240,6 +11601,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageOil.Recipe_UnpackageOil_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11264,6 +11626,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageOilResidue.Recipe_UnpackageOilResidue_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11288,6 +11651,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageRocketFuel.Recipe_UnpackageRocketFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11312,6 +11676,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Packager/Recipe_UnpackageSulfuricAcid.Recipe_UnpackageSulfuricAcid_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11336,6 +11701,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageTurboFuel.Recipe_UnpackageTurboFuel_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11360,6 +11726,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/OilRefinery/Recipe_UnpackageWater.Recipe_UnpackageWater_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11392,6 +11759,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Assembler/Recipe_UraniumCell.Recipe_UraniumCell_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11416,6 +11784,7 @@
      12.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Converter/ResourceConversion/Recipe_Uranium_Bauxite.Recipe_Uranium_Bauxite_C",
    "power_const": 100.0,
    "power_factor": 300.0
   },
@@ -11436,6 +11805,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Recipes/Constructor/Recipe_Wire.Recipe_Wire_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11456,6 +11826,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBall1.Recipe_XmasBall1_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11476,6 +11847,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBall2.Recipe_XmasBall2_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11500,6 +11872,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBall3.Recipe_XmasBall3_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11524,6 +11897,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBall4.Recipe_XmasBall4_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11548,6 +11922,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBallCluster.Recipe_XmasBallCluster_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11568,6 +11943,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBow.Recipe_XmasBow_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11588,6 +11964,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasBranch.Recipe_XmasBranch_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11612,6 +11989,7 @@
      1.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasStar.Recipe_XmasStar_C",
    "power_const": 0.0,
    "power_factor": 1.0
   },
@@ -11636,6 +12014,7 @@
      2.0
     ]
    ],
+   "path": "/Game/FactoryGame/Events/Christmas/Parts/Recipe_XmasWreath.Recipe_XmasWreath_C",
    "power_const": 0.0,
    "power_factor": 1.0
   }

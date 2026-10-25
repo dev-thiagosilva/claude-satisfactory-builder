@@ -82,6 +82,11 @@
 
     <h2>Alternate recipes in use</h2>
     <div id="alts" class="sub">None. Pick one from a recipe's dropdown on the right.</div>
+
+    <h2>Build it</h2>
+    <button id="build" class="primary" style="width:100%">Build this factory as a blueprint</button>
+    <div class="sub" style="margin-top:6px">Machines set to their recipes and clocks, connected by belts, on a foundation floor. Clocks are capped at 100% (blueprints can't hold power shards). Pipes and power you connect in game.</div>
+    <div id="buildStatus" class="sub" style="margin-top:8px"></div>
   </aside>
 
   <main>
@@ -132,6 +137,24 @@ $('#add').onclick = () => {
 };
 $('#newItem').addEventListener('keydown', e => { if (e.key === 'Enter') $('#add').click(); });
 ['#clock', '#miner', '#purity'].forEach(s => $(s).onchange = recalc);
+
+$('#build').onclick = async () => {
+  if (!state.targets.length) return;
+  const st = $('#buildStatus'); st.className = 'sub'; st.textContent = 'Building… (large factories take a little while)';
+  $('#build').disabled = true;
+  try {
+    const r = await fetch('/api/factory', { method: 'POST', body: JSON.stringify({ targets: state.targets, use: Object.values(state.use) }) });
+    const d = await r.json();
+    if (!r.ok || d.error) throw new Error(d.error || r.statusText);
+    const notes = [...(d.warnings || [])];
+    if (d.collisions) notes.push(`${d.collisions} spot(s) where belts touch (cosmetic)`);
+    st.innerHTML = `Built <b>${esc(d.title)}</b>: ${d.machines} machines, ${d.belts} belts, ${esc(d.size)}.` +
+      `<br>Raw inputs (belt ends on the south edge): ${esc(d.raw_inputs.join('; '))}` +
+      (notes.length ? `<br>Note: ${esc(notes.join('; '))}` : '') +
+      `<br><a href="/?build=${encodeURIComponent(d.name)}">Open it in the studio →</a>`;
+  } catch (e) { st.className = 'sub err'; st.textContent = 'Could not build: ' + e.message; }
+  $('#build').disabled = false;
+};
 
 const recipeCache = {};
 async function recipesFor(item) {

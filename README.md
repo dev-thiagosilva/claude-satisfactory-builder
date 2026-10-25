@@ -71,6 +71,18 @@ For the visual version, open the **Production planner** in the studio
 - switch any step to an alternate recipe
 - set max clock (power shards), miner tier and node purity
 
+### Get a ready-made production line
+
+Happy with a plan? Press **Build this factory as a blueprint** in the planner, or ask Claude
+(*"build me a line for 5 Reinforced Iron Plates a minute"*). You get a blueprint with:
+- all the machines, set to the right recipe and speed
+- splitters and mergers feeding and collecting every machine
+- belts linking each step to the next
+- a foundation floor
+
+Raw resources come in as open belt ends along one edge: connect your miners there. Finished
+items go into a storage container. You still connect **power** and any **pipes** (fluids) in game.
+
 ## Good to know
 
 - The 3D preview uses simple shapes, not the game's exact models. The cost comes from the

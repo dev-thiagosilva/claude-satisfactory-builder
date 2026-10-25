@@ -1,0 +1,915 @@
+{
+ "AssemblerMk1": {
+  "Input0": {
+   "pos": [
+    200.0,
+    -600.0,
+    100.0
+   ],
+   "seen": 365
+  },
+  "Input1": {
+   "pos": [
+    -200.0,
+    -600.0,
+    100.0
+   ],
+   "seen": 0,
+   "inferred": true
+  },
+  "Output0": {
+   "pos": [
+    0.0,
+    500.0,
+    100.0
+   ],
+   "seen": 365
+  }
+ },
+ "Blender": {
+  "PipeInputFactory": {
+   "pos": [
+    -200.0,
+    -700.0,
+    175.0
+   ],
+   "seen": 42
+  },
+  "PipeInputFactory1": {
+   "pos": [
+    -600.0,
+    -700.0,
+    175.0
+   ],
+   "seen": 42
+  },
+  "PipeOutputFactory": {
+   "pos": [
+    -600.0,
+    740.0,
+    175.0
+   ],
+   "seen": 42
+  }
+ },
+ "CentralStorage": {
+  "Input0": {
+   "pos": [
+    0.0,
+    390.0,
+    100.0
+   ],
+   "seen": 1
+  }
+ },
+ "ConstructorMk1": {
+  "Input0": {
+   "pos": [
+    0.0,
+    -300.0,
+    100.0
+   ],
+   "seen": 261
+  },
+  "Output0": {
+   "pos": [
+    -0.0,
+    300.0,
+    100.0
+   ],
+   "seen": 275
+  }
+ },
+ "Converter": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    -200.0,
+    700.0,
+    175.0
+   ],
+   "seen": 7
+  },
+  "Input0": {
+   "pos": [
+    -200.0,
+    -680.0,
+    100.0
+   ],
+   "seen": 2
+  },
+  "Input1": {
+   "pos": [
+    200.0,
+    -680.0,
+    100.0
+   ],
+   "seen": 1
+  },
+  "Output0": {
+   "pos": [
+    200.0,
+    660.0,
+    100.0
+   ],
+   "seen": 29
+  }
+ },
+ "ConveyorAttachmentMerger": {
+  "Input2": {
+   "pos": [
+    -0.0,
+    100.0,
+    0.0
+   ],
+   "seen": 715
+  },
+  "Input3": {
+   "pos": [
+    0.0,
+    -100.0,
+    0.0
+   ],
+   "seen": 901
+  }
+ },
+ "ConveyorAttachmentSplitterProgrammable": {
+  "Input1": {
+   "pos": [
+    -100.0,
+    -0.0,
+    -0.0
+   ],
+   "seen": 2
+  },
+  "Output1": {
+   "pos": [
+    100.0,
+    -0.0,
+    0.0
+   ],
+   "seen": 1
+  }
+ },
+ "ConveyorAttachmentSplitterSmart": {
+  "Output2": {
+   "pos": [
+    0.0,
+    100.0,
+    0.0
+   ],
+   "seen": 61
+  },
+  "Output3": {
+   "pos": [
+    -0.0,
+    -100.0,
+    0.0
+   ],
+   "seen": 23
+  }
+ },
+ "ConveyorBeltMk1": {
+  "ConveyorAny0": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 6
+  }
+ },
+ "ConveyorBeltMk2": {
+  "ConveyorAny0": {
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 3
+  },
+  "ConveyorAny1": {
+   "pos": [
+    1025.4,
+    -478.1,
+    -0.0
+   ],
+   "seen": 3
+  }
+ },
+ "ConveyorBeltMk3": {
+  "ConveyorAny1": {
+   "pos": [
+    -0.0,
+    -0.0,
+    0.0
+   ],
+   "seen": 2
+  }
+ },
+ "ConveyorBeltMk4": {
+  "ConveyorAny0": {
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 42
+  }
+ },
+ "ConveyorBeltMk5": {
+  "ConveyorAny0": {
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 33
+  }
+ },
+ "ConveyorLiftMk1": {
+  "ConveyorAny1": {
+   "pos": [
+    0.0,
+    0.0,
+    -400.0
+   ],
+   "seen": 36
+  }
+ },
+ "ConveyorLiftMk2": {
+  "ConveyorAny0": {
+   "pos": [
+    200.0,
+    0.0,
+    0.0
+   ],
+   "seen": 4
+  },
+  "ConveyorAny1": {
+   "pos": [
+    -200.0,
+    0.0,
+    0.0
+   ],
+   "seen": 0,
+   "inferred": true
+  }
+ },
+ "ConveyorLiftMk3": {
+  "ConveyorAny0": {
+   "pos": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "seen": 6
+  }
+ },
+ "ConveyorLiftMk4": {
+  "ConveyorAny0": {
+   "pos": [
+    200.0,
+    0.0,
+    0.0
+   ],
+   "seen": 42
+  },
+  "ConveyorAny1": {
+   "pos": [
+    -200.0,
+    0.0,
+    0.0
+   ],
+   "seen": 0,
+   "inferred": true
+  }
+ },
+ "ConveyorLiftMk5": {
+  "ConveyorAny0": {
+   "pos": [
+    -0.0,
+    -0.0,
+    0.0
+   ],
+   "seen": 112
+  }
+ },
+ "DroneStation": {
+  "Input0": {
+   "pos": [
+    1200.0,
+    700.0,
+    100.0
+   ],
+   "seen": 7
+  },
+  "Input1": {
+   "pos": [
+    1200.0,
+    -500.0,
+    100.0
+   ],
+   "seen": 15
+  },
+  "Output0": {
+   "pos": [
+    1200.0,
+    -900.0,
+    100.0
+   ],
+   "seen": 8
+  }
+ },
+ "FoundryMk1": {
+  "Input0": {
+   "pos": [
+    200.0,
+    -300.0,
+    100.0
+   ],
+   "seen": 45
+  },
+  "Input1": {
+   "pos": [
+    -200.0,
+    -300.0,
+    100.0
+   ],
+   "seen": 45
+  },
+  "Output2": {
+   "pos": [
+    -200.0,
+    200.0,
+    100.0
+   ],
+   "seen": 84
+  }
+ },
+ "FrackingExtractor": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    100.0,
+    0.0,
+    375.0
+   ],
+   "seen": 19
+  }
+ },
+ "GeneratorCoal": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    -200.0,
+    941.7,
+    175.0
+   ],
+   "seen": 36
+  }
+ },
+ "GeneratorFuel": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    0.0,
+    -860.2,
+    175.0
+   ],
+   "seen": 372
+  }
+ },
+ "HadronCollider": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    800.0,
+    -1190.0,
+    175.0
+   ],
+   "seen": 4
+  },
+  "Input0": {
+   "pos": [
+    1600.0,
+    -1100.0,
+    100.0
+   ],
+   "seen": 6
+  },
+  "Input1": {
+   "pos": [
+    1200.0,
+    -1100.0,
+    100.0
+   ],
+   "seen": 6
+  },
+  "Output0": {
+   "pos": [
+    1400.0,
+    1110.0,
+    100.0
+   ],
+   "seen": 6
+  }
+ },
+ "IndustrialTank": {
+  "ConnectionAny0": {
+   "pos": [
+    0.0,
+    600.0,
+    175.0
+   ],
+   "seen": 334
+  },
+  "ConnectionAny1": {
+   "pos": [
+    0.0,
+    -600.0,
+    175.0
+   ],
+   "seen": 337
+  }
+ },
+ "ManufacturerMk1": {
+  "Input0": {
+   "pos": [
+    600.0,
+    -875.0,
+    100.0
+   ],
+   "seen": 77
+  },
+  "Input1": {
+   "pos": [
+    200.0,
+    -875.0,
+    100.0
+   ],
+   "seen": 88
+  },
+  "Input2": {
+   "pos": [
+    -200.0,
+    -875.0,
+    100.0
+   ],
+   "seen": 88
+  },
+  "Input3": {
+   "pos": [
+    -600.0,
+    -875.0,
+    100.0
+   ],
+   "seen": 82
+  },
+  "Output0": {
+   "pos": [
+    0.0,
+    800.0,
+    100.0
+   ],
+   "seen": 159
+  }
+ },
+ "MinerMk3": {
+  "Output0": {
+   "pos": [
+    0.0,
+    800.0,
+    100.0
+   ],
+   "seen": 71
+  }
+ },
+ "OilPump": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    0.0,
+    760.0,
+    175.0
+   ],
+   "seen": 18
+  }
+ },
+ "OilRefinery": {
+  "Input0": {
+   "pos": [
+    200.0,
+    900.0,
+    100.0
+   ],
+   "seen": 12
+  },
+  "Output1": {
+   "pos": [
+    200.0,
+    -900.0,
+    100.0
+   ],
+   "seen": 43
+  },
+  "PipeInputFactory": {
+   "pos": [
+    -200.0,
+    900.0,
+    175.0
+   ],
+   "seen": 290
+  },
+  "PipeOutputFactory": {
+   "pos": [
+    -200.0,
+    -900.0,
+    175.0
+   ],
+   "seen": 262
+  }
+ },
+ "Packager": {
+  "Input0": {
+   "pos": [
+    0.0,
+    -300.0,
+    100.0
+   ],
+   "seen": 54
+  },
+  "Output1": {
+   "pos": [
+    0.0,
+    300.0,
+    100.0
+   ],
+   "seen": 54
+  },
+  "PipeInputFactory": {
+   "pos": [
+    0.0,
+    -380.0,
+    375.0
+   ],
+   "seen": 54
+  }
+ },
+ "PipeStorageTank": {
+  "ConnectionAny0": {
+   "pos": [
+    0.0,
+    200.0,
+    175.0
+   ],
+   "seen": 88
+  },
+  "ConnectionAny1": {
+   "pos": [
+    -0.0,
+    -200.0,
+    175.0
+   ],
+   "seen": 88
+  }
+ },
+ "Pipeline": {
+  "PipelineConnection0": {
+   "pos": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "seen": 10
+  }
+ },
+ "PipelineJunction_Cross": {
+  "Connection2": {
+   "pos": [
+    -0.0,
+    100.0,
+    0.0
+   ],
+   "seen": 633
+  },
+  "Connection3": {
+   "pos": [
+    -0.0,
+    -100.0,
+    0.0
+   ],
+   "seen": 653
+  }
+ },
+ "PipelineMK2_NoIndicator": {
+  "PipelineConnection0": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 79
+  }
+ },
+ "PipelinePump": {
+  "Connection0": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 132
+  },
+  "Connection1": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 126
+  }
+ },
+ "PipelinePumpMk2": {
+  "Connection0": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 1405
+  }
+ },
+ "Pipeline_NoIndicator": {
+  "PipelineConnection0": {
+   "pos": [
+    -0.0,
+    0.0,
+    -0.0
+   ],
+   "seen": 2
+  }
+ },
+ "QuantumEncoder": {
+  "Input1": {
+   "pos": [
+    200.0,
+    -2460.0,
+    100.0
+   ],
+   "seen": 4
+  },
+  "Input2": {
+   "pos": [
+    -200.0,
+    -2460.0,
+    100.0
+   ],
+   "seen": 4
+  },
+  "Input3": {
+   "pos": [
+    -600.0,
+    -2100.0,
+    100.0
+   ],
+   "seen": 4
+  },
+  "Output0": {
+   "pos": [
+    -200.0,
+    2100.0,
+    100.0
+   ],
+   "seen": 4
+  },
+  "PipeInput1": {
+   "pos": [
+    600.0,
+    -2090.0,
+    175.0
+   ],
+   "seen": 4
+  },
+  "PipeOutput1": {
+   "pos": [
+    200.0,
+    2160.0,
+    175.0
+   ],
+   "seen": 4
+  }
+ },
+ "ResourceSink": {
+  "Input0": {
+   "pos": [
+    0.0,
+    500.0,
+    100.0
+   ],
+   "seen": 27
+  }
+ },
+ "SmelterMk1": {
+  "Input0": {
+   "pos": [
+    0.0,
+    -300.0,
+    100.0
+   ],
+   "seen": 108
+  },
+  "Output2": {
+   "pos": [
+    -0.0,
+    200.0,
+    100.0
+   ],
+   "seen": 60
+  }
+ },
+ "StorageContainerMk1": {
+  "Input0": {
+   "pos": [
+    -0.0,
+    -400.0,
+    100.0
+   ],
+   "seen": 188
+  },
+  "Output1": {
+   "pos": [
+    -0.0,
+    400.0,
+    100.0
+   ],
+   "seen": 189
+  }
+ },
+ "StorageContainerMk2": {
+  "Input0": {
+   "pos": [
+    0.0,
+    -400.0,
+    100.0
+   ],
+   "seen": 808
+  },
+  "Input1": {
+   "pos": [
+    0.0,
+    -400.0,
+    500.0
+   ],
+   "seen": 1107
+  },
+  "Output1": {
+   "pos": [
+    -0.0,
+    400.0,
+    100.0
+   ],
+   "seen": 1148
+  },
+  "Output2": {
+   "pos": [
+    0.0,
+    400.0,
+    500.0
+   ],
+   "seen": 765
+  }
+ },
+ "TrainDockingStation": {
+  "Input0": {
+   "pos": [
+    -300.0,
+    1600.0,
+    100.0
+   ],
+   "seen": 66
+  },
+  "Input1": {
+   "pos": [
+    -300.0,
+    1600.0,
+    500.0
+   ],
+   "seen": 35
+  },
+  "Output0": {
+   "pos": [
+    300.0,
+    1600.0,
+    100.0
+   ],
+   "seen": 70
+  },
+  "Output1": {
+   "pos": [
+    300.0,
+    1600.0,
+    500.0
+   ],
+   "seen": 36
+  }
+ },
+ "TrainDockingStationLiquid": {
+  "PipeFactoryInput0": {
+   "pos": [
+    -300.0,
+    1600.0,
+    175.0
+   ],
+   "seen": 34
+  },
+  "PipeFactoryInput1": {
+   "pos": [
+    -300.0,
+    1600.0,
+    575.0
+   ],
+   "seen": 34
+  },
+  "PipeFactoryOutput0": {
+   "pos": [
+    300.0,
+    1600.0,
+    175.0
+   ],
+   "seen": 25
+  },
+  "PipeFactoryOutput1": {
+   "pos": [
+    300.0,
+    1600.0,
+    575.0
+   ],
+   "seen": 13
+  }
+ },
+ "TruckStation": {
+  "Input0": {
+   "pos": [
+    700.0,
+    -1005.3,
+    100.0
+   ],
+   "seen": 20
+  },
+  "Input1": {
+   "pos": [
+    300.0,
+    -1004.6,
+    100.0
+   ],
+   "seen": 34
+  },
+  "Input2": {
+   "pos": [
+    300.0,
+    -1004.6,
+    300.0
+   ],
+   "seen": 30
+  },
+  "Output0": {
+   "pos": [
+    -300.0,
+    -1005.8,
+    100.0
+   ],
+   "seen": 29
+  },
+  "Output1": {
+   "pos": [
+    -300.0,
+    -1005.8,
+    300.0
+   ],
+   "seen": 14
+  }
+ },
+ "Valve": {
+  "Connection0": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 6
+  },
+  "Connection1": {
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "seen": 6
+  }
+ },
+ "WaterPump": {
+  "FGPipeConnectionFactory": {
+   "pos": [
+    -0.0,
+    -460.0,
+    240.0
+   ],
+   "seen": 75
+  }
+ }
+}

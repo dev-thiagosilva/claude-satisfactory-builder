@@ -107,6 +107,35 @@ byproducts, power, and belt/pipe tiers.
 version, point them to the studio's **Production planner** at `http://localhost:8770/planner`
 (add items, switch alternate recipes per row, set clock/miner/purity).
 
+## Production lines (factories)
+
+When a player wants a factory for some items ("build me a line for 5 motors a minute"), plan it
+with `calc.py`, then build it with `scripts/factory.py`. Or they press **Build this factory as a
+blueprint** in the planner. Either way the result is a ready production line in
+`.local/blueprints/<name>/`:
+- one row per recipe step, each machine set to its recipe and clock (≤ 100%, because blueprints
+  can't hold power shards);
+- splitter manifolds feeding every input (extra inputs on raised manifolds), merger manifolds
+  collecting outputs;
+- overhead belt lanes in a corridor on the west side linking the rows (each lane in its own
+  column; short hops use a low pass or stay at belt height);
+- raw resources arrive as open belt ends on the south edge (the player connects miners there);
+  products and solid byproducts go into storage containers;
+- a foundation floor, and a plot sized to fit (production lines are long; they don't use the
+  four building sizes).
+
+`python -I .claude/skills/satisfactory-blueprints/scripts/factory.py "Motor" 2 [--use "..."] [--name "..."]`
+prints a report: rows, raw inputs, outputs, size, warnings and belt collisions. The generator
+retries lane layouts until no belts touch. A remaining collision is cosmetic (belts clip, items
+still flow); say where it is.
+
+Tell the player plainly what isn't done yet: **pipes for fluids** (fluid ports are left open;
+the report lists which steps), **power** (no poles or wires; they connect it), and **byproducts
+fed back into the line** (they go to storage). Machine ports come from `library/ports.json`,
+learned from belts and pipes plugged into machines in a real 1.2 save (`build_library.py
+--save`). Ports never seen plugged in are mirrored from a sibling and marked `inferred`. The
+first in-game test of a generated line should be a small one (e.g. 30 Iron Plate).
+
 ## Blueprint Studio
 
 A local web app for the player's builds in `.local/blueprints/`. It lists their builds and shows
@@ -167,7 +196,10 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
     machine models (MinerMk1/2/3) from each other. Pieces made this way are marked 🧪;
   - adds a custom-RGB paint variant by copying a real 1.2 customization block;
   - skips anything carrying a player's account data, takes no signs from saves (player text),
-    drops the `BuiltBy` player handle, and records no file names.
+    drops the `BuiltBy` player handle, and records no file names;
+  - empties every inventory (machines, storage, stations) and resets clock and production boost
+    to 100%, so no items, power shards or Somersloops travel with the samples;
+  - with `--save`, learns machine port positions into `ports.json` for the factory generator.
   New object ids keep the original digit count, because references also sit inside longer
   strings whose stored sizes must not change. `sav.py` documents the save layout.
 - Confirm 🧪 pieces in game with `examples/piece_test.py`, which writes four test blueprints

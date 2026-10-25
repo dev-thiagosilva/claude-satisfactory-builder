@@ -286,7 +286,10 @@ def build_production(docs_path):
     machines = {}
     for native in ('FGBuildableManufacturer', 'FGBuildableManufacturerVariablePower'):
         for c in by.get(native, []):
+            box = re.search(r'Min=\(X=([-\d.]+),Y=([-\d.]+),Z=([-\d.]+)\),Max=\(X=([-\d.]+),Y=([-\d.]+),Z=([-\d.]+)\)',
+                            c.get('mClearanceData', ''))
             machines[short(c['ClassName'])] = dict(
+                clearance=[float(v) for v in box.groups()] if box else None,   # cm: minX,minY,minZ,maxX,maxY,maxZ
                 name=c['mDisplayName'], power=float(c.get('mPowerConsumption') or 0),
                 exponent=float(c.get('mPowerConsumptionExponent') or 1.321929),
                 variable=native.endswith('VariablePower'))
@@ -301,8 +304,9 @@ def build_production(docs_path):
                 f = items.get(i, {}).get('form', 'solid')
                 out.append([i, n / 1000.0 if f != 'solid' else n])
             return out
+        m = re.search(r"(/Game/[^'\"]+\.%s)" % re.escape(r['ClassName']), r.get('FullName', ''))
         recipes[short(r['ClassName'])] = dict(
-            name=r['mDisplayName'], machine=made_in[0],
+            name=r['mDisplayName'], machine=made_in[0], path=m.group(1) if m else None,
             alternate=r['ClassName'].startswith('Recipe_Alternate_'),
             duration=float(r['mManufactoringDuration']),
             inputs=amounts_of(r.get('mIngredients')), outputs=amounts_of(r.get('mProduct')),

@@ -205,13 +205,30 @@ function rebuild() {
     const mesh = new THREE.InstancedMesh(def.geo, mat, ks.length);
     ks.forEach((k, n) => {
       const p = pieces[k];
-      const hide = hiddenTypes.has(type) || p.pos[2] / 100 > cutH;
+      const hide = hiddenTypes.has(type) || p.pos[2] / 100 > cutH || p.spline;   // belts/pipes drawn as tubes
       mesh.setMatrixAt(n, hide ? zero : matrixOf(p));
       mesh.setColorAt(n, selected.has(k) ? hiColor : tmpColor.set(colorOf(p)));
     });
     mesh.instanceMatrix.needsUpdate = true; if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
     mesh.userData = { type, ks };
     scene.add(mesh); meshes.push(mesh);
+    // belts and pipes: a tube along their real path (spline points in Unreal cm -> metres, Y-up)
+    const curves = ks.filter(k => pieces[k].spline && !hiddenTypes.has(type) && pieces[k].pos[2] / 100 <= cutH);
+    if (curves.length) {
+      const geos = [];
+      for (const k of curves) {
+        const pts = [];
+        for (const v of pieces[k].spline) {
+          const p = new THREE.Vector3(v[0] / 100, v[2] / 100, v[1] / 100);
+          if (!pts.length || pts[pts.length - 1].distanceTo(p) > 0.01) pts.push(p);
+        }
+        if (pts.length < 2) continue;
+        try { geos.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), Math.max(4, pts.length * 2), 0.35, 5, false)); }
+        catch (e) { console.warn('could not draw', pieces[k].type, e); }
+      }
+      const tubeMat = new THREE.MeshStandardMaterial({ color: /Pipe/.test(type) ? 0x5aa9e6 : 0xd99a4e, metalness: 0.2, roughness: 0.6 });
+      for (const g of geos) { const t = new THREE.Mesh(g, tubeMat); t.userData = { type, ks: [] }; scene.add(t); meshes.push(t); }
+    }
   }
   renderLayers(byType); renderSelection();
 }
