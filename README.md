@@ -48,7 +48,8 @@ Claude will:
 1. Ask a few quick questions (size, colours, which save it's for).
 2. Design it from the game's real building pieces: beams, foundations, walls, glass and more.
    The [full list of pieces](.claude/skills/satisfactory-blueprints/library/ASSETS.md) shows
-   all 546 buildable pieces, their costs and unlocks, and which ones are ready to use.
+   all 546 buildable pieces, grouped by what they're for, with costs, unlocks and which are
+   ready to use (455 today).
 3. Open the **Blueprint Studio** in your browser at `http://localhost:8770`, where you can
    orbit around your building and change it: click pieces to select them, then move, rotate,
    duplicate, delete or recolour them. Undo works, and every save keeps the previous version.
@@ -61,8 +62,11 @@ Then in Satisfactory: **reload your save**, open the build menu, and find it in 
 
 - The 3D preview uses simple shapes, not the game's exact models. The cost comes from the
   game's own recipes; beams may round slightly differently in game.
-- Not every piece is ready yet: production machines, most belts, pipes and power are still
-  missing from the library. The full list marks which ones are ready.
+- 455 of the 546 pieces are ready. Missing are mostly extractors, train stations, vehicle paths,
+  some power buildings and unique buildings (HUB, Space Elevator). Machines come without belts
+  or power connected, so hook those up in game.
+- Some pieces (🧪 in the list) were made from a similar piece and haven't been confirmed in game
+  yet. If one looks wrong, tell Claude.
 - Only **small** matches an in-game blueprint designer (Mk3). Medium and bigger can be placed
   normally, but can't be reopened in a designer.
 - Your own blueprints are never changed or overwritten. Claude's builds live in

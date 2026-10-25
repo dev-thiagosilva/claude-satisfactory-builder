@@ -57,7 +57,7 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `install/satisfactory-builder/SKILL.md` | The skill players install. Fetches/updates this repo and hands over to this file |
 | `.claude/skills/satisfactory-blueprints/` | Project skill with all the tooling. **Load it before any blueprint work** |
 | `  scripts/sbp.py` | Read/write/edit/render `.sbp`; `Library`, `install`, `sessions`, `write_sbpcfg` |
-| `  library/ASSETS.md` | **Every buildable piece in the game** (546): name, category, size, real build cost, unlock, and whether it's **ready** (has a library sample). Start here when choosing pieces |
+| `  library/ASSETS.md` | **Every buildable piece in the game** (546), grouped by design purpose, with a **quick picker** ("I want X → use Y") and per-category use/tips/go-to pieces; name, size, real cost, unlock, and whether it's **ready**. Start here when choosing pieces |
 | `  library/assets.json` | The same data for code (`assets()`, `estimate_cost(bp)` in `sbp.py`) |
 | `  library/donors-v<NN>.sbp` | Sample pieces per game version that builds copy from (`index.json` lists them) |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds |
@@ -72,9 +72,11 @@ own. Keep anything it needs inside its folder.
 
 ## Building a blueprint
 
-1. **Choose pieces from `library/ASSETS.md`.** It lists everything the game can build. Only pieces
-   marked ✅ can be placed today; for the others, say the piece isn't in the library yet and
-   suggest the closest ready one. Painted beams make curves and
+1. **Choose pieces from `library/ASSETS.md`.** Start with its quick picker, then read the
+   category's **Use for / Tips / Go-to pieces**. Pieces marked ✅ (sampled from real builds) or
+   🧪 (made from a similar piece, not yet confirmed in game) can be placed. Prefer ✅ where there's
+   a choice. For pieces with no mark, say they aren't in the library yet and suggest the closest
+   ready one. ⛔ legacy pieces can't be built in the current game. Painted beams make curves and
    surfaces at any angle and length. Thin window walls make framed glass. Foundations make floors
    and plazas. Walls, roofs, ramps and quarter pipes make conventional buildings. Prefer pieces
    marked "any colour" when colour matters.
@@ -124,9 +126,9 @@ Rules that bite:
   ±dims·400 cm, z in 0…dims_z·800 cm.
 - **Header**: recipes for every piece type, and the cost from `estimate_cost(bp)`, which uses the
   game's own build recipes. Length-based pieces may round slightly differently in game.
-- **Machines and logistics**: the library only holds samples that link to nothing else, so
-  machines come without belts or power, and most belts, pipes and power lines are missing (the
-  catalogue shows the few unconnected ones). The player wires things up in game.
+- **Machines and logistics** come with empty ports and no power, as if freshly placed. The player
+  connects belts, pipes and power in game. Power lines aren't in the library, because a wire
+  needs two ends.
 
 ## The player's game files
 
@@ -139,9 +141,19 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 - After changing `sbp.py`, round-trip a large set of real blueprints and confirm every file is
   byte-identical (`roundtrip` command; the maintainer's set is 442 files, object versions 36–60).
 - To grow the library, run `scripts/build_library.py "<folder of blueprints>"` over blueprints
-  that contain the new pieces, check `ASSETS.md` (its ✅ column refreshes), and commit `library/`.
+  that contain the new pieces, check `ASSETS.md` (its ready column refreshes), and commit
+  `library/`. Run `build_assets.py` first so `assets.json` exists. For each game version it:
+  - takes one clean sample per piece type;
+  - for pieces only ever seen wired up, removes the links to other buildings (empty ports);
+  - for part-less structural pieces nobody has built, makes a sample from the closest piece of
+    the same kind by swapping class and recipe (1.0-format versions 36–46 only; marked 🧪);
+  - skips anything carrying a player's account data.
   It keeps only samples
   that link to nothing outside themselves, and it records no file names.
+- Confirm 🧪 pieces in game with `examples/piece_test.py`, which writes four test blueprints
+  with one of every ready piece. Place them in a sandbox save and record broken pieces. A
+  confirmed piece can be promoted by building it in game and re-running `build_library.py` on
+  the blueprint.
 - After a game update, regenerate the full piece list from the game's modding data:
   `scripts/build_assets.py "<game>/CommunityResources/Docs/en-US.json"`. It writes
   `assets.json` and `ASSETS.md` with names and numbers only, no description text.

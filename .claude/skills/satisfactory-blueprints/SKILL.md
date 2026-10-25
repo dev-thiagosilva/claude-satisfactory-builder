@@ -65,9 +65,11 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
 
 ## Build something new (e.g. from a photo or an idea)
 
-1. **Pick pieces from `library/ASSETS.md`**, the list of every buildable piece in the game with
-   name, category, size, real build cost and unlock. ✅ marks pieces that have a sample in the
-   shipped library, so you can place them; 🎨 marks pieces that take any colour.
+1. **Pick pieces from `library/ASSETS.md`**, the list of every buildable piece in the game. It's
+   grouped by design purpose and has a quick picker ("I want X → use Y") plus use/tips/go-to
+   pieces per category, then name, size, real build cost and unlock. ✅ = sample from a real
+   build, 🧪 = sample made from a similar piece (not yet confirmed in game), 🎨 = takes any
+   colour; unmarked pieces can't be placed yet.
    `python -I scripts/sbp.py library` prints the ready ones per game version. `Library.load(needs=[...],
    custom_paint=True)` picks one version that has them all. Mixing pieces across versions isn't
    verified, so don't. To use a piece that only exists in the user's own blueprints, run
