@@ -58,6 +58,19 @@ Claude will:
 Then in Satisfactory: **reload your save**, open the build menu, and find it in the
 **Blueprints** tab. Claude tells you which AWESOME Shop unlocks it needs and roughly what it costs.
 
+### Plan a factory
+
+Ask things like *"How many constructors do I need for 10 Reinforced Iron Plates a minute?"* or
+*"What does 5 Heavy Modular Frames a minute take with Stitched Iron Plate?"* Claude works it out
+from the game's own recipes: machines and clock speeds, raw resources and how many miners,
+leftover byproducts, power, and which belt or pipe tier you need.
+
+For the visual version, open the **Production planner** in the studio
+(`http://localhost:8770/planner`), which works like satisfactory-calculator.com:
+- add the items and rates you want
+- switch any step to an alternate recipe
+- set max clock (power shards), miner tier and node purity
+
 ## Good to know
 
 - The 3D preview uses simple shapes, not the game's exact models. The cost comes from the

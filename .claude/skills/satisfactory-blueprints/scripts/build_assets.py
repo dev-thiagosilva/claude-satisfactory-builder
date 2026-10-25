@@ -264,6 +264,70 @@ def build(docs_path):
                 source='CommunityResources/Docs/en-US.json')
 
 
+def build_production(docs_path):
+    """Everything the production calculator needs, from the game's own data: items, production
+    recipes (per cycle; fluids in m³), machines (power), extractors and belt/pipe throughput."""
+    by = load_docs(docs_path)
+
+    def paths(s):
+        return [short(p) for p in re.findall(r'/Build_(\w+?)\.', s or '')]
+
+    items = {}
+    for native, classes in by.items():
+        if 'Descriptor' not in native:
+            continue
+        for c in classes:
+            if not c.get('ClassName', '').startswith('Desc_'):
+                continue
+            form = {'RF_LIQUID': 'liquid', 'RF_GAS': 'gas'}.get(c.get('mForm'), 'solid')
+            items[short(c['ClassName'])] = dict(name=c.get('mDisplayName', ''), form=form,
+                                                raw=native == 'FGResourceDescriptor',
+                                                points=int(float(c.get('mResourceSinkPoints') or 0)))
+    machines = {}
+    for native in ('FGBuildableManufacturer', 'FGBuildableManufacturerVariablePower'):
+        for c in by.get(native, []):
+            machines[short(c['ClassName'])] = dict(
+                name=c['mDisplayName'], power=float(c.get('mPowerConsumption') or 0),
+                exponent=float(c.get('mPowerConsumptionExponent') or 1.321929),
+                variable=native.endswith('VariablePower'))
+    recipes = {}
+    for r in by.get('FGRecipe', []):
+        made_in = [m for m in paths(r.get('mProducedIn')) if m in machines]
+        if not made_in:
+            continue          # build-gun, workbench and workshop recipes aren't production
+        def amounts_of(s):
+            out = []
+            for i, n in amounts(s):
+                f = items.get(i, {}).get('form', 'solid')
+                out.append([i, n / 1000.0 if f != 'solid' else n])
+            return out
+        recipes[short(r['ClassName'])] = dict(
+            name=r['mDisplayName'], machine=made_in[0],
+            alternate=r['ClassName'].startswith('Recipe_Alternate_'),
+            duration=float(r['mManufactoringDuration']),
+            inputs=amounts_of(r.get('mIngredients')), outputs=amounts_of(r.get('mProduct')),
+            power_const=float(r.get('mVariablePowerConsumptionConstant') or 0),
+            power_factor=float(r.get('mVariablePowerConsumptionFactor') or 0))
+    extractors = {}
+    for native in ('FGBuildableResourceExtractor', 'FGBuildableWaterPump', 'FGBuildableFrackingExtractor'):
+        for c in by.get(native, []):
+            per_cycle = float(c.get('mItemsPerCycle') or 0)
+            allowed = [short(p) for p in re.findall(r"\.(Desc_\w+?_C)'", c.get('mAllowedResources') or '')]
+            forms = c.get('mAllowedResourceForms', '')
+            fluid = 'RF_SOLID' not in forms
+            rate = per_cycle / float(c.get('mExtractCycleTime') or 1) * 60 / (1000 if fluid else 1)
+            extractors[short(c['ClassName'])] = dict(name=c['mDisplayName'], rate=round(rate, 4),
+                                                    power=float(c.get('mPowerConsumption') or 0),
+                                                    solid=not fluid, allowed=allowed)
+    belts = sorted(([c['mDisplayName'], float(c['mSpeed']) / 2] for c in by.get('FGBuildableConveyorBelt', [])),
+                   key=lambda b: b[1])
+    pipes = sorted({(c['mDisplayName'].replace('Clean ', ''), float(c['mFlowLimit']) * 60)
+                    for c in by.get('FGBuildablePipeline', [])}, key=lambda p: p[1])
+    return dict(items=items, recipes=recipes, machines=machines, extractors=extractors,
+                belts=belts, pipes=[list(p) for p in pipes],
+                source='CommunityResources/Docs/en-US.json')
+
+
 def library_status():
     ix = json.loads((LIB / 'index.json').read_text())
     ready = defaultdict(lambda: dict(versions=[], custom=False, real=False))
@@ -386,6 +450,11 @@ def main():
     (LIB / 'assets.json').write_text(json.dumps(data, indent=1, sort_keys=True, ensure_ascii=False), encoding='utf-8')
     total, ready = write_markdown(data)
     print('%d buildable pieces, %d ready in the library -> %s' % (total, ready, LIB / 'ASSETS.md'))
+    prod = build_production(docs)
+    (LIB / 'production.json').write_text(json.dumps(prod, indent=1, sort_keys=True, ensure_ascii=False), encoding='utf-8')
+    print('%d production recipes (%d alternates), %d items, %d machines -> production.json' % (
+        len(prod['recipes']), sum(r['alternate'] for r in prod['recipes'].values()),
+        len(prod['items']), len(prod['machines'])))
 
 
 if __name__ == '__main__':

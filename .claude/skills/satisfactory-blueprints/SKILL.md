@@ -127,6 +127,25 @@ pieces, undo, save (a backup goes to `history/`), and install it into a save wit
 **Use in game**. Prefer the studio over a static render whenever the player should see or change
 a build.
 
+## Production planning
+
+`scripts/calc.py` answers "how many machines / resources / how much power" from the game's own
+recipes (`library/production.json`, written by `build_assets.py`). For each step it gives the
+machine count and an even clock, plus raw resources with miner/extractor counts, byproducts
+(fed back in before anything extra is built), power on the game's clock curve, and the belt or
+pipe tier.
+
+```bash
+python -I scripts/calc.py "Heavy Modular Frame" 5 "Computer" 2.5     # item/rate pairs, per minute
+python -I scripts/calc.py "Reinforced Iron Plate" 10 --use "Stitched Iron Plate" --clock 250
+python -I scripts/calc.py "Heavy Modular Frame" --total 500 --minutes 60 --miner Mk3 --purity pure
+python -I scripts/calc.py --alternates "Reinforced Iron Plate"         # list recipes for an item
+```
+
+In code, use `from calc import plan, find_item, find_recipe, format_plan`, or add `--json`. The
+studio also serves a visual **Production planner** at `/planner`, like satisfactory-calculator.com:
+add items, switch each step's recipe, and set max clock, miner tier and node purity.
+
 ## Formats and details
 
 Read `references/format.md` for the byte layout (header, chunk variants, object headers,

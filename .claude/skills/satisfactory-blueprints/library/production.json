@@ -1,0 +1,11644 @@
+{
+ "belts": [
+  [
+   "Conveyor Belt Mk.1",
+   60.0
+  ],
+  [
+   "Conveyor Belt Mk.2",
+   120.0
+  ],
+  [
+   "Conveyor Belt Mk.3",
+   270.0
+  ],
+  [
+   "Conveyor Belt Mk.4",
+   480.0
+  ],
+  [
+   "Conveyor Belt Mk.5",
+   780.0
+  ],
+  [
+   "Conveyor Belt Mk.6",
+   1200.0
+  ]
+ ],
+ "extractors": {
+  "FrackingExtractor": {
+   "allowed": [
+    "LiquidOil",
+    "NitrogenGas",
+    "Water"
+   ],
+   "name": "Resource Well Extractor",
+   "power": 0.0,
+   "rate": 60.0,
+   "solid": false
+  },
+  "MinerMk1": {
+   "allowed": [],
+   "name": "Miner Mk.1",
+   "power": 5.0,
+   "rate": 60.0,
+   "solid": true
+  },
+  "MinerMk2": {
+   "allowed": [],
+   "name": "Miner Mk.2",
+   "power": 15.0,
+   "rate": 120.0,
+   "solid": true
+  },
+  "MinerMk3": {
+   "allowed": [],
+   "name": "Miner Mk.3",
+   "power": 45.0,
+   "rate": 240.0,
+   "solid": true
+  },
+  "OilPump": {
+   "allowed": [
+    "LiquidOil"
+   ],
+   "name": "Oil Extractor",
+   "power": 40.0,
+   "rate": 120.0,
+   "solid": false
+  },
+  "WaterPump": {
+   "allowed": [
+    "Water"
+   ],
+   "name": "Water Extractor",
+   "power": 20.0,
+   "rate": 120.0,
+   "solid": false
+  }
+ },
+ "items": {
+  "AlienDNACapsule": {
+   "form": "solid",
+   "name": "Alien DNA Capsule",
+   "points": 0,
+   "raw": false
+  },
+  "AlienPowerBuilding": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "AlienPowerFuel": {
+   "form": "solid",
+   "name": "Alien Power Matrix",
+   "points": 210,
+   "raw": false
+  },
+  "AlienProtein": {
+   "form": "solid",
+   "name": "Alien Protein",
+   "points": 0,
+   "raw": false
+  },
+  "AluminaSolution": {
+   "form": "liquid",
+   "name": "Alumina Solution",
+   "points": 20,
+   "raw": false
+  },
+  "AluminumCasing": {
+   "form": "solid",
+   "name": "Aluminum Casing",
+   "points": 393,
+   "raw": false
+  },
+  "AluminumIngot": {
+   "form": "solid",
+   "name": "Aluminum Ingot",
+   "points": 131,
+   "raw": false
+  },
+  "AluminumPlate": {
+   "form": "solid",
+   "name": "Alclad Aluminum Sheet",
+   "points": 266,
+   "raw": false
+  },
+  "AluminumPlateReinforced": {
+   "form": "solid",
+   "name": "Heat Sink",
+   "points": 2804,
+   "raw": false
+  },
+  "AluminumScrap": {
+   "form": "solid",
+   "name": "Aluminum Scrap",
+   "points": 27,
+   "raw": false
+  },
+  "AssemblerMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Barrier_Corner": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Barrier_Low_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Barrier_Tall_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Battery": {
+   "form": "solid",
+   "name": "Battery",
+   "points": 465,
+   "raw": false
+  },
+  "Beam": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Cable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Cable_Cluster": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Concrete": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Connector": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Connector_Double": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Cross": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_H": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Painted": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Shelf": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Beam_Support": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Berry": {
+   "form": "solid",
+   "name": "Paleberry",
+   "points": 0,
+   "raw": false
+  },
+  "BigGarageDoor_16x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "BigGarageDoor_16x8_Concrete": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "BigGarageDoor_16x8_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Biofuel": {
+   "form": "solid",
+   "name": "Solid Biofuel",
+   "points": 48,
+   "raw": false
+  },
+  "Blender": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "BlueprintDesigner": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "BlueprintDesigner_MK2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "BlueprintDesigner_MK3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Cable": {
+   "form": "solid",
+   "name": "Cable",
+   "points": 24,
+   "raw": false
+  },
+  "CandyCane": {
+   "form": "solid",
+   "name": "Candy Cane",
+   "points": 6,
+   "raw": false
+  },
+  "CandyCaneDecor": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkCross": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkRamp": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkStairs": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkStraight": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkT": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CatwalkTurn": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CeilingLight": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Cement": {
+   "form": "solid",
+   "name": "Concrete",
+   "points": 12,
+   "raw": false
+  },
+  "CentralStorage": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ChainLinkFence": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Chainsaw": {
+   "form": "solid",
+   "name": "Chainsaw",
+   "points": 2760,
+   "raw": false
+  },
+  "CircuitBoard": {
+   "form": "solid",
+   "name": "Circuit Board",
+   "points": 696,
+   "raw": false
+  },
+  "CircuitBoardHighSpeed": {
+   "form": "solid",
+   "name": "AI Limiter",
+   "points": 920,
+   "raw": false
+  },
+  "Coal": {
+   "form": "solid",
+   "name": "Coal",
+   "points": 3,
+   "raw": true
+  },
+  "CompactedCoal": {
+   "form": "solid",
+   "name": "Compacted Coal",
+   "points": 28,
+   "raw": false
+  },
+  "Computer": {
+   "form": "solid",
+   "name": "Computer",
+   "points": 8352,
+   "raw": false
+  },
+  "ComputerSuper": {
+   "form": "solid",
+   "name": "Supercomputer",
+   "points": 97352,
+   "raw": false
+  },
+  "Concrete_Barrier_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConstructorMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Converter": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorAttachmentMerger": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorAttachmentMergerPriority": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorAttachmentSplitter": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorAttachmentSplitterProgrammable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorAttachmentSplitterSmart": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk5": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorBeltMk6": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorCeilingAttachment": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk5": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorLiftMk6": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorMonitor": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorPole": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorPoleStackable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorPoleWall": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ConveyorWallHole": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "CoolingSystem": {
+   "form": "solid",
+   "name": "Cooling System",
+   "points": 12006,
+   "raw": false
+  },
+  "CopperDust": {
+   "form": "solid",
+   "name": "Copper Powder",
+   "points": 72,
+   "raw": false
+  },
+  "CopperIngot": {
+   "form": "solid",
+   "name": "Copper Ingot",
+   "points": 6,
+   "raw": false
+  },
+  "CopperSheet": {
+   "form": "solid",
+   "name": "Copper Sheet",
+   "points": 24,
+   "raw": false
+  },
+  "Crystal": {
+   "form": "solid",
+   "name": "Blue Power Slug",
+   "points": 0,
+   "raw": false
+  },
+  "CrystalOscillator": {
+   "form": "solid",
+   "name": "Crystal Oscillator",
+   "points": 3072,
+   "raw": false
+  },
+  "CrystalShard": {
+   "form": "solid",
+   "name": "Power Shard",
+   "points": 0,
+   "raw": false
+  },
+  "Crystal_mk2": {
+   "form": "solid",
+   "name": "Yellow Power Slug",
+   "points": 0,
+   "raw": false
+  },
+  "Crystal_mk3": {
+   "form": "solid",
+   "name": "Purple Power Slug",
+   "points": 0,
+   "raw": false
+  },
+  "CyberWagon": {
+   "form": "solid",
+   "name": "Cyber Wagon",
+   "points": 0,
+   "raw": false
+  },
+  "DarkEnergy": {
+   "form": "gas",
+   "name": "Dark Matter Residue",
+   "points": 130,
+   "raw": false
+  },
+  "DarkMatter": {
+   "form": "solid",
+   "name": "Dark Matter Crystal",
+   "points": 1780,
+   "raw": false
+  },
+  "Diamond": {
+   "form": "solid",
+   "name": "Diamonds",
+   "points": 240,
+   "raw": false
+  },
+  "DissolvedSilica": {
+   "form": "liquid",
+   "name": "Dissolved Silica",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeInCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeInCorner_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeInCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeInCorner_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeOutCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeOutCorner_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeOutCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipeOutCorner_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipe_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipe_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipe_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DownQuarterPipe_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DroneStation": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "DroneTransport": {
+   "form": "solid",
+   "name": "Drone",
+   "points": 0,
+   "raw": false
+  },
+  "ElectromagneticControlRod": {
+   "form": "solid",
+   "name": "Electromagnetic Control Rod",
+   "points": 2560,
+   "raw": false
+  },
+  "Elevator": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ElevatorFloorStop": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Explorer": {
+   "form": "solid",
+   "name": "Explorer",
+   "points": 0,
+   "raw": false
+  },
+  "Fabric": {
+   "form": "solid",
+   "name": "Fabric",
+   "points": 140,
+   "raw": false
+  },
+  "Fence_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FicsiteIngot": {
+   "form": "solid",
+   "name": "Ficsite Ingot",
+   "points": 1936,
+   "raw": false
+  },
+  "FicsiteMesh": {
+   "form": "solid",
+   "name": "Ficsite Trigon",
+   "points": 1291,
+   "raw": false
+  },
+  "Ficsonium": {
+   "form": "solid",
+   "name": "Ficsonium",
+   "points": 0,
+   "raw": false
+  },
+  "FicsoniumFuelRod": {
+   "form": "solid",
+   "name": "Ficsonium Fuel Rod",
+   "points": 0,
+   "raw": false
+  },
+  "Filter": {
+   "form": "solid",
+   "name": "Gas Filter",
+   "points": 608,
+   "raw": false
+  },
+  "Flat_Frame_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FloodlightPole": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FloodlightWall": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FluidCanister": {
+   "form": "solid",
+   "name": "Empty Canister",
+   "points": 60,
+   "raw": false
+  },
+  "FluidTruck": {
+   "form": "solid",
+   "name": "Fluid Truck",
+   "points": 0,
+   "raw": false
+  },
+  "FluidTruckStation": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FoundationGlass_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FoundationPassthrough_Hypertube": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FoundationPassthrough_Lift": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FoundationPassthrough_Pipe": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_8x1_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_8x2_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_ConcretePolished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Frame_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Foundation_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FoundryMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FrackingExtractor": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FrackingSmasher": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "FreightWagon": {
+   "form": "solid",
+   "name": "Freight Car",
+   "points": 0,
+   "raw": false
+  },
+  "Fuel": {
+   "form": "solid",
+   "name": "Packaged Fuel",
+   "points": 270,
+   "raw": false
+  },
+  "GasTank": {
+   "form": "solid",
+   "name": "Empty Fluid Tank",
+   "points": 170,
+   "raw": false
+  },
+  "Gate_Automated_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GeneratorBiomass_Automated": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GeneratorCoal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GeneratorFuel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GeneratorGeoThermal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GeneratorNuclear": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "GenericBiomass": {
+   "form": "solid",
+   "name": "Biomass",
+   "points": 12,
+   "raw": false
+  },
+  "Gift": {
+   "form": "solid",
+   "name": "FICSMAS Gift",
+   "points": 1,
+   "raw": false
+  },
+  "GoldIngot": {
+   "form": "solid",
+   "name": "Caterium Ingot",
+   "points": 42,
+   "raw": false
+  },
+  "GolfCart": {
+   "form": "solid",
+   "name": "Factory Cart™",
+   "points": 1552,
+   "raw": false
+  },
+  "GolfCartGold": {
+   "form": "solid",
+   "name": "Golden Factory Cart™",
+   "points": 1852,
+   "raw": false
+  },
+  "Gunpowder": {
+   "form": "solid",
+   "name": "Black Powder",
+   "points": 14,
+   "raw": false
+  },
+  "GunpowderMK2": {
+   "form": "solid",
+   "name": "Smokeless Powder",
+   "points": 58,
+   "raw": false
+  },
+  "HadronCollider": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "HatcherParts": {
+   "form": "solid",
+   "name": "Hatcher Remains",
+   "points": 0,
+   "raw": false
+  },
+  "HazmatFilter": {
+   "form": "solid",
+   "name": "Iodine-Infused Filter",
+   "points": 2274,
+   "raw": false
+  },
+  "HeavyOilResidue": {
+   "form": "liquid",
+   "name": "Heavy Oil Residue",
+   "points": 30,
+   "raw": false
+  },
+  "HighSpeedConnector": {
+   "form": "solid",
+   "name": "High-Speed Connector",
+   "points": 3776,
+   "raw": false
+  },
+  "HighSpeedWire": {
+   "form": "solid",
+   "name": "Quickwire",
+   "points": 17,
+   "raw": false
+  },
+  "HogParts": {
+   "form": "solid",
+   "name": "Hog Remains",
+   "points": 0,
+   "raw": false
+  },
+  "HyperPoleStackable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "HyperTubeJunction": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "HyperTubeWallHole": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "HyperTubeWallSupport": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "HypertubeTJunction": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "IndustrialTank": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_DCorner_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "InvertedRamp_UCorner_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "IonizedFuel": {
+   "form": "gas",
+   "name": "Ionized Fuel",
+   "points": 2398,
+   "raw": false
+  },
+  "IronIngot": {
+   "form": "solid",
+   "name": "Iron Ingot",
+   "points": 2,
+   "raw": false
+  },
+  "IronPlate": {
+   "form": "solid",
+   "name": "Iron Plate",
+   "points": 6,
+   "raw": false
+  },
+  "IronPlateReinforced": {
+   "form": "solid",
+   "name": "Reinforced Iron Plate",
+   "points": 120,
+   "raw": false
+  },
+  "IronRod": {
+   "form": "solid",
+   "name": "Iron Rod",
+   "points": 4,
+   "raw": false
+  },
+  "IronScrew": {
+   "form": "solid",
+   "name": "Screws",
+   "points": 2,
+   "raw": false
+  },
+  "JumpPad": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "JumpPadAdjustable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "JumpPadTilted": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ladder": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "LandingPad": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "LargeFan": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "LargeVent": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Leaves": {
+   "form": "solid",
+   "name": "Leaves",
+   "points": 3,
+   "raw": false
+  },
+  "LightsControlPanel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "LiquidBiofuel": {
+   "form": "liquid",
+   "name": "Liquid Biofuel",
+   "points": 261,
+   "raw": false
+  },
+  "LiquidFuel": {
+   "form": "liquid",
+   "name": "Fuel",
+   "points": 75,
+   "raw": false
+  },
+  "LiquidOil": {
+   "form": "liquid",
+   "name": "Crude Oil",
+   "points": 30,
+   "raw": true
+  },
+  "LiquidTurboFuel": {
+   "form": "liquid",
+   "name": "Turbofuel",
+   "points": 225,
+   "raw": false
+  },
+  "Locomotive": {
+   "form": "solid",
+   "name": "Electric Locomotive",
+   "points": 0,
+   "raw": false
+  },
+  "LookoutTower": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Mam": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ManufacturerMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Medkit": {
+   "form": "solid",
+   "name": "Medicinal Inhaler",
+   "points": 125,
+   "raw": false
+  },
+  "MinerMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "MinerMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "MinerMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ModularFrame": {
+   "form": "solid",
+   "name": "Modular Frame",
+   "points": 408,
+   "raw": false
+  },
+  "ModularFrameFused": {
+   "form": "solid",
+   "name": "Fused Modular Frame",
+   "points": 62840,
+   "raw": false
+  },
+  "ModularFrameHeavy": {
+   "form": "solid",
+   "name": "Heavy Modular Frame",
+   "points": 10800,
+   "raw": false
+  },
+  "ModularFrameLightweight": {
+   "form": "solid",
+   "name": "Radio Control Unit",
+   "points": 32352,
+   "raw": false
+  },
+  "Motor": {
+   "form": "solid",
+   "name": "Motor",
+   "points": 1520,
+   "raw": false
+  },
+  "MotorLightweight": {
+   "form": "solid",
+   "name": "Turbo Motor",
+   "points": 240496,
+   "raw": false
+  },
+  "Mycelia": {
+   "form": "solid",
+   "name": "Mycelia",
+   "points": 10,
+   "raw": false
+  },
+  "NitricAcid": {
+   "form": "liquid",
+   "name": "Nitric Acid",
+   "points": 94,
+   "raw": false
+  },
+  "NitrogenGas": {
+   "form": "gas",
+   "name": "Nitrogen Gas",
+   "points": 10,
+   "raw": true
+  },
+  "NonFissibleUranium": {
+   "form": "solid",
+   "name": "Non-Fissile Uranium",
+   "points": 0,
+   "raw": false
+  },
+  "NuclearFuelRod": {
+   "form": "solid",
+   "name": "Uranium Fuel Rod",
+   "points": 43468,
+   "raw": false
+  },
+  "NuclearWaste": {
+   "form": "solid",
+   "name": "Uranium Waste",
+   "points": 0,
+   "raw": false
+  },
+  "Nut": {
+   "form": "solid",
+   "name": "Beryl Nut",
+   "points": 0,
+   "raw": false
+  },
+  "OilPump": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "OilRefinery": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "OreBauxite": {
+   "form": "solid",
+   "name": "Bauxite",
+   "points": 8,
+   "raw": true
+  },
+  "OreCopper": {
+   "form": "solid",
+   "name": "Copper Ore",
+   "points": 3,
+   "raw": true
+  },
+  "OreGold": {
+   "form": "solid",
+   "name": "Caterium Ore",
+   "points": 7,
+   "raw": true
+  },
+  "OreIron": {
+   "form": "solid",
+   "name": "Iron Ore",
+   "points": 1,
+   "raw": true
+  },
+  "OreUranium": {
+   "form": "solid",
+   "name": "Uranium",
+   "points": 35,
+   "raw": true
+  },
+  "PackagedAlumina": {
+   "form": "solid",
+   "name": "Packaged Alumina Solution",
+   "points": 160,
+   "raw": false
+  },
+  "PackagedBiofuel": {
+   "form": "solid",
+   "name": "Packaged Liquid Biofuel",
+   "points": 370,
+   "raw": false
+  },
+  "PackagedIonizedFuel": {
+   "form": "solid",
+   "name": "Packaged Ionized Fuel",
+   "points": 5246,
+   "raw": false
+  },
+  "PackagedNitricAcid": {
+   "form": "solid",
+   "name": "Packaged Nitric Acid",
+   "points": 412,
+   "raw": false
+  },
+  "PackagedNitrogenGas": {
+   "form": "solid",
+   "name": "Packaged Nitrogen Gas",
+   "points": 312,
+   "raw": false
+  },
+  "PackagedOil": {
+   "form": "solid",
+   "name": "Packaged Oil",
+   "points": 180,
+   "raw": false
+  },
+  "PackagedOilResidue": {
+   "form": "solid",
+   "name": "Packaged Heavy Oil Residue",
+   "points": 180,
+   "raw": false
+  },
+  "PackagedRocketFuel": {
+   "form": "solid",
+   "name": "Packaged Rocket Fuel",
+   "points": 1028,
+   "raw": false
+  },
+  "PackagedSulfuricAcid": {
+   "form": "solid",
+   "name": "Packaged Sulfuric Acid",
+   "points": 152,
+   "raw": false
+  },
+  "PackagedWater": {
+   "form": "solid",
+   "name": "Packaged Water",
+   "points": 130,
+   "raw": false
+  },
+  "Packager": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Parachute": {
+   "form": "solid",
+   "name": "Parachute",
+   "points": 6080,
+   "raw": false
+  },
+  "PetroleumCoke": {
+   "form": "solid",
+   "name": "Petroleum Coke",
+   "points": 20,
+   "raw": false
+  },
+  "PillarBase": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PillarBase_Small": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PillarMiddle": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PillarMiddle_Concrete": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PillarMiddle_Frame": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PillarTop": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Pillar_Small_Concrete": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Pillar_Small_Frame": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Pillar_Small_Metal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipeHyper": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipeHyperStart": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipeHyperSupport": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipeStorageTank": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipeSupportStackable": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Pipeline": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineJunction_Cross": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineJunction_T": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineMK2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineMK2_NoIndicator": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelinePump": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelinePumpMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineSupport": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineSupportWall": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PipelineSupportWallHole": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Pipeline_NoIndicator": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Plastic": {
+   "form": "solid",
+   "name": "Plastic",
+   "points": 75,
+   "raw": false
+  },
+  "PlutoniumCell": {
+   "form": "solid",
+   "name": "Encased Plutonium Cell",
+   "points": 0,
+   "raw": false
+  },
+  "PlutoniumFuelRod": {
+   "form": "solid",
+   "name": "Plutonium Fuel Rod",
+   "points": 153184,
+   "raw": false
+  },
+  "PlutoniumPellet": {
+   "form": "solid",
+   "name": "Plutonium Pellet",
+   "points": 0,
+   "raw": false
+  },
+  "PlutoniumWaste": {
+   "form": "solid",
+   "name": "Plutonium Waste",
+   "points": 0,
+   "raw": false
+  },
+  "PolymerResin": {
+   "form": "solid",
+   "name": "Polymer Resin",
+   "points": 12,
+   "raw": false
+  },
+  "Portal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PortalPotty": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PortalSatellite": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerLine": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWall": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWallDouble": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWallDoubleMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWallDoubleMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWallMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerPoleWallMk3": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerStorageMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerSwitch": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerTower": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PowerTowerPlatform": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "PressureConversionCube": {
+   "form": "solid",
+   "name": "Pressure Conversion Cube",
+   "points": 255088,
+   "raw": false
+  },
+  "PriorityPowerSwitch": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuantumEncoder": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuantumEnergy": {
+   "form": "gas",
+   "name": "Excited Photonic Matter",
+   "points": 100,
+   "raw": false
+  },
+  "QuantumOscillator": {
+   "form": "solid",
+   "name": "Superposition Oscillator",
+   "points": 37292,
+   "raw": false
+  },
+  "QuarterPipe": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeCorner_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeInCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeInCorner_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeInCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeInCorner_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Ficsit_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Ficsit_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Ficsit_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Grip_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Grip_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_PolishedConcrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_PolishedConcrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleInCorner_PolishedConcrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Asphalt_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Asphalt_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Asphalt_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Concrete_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Concrete_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Concrete_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Ficsit_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Ficsit_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Ficsit_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Grip_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Grip_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_Grip_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_PolishedConcrete_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_PolishedConcrete_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddleOutCorner_PolishedConcrete_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Ficsit_4x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Ficsit_4x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Ficsit_4x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Grip_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Grip_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_PolishedConcrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_PolishedConcrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeMiddle_PolishedConcrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeOutCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeOutCorner_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeOutCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipeOutCorner_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipe_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipe_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipe_ConcretePolished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipe_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuarterPipe_Grip_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "QuartzCrystal": {
+   "form": "solid",
+   "name": "Quartz Crystal",
+   "points": 50,
+   "raw": false
+  },
+  "RadarTower": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Railing_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RailroadBlockSignal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RailroadEndStop": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RailroadPathSignal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RailroadTrack": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampDouble_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x1_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x1_Corner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x2_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x2_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x2_Corner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x4_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RampInverted_8x4_Corner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_8x1_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_8x2_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_8x4_Inverted_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_8x8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x1_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x1_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x2_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x2_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Diagonal_8x4_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_DownCorner_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Frame_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Frame_Inverted_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Metal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Metal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Metal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Polished_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Polished_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Ramp_UpCorner_Polished_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RawQuartz": {
+   "form": "solid",
+   "name": "Raw Quartz",
+   "points": 15,
+   "raw": true
+  },
+  "RebarGunProjectile": {
+   "form": "solid",
+   "name": "Rebar Gun",
+   "points": 1968,
+   "raw": false
+  },
+  "ResourceSink": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "ResourceSinkShop": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "RocketFuel": {
+   "form": "gas",
+   "name": "Rocket Fuel",
+   "points": 289,
+   "raw": false
+  },
+  "Roof_A_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_A_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_A_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_A_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_InCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_InCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_InCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_OutCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_OutCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Metal_OutCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_InCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_InCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_InCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_OutCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_OutCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Orange_OutCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_InCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_InCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_InCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_OutCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_OutCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Tar_OutCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_InCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_InCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_InCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_OutCorner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_OutCorner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Roof_Window_OutCorner_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Rotor": {
+   "form": "solid",
+   "name": "Rotor",
+   "points": 140,
+   "raw": false
+  },
+  "Rubber": {
+   "form": "solid",
+   "name": "Rubber",
+   "points": 60,
+   "raw": false
+  },
+  "SAM": {
+   "form": "solid",
+   "name": "SAM",
+   "points": 20,
+   "raw": true
+  },
+  "SAMFluctuator": {
+   "form": "solid",
+   "name": "SAM Fluctuator",
+   "points": 1968,
+   "raw": false
+  },
+  "SAMIngot": {
+   "form": "solid",
+   "name": "Reanimated SAM",
+   "points": 160,
+   "raw": false
+  },
+  "Shroom": {
+   "form": "solid",
+   "name": "Bacon Agaric",
+   "points": 0,
+   "raw": false
+  },
+  "Silica": {
+   "form": "solid",
+   "name": "Silica",
+   "points": 20,
+   "raw": false
+  },
+  "SingularityCell": {
+   "form": "solid",
+   "name": "Singularity Cell",
+   "points": 114675,
+   "raw": false
+  },
+  "SmelterMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Snow": {
+   "form": "solid",
+   "name": "FICSMAS Actual Snow",
+   "points": 5,
+   "raw": false
+  },
+  "SnowCannon": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SnowDispenser": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Snowman": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SpaceElevator": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SpaceElevatorPart_1": {
+   "form": "solid",
+   "name": "Smart Plating",
+   "points": 520,
+   "raw": false
+  },
+  "SpaceElevatorPart_10": {
+   "form": "solid",
+   "name": "Biochemical Sculptor",
+   "points": 301778,
+   "raw": false
+  },
+  "SpaceElevatorPart_11": {
+   "form": "solid",
+   "name": "Ballistic Warp Drive",
+   "points": 2895334,
+   "raw": false
+  },
+  "SpaceElevatorPart_12": {
+   "form": "solid",
+   "name": "AI Expansion Server",
+   "points": 597652,
+   "raw": false
+  },
+  "SpaceElevatorPart_2": {
+   "form": "solid",
+   "name": "Versatile Framework",
+   "points": 1176,
+   "raw": false
+  },
+  "SpaceElevatorPart_3": {
+   "form": "solid",
+   "name": "Automated Wiring",
+   "points": 1440,
+   "raw": false
+  },
+  "SpaceElevatorPart_4": {
+   "form": "solid",
+   "name": "Modular Engine",
+   "points": 9960,
+   "raw": false
+  },
+  "SpaceElevatorPart_5": {
+   "form": "solid",
+   "name": "Adaptive Control Unit",
+   "points": 76368,
+   "raw": false
+  },
+  "SpaceElevatorPart_6": {
+   "form": "solid",
+   "name": "Magnetic Field Generator",
+   "points": 11000,
+   "raw": false
+  },
+  "SpaceElevatorPart_7": {
+   "form": "solid",
+   "name": "Assembly Director System",
+   "points": 500176,
+   "raw": false
+  },
+  "SpaceElevatorPart_8": {
+   "form": "solid",
+   "name": "Thermal Propulsion Rocket",
+   "points": 728508,
+   "raw": false
+  },
+  "SpaceElevatorPart_9": {
+   "form": "solid",
+   "name": "Nuclear Pasta",
+   "points": 538976,
+   "raw": false
+  },
+  "SpitterParts": {
+   "form": "solid",
+   "name": "Spitter Remains",
+   "points": 0,
+   "raw": false
+  },
+  "StackableShelf": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Asphalt_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Asphalt_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Asphalt_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Concrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_FicsitSet_8x1_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_FicsitSet_8x2_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_FicsitSet_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_GripMetal_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_GripMetal_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_GripMetal_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_PolishedConcrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_PolishedConcrete_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stair_PolishedConcrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stairs_Left_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stairs_Right_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Huge": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Large": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Medium": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Portrait": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Small": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_SmallVeryWide": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_SmallWide": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Square": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Square_Small": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StandaloneWidgetSign_Square_Tiny": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Stator": {
+   "form": "solid",
+   "name": "Stator",
+   "points": 240,
+   "raw": false
+  },
+  "SteelIngot": {
+   "form": "solid",
+   "name": "Steel Ingot",
+   "points": 8,
+   "raw": false
+  },
+  "SteelPipe": {
+   "form": "solid",
+   "name": "Steel Pipe",
+   "points": 24,
+   "raw": false
+  },
+  "SteelPlate": {
+   "form": "solid",
+   "name": "Steel Beam",
+   "points": 64,
+   "raw": false
+  },
+  "SteelPlateReinforced": {
+   "form": "solid",
+   "name": "Encased Industrial Beam",
+   "points": 528,
+   "raw": false
+  },
+  "SteelWall_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4_Gate_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4_Window_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4_Window_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4_Window_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_8x4_Window_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_FlipTris_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_FlipTris_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_FlipTris_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_FlipTris_8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_Tris_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_Tris_8x2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_Tris_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "SteelWall_Tris_8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StingerParts": {
+   "form": "solid",
+   "name": "Stinger Remains",
+   "points": 0,
+   "raw": false
+  },
+  "Stone": {
+   "form": "solid",
+   "name": "Limestone",
+   "points": 2,
+   "raw": true
+  },
+  "StorageContainerMk1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StorageContainerMk2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StorageHazard": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StorageMedkit": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StoragePlayer": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "StreetLight": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Sulfur": {
+   "form": "solid",
+   "name": "Sulfur",
+   "points": 11,
+   "raw": true
+  },
+  "SulfuricAcid": {
+   "form": "liquid",
+   "name": "Sulfuric Acid",
+   "points": 16,
+   "raw": false
+  },
+  "TarpFence": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TemporalProcessor": {
+   "form": "solid",
+   "name": "Neural-Quantum Processor",
+   "points": 248034,
+   "raw": false
+  },
+  "TimeCrystal": {
+   "form": "solid",
+   "name": "Time Crystal",
+   "points": 960,
+   "raw": false
+  },
+  "Tractor": {
+   "form": "solid",
+   "name": "Tractor",
+   "points": 0,
+   "raw": false
+  },
+  "TradingPost": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TrainDockingStation": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TrainDockingStationLiquid": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TrainPlatformEmpty": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TrainPlatformEmpty_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TrainStation": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TreeGiftProducer": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Truck": {
+   "form": "solid",
+   "name": "Truck",
+   "points": 0,
+   "raw": false
+  },
+  "TruckStation": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "TurboFuel": {
+   "form": "solid",
+   "name": "Packaged Turbofuel",
+   "points": 570,
+   "raw": false
+  },
+  "UraniumCell": {
+   "form": "solid",
+   "name": "Encased Uranium Cell",
+   "points": 147,
+   "raw": false
+  },
+  "Valve": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "VehiclePath_Explorer": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "VehiclePath_FactoryCart": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "VehiclePath_Tractor": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "VehiclePath_Truck": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "VehiclePath_Universal": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WAT1": {
+   "form": "solid",
+   "name": "Somersloop",
+   "points": 0,
+   "raw": false
+  },
+  "WAT2": {
+   "form": "solid",
+   "name": "Mercer Sphere",
+   "points": 0,
+   "raw": false
+  },
+  "WalkwayCross": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WalkwayRamp": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WalkwayStraight": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WalkwayT": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WalkwayTurn": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WallSet_Steel_Angular_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WallSet_Steel_Angular_8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_8x4_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x1_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x1_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x2_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x2_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_ConveyorHole_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_ConveyorHole_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_ConveyorHole_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Corner_2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Window_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Window_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Window_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x4_Window_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x8_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x8_Corner_2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x8_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_8x8_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_Angular_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_Angular_8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_CDoor_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_Gate_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Concrete_SDoor_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_01_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_02_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_03_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Conveyor_8x4_04_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Door_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Door_8x4_01_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Door_8x4_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Door_8x4_03_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Frame_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Gate_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x1": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x1_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x1_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x2_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x2_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x4_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x4_Corner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x4_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x4_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x8_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x8_Corner_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x8_FlipTris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_8x8_Tris": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_Angular_8x4": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Orange_Angular_8x8": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Steel_8x4_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Steel_8x4_Corner_2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Steel_8x8_Corner_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Steel_8x8_Corner_2": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_03": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_03_Steel": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_04": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_05": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_06": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_8x4_07": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_Thin_8x4_01": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wall_Window_Thin_8x4_02": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Water": {
+   "form": "liquid",
+   "name": "Water",
+   "points": 5,
+   "raw": true
+  },
+  "WaterPump": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Wire": {
+   "form": "solid",
+   "name": "Wire",
+   "points": 6,
+   "raw": false
+  },
+  "Wood": {
+   "form": "solid",
+   "name": "Wood",
+   "points": 30,
+   "raw": false
+  },
+  "WorkBench": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "Workshop": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "WreathDecor": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "XMassTree": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  },
+  "XmasBall1": {
+   "form": "solid",
+   "name": "Red FICSMAS Ornament",
+   "points": 2,
+   "raw": false
+  },
+  "XmasBall2": {
+   "form": "solid",
+   "name": "Blue FICSMAS Ornament",
+   "points": 1,
+   "raw": false
+  },
+  "XmasBall3": {
+   "form": "solid",
+   "name": "Copper FICSMAS Ornament",
+   "points": 32,
+   "raw": false
+  },
+  "XmasBall4": {
+   "form": "solid",
+   "name": "Iron FICSMAS Ornament",
+   "points": 18,
+   "raw": false
+  },
+  "XmasBallCluster": {
+   "form": "solid",
+   "name": "FICSMAS Ornament Bundle",
+   "points": 100,
+   "raw": false
+  },
+  "XmasBow": {
+   "form": "solid",
+   "name": "FICSMAS Bow",
+   "points": 4,
+   "raw": false
+  },
+  "XmasBranch": {
+   "form": "solid",
+   "name": "FICSMAS Tree Branch",
+   "points": 2,
+   "raw": false
+  },
+  "XmasDataCartridge1": {
+   "form": "solid",
+   "name": "FICSMAS Data Cartridge Day 1",
+   "points": 0,
+   "raw": false
+  },
+  "XmasDataCartridge2": {
+   "form": "solid",
+   "name": "FICSMAS Data Cartridge Day 4",
+   "points": 0,
+   "raw": false
+  },
+  "XmasDataCartridge3": {
+   "form": "solid",
+   "name": "FICSMAS Data Cartridge Day 8",
+   "points": 0,
+   "raw": false
+  },
+  "XmasDataCartridge4": {
+   "form": "solid",
+   "name": "FICSMAS Data Cartridge Day 14",
+   "points": 0,
+   "raw": false
+  },
+  "XmasStar": {
+   "form": "solid",
+   "name": "FICSMAS Wonder Star",
+   "points": 6540,
+   "raw": false
+  },
+  "XmasWreath": {
+   "form": "solid",
+   "name": "FICSMAS Wreath",
+   "points": 630,
+   "raw": false
+  },
+  "xmassLights": {
+   "form": "solid",
+   "name": "",
+   "points": 0,
+   "raw": false
+  }
+ },
+ "machines": {
+  "AssemblerMk1": {
+   "exponent": 1.321929,
+   "name": "Assembler",
+   "power": 15.0,
+   "variable": false
+  },
+  "Blender": {
+   "exponent": 1.321929,
+   "name": "Blender",
+   "power": 75.0,
+   "variable": false
+  },
+  "ConstructorMk1": {
+   "exponent": 1.321929,
+   "name": "Constructor",
+   "power": 4.0,
+   "variable": false
+  },
+  "Converter": {
+   "exponent": 1.321929,
+   "name": "Converter",
+   "power": 0.0,
+   "variable": true
+  },
+  "FoundryMk1": {
+   "exponent": 1.321929,
+   "name": "Foundry",
+   "power": 16.0,
+   "variable": false
+  },
+  "HadronCollider": {
+   "exponent": 1.321929,
+   "name": "Particle Accelerator",
+   "power": 0.0,
+   "variable": true
+  },
+  "ManufacturerMk1": {
+   "exponent": 1.321929,
+   "name": "Manufacturer",
+   "power": 55.0,
+   "variable": false
+  },
+  "OilRefinery": {
+   "exponent": 1.321929,
+   "name": "Refinery",
+   "power": 30.0,
+   "variable": false
+  },
+  "Packager": {
+   "exponent": 1.321929,
+   "name": "Packager",
+   "power": 10.0,
+   "variable": false
+  },
+  "QuantumEncoder": {
+   "exponent": 1.321929,
+   "name": "Quantum Encoder",
+   "power": 0.0,
+   "variable": true
+  },
+  "SmelterMk1": {
+   "exponent": 1.321929,
+   "name": "Smelter",
+   "power": 4.0,
+   "variable": false
+  }
+ },
+ "pipes": [
+  [
+   "Pipeline Mk.1",
+   300.0
+  ],
+  [
+   "Pipeline Mk.2",
+   600.0
+  ]
+ ],
+ "recipes": {
+  "AILimiter": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "CopperSheet",
+     5.0
+    ],
+    [
+     "HighSpeedWire",
+     20.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "AI Limiter",
+   "outputs": [
+    [
+     "CircuitBoardHighSpeed",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AlienDNACapsule": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alien DNA Capsule",
+   "outputs": [
+    [
+     "AlienDNACapsule",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AlienPowerFuel": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "SAMFluctuator",
+     5.0
+    ],
+    [
+     "CrystalShard",
+     3.0
+    ],
+    [
+     "QuantumOscillator",
+     3.0
+    ],
+    [
+     "QuantumEnergy",
+     24.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "Alien Power Matrix",
+   "outputs": [
+    [
+     "AlienPowerFuel",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     24.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "Alternate_AILimiter_Plastic": {
+   "alternate": true,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "HighSpeedWire",
+     30.0
+    ],
+    [
+     "Plastic",
+     7.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Plastic AI Limiter",
+   "outputs": [
+    [
+     "CircuitBoardHighSpeed",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_AdheredIronPlate": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "IronPlate",
+     3.0
+    ],
+    [
+     "Rubber",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Adhered Iron Plate",
+   "outputs": [
+    [
+     "IronPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_AlcladCasing": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     20.0
+    ],
+    [
+     "CopperIngot",
+     10.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Alclad Casing",
+   "outputs": [
+    [
+     "AluminumCasing",
+     15.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_AluminumRod": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Aluminum Rod",
+   "outputs": [
+    [
+     "IronRod",
+     7.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_AutomatedMiner": {
+   "alternate": true,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "SteelPipe",
+     4.0
+    ],
+    [
+     "IronPlate",
+     4.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Automated Miner",
+   "outputs": [
+    [
+     "BP_ItemDescriptorPortableMiner",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_BoltedFrame": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "IronPlateReinforced",
+     3.0
+    ],
+    [
+     "IronScrew",
+     56.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Bolted Frame",
+   "outputs": [
+    [
+     "ModularFrame",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Cable_1": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Wire",
+     9.0
+    ],
+    [
+     "Rubber",
+     6.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Insulated Cable",
+   "outputs": [
+    [
+     "Cable",
+     20.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Cable_2": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "HighSpeedWire",
+     3.0
+    ],
+    [
+     "Rubber",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Quickwire Cable",
+   "outputs": [
+    [
+     "Cable",
+     11.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CateriumIngot_Leached": {
+   "alternate": true,
+   "duration": 10.0,
+   "inputs": [
+    [
+     "OreGold",
+     9.0
+    ],
+    [
+     "SulfuricAcid",
+     5.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Leached Caterium Ingot",
+   "outputs": [
+    [
+     "GoldIngot",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CateriumIngot_Tempered": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "OreGold",
+     6.0
+    ],
+    [
+     "PetroleumCoke",
+     2.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Tempered Caterium Ingot",
+   "outputs": [
+    [
+     "GoldIngot",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CircuitBoard_1": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "CopperSheet",
+     11.0
+    ],
+    [
+     "Silica",
+     11.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Silicon Circuit Board",
+   "outputs": [
+    [
+     "CircuitBoard",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CircuitBoard_2": {
+   "alternate": true,
+   "duration": 48.0,
+   "inputs": [
+    [
+     "Plastic",
+     10.0
+    ],
+    [
+     "HighSpeedWire",
+     30.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Caterium Circuit Board",
+   "outputs": [
+    [
+     "CircuitBoard",
+     7.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ClassicBattery": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "Sulfur",
+     6.0
+    ],
+    [
+     "AluminumPlate",
+     7.0
+    ],
+    [
+     "Plastic",
+     8.0
+    ],
+    [
+     "Wire",
+     12.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Classic Battery",
+   "outputs": [
+    [
+     "Battery",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Coal_1": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Wood",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Charcoal",
+   "outputs": [
+    [
+     "Coal",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Coal_2": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "GenericBiomass",
+     5.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Biocoal",
+   "outputs": [
+    [
+     "Coal",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CoatedCable": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "Wire",
+     5.0
+    ],
+    [
+     "HeavyOilResidue",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Coated Cable",
+   "outputs": [
+    [
+     "Cable",
+     9.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CoatedIronCanister": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "IronPlate",
+     2.0
+    ],
+    [
+     "CopperSheet",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Coated Iron Canister",
+   "outputs": [
+    [
+     "FluidCanister",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CoatedIronPlate": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "IronIngot",
+     5.0
+    ],
+    [
+     "Plastic",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Coated Iron Plate",
+   "outputs": [
+    [
+     "IronPlate",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CokeSteelIngot": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreIron",
+     15.0
+    ],
+    [
+     "PetroleumCoke",
+     15.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Coke Steel Ingot",
+   "outputs": [
+    [
+     "SteelIngot",
+     20.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Computer_1": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "CircuitBoard",
+     4.0
+    ],
+    [
+     "HighSpeedWire",
+     14.0
+    ],
+    [
+     "Rubber",
+     6.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Caterium Computer",
+   "outputs": [
+    [
+     "Computer",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Computer_2": {
+   "alternate": true,
+   "duration": 36.0,
+   "inputs": [
+    [
+     "CircuitBoard",
+     3.0
+    ],
+    [
+     "CrystalOscillator",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Crystal Computer",
+   "outputs": [
+    [
+     "Computer",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Concrete": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Silica",
+     3.0
+    ],
+    [
+     "Stone",
+     12.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Fine Concrete",
+   "outputs": [
+    [
+     "Cement",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CoolingDevice": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "AluminumPlateReinforced",
+     4.0
+    ],
+    [
+     "Motor",
+     1.0
+    ],
+    [
+     "NitrogenGas",
+     24.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Cooling Device",
+   "outputs": [
+    [
+     "CoolingSystem",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CopperAlloyIngot": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "OreCopper",
+     5.0
+    ],
+    [
+     "OreIron",
+     5.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Copper Alloy Ingot",
+   "outputs": [
+    [
+     "CopperIngot",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CopperIngot_Leached": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreCopper",
+     9.0
+    ],
+    [
+     "SulfuricAcid",
+     5.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Leached Copper Ingot",
+   "outputs": [
+    [
+     "CopperIngot",
+     22.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CopperIngot_Tempered": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreCopper",
+     5.0
+    ],
+    [
+     "PetroleumCoke",
+     8.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Tempered Copper Ingot",
+   "outputs": [
+    [
+     "CopperIngot",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CopperRotor": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "CopperSheet",
+     6.0
+    ],
+    [
+     "IronScrew",
+     52.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Copper Rotor",
+   "outputs": [
+    [
+     "Rotor",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_CrystalOscillator": {
+   "alternate": true,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "QuartzCrystal",
+     10.0
+    ],
+    [
+     "Rubber",
+     7.0
+    ],
+    [
+     "CircuitBoardHighSpeed",
+     1.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Insulated Crystal Oscillator",
+   "outputs": [
+    [
+     "CrystalOscillator",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_DarkMatter_Crystallization": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "DarkEnergy",
+     10.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Dark Matter Crystallization",
+   "outputs": [
+    [
+     "DarkMatter",
+     1.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "Alternate_DarkMatter_Trap": {
+   "alternate": true,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "TimeCrystal",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     5.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Dark Matter Trap",
+   "outputs": [
+    [
+     "DarkMatter",
+     2.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "Alternate_Diamond_Cloudy": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "Coal",
+     12.0
+    ],
+    [
+     "Stone",
+     24.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Cloudy Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     1.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "Alternate_Diamond_OilBased": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     10.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Oil-Based Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     2.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "Alternate_Diamond_Petroleum": {
+   "alternate": true,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "PetroleumCoke",
+     24.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Petroleum Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     1.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "Alternate_Diamond_Pink": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Coal",
+     8.0
+    ],
+    [
+     "QuartzCrystal",
+     3.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Alternate: Pink Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     1.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Alternate_Diamond_Turbo": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "Coal",
+     30.0
+    ],
+    [
+     "TurboFuel",
+     2.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Turbo Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     3.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "Alternate_DilutedFuel": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     5.0
+    ],
+    [
+     "Water",
+     10.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Diluted Fuel",
+   "outputs": [
+    [
+     "LiquidFuel",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_DilutedPackagedFuel": {
+   "alternate": true,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     1.0
+    ],
+    [
+     "PackagedWater",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Diluted Packaged Fuel",
+   "outputs": [
+    [
+     "Fuel",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ElectricMotor": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "ElectromagneticControlRod",
+     1.0
+    ],
+    [
+     "Rotor",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Electric Motor",
+   "outputs": [
+    [
+     "Motor",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ElectroAluminumScrap": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "AluminaSolution",
+     12.0
+    ],
+    [
+     "PetroleumCoke",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Electrode Aluminum Scrap",
+   "outputs": [
+    [
+     "AluminumScrap",
+     20.0
+    ],
+    [
+     "Water",
+     7.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ElectrodeCircuitBoard": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Rubber",
+     4.0
+    ],
+    [
+     "PetroleumCoke",
+     8.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Electrode Circuit Board",
+   "outputs": [
+    [
+     "CircuitBoard",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ElectromagneticControlRod_1": {
+   "alternate": true,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "Stator",
+     2.0
+    ],
+    [
+     "HighSpeedConnector",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Electromagnetic Connection Rod",
+   "outputs": [
+    [
+     "ElectromagneticControlRod",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_EncasedIndustrialBeam": {
+   "alternate": true,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "SteelPipe",
+     6.0
+    ],
+    [
+     "Cement",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Encased Industrial Pipe",
+   "outputs": [
+    [
+     "SteelPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_EnrichedCoal": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Coal",
+     5.0
+    ],
+    [
+     "Sulfur",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Compacted Coal",
+   "outputs": [
+    [
+     "CompactedCoal",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_FertileUranium": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreUranium",
+     5.0
+    ],
+    [
+     "NuclearWaste",
+     5.0
+    ],
+    [
+     "NitricAcid",
+     3.0
+    ],
+    [
+     "SulfuricAcid",
+     5.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Fertile Uranium",
+   "outputs": [
+    [
+     "NonFissibleUranium",
+     20.0
+    ],
+    [
+     "Water",
+     8.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_FlexibleFramework": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "ModularFrame",
+     1.0
+    ],
+    [
+     "SteelPlate",
+     6.0
+    ],
+    [
+     "Rubber",
+     8.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Flexible Framework",
+   "outputs": [
+    [
+     "SpaceElevatorPart_2",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_FusedWire": {
+   "alternate": true,
+   "duration": 20.0,
+   "inputs": [
+    [
+     "CopperIngot",
+     4.0
+    ],
+    [
+     "GoldIngot",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Fused Wire",
+   "outputs": [
+    [
+     "Wire",
+     30.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Gunpowder_1": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "Sulfur",
+     1.0
+    ],
+    [
+     "CompactedCoal",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Fine Black Powder",
+   "outputs": [
+    [
+     "Gunpowder",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HeatFusedFrame": {
+   "alternate": true,
+   "duration": 20.0,
+   "inputs": [
+    [
+     "ModularFrameHeavy",
+     1.0
+    ],
+    [
+     "AluminumIngot",
+     50.0
+    ],
+    [
+     "NitricAcid",
+     8.0
+    ],
+    [
+     "LiquidFuel",
+     10.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Heat-Fused Frame",
+   "outputs": [
+    [
+     "ModularFrameFused",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HeatSink_1": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "AluminumCasing",
+     3.0
+    ],
+    [
+     "Rubber",
+     3.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Heat Exchanger",
+   "outputs": [
+    [
+     "AluminumPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HeavyFlexibleFrame": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "ModularFrame",
+     5.0
+    ],
+    [
+     "SteelPlateReinforced",
+     3.0
+    ],
+    [
+     "Rubber",
+     20.0
+    ],
+    [
+     "IronScrew",
+     104.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Heavy Flexible Frame",
+   "outputs": [
+    [
+     "ModularFrameHeavy",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HeavyOilResidue": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     3.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Heavy Oil Residue",
+   "outputs": [
+    [
+     "HeavyOilResidue",
+     4.0
+    ],
+    [
+     "PolymerResin",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HighSpeedConnector": {
+   "alternate": true,
+   "duration": 40.0,
+   "inputs": [
+    [
+     "HighSpeedWire",
+     60.0
+    ],
+    [
+     "Silica",
+     25.0
+    ],
+    [
+     "CircuitBoard",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Silicon High-Speed Connector",
+   "outputs": [
+    [
+     "HighSpeedConnector",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_HighSpeedWiring": {
+   "alternate": true,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "Stator",
+     2.0
+    ],
+    [
+     "Wire",
+     40.0
+    ],
+    [
+     "HighSpeedConnector",
+     1.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Automated Speed Wiring",
+   "outputs": [
+    [
+     "SpaceElevatorPart_3",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_IngotIron": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreIron",
+     8.0
+    ],
+    [
+     "OreCopper",
+     2.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Iron Alloy Ingot",
+   "outputs": [
+    [
+     "IronIngot",
+     15.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_IngotSteel_1": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "IronIngot",
+     2.0
+    ],
+    [
+     "Coal",
+     2.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Solid Steel Ingot",
+   "outputs": [
+    [
+     "SteelIngot",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_IngotSteel_2": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "OreIron",
+     2.0
+    ],
+    [
+     "CompactedCoal",
+     1.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Compacted Steel Ingot",
+   "outputs": [
+    [
+     "SteelIngot",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_InstantPlutoniumCell": {
+   "alternate": true,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "NonFissibleUranium",
+     150.0
+    ],
+    [
+     "AluminumCasing",
+     20.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Alternate: Instant Plutonium Cell",
+   "outputs": [
+    [
+     "PlutoniumCell",
+     20.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "Alternate_InstantScrap": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "OreBauxite",
+     15.0
+    ],
+    [
+     "Coal",
+     10.0
+    ],
+    [
+     "SulfuricAcid",
+     5.0
+    ],
+    [
+     "Water",
+     6.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Instant Scrap",
+   "outputs": [
+    [
+     "AluminumScrap",
+     30.0
+    ],
+    [
+     "Water",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_IonizedFuel_Dark": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "PackagedRocketFuel",
+     12.0
+    ],
+    [
+     "DarkMatter",
+     4.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Alternate: Dark-Ion Fuel",
+   "outputs": [
+    [
+     "IonizedFuel",
+     10.0
+    ],
+    [
+     "CompactedCoal",
+     2.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Alternate_IronIngot_Basic": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreIron",
+     5.0
+    ],
+    [
+     "Stone",
+     8.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Basic Iron Ingot",
+   "outputs": [
+    [
+     "IronIngot",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_IronIngot_Leached": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "OreIron",
+     5.0
+    ],
+    [
+     "SulfuricAcid",
+     1.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Leached Iron Ingot",
+   "outputs": [
+    [
+     "IronIngot",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ModularFrame": {
+   "alternate": true,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "IronPlateReinforced",
+     2.0
+    ],
+    [
+     "SteelPipe",
+     10.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Steeled Frame",
+   "outputs": [
+    [
+     "ModularFrame",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ModularFrameHeavy": {
+   "alternate": true,
+   "duration": 64.0,
+   "inputs": [
+    [
+     "ModularFrame",
+     8.0
+    ],
+    [
+     "SteelPlateReinforced",
+     10.0
+    ],
+    [
+     "SteelPipe",
+     36.0
+    ],
+    [
+     "Cement",
+     22.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Heavy Encased Frame",
+   "outputs": [
+    [
+     "ModularFrameHeavy",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Motor_1": {
+   "alternate": true,
+   "duration": 48.0,
+   "inputs": [
+    [
+     "Rotor",
+     3.0
+    ],
+    [
+     "Stator",
+     3.0
+    ],
+    [
+     "CrystalOscillator",
+     1.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Rigor Motor",
+   "outputs": [
+    [
+     "Motor",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_NuclearFuelRod_1": {
+   "alternate": true,
+   "duration": 300.0,
+   "inputs": [
+    [
+     "UraniumCell",
+     100.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     10.0
+    ],
+    [
+     "CrystalOscillator",
+     3.0
+    ],
+    [
+     "Rotor",
+     10.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Uranium Fuel Unit",
+   "outputs": [
+    [
+     "NuclearFuelRod",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_OCSupercomputer": {
+   "alternate": true,
+   "duration": 20.0,
+   "inputs": [
+    [
+     "ModularFrameLightweight",
+     2.0
+    ],
+    [
+     "CoolingSystem",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: OC Supercomputer",
+   "outputs": [
+    [
+     "ComputerSuper",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PlasticSmartPlating": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "IronPlateReinforced",
+     1.0
+    ],
+    [
+     "Rotor",
+     1.0
+    ],
+    [
+     "Plastic",
+     3.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Plastic Smart Plating",
+   "outputs": [
+    [
+     "SpaceElevatorPart_1",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Plastic_1": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Rubber",
+     6.0
+    ],
+    [
+     "LiquidFuel",
+     6.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Recycled Plastic",
+   "outputs": [
+    [
+     "Plastic",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PlutoniumFuelUnit": {
+   "alternate": true,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "PlutoniumCell",
+     20.0
+    ],
+    [
+     "PressureConversionCube",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Plutonium Fuel Unit",
+   "outputs": [
+    [
+     "PlutoniumFuelRod",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PolyesterFabric": {
+   "alternate": true,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "PolymerResin",
+     1.0
+    ],
+    [
+     "Water",
+     1.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Polyester Fabric",
+   "outputs": [
+    [
+     "Fabric",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PolymerResin": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     6.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Polymer Resin",
+   "outputs": [
+    [
+     "PolymerResin",
+     13.0
+    ],
+    [
+     "HeavyOilResidue",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PureCateriumIngot": {
+   "alternate": true,
+   "duration": 5.0,
+   "inputs": [
+    [
+     "OreGold",
+     2.0
+    ],
+    [
+     "Water",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Pure Caterium Ingot",
+   "outputs": [
+    [
+     "GoldIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PureCopperIngot": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "OreCopper",
+     6.0
+    ],
+    [
+     "Water",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Pure Copper Ingot",
+   "outputs": [
+    [
+     "CopperIngot",
+     15.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PureIronIngot": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreIron",
+     7.0
+    ],
+    [
+     "Water",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Pure Iron Ingot",
+   "outputs": [
+    [
+     "IronIngot",
+     13.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_PureQuartzCrystal": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     9.0
+    ],
+    [
+     "Water",
+     5.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Pure Quartz Crystal",
+   "outputs": [
+    [
+     "QuartzCrystal",
+     7.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Quartz_Fused": {
+   "alternate": true,
+   "duration": 20.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     25.0
+    ],
+    [
+     "Coal",
+     12.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Fused Quartz Crystal",
+   "outputs": [
+    [
+     "QuartzCrystal",
+     18.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Quartz_Purified": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     24.0
+    ],
+    [
+     "NitricAcid",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Quartz Purification",
+   "outputs": [
+    [
+     "QuartzCrystal",
+     15.0
+    ],
+    [
+     "DissolvedSilica",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Quickwire": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "GoldIngot",
+     1.0
+    ],
+    [
+     "CopperIngot",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Fused Quickwire",
+   "outputs": [
+    [
+     "HighSpeedWire",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_RadioControlSystem": {
+   "alternate": true,
+   "duration": 40.0,
+   "inputs": [
+    [
+     "CrystalOscillator",
+     1.0
+    ],
+    [
+     "CircuitBoard",
+     10.0
+    ],
+    [
+     "AluminumCasing",
+     60.0
+    ],
+    [
+     "Rubber",
+     30.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Radio Control System",
+   "outputs": [
+    [
+     "ModularFrameLightweight",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_RadioControlUnit_1": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "AluminumPlateReinforced",
+     4.0
+    ],
+    [
+     "HighSpeedConnector",
+     2.0
+    ],
+    [
+     "QuartzCrystal",
+     12.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Radio Connection Unit",
+   "outputs": [
+    [
+     "ModularFrameLightweight",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_RecycledRubber": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Plastic",
+     6.0
+    ],
+    [
+     "LiquidFuel",
+     6.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Recycled Rubber",
+   "outputs": [
+    [
+     "Rubber",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ReinforcedIronPlate_1": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "IronPlate",
+     18.0
+    ],
+    [
+     "IronScrew",
+     50.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Bolted Iron Plate",
+   "outputs": [
+    [
+     "IronPlateReinforced",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_ReinforcedIronPlate_2": {
+   "alternate": true,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "IronPlate",
+     10.0
+    ],
+    [
+     "Wire",
+     20.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Stitched Iron Plate",
+   "outputs": [
+    [
+     "IronPlateReinforced",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_RocketFuel_Nitro": {
+   "alternate": true,
+   "duration": 2.4,
+   "inputs": [
+    [
+     "LiquidFuel",
+     4.0
+    ],
+    [
+     "NitrogenGas",
+     3.0
+    ],
+    [
+     "Sulfur",
+     4.0
+    ],
+    [
+     "Coal",
+     2.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Nitro Rocket Fuel",
+   "outputs": [
+    [
+     "RocketFuel",
+     6.0
+    ],
+    [
+     "CompactedCoal",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Rotor": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SteelPipe",
+     2.0
+    ],
+    [
+     "Wire",
+     6.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Steel Rotor",
+   "outputs": [
+    [
+     "Rotor",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_RubberConcrete": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "Stone",
+     10.0
+    ],
+    [
+     "Rubber",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Rubber Concrete",
+   "outputs": [
+    [
+     "Cement",
+     9.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Screw": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "IronIngot",
+     5.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Cast Screws",
+   "outputs": [
+    [
+     "IronScrew",
+     20.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Screw_2": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SteelPlate",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Steel Screws",
+   "outputs": [
+    [
+     "IronScrew",
+     52.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Silica": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     3.0
+    ],
+    [
+     "Stone",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Cheap Silica",
+   "outputs": [
+    [
+     "Silica",
+     7.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Silica_Distilled": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "DissolvedSilica",
+     12.0
+    ],
+    [
+     "Stone",
+     5.0
+    ],
+    [
+     "Water",
+     10.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Distilled Silica",
+   "outputs": [
+    [
+     "Silica",
+     27.0
+    ],
+    [
+     "Water",
+     8.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SloppyAlumina": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "OreBauxite",
+     10.0
+    ],
+    [
+     "Water",
+     10.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Sloppy Alumina",
+   "outputs": [
+    [
+     "AluminaSolution",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Stator": {
+   "alternate": true,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "SteelPipe",
+     4.0
+    ],
+    [
+     "HighSpeedWire",
+     15.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alternate: Quickwire Stator",
+   "outputs": [
+    [
+     "Stator",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteamedCopperSheet": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "CopperIngot",
+     3.0
+    ],
+    [
+     "Water",
+     3.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Steamed Copper Sheet",
+   "outputs": [
+    [
+     "CopperSheet",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelBeam_Aluminum": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Aluminum Beam",
+   "outputs": [
+    [
+     "SteelPlate",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelBeam_Molded": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     24.0
+    ],
+    [
+     "Cement",
+     16.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Molded Beam",
+   "outputs": [
+    [
+     "SteelPlate",
+     9.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelCanister": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     4.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Steel Canister",
+   "outputs": [
+    [
+     "FluidCanister",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelCastedPlate": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "IronIngot",
+     1.0
+    ],
+    [
+     "SteelIngot",
+     1.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Steel Cast Plate",
+   "outputs": [
+    [
+     "IronPlate",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelPipe_Iron": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "IronIngot",
+     20.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Iron Pipe",
+   "outputs": [
+    [
+     "SteelPipe",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelPipe_Molded": {
+   "alternate": true,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     5.0
+    ],
+    [
+     "Cement",
+     3.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Alternate: Molded Steel Pipe",
+   "outputs": [
+    [
+     "SteelPipe",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SteelRod": {
+   "alternate": true,
+   "duration": 5.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Steel Rod",
+   "outputs": [
+    [
+     "IronRod",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_SuperStateComputer": {
+   "alternate": true,
+   "duration": 25.0,
+   "inputs": [
+    [
+     "Computer",
+     3.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     1.0
+    ],
+    [
+     "Battery",
+     10.0
+    ],
+    [
+     "Wire",
+     25.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Super-State Computer",
+   "outputs": [
+    [
+     "ComputerSuper",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_TurboBlendFuel": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "LiquidFuel",
+     2.0
+    ],
+    [
+     "HeavyOilResidue",
+     4.0
+    ],
+    [
+     "Sulfur",
+     3.0
+    ],
+    [
+     "PetroleumCoke",
+     3.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Alternate: Turbo Blend Fuel",
+   "outputs": [
+    [
+     "LiquidTurboFuel",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_TurboHeavyFuel": {
+   "alternate": true,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     5.0
+    ],
+    [
+     "CompactedCoal",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Turbo Heavy Fuel",
+   "outputs": [
+    [
+     "LiquidTurboFuel",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_TurboMotor_1": {
+   "alternate": true,
+   "duration": 64.0,
+   "inputs": [
+    [
+     "Motor",
+     7.0
+    ],
+    [
+     "ModularFrameLightweight",
+     9.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     5.0
+    ],
+    [
+     "Rotor",
+     7.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Turbo Electric Motor",
+   "outputs": [
+    [
+     "MotorLightweight",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_TurboPressureMotor": {
+   "alternate": true,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "Motor",
+     4.0
+    ],
+    [
+     "PressureConversionCube",
+     1.0
+    ],
+    [
+     "PackagedNitrogenGas",
+     24.0
+    ],
+    [
+     "Stator",
+     8.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Turbo Pressure Motor",
+   "outputs": [
+    [
+     "MotorLightweight",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Turbofuel": {
+   "alternate": true,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "LiquidFuel",
+     6.0
+    ],
+    [
+     "CompactedCoal",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Turbofuel",
+   "outputs": [
+    [
+     "LiquidTurboFuel",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_UraniumCell_1": {
+   "alternate": true,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreUranium",
+     5.0
+    ],
+    [
+     "Silica",
+     3.0
+    ],
+    [
+     "Sulfur",
+     5.0
+    ],
+    [
+     "HighSpeedWire",
+     15.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Alternate: Infused Uranium Cell",
+   "outputs": [
+    [
+     "UraniumCell",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_WetConcrete": {
+   "alternate": true,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "Stone",
+     6.0
+    ],
+    [
+     "Water",
+     5.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alternate: Wet Concrete",
+   "outputs": [
+    [
+     "Cement",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Wire_1": {
+   "alternate": true,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "IronIngot",
+     5.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Iron Wire",
+   "outputs": [
+    [
+     "Wire",
+     9.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Alternate_Wire_2": {
+   "alternate": true,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "GoldIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Alternate: Caterium Wire",
+   "outputs": [
+    [
+     "Wire",
+     8.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AluminaSolution": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "OreBauxite",
+     12.0
+    ],
+    [
+     "Water",
+     18.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Alumina Solution",
+   "outputs": [
+    [
+     "AluminaSolution",
+     12.0
+    ],
+    [
+     "Silica",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AluminumCasing": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Aluminum Casing",
+   "outputs": [
+    [
+     "AluminumCasing",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AluminumScrap": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "AluminaSolution",
+     4.0
+    ],
+    [
+     "Coal",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Aluminum Scrap",
+   "outputs": [
+    [
+     "AluminumScrap",
+     6.0
+    ],
+    [
+     "Water",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "AluminumSheet": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     3.0
+    ],
+    [
+     "CopperIngot",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Alclad Aluminum Sheet",
+   "outputs": [
+    [
+     "AluminumPlate",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Battery": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "SulfuricAcid",
+     2.5
+    ],
+    [
+     "AluminaSolution",
+     2.0
+    ],
+    [
+     "AluminumCasing",
+     1.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Battery",
+   "outputs": [
+    [
+     "Battery",
+     1.0
+    ],
+    [
+     "Water",
+     1.5
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Bauxite_Caterium": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreGold",
+     15.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Bauxite (Caterium)",
+   "outputs": [
+    [
+     "OreBauxite",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Bauxite_Copper": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreCopper",
+     18.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Bauxite (Copper)",
+   "outputs": [
+    [
+     "OreBauxite",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Biofuel": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "GenericBiomass",
+     8.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Solid Biofuel",
+   "outputs": [
+    [
+     "Biofuel",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Biomass_AlienProtein": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Biomass (Alien Protein)",
+   "outputs": [
+    [
+     "GenericBiomass",
+     100.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Biomass_Leaves": {
+   "alternate": false,
+   "duration": 5.0,
+   "inputs": [
+    [
+     "Leaves",
+     10.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Biomass (Leaves)",
+   "outputs": [
+    [
+     "GenericBiomass",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Biomass_Mycelia": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Mycelia",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Biomass (Mycelia)",
+   "outputs": [
+    [
+     "GenericBiomass",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Biomass_Wood": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Wood",
+     4.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Biomass (Wood)",
+   "outputs": [
+    [
+     "GenericBiomass",
+     20.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Cable": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "Wire",
+     2.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Cable",
+   "outputs": [
+    [
+     "Cable",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CandyCane": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Gift",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Candy Cane",
+   "outputs": [
+    [
+     "CandyCane",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Cartridge": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "CopperSheet",
+     3.0
+    ],
+    [
+     "GunpowderMK2",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Rifle Ammo",
+   "outputs": [
+    [
+     "CartridgeStandard",
+     15.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CartridgeChaos": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "CartridgeStandard",
+     25.0
+    ],
+    [
+     "AluminumCasing",
+     3.0
+    ],
+    [
+     "LiquidTurboFuel",
+     3.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Turbo Rifle Ammo",
+   "outputs": [
+    [
+     "CartridgeChaos",
+     50.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CartridgeChaos_Packaged": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "CartridgeStandard",
+     25.0
+    ],
+    [
+     "AluminumCasing",
+     3.0
+    ],
+    [
+     "TurboFuel",
+     3.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Turbo Rifle Ammo",
+   "outputs": [
+    [
+     "CartridgeChaos",
+     50.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CartridgeSmart": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "CartridgeStandard",
+     20.0
+    ],
+    [
+     "HighSpeedConnector",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Homing Rifle Ammo",
+   "outputs": [
+    [
+     "CartridgeSmartProjectile",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Caterium_Copper": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreCopper",
+     15.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Caterium Ore (Copper)",
+   "outputs": [
+    [
+     "OreGold",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Caterium_Quartz": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "RawQuartz",
+     12.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Caterium Ore (Quartz)",
+   "outputs": [
+    [
+     "OreGold",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "CircuitBoard": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "CopperSheet",
+     2.0
+    ],
+    [
+     "Plastic",
+     4.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Circuit Board",
+   "outputs": [
+    [
+     "CircuitBoard",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Coal_Iron": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreIron",
+     18.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Coal (Iron)",
+   "outputs": [
+    [
+     "Coal",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Coal_Limestone": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Stone",
+     36.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Coal (Limestone)",
+   "outputs": [
+    [
+     "Coal",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Computer": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "CircuitBoard",
+     4.0
+    ],
+    [
+     "Cable",
+     8.0
+    ],
+    [
+     "Plastic",
+     16.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Computer",
+   "outputs": [
+    [
+     "Computer",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ComputerSuper": {
+   "alternate": false,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "Computer",
+     4.0
+    ],
+    [
+     "CircuitBoardHighSpeed",
+     2.0
+    ],
+    [
+     "HighSpeedConnector",
+     3.0
+    ],
+    [
+     "Plastic",
+     28.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Supercomputer",
+   "outputs": [
+    [
+     "ComputerSuper",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Concrete": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Stone",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Concrete",
+   "outputs": [
+    [
+     "Cement",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CoolingSystem": {
+   "alternate": false,
+   "duration": 10.0,
+   "inputs": [
+    [
+     "AluminumPlateReinforced",
+     2.0
+    ],
+    [
+     "Rubber",
+     2.0
+    ],
+    [
+     "Water",
+     5.0
+    ],
+    [
+     "NitrogenGas",
+     25.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Cooling System",
+   "outputs": [
+    [
+     "CoolingSystem",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CopperDust": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "CopperIngot",
+     30.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Copper Powder",
+   "outputs": [
+    [
+     "CopperDust",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "CopperSheet": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "CopperIngot",
+     2.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Copper Sheet",
+   "outputs": [
+    [
+     "CopperSheet",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Copper_Quartz": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "RawQuartz",
+     10.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Copper Ore (Quartz)",
+   "outputs": [
+    [
+     "OreCopper",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Copper_Sulfur": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Sulfur",
+     12.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Copper Ore (Sulfur)",
+   "outputs": [
+    [
+     "OreCopper",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "CrystalOscillator": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "QuartzCrystal",
+     36.0
+    ],
+    [
+     "Cable",
+     28.0
+    ],
+    [
+     "IronPlateReinforced",
+     5.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Crystal Oscillator",
+   "outputs": [
+    [
+     "CrystalOscillator",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "DarkEnergy": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     5.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Dark Matter Residue",
+   "outputs": [
+    [
+     "DarkEnergy",
+     10.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "DarkMatter": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "Diamond",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     5.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Dark Matter Crystal",
+   "outputs": [
+    [
+     "DarkMatter",
+     1.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "Diamond": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "Coal",
+     20.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Diamonds",
+   "outputs": [
+    [
+     "Diamond",
+     1.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "ElectromagneticControlRod": {
+   "alternate": false,
+   "duration": 30.0,
+   "inputs": [
+    [
+     "Stator",
+     3.0
+    ],
+    [
+     "CircuitBoardHighSpeed",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Electromagnetic Control Rod",
+   "outputs": [
+    [
+     "ElectromagneticControlRod",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "EncasedIndustrialBeam": {
+   "alternate": false,
+   "duration": 10.0,
+   "inputs": [
+    [
+     "SteelPlate",
+     3.0
+    ],
+    [
+     "Cement",
+     6.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Encased Industrial Beam",
+   "outputs": [
+    [
+     "SteelPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Fabric": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Mycelia",
+     1.0
+    ],
+    [
+     "GenericBiomass",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Fabric",
+   "outputs": [
+    [
+     "Fabric",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "FicsiteIngot_AL": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     2.0
+    ],
+    [
+     "AluminumIngot",
+     4.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Ficsite Ingot (Aluminum)",
+   "outputs": [
+    [
+     "FicsiteIngot",
+     1.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "FicsiteIngot_CAT": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     3.0
+    ],
+    [
+     "GoldIngot",
+     4.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Ficsite Ingot (Caterium)",
+   "outputs": [
+    [
+     "FicsiteIngot",
+     1.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "FicsiteIngot_Iron": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     4.0
+    ],
+    [
+     "IronIngot",
+     24.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Ficsite Ingot (Iron)",
+   "outputs": [
+    [
+     "FicsiteIngot",
+     1.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "FicsiteMesh": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "FicsiteIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Ficsite Trigon",
+   "outputs": [
+    [
+     "FicsiteMesh",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Ficsonium": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "PlutoniumWaste",
+     1.0
+    ],
+    [
+     "SingularityCell",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     20.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Ficsonium",
+   "outputs": [
+    [
+     "Ficsonium",
+     1.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "FicsoniumFuelRod": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "Ficsonium",
+     2.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     2.0
+    ],
+    [
+     "FicsiteMesh",
+     40.0
+    ],
+    [
+     "QuantumEnergy",
+     20.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "Ficsonium Fuel Rod",
+   "outputs": [
+    [
+     "FicsoniumFuelRod",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     20.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "FilterGasMask": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "Fabric",
+     2.0
+    ],
+    [
+     "Coal",
+     4.0
+    ],
+    [
+     "IronPlate",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Gas Filter",
+   "outputs": [
+    [
+     "Filter",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "FilterHazmat": {
+   "alternate": false,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "Filter",
+     1.0
+    ],
+    [
+     "HighSpeedWire",
+     8.0
+    ],
+    [
+     "AluminumCasing",
+     1.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Iodine-Infused Filter",
+   "outputs": [
+    [
+     "HazmatFilter",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Fireworks_01": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "XmasBranch",
+     6.0
+    ],
+    [
+     "CandyCane",
+     3.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Sweet Fireworks",
+   "outputs": [
+    [
+     "Fireworks_Projectile_01",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Fireworks_02": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "XmasBranch",
+     4.0
+    ],
+    [
+     "XmasBow",
+     3.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Fancy Fireworks",
+   "outputs": [
+    [
+     "Fireworks_Projectile_02",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Fireworks_03": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "XmasBranch",
+     3.0
+    ],
+    [
+     "Snow",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Sparkly Fireworks",
+   "outputs": [
+    [
+     "Fireworks_Projectile_03",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "FluidCanister": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Plastic",
+     2.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Empty Canister",
+   "outputs": [
+    [
+     "FluidCanister",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Fuel": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "LiquidFuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Fuel",
+   "outputs": [
+    [
+     "Fuel",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "FusedModularFrame": {
+   "alternate": false,
+   "duration": 40.0,
+   "inputs": [
+    [
+     "ModularFrameHeavy",
+     1.0
+    ],
+    [
+     "AluminumCasing",
+     50.0
+    ],
+    [
+     "NitrogenGas",
+     25.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Fused Modular Frame",
+   "outputs": [
+    [
+     "ModularFrameFused",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "GasTank": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "AluminumIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Empty Fluid Tank",
+   "outputs": [
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Gunpowder": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Coal",
+     1.0
+    ],
+    [
+     "Sulfur",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Black Powder",
+   "outputs": [
+    [
+     "Gunpowder",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "GunpowderMK2": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "Gunpowder",
+     2.0
+    ],
+    [
+     "HeavyOilResidue",
+     1.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Smokeless Powder",
+   "outputs": [
+    [
+     "GunpowderMK2",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "HeatSink": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "AluminumPlate",
+     5.0
+    ],
+    [
+     "CopperSheet",
+     3.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Heat Sink",
+   "outputs": [
+    [
+     "AluminumPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "HighSpeedConnector": {
+   "alternate": false,
+   "duration": 16.0,
+   "inputs": [
+    [
+     "HighSpeedWire",
+     56.0
+    ],
+    [
+     "Cable",
+     10.0
+    ],
+    [
+     "CircuitBoard",
+     1.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "High-Speed Connector",
+   "outputs": [
+    [
+     "HighSpeedConnector",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotAluminum": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "AluminumScrap",
+     6.0
+    ],
+    [
+     "Silica",
+     5.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Aluminum Ingot",
+   "outputs": [
+    [
+     "AluminumIngot",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotCaterium": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "OreGold",
+     3.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Caterium Ingot",
+   "outputs": [
+    [
+     "GoldIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotCopper": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "OreCopper",
+     1.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Copper Ingot",
+   "outputs": [
+    [
+     "CopperIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotIron": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "OreIron",
+     1.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Iron Ingot",
+   "outputs": [
+    [
+     "IronIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotSAM": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "SAM",
+     4.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Reanimated SAM",
+   "outputs": [
+    [
+     "SAMIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IngotSteel": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "OreIron",
+     3.0
+    ],
+    [
+     "Coal",
+     3.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Steel Ingot",
+   "outputs": [
+    [
+     "SteelIngot",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IonizedFuel": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "RocketFuel",
+     16.0
+    ],
+    [
+     "CrystalShard",
+     1.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Ionized Fuel",
+   "outputs": [
+    [
+     "IonizedFuel",
+     16.0
+    ],
+    [
+     "CompactedCoal",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IronPlate": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "IronIngot",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Iron Plate",
+   "outputs": [
+    [
+     "IronPlate",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IronPlateReinforced": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "IronPlate",
+     6.0
+    ],
+    [
+     "IronScrew",
+     12.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Reinforced Iron Plate",
+   "outputs": [
+    [
+     "IronPlateReinforced",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "IronRod": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "IronIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Iron Rod",
+   "outputs": [
+    [
+     "IronRod",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Iron_Limestone": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Stone",
+     24.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Iron Ore (Limestone)",
+   "outputs": [
+    [
+     "OreIron",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Limestone_Sulfur": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Sulfur",
+     2.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Limestone (Sulfur)",
+   "outputs": [
+    [
+     "Stone",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "LiquidBiofuel": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "Biofuel",
+     6.0
+    ],
+    [
+     "Water",
+     3.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Liquid Biofuel",
+   "outputs": [
+    [
+     "LiquidBiofuel",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "LiquidFuel": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     6.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Fuel",
+   "outputs": [
+    [
+     "LiquidFuel",
+     4.0
+    ],
+    [
+     "PolymerResin",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ModularFrame": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "IronPlateReinforced",
+     3.0
+    ],
+    [
+     "IronRod",
+     12.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Modular Frame",
+   "outputs": [
+    [
+     "ModularFrame",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ModularFrameHeavy": {
+   "alternate": false,
+   "duration": 30.0,
+   "inputs": [
+    [
+     "ModularFrame",
+     5.0
+    ],
+    [
+     "SteelPipe",
+     20.0
+    ],
+    [
+     "SteelPlateReinforced",
+     5.0
+    ],
+    [
+     "IronScrew",
+     120.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Heavy Modular Frame",
+   "outputs": [
+    [
+     "ModularFrameHeavy",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Motor": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Rotor",
+     2.0
+    ],
+    [
+     "Stator",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Motor",
+   "outputs": [
+    [
+     "Motor",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "MotorTurbo": {
+   "alternate": false,
+   "duration": 32.0,
+   "inputs": [
+    [
+     "CoolingSystem",
+     4.0
+    ],
+    [
+     "ModularFrameLightweight",
+     2.0
+    ],
+    [
+     "Motor",
+     4.0
+    ],
+    [
+     "Rubber",
+     24.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Turbo Motor",
+   "outputs": [
+    [
+     "MotorLightweight",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NitricAcid": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "NitrogenGas",
+     12.0
+    ],
+    [
+     "Water",
+     3.0
+    ],
+    [
+     "IronPlate",
+     1.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Nitric Acid",
+   "outputs": [
+    [
+     "NitricAcid",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Nitrogen_Bauxite": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreBauxite",
+     10.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Nitrogen Gas (Bauxite)",
+   "outputs": [
+    [
+     "NitrogenGas",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Nitrogen_Caterium": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreGold",
+     12.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Nitrogen Gas (Caterium)",
+   "outputs": [
+    [
+     "NitrogenGas",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Nobelisk": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "Gunpowder",
+     2.0
+    ],
+    [
+     "SteelPipe",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Nobelisk",
+   "outputs": [
+    [
+     "NobeliskExplosive",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NobeliskCluster": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "NobeliskExplosive",
+     3.0
+    ],
+    [
+     "GunpowderMK2",
+     4.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Cluster Nobelisk",
+   "outputs": [
+    [
+     "NobeliskCluster",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NobeliskGas": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "NobeliskExplosive",
+     1.0
+    ],
+    [
+     "GenericBiomass",
+     10.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Gas Nobelisk",
+   "outputs": [
+    [
+     "NobeliskGas",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NobeliskNuke": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "NobeliskExplosive",
+     5.0
+    ],
+    [
+     "UraniumCell",
+     20.0
+    ],
+    [
+     "GunpowderMK2",
+     10.0
+    ],
+    [
+     "CircuitBoardHighSpeed",
+     6.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Nuke Nobelisk",
+   "outputs": [
+    [
+     "NobeliskNuke",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NobeliskShockwave": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "NobeliskExplosive",
+     5.0
+    ],
+    [
+     "CrystalOscillator",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Pulse Nobelisk",
+   "outputs": [
+    [
+     "NobeliskShockwave",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NonFissileUranium": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "NuclearWaste",
+     15.0
+    ],
+    [
+     "Silica",
+     10.0
+    ],
+    [
+     "NitricAcid",
+     6.0
+    ],
+    [
+     "SulfuricAcid",
+     6.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Non-Fissile Uranium",
+   "outputs": [
+    [
+     "NonFissibleUranium",
+     20.0
+    ],
+    [
+     "Water",
+     6.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "NuclearFuelRod": {
+   "alternate": false,
+   "duration": 150.0,
+   "inputs": [
+    [
+     "UraniumCell",
+     50.0
+    ],
+    [
+     "SteelPlateReinforced",
+     3.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     5.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Uranium Fuel Rod",
+   "outputs": [
+    [
+     "NuclearFuelRod",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedAlumina": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "AluminaSolution",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Alumina Solution",
+   "outputs": [
+    [
+     "PackagedAlumina",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedBiofuel": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "LiquidBiofuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Liquid Biofuel",
+   "outputs": [
+    [
+     "PackagedBiofuel",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedCrudeOil": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Oil",
+   "outputs": [
+    [
+     "PackagedOil",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedIonizedFuel": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "IonizedFuel",
+     4.0
+    ],
+    [
+     "GasTank",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Ionized Fuel",
+   "outputs": [
+    [
+     "PackagedIonizedFuel",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedNitricAcid": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "NitricAcid",
+     1.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Nitric Acid",
+   "outputs": [
+    [
+     "PackagedNitricAcid",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedNitrogen": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "NitrogenGas",
+     4.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Nitrogen Gas",
+   "outputs": [
+    [
+     "PackagedNitrogenGas",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedOilResidue": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Heavy Oil Residue",
+   "outputs": [
+    [
+     "PackagedOilResidue",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedRocketFuel": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "RocketFuel",
+     2.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Rocket Fuel",
+   "outputs": [
+    [
+     "PackagedRocketFuel",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedSulfuricAcid": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "SulfuricAcid",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Sulfuric Acid",
+   "outputs": [
+    [
+     "PackagedSulfuricAcid",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedTurboFuel": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidTurboFuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Turbofuel",
+   "outputs": [
+    [
+     "TurboFuel",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PackagedWater": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "Water",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Packaged Water",
+   "outputs": [
+    [
+     "PackagedWater",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PetroleumCoke": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Petroleum Coke",
+   "outputs": [
+    [
+     "PetroleumCoke",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Plastic": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     3.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Plastic",
+   "outputs": [
+    [
+     "Plastic",
+     2.0
+    ],
+    [
+     "HeavyOilResidue",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Plutonium": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "NonFissibleUranium",
+     100.0
+    ],
+    [
+     "NuclearWaste",
+     25.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Plutonium Pellet",
+   "outputs": [
+    [
+     "PlutoniumPellet",
+     30.0
+    ]
+   ],
+   "power_const": 250.0,
+   "power_factor": 500.0
+  },
+  "PlutoniumCell": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "PlutoniumPellet",
+     2.0
+    ],
+    [
+     "Cement",
+     4.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Encased Plutonium Cell",
+   "outputs": [
+    [
+     "PlutoniumCell",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PlutoniumFuelRod": {
+   "alternate": false,
+   "duration": 240.0,
+   "inputs": [
+    [
+     "PlutoniumCell",
+     30.0
+    ],
+    [
+     "SteelPlate",
+     18.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     6.0
+    ],
+    [
+     "AluminumPlateReinforced",
+     10.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Plutonium Fuel Rod",
+   "outputs": [
+    [
+     "PlutoniumFuelRod",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PowerCrystalShard_1": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "Crystal",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Power Shard (1)",
+   "outputs": [
+    [
+     "CrystalShard",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PowerCrystalShard_2": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Crystal_mk2",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Power Shard (2)",
+   "outputs": [
+    [
+     "CrystalShard",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PowerCrystalShard_3": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "Crystal_mk3",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Power Shard (5)",
+   "outputs": [
+    [
+     "CrystalShard",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PressureConversionCube": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "ModularFrameFused",
+     1.0
+    ],
+    [
+     "ModularFrameLightweight",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Pressure Conversion Cube",
+   "outputs": [
+    [
+     "PressureConversionCube",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Protein_Crab": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "HatcherParts",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Hatcher Protein",
+   "outputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Protein_Hog": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "HogParts",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Hog Protein",
+   "outputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Protein_Spitter": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "SpitterParts",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Spitter Protein",
+   "outputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Protein_Stinger": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "StingerParts",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Stinger Protein",
+   "outputs": [
+    [
+     "AlienProtein",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "PureAluminumIngot": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "AluminumScrap",
+     2.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Alternate: Pure Aluminum Ingot",
+   "outputs": [
+    [
+     "AluminumIngot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "QuantumEnergy": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [],
+   "machine": "Converter",
+   "name": "Excited Photonic Matter",
+   "outputs": [
+    [
+     "QuantumEnergy",
+     10.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "QuartzCrystal": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     5.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Quartz Crystal",
+   "outputs": [
+    [
+     "QuartzCrystal",
+     3.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Quartz_Bauxite": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreBauxite",
+     10.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Raw Quartz (Bauxite)",
+   "outputs": [
+    [
+     "RawQuartz",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Quartz_Coal": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Coal",
+     24.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Raw Quartz (Coal)",
+   "outputs": [
+    [
+     "RawQuartz",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Quickwire": {
+   "alternate": false,
+   "duration": 5.0,
+   "inputs": [
+    [
+     "GoldIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Quickwire",
+   "outputs": [
+    [
+     "HighSpeedWire",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "RadioControlUnit": {
+   "alternate": false,
+   "duration": 48.0,
+   "inputs": [
+    [
+     "AluminumCasing",
+     32.0
+    ],
+    [
+     "CrystalOscillator",
+     1.0
+    ],
+    [
+     "Computer",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Radio Control Unit",
+   "outputs": [
+    [
+     "ModularFrameLightweight",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Rebar_Explosive": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SpikedRebar",
+     2.0
+    ],
+    [
+     "GunpowderMK2",
+     2.0
+    ],
+    [
+     "SteelPipe",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Explosive Rebar",
+   "outputs": [
+    [
+     "Rebar_Explosive",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Rebar_Spreadshot": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SpikedRebar",
+     2.0
+    ],
+    [
+     "QuartzCrystal",
+     3.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Shatter Rebar",
+   "outputs": [
+    [
+     "Rebar_Spreadshot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Rebar_Stunshot": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SpikedRebar",
+     1.0
+    ],
+    [
+     "HighSpeedWire",
+     5.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Stun Rebar",
+   "outputs": [
+    [
+     "Rebar_Stunshot",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ResidualFuel": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "HeavyOilResidue",
+     6.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Residual Fuel",
+   "outputs": [
+    [
+     "LiquidFuel",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ResidualPlastic": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "PolymerResin",
+     6.0
+    ],
+    [
+     "Water",
+     2.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Residual Plastic",
+   "outputs": [
+    [
+     "Plastic",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "ResidualRubber": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "PolymerResin",
+     4.0
+    ],
+    [
+     "Water",
+     4.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Residual Rubber",
+   "outputs": [
+    [
+     "Rubber",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "RocketFuel": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidTurboFuel",
+     6.0
+    ],
+    [
+     "NitricAcid",
+     1.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Rocket Fuel",
+   "outputs": [
+    [
+     "RocketFuel",
+     10.0
+    ],
+    [
+     "CompactedCoal",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Rotor": {
+   "alternate": false,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "IronRod",
+     5.0
+    ],
+    [
+     "IronScrew",
+     25.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Rotor",
+   "outputs": [
+    [
+     "Rotor",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Rubber": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "LiquidOil",
+     3.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Rubber",
+   "outputs": [
+    [
+     "Rubber",
+     2.0
+    ],
+    [
+     "HeavyOilResidue",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SAMFluctuator": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     6.0
+    ],
+    [
+     "Wire",
+     5.0
+    ],
+    [
+     "SteelPipe",
+     3.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "SAM Fluctuator",
+   "outputs": [
+    [
+     "SAMFluctuator",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Screw": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "IronRod",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Screws",
+   "outputs": [
+    [
+     "IronScrew",
+     4.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Silica": {
+   "alternate": false,
+   "duration": 8.0,
+   "inputs": [
+    [
+     "RawQuartz",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Silica",
+   "outputs": [
+    [
+     "Silica",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SingularityCell": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_9",
+     1.0
+    ],
+    [
+     "DarkMatter",
+     20.0
+    ],
+    [
+     "IronPlate",
+     100.0
+    ],
+    [
+     "Cement",
+     200.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Singularity Cell",
+   "outputs": [
+    [
+     "SingularityCell",
+     10.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 0.0
+  },
+  "Snow": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Gift",
+     5.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "FICSMAS Actual Snow",
+   "outputs": [
+    [
+     "Snow",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Snowball": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Snow",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Snowball",
+   "outputs": [
+    [
+     "SnowballProjectile",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_1": {
+   "alternate": false,
+   "duration": 30.0,
+   "inputs": [
+    [
+     "IronPlateReinforced",
+     1.0
+    ],
+    [
+     "Rotor",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Smart Plating",
+   "outputs": [
+    [
+     "SpaceElevatorPart_1",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_10": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_7",
+     1.0
+    ],
+    [
+     "FicsiteMesh",
+     80.0
+    ],
+    [
+     "Water",
+     20.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Biochemical Sculptor",
+   "outputs": [
+    [
+     "SpaceElevatorPart_10",
+     4.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "SpaceElevatorPart_11": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_8",
+     1.0
+    ],
+    [
+     "SingularityCell",
+     5.0
+    ],
+    [
+     "QuantumOscillator",
+     2.0
+    ],
+    [
+     "DarkMatter",
+     40.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Ballistic Warp Drive",
+   "outputs": [
+    [
+     "SpaceElevatorPart_11",
+     1.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "SpaceElevatorPart_12": {
+   "alternate": false,
+   "duration": 15.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_6",
+     1.0
+    ],
+    [
+     "TemporalProcessor",
+     1.0
+    ],
+    [
+     "QuantumOscillator",
+     1.0
+    ],
+    [
+     "QuantumEnergy",
+     25.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "AI Expansion Server",
+   "outputs": [
+    [
+     "SpaceElevatorPart_12",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     25.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "SpaceElevatorPart_2": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "ModularFrame",
+     1.0
+    ],
+    [
+     "SteelPlate",
+     12.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Versatile Framework",
+   "outputs": [
+    [
+     "SpaceElevatorPart_2",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_3": {
+   "alternate": false,
+   "duration": 24.0,
+   "inputs": [
+    [
+     "Stator",
+     1.0
+    ],
+    [
+     "Cable",
+     20.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Automated Wiring",
+   "outputs": [
+    [
+     "SpaceElevatorPart_3",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_4": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "Motor",
+     2.0
+    ],
+    [
+     "Rubber",
+     15.0
+    ],
+    [
+     "SpaceElevatorPart_1",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Modular Engine",
+   "outputs": [
+    [
+     "SpaceElevatorPart_4",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_5": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_3",
+     5.0
+    ],
+    [
+     "CircuitBoard",
+     5.0
+    ],
+    [
+     "ModularFrameHeavy",
+     1.0
+    ],
+    [
+     "Computer",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Adaptive Control Unit",
+   "outputs": [
+    [
+     "SpaceElevatorPart_5",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_6": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_2",
+     5.0
+    ],
+    [
+     "ElectromagneticControlRod",
+     2.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Magnetic Field Generator",
+   "outputs": [
+    [
+     "SpaceElevatorPart_6",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_7": {
+   "alternate": false,
+   "duration": 80.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_5",
+     2.0
+    ],
+    [
+     "ComputerSuper",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Assembly Director System",
+   "outputs": [
+    [
+     "SpaceElevatorPart_7",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_8": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "SpaceElevatorPart_4",
+     5.0
+    ],
+    [
+     "MotorLightweight",
+     2.0
+    ],
+    [
+     "CoolingSystem",
+     6.0
+    ],
+    [
+     "ModularFrameFused",
+     2.0
+    ]
+   ],
+   "machine": "ManufacturerMk1",
+   "name": "Thermal Propulsion Rocket",
+   "outputs": [
+    [
+     "SpaceElevatorPart_8",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SpaceElevatorPart_9": {
+   "alternate": false,
+   "duration": 120.0,
+   "inputs": [
+    [
+     "CopperDust",
+     200.0
+    ],
+    [
+     "PressureConversionCube",
+     1.0
+    ]
+   ],
+   "machine": "HadronCollider",
+   "name": "Nuclear Pasta",
+   "outputs": [
+    [
+     "SpaceElevatorPart_9",
+     1.0
+    ]
+   ],
+   "power_const": 500.0,
+   "power_factor": 1000.0
+  },
+  "SpikedRebar": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "IronRod",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Iron Rebar",
+   "outputs": [
+    [
+     "SpikedRebar",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Stator": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "SteelPipe",
+     3.0
+    ],
+    [
+     "Wire",
+     8.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "Stator",
+   "outputs": [
+    [
+     "Stator",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SteelBeam": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     4.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Steel Beam",
+   "outputs": [
+    [
+     "SteelPlate",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SteelPipe": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SteelIngot",
+     3.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Steel Pipe",
+   "outputs": [
+    [
+     "SteelPipe",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Sulfur_Coal": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "Coal",
+     20.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Sulfur (Coal)",
+   "outputs": [
+    [
+     "Sulfur",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Sulfur_Iron": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreIron",
+     30.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Sulfur (Iron)",
+   "outputs": [
+    [
+     "Sulfur",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "SulfuricAcid": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "Sulfur",
+     5.0
+    ],
+    [
+     "Water",
+     5.0
+    ]
+   ],
+   "machine": "OilRefinery",
+   "name": "Sulfuric Acid",
+   "outputs": [
+    [
+     "SulfuricAcid",
+     5.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "SuperpositionOscillator": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "DarkMatter",
+     6.0
+    ],
+    [
+     "CrystalOscillator",
+     1.0
+    ],
+    [
+     "AluminumPlate",
+     9.0
+    ],
+    [
+     "QuantumEnergy",
+     25.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "Superposition Oscillator",
+   "outputs": [
+    [
+     "QuantumOscillator",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     25.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "SyntheticPowerShard": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "TimeCrystal",
+     2.0
+    ],
+    [
+     "DarkMatter",
+     2.0
+    ],
+    [
+     "QuartzCrystal",
+     12.0
+    ],
+    [
+     "QuantumEnergy",
+     12.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "Synthetic Power Shard",
+   "outputs": [
+    [
+     "CrystalShard",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     12.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "TemporalProcessor": {
+   "alternate": false,
+   "duration": 20.0,
+   "inputs": [
+    [
+     "TimeCrystal",
+     5.0
+    ],
+    [
+     "ComputerSuper",
+     1.0
+    ],
+    [
+     "FicsiteMesh",
+     15.0
+    ],
+    [
+     "QuantumEnergy",
+     25.0
+    ]
+   ],
+   "machine": "QuantumEncoder",
+   "name": "Neural-Quantum Processor",
+   "outputs": [
+    [
+     "TemporalProcessor",
+     1.0
+    ],
+    [
+     "DarkEnergy",
+     25.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 2000.0
+  },
+  "TimeCrystal": {
+   "alternate": false,
+   "duration": 10.0,
+   "inputs": [
+    [
+     "Diamond",
+     2.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Time Crystal",
+   "outputs": [
+    [
+     "TimeCrystal",
+     1.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "UnpackageAlumina": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "PackagedAlumina",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Alumina Solution",
+   "outputs": [
+    [
+     "AluminaSolution",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageBioFuel": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "PackagedBiofuel",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Liquid Biofuel",
+   "outputs": [
+    [
+     "LiquidBiofuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageFuel": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "Fuel",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Fuel",
+   "outputs": [
+    [
+     "LiquidFuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageIonizedFuel": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "PackagedIonizedFuel",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Ionized Fuel",
+   "outputs": [
+    [
+     "IonizedFuel",
+     4.0
+    ],
+    [
+     "GasTank",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageNitricAcid": {
+   "alternate": false,
+   "duration": 3.0,
+   "inputs": [
+    [
+     "PackagedNitricAcid",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Nitric Acid",
+   "outputs": [
+    [
+     "NitricAcid",
+     1.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageNitrogen": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "PackagedNitrogenGas",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Nitrogen Gas",
+   "outputs": [
+    [
+     "NitrogenGas",
+     4.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageOil": {
+   "alternate": false,
+   "duration": 2.0,
+   "inputs": [
+    [
+     "PackagedOil",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Oil",
+   "outputs": [
+    [
+     "LiquidOil",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageOilResidue": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "PackagedOilResidue",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Heavy Oil Residue",
+   "outputs": [
+    [
+     "HeavyOilResidue",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageRocketFuel": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "PackagedRocketFuel",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Rocket Fuel",
+   "outputs": [
+    [
+     "RocketFuel",
+     2.0
+    ],
+    [
+     "GasTank",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageSulfuricAcid": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "PackagedSulfuricAcid",
+     1.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Sulfuric Acid",
+   "outputs": [
+    [
+     "SulfuricAcid",
+     1.0
+    ],
+    [
+     "FluidCanister",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageTurboFuel": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "TurboFuel",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Turbofuel",
+   "outputs": [
+    [
+     "LiquidTurboFuel",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UnpackageWater": {
+   "alternate": false,
+   "duration": 1.0,
+   "inputs": [
+    [
+     "PackagedWater",
+     2.0
+    ]
+   ],
+   "machine": "Packager",
+   "name": "Unpackage Water",
+   "outputs": [
+    [
+     "Water",
+     2.0
+    ],
+    [
+     "FluidCanister",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "UraniumCell": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "OreUranium",
+     10.0
+    ],
+    [
+     "Cement",
+     3.0
+    ],
+    [
+     "SulfuricAcid",
+     8.0
+    ]
+   ],
+   "machine": "Blender",
+   "name": "Encased Uranium Cell",
+   "outputs": [
+    [
+     "UraniumCell",
+     5.0
+    ],
+    [
+     "SulfuricAcid",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "Uranium_Bauxite": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "SAMIngot",
+     1.0
+    ],
+    [
+     "OreBauxite",
+     48.0
+    ]
+   ],
+   "machine": "Converter",
+   "name": "Uranium Ore (Bauxite)",
+   "outputs": [
+    [
+     "OreUranium",
+     12.0
+    ]
+   ],
+   "power_const": 100.0,
+   "power_factor": 300.0
+  },
+  "Wire": {
+   "alternate": false,
+   "duration": 4.0,
+   "inputs": [
+    [
+     "CopperIngot",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "Wire",
+   "outputs": [
+    [
+     "Wire",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBall1": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Gift",
+     1.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Red FICSMAS Ornament",
+   "outputs": [
+    [
+     "XmasBall1",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBall2": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Gift",
+     1.0
+    ]
+   ],
+   "machine": "SmelterMk1",
+   "name": "Blue FICSMAS Ornament",
+   "outputs": [
+    [
+     "XmasBall2",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBall3": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "XmasBall1",
+     2.0
+    ],
+    [
+     "CopperIngot",
+     2.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Copper FICSMAS Ornament",
+   "outputs": [
+    [
+     "XmasBall3",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBall4": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "XmasBall2",
+     3.0
+    ],
+    [
+     "IronIngot",
+     3.0
+    ]
+   ],
+   "machine": "FoundryMk1",
+   "name": "Iron FICSMAS Ornament",
+   "outputs": [
+    [
+     "XmasBall4",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBallCluster": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "XmasBall3",
+     1.0
+    ],
+    [
+     "XmasBall4",
+     1.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "FICSMAS Ornament Bundle",
+   "outputs": [
+    [
+     "XmasBallCluster",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBow": {
+   "alternate": false,
+   "duration": 12.0,
+   "inputs": [
+    [
+     "Gift",
+     2.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "FICSMAS Bow",
+   "outputs": [
+    [
+     "XmasBow",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasBranch": {
+   "alternate": false,
+   "duration": 6.0,
+   "inputs": [
+    [
+     "Gift",
+     1.0
+    ]
+   ],
+   "machine": "ConstructorMk1",
+   "name": "FICSMAS Tree Branch",
+   "outputs": [
+    [
+     "XmasBranch",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasStar": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "XmasWreath",
+     5.0
+    ],
+    [
+     "CandyCane",
+     20.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "FICSMAS Wonder Star",
+   "outputs": [
+    [
+     "XmasStar",
+     1.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  },
+  "XmasWreath": {
+   "alternate": false,
+   "duration": 60.0,
+   "inputs": [
+    [
+     "XmasBranch",
+     15.0
+    ],
+    [
+     "XmasBallCluster",
+     6.0
+    ]
+   ],
+   "machine": "AssemblerMk1",
+   "name": "FICSMAS Wreath",
+   "outputs": [
+    [
+     "XmasWreath",
+     2.0
+    ]
+   ],
+   "power_const": 0.0,
+   "power_factor": 1.0
+  }
+ },
+ "source": "CommunityResources/Docs/en-US.json"
+}

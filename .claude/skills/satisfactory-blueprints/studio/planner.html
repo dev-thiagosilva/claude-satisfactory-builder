@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Planner</title>
+<style>
+  :root {
+    --bg:#13151a; --panel:#1b1e25; --panel2:#22262e; --fg:#e9e6df; --muted:#9a968d; --line:#2e333c;
+    --accent:#f39c3c; --accent-ink:#1b1206; --ok:#5cb87a; --err:#e06c6c; --fluid:#5aa9e6;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-height:100%; background:var(--bg); color:var(--fg); font:13px/1.45 system-ui, sans-serif; }
+  #app { display:grid; grid-template-columns:320px 1fr; min-height:100vh; }
+  aside { background:var(--panel); border-right:1px solid var(--line); padding:14px; }
+  main { padding:18px 22px; overflow:auto; }
+  h1 { font-size:15px; margin:0 0 2px; }
+  h2 { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin:18px 0 8px; font-weight:600; }
+  .sub { color:var(--muted); font-size:12px; }
+  a { color:var(--accent); text-decoration:none; }
+  input, select, button { font:inherit; color:var(--fg); background:var(--panel2); border:1px solid var(--line); border-radius:7px; padding:6px 8px; }
+  input:focus, select:focus { outline:1px solid var(--accent); border-color:var(--accent); }
+  button { cursor:pointer; }
+  button.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600; }
+  .target { display:grid; grid-template-columns:1fr 78px 28px; gap:6px; margin-bottom:6px; align-items:center; }
+  .target button { padding:6px 0; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .settings label { display:block; color:var(--muted); font-size:12px; margin:8px 0 3px; }
+  .settings select { width:100%; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px; margin-bottom:18px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .card b { display:block; font-size:22px; font-weight:650; font-variant-numeric:tabular-nums; }
+  .card span { color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  th { text-align:left; color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.6px; padding:6px 8px; border-bottom:1px solid var(--line); }
+  td { padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  td.n { text-align:right; white-space:nowrap; }
+  tr.tier td { background:#181b21; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.6px; padding:5px 8px; }
+  .flows { color:var(--muted); font-size:12px; }
+  .flows .out { color:var(--fg); }
+  .fluid { color:var(--fluid); }
+  .alt { color:var(--accent); font-size:11px; margin-left:4px; }
+  .section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:4px 6px 8px; margin-bottom:18px; }
+  .section h3 { margin:10px 8px 6px; font-size:13px; }
+  .empty { color:var(--muted); padding:40px 0; text-align:center; }
+  .err { color:var(--err); }
+  select.recipe { max-width:240px; padding:3px 6px; }
+  @media (max-width: 860px) { #app { grid-template-columns:1fr; } aside { border-right:0; border-bottom:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>Production Planner</h1>
+    <div class="sub">How many machines, resources and power you need. Numbers come from the game's own data. <a href="/">← Blueprint Studio</a></div>
+
+    <h2>What to make (per minute)</h2>
+    <div id="targets"></div>
+    <div class="target">
+      <input id="newItem" list="itemList" placeholder="Add an item, e.g. Computer">
+      <input id="newRate" type="number" min="0" step="any" value="10" title="Items per minute (m³/min for fluids)">
+      <button id="add" title="Add">+</button>
+    </div>
+    <datalist id="itemList"></datalist>
+
+    <h2>Settings</h2>
+    <div class="settings">
+      <label>Max machine clock</label>
+      <select id="clock">
+        <option value="100" selected>100% (no power shards)</option>
+        <option value="150">150% (1 power shard)</option>
+        <option value="200">200% (2 power shards)</option>
+        <option value="250">250% (3 power shards)</option>
+      </select>
+      <div class="row2">
+        <div><label>Miners</label>
+          <select id="miner"><option value="MinerMk1">Miner Mk.1</option><option value="MinerMk2" selected>Miner Mk.2</option><option value="MinerMk3">Miner Mk.3</option></select></div>
+        <div><label>Node purity</label>
+          <select id="purity"><option>impure</option><option selected>normal</option><option>pure</option></select></div>
+      </div>
+    </div>
+
+    <h2>Alternate recipes in use</h2>
+    <div id="alts" class="sub">None. Pick one from a recipe's dropdown on the right.</div>
+  </aside>
+
+  <main>
+    <div id="out"><div class="empty">Add an item on the left to see the factory it needs.</div></div>
+  </main>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const state = { targets: [], use: {} };   // use: item id -> recipe id
+let itemNames = {}, itemForm = {};
+const fmt = v => (Math.round(v * 100) / 100).toLocaleString(undefined, { maximumFractionDigits: 2 });
+const unit = id => itemForm[id] && itemForm[id] !== 'solid' ? ' m³' : '';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function save() { try { localStorage.setItem('planner', JSON.stringify({ ...state, clock: $('#clock').value, miner: $('#miner').value, purity: $('#purity').value })); } catch {} }
+function load() {
+  try {
+    const s = JSON.parse(localStorage.getItem('planner') || 'null');
+    if (s) { state.targets = s.targets || []; state.use = s.use || {}; $('#clock').value = s.clock || 100; $('#miner').value = s.miner || 'MinerMk2'; $('#purity').value = s.purity || 'normal'; }
+  } catch {}
+  const q = new URLSearchParams(location.search);
+  if (q.get('item')) state.targets = [[q.get('item'), +(q.get('rate') || 10)]];
+}
+
+function renderTargets() {
+  const el = $('#targets'); el.innerHTML = '';
+  state.targets.forEach((t, i) => {
+    const d = document.createElement('div'); d.className = 'target';
+    d.innerHTML = `<input value="${esc(itemNames[t[0]] || t[0])}" disabled><input type="number" min="0" step="any" value="${t[1]}"><button title="Remove">×</button>`;
+    d.querySelectorAll('input')[1].oninput = e => { t[1] = +e.target.value; recalc(); };
+    d.querySelector('button').onclick = () => { state.targets.splice(i, 1); renderTargets(); recalc(); };
+    el.appendChild(d);
+  });
+  const alts = Object.entries(state.use);
+  const recipeName = (item, r) => ((recipeCache[item] || []).find(x => x.id === r) || {}).name || r;
+  $('#alts').innerHTML = alts.length ? alts.map(([item, r]) => `<div>${esc(itemNames[item] || item)}: <b>${esc(recipeName(item, r).replace('Alternate: ', ''))}</b> <a href="#" data-item="${item}">reset</a></div>`).join('') : 'None. Pick one from a recipe\'s dropdown on the right.';
+  $('#alts').querySelectorAll('a').forEach(a => a.onclick = e => { e.preventDefault(); delete state.use[a.dataset.item]; renderTargets(); recalc(); });
+}
+
+$('#add').onclick = () => {
+  const name = $('#newItem').value.trim().toLowerCase();
+  const id = Object.keys(itemNames).find(k => itemNames[k].toLowerCase() === name) || Object.keys(itemNames).find(k => itemNames[k].toLowerCase().includes(name));
+  if (!id) { $('#newItem').classList.add('err'); return; }
+  $('#newItem').classList.remove('err');
+  state.targets.push([id, +$('#newRate').value || 10]); $('#newItem').value = '';
+  renderTargets(); recalc();
+};
+$('#newItem').addEventListener('keydown', e => { if (e.key === 'Enter') $('#add').click(); });
+['#clock', '#miner', '#purity'].forEach(s => $(s).onchange = recalc);
+
+const recipeCache = {};
+async function recipesFor(item) {
+  if (!recipeCache[item]) recipeCache[item] = await (await fetch('/api/recipes?item=' + encodeURIComponent(item))).json();
+  return recipeCache[item];
+}
+
+let seq = 0;
+async function recalc() {
+  save();
+  const my = ++seq;
+  if (!state.targets.length) { $('#out').innerHTML = '<div class="empty">Add an item on the left to see the factory it needs.</div>'; return; }
+  const body = { targets: state.targets, use: Object.values(state.use), clock: +$('#clock').value, miner: $('#miner').value, purity: $('#purity').value };
+  let p;
+  try { p = await (await fetch('/api/plan', { method: 'POST', body: JSON.stringify(body) })).json(); }
+  catch (e) { $('#out').innerHTML = '<div class="empty err">Could not calculate: ' + esc(e.message) + '</div>'; return; }
+  if (my !== seq || !p) return;
+  if (p.error) { $('#out').innerHTML = '<div class="empty err">' + esc(p.error) + '</div>'; return; }
+  // the server resolves names to item ids; keep the resolved ids
+  if (p.targets.some((t, i) => state.targets[i] && state.targets[i][0] !== t[0])) {
+    state.targets = p.targets.map(t => [t[0], t[2]]); renderTargets(); save();
+  }
+  render(p);
+}
+
+async function render(p) {
+  const rawTotal = p.raw.filter(r => r[3] === 'solid').reduce((s, r) => s + r[2], 0);
+  let h = `<div class="cards">
+    <div class="card"><b>${p.machines_total}</b><span>machines</span></div>
+    <div class="card"><b>${fmt(p.power_mw + p.extractor_power_mw)} MW</b><span>power (${fmt(p.power_mw)} factory + ${fmt(p.extractor_power_mw)} extraction)</span></div>
+    <div class="card"><b>${fmt(rawTotal)}</b><span>raw ore per minute</span></div>
+    <div class="card"><b>${p.raw.length}</b><span>raw resources</span></div>
+  </div>`;
+  h += `<div class="section"><h3>Factory</h3><table><thead><tr><th>Recipe</th><th>Machine</th><th class="n">Machines</th><th class="n">Clock</th><th class="n">Power</th><th>In → Out (per minute)</th></tr></thead><tbody>`;
+  let tier = -1;
+  for (const l of p.recipes) {
+    if (l.tier !== tier) { tier = l.tier; h += `<tr class="tier"><td colspan="6">Step ${tier}</td></tr>`; }
+    const main = l.outputs[0][0];
+    h += `<tr><td><select class="recipe" data-item="${main}" data-current="${l.recipe}"><option>${esc(l.recipe_name)}</option></select></td>
+      <td>${esc(l.machine_name)}</td>
+      <td class="n"><b>${l.machines}</b> <span class="sub">(${fmt(l.machines_exact)})</span></td>
+      <td class="n">${fmt(l.clock_percent)}%</td><td class="n">${fmt(l.power_mw)} MW</td>
+      <td class="flows">${l.inputs.map(x => `<span class="${unit(x[0]) ? 'fluid' : ''}">${fmt(x[2])}${unit(x[0])} ${esc(x[1])}</span>`).join(', ')} →
+        <span class="out">${l.outputs.map(x => `<span class="${unit(x[0]) ? 'fluid' : ''}">${fmt(x[2])}${unit(x[0])} ${esc(x[1])}</span>`).join(', ')}</span></td></tr>`;
+  }
+  h += `</tbody></table></div>`;
+  h += `<div class="section"><h3>Raw resources</h3><table><thead><tr><th>Resource</th><th class="n">Per minute</th><th>Extractors</th></tr></thead><tbody>`;
+  for (const [id, name, v] of p.raw) {
+    const e = p.extractors[id];
+    h += `<tr><td>${esc(name)}</td><td class="n">${fmt(v)}${unit(id)}</td><td>${e ? `${e.count} × ${esc(e.extractor)} <span class="sub">(${fmt(e.each)}${unit(id)} each, ${esc(e.note)})</span>` : '<span class="sub">gather by hand</span>'}</td></tr>`;
+  }
+  h += `</tbody></table></div>`;
+  if (p.byproducts.length) {
+    h += `<div class="section"><h3>Byproducts (left over)</h3><table><tbody>` +
+      p.byproducts.map(([id, n, v]) => `<tr><td>${esc(n)}</td><td class="n">${fmt(v)}${unit(id)} / min</td></tr>`).join('') + `</tbody></table></div>`;
+  }
+  h += `<div class="section"><h3>Belts & pipes (largest flow of each item)</h3><table><tbody>` +
+    Object.entries(p.transport).map(([n, [v, t]]) => `<tr><td>${esc(n)}</td><td class="n">${fmt(v)} / min</td><td>${esc(t)}</td></tr>`).join('') + `</tbody></table></div>`;
+  $('#out').innerHTML = h;
+  // fill each recipe dropdown with the alternatives for its main product
+  for (const sel of document.querySelectorAll('select.recipe')) {
+    const rs = await recipesFor(sel.dataset.item);
+    if (rs.length < 2) { sel.disabled = true; continue; }
+    sel.innerHTML = rs.map(r => `<option value="${r.id}" ${r.id === sel.dataset.current ? 'selected' : ''}>${esc(r.name)}${r.default ? ' (default)' : ''}</option>`).join('');
+    sel.onchange = () => {
+      const r = rs.find(x => x.id === sel.value);
+      if (r.default) delete state.use[sel.dataset.item]; else state.use[sel.dataset.item] = sel.value;
+      renderTargets(); recalc();
+    };
+  }
+}
+
+(async () => {
+  const items = await (await fetch('/api/items')).json();
+  for (const [id, name, form] of items) { itemNames[id] = name; itemForm[id] = form; }
+  $('#itemList').innerHTML = items.map(i => `<option value="${esc(i[1])}">`).join('');
+  load(); renderTargets(); recalc();
+})();
+</script>
+</body>
+</html>

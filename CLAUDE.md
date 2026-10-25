@@ -96,6 +96,17 @@ own. Keep anything it needs inside its folder.
    Both refuse to overwrite. On a name clash pick a new name, or ask before replacing an earlier
    version of the same build.
 
+## Production planning
+
+When a player asks how many machines, resources or how much power something needs, use
+`scripts/calc.py`. It works from the game's own recipes (`library/production.json`, written by
+`build_assets.py`): machines with clock speeds, raw resources with miner/extractor counts,
+byproducts, power, and belt/pipe tiers.
+`python -I .claude/skills/satisfactory-blueprints/scripts/calc.py "Heavy Modular Frame" 5 [--use "Stitched Iron Plate"] [--clock 250] [--miner Mk3 --purity pure]`,
+`--total 500 --minutes 60` for an amount, `--alternates ITEM` to list recipes. For the visual
+version, point them to the studio's **Production planner** at `http://localhost:8770/planner`
+(add items, switch alternate recipes per row, set clock/miner/purity).
+
 ## Blueprint Studio
 
 A local web app for the player's builds in `.local/blueprints/`. It lists their builds and shows

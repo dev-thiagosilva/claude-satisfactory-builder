@@ -78,21 +78,21 @@ grid.
 | Ready | Piece | Class | Size | Cost | Unlock |
 |---|---|---|---|---|---|
 | ✅🎨 60 | Conveyor Lift Floor Hole | `FoundationPassthrough_Lift` |  | 2 Iron Rod, 2 Iron Plate, 2 Concrete | AWESOME Shop: Conveyor Lift Floor Hole |
+| ✅🎨 60 | Foundation (1 m) | `Foundation_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation (1 m) | `Foundation_8x1_01` | 8 × 8 × 1 m | 5 Concrete | Tier 1: Base Building |
+| ✅🎨 60 | Foundation (1 m) | `Foundation_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | ✅🎨 60 | Foundation (1 m) | `Foundation_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | ✅🎨 60 | Foundation (1 m) | `Foundation_ConcretePolished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| ✅🎨 60 | Foundation (1 m) | `Foundation_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| ✅🎨 60 | Foundation (1 m) | `Foundation_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| ✅🎨 60 | Foundation (2 m) | `Foundation_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation (2 m) | `Foundation_8x2_01` | 8 × 8 × 2 m | 5 Concrete | Tier 1: Base Building |
+| ✅🎨 60 | Foundation (2 m) | `Foundation_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation (2 m) | `Foundation_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | ✅ 60 | Foundation (2 m) | `Foundation_ConcretePolished_8x2_2` | 8 × 8 × 2 m |  |  |
-| ✅🎨 60 | Foundation (2 m) | `Foundation_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| ✅🎨 60 | Foundation (2 m) | `Foundation_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation (4 m) | `Foundation_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation (4 m) | `Foundation_8x4_01` | 8 × 8 × 4 m | 5 Concrete | Tier 1: Base Building |
+| ✅🎨 60 | Foundation (4 m) | `Foundation_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | ✅🎨 60 | Foundation (4 m) | `Foundation_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | ✅🎨 60 | Foundation (4 m) | `Foundation_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| ✅🎨 60 | Foundation (4 m) | `Foundation_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation (4 m) | `Foundation_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | ✅🎨 60 | Frame Floor | `Flat_Frame_01` | 8 × 8 × 0.4 m | 2 Steel Beam | AWESOME Shop: Structural Frame Set |
 | ✅🎨 60 | Frame Foundation | `Foundation_Frame_01` | 8 × 8 × 4 m | 5 Steel Beam | AWESOME Shop: Structural Frame Set |
 | ✅🎨 60 | Glass Frame Foundation | `FoundationGlass_01` | 8 × 8 × 1 m | 2 Steel Beam, 5 Concrete | AWESOME Shop: Structural Frame Set |
@@ -107,185 +107,185 @@ grid.
 
 | Ready | Piece | Class | Size | Cost | Unlock |
 |---|---|---|---|---|---|
-| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_8x1` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Double Ramp Set |
-| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_8x1` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Double Ramp Set |
+| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (2 m) | `RampDouble_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Double Ramp Set |
-| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Double Ramp Set |
+| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (4 m) | `RampDouble_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Double Ramp (8 m) | `Ramp_8x8x8` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Double Ramp Set |
-| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_Diagonal_8x1_01` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Double Ramp (8 m) | `RampDouble_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_Diagonal_8x1_01` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (1 m) | `Ramp_DownCorner_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_Diagonal_8x2_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_Diagonal_8x2_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (2 m) | `Ramp_DownCorner_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_Diagonal_8x4_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_Diagonal_8x4_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Down Corner Ramp (4 m) | `Ramp_DownCorner_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Frame Ramp | `Ramp_Frame_01` | 8 × 8 × 4 m | 5 Steel Beam | AWESOME Shop: Structural Frame Set |
-| 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_Asphalt_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_Concrete_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_Grip_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_Concrete_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_Asphalt_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (1 m) | `QuarterPipeMiddle_PolishedConcrete_8x1` | 8 × 4 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_Asphalt_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_Concrete_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_Grip_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_Concrete_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_Asphalt_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (2 m) | `QuarterPipeMiddle_PolishedConcrete_8x2` | 8 × 4 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_Asphalt_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_Concrete_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_Grip_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_Concrete_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_Asphalt_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Half Foundation (4 m) | `QuarterPipeMiddle_PolishedConcrete_8x4` | 8 × 4 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Ficsit_8x1` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
 | 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Grip_8x1` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Ficsit_8x1` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Extension (1 m) | `QuarterPipeMiddleInCorner_PolishedConcrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Ficsit_8x2` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
 | 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Grip_8x2` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Ficsit_8x2` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Extension (2 m) | `QuarterPipeMiddleInCorner_PolishedConcrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Ficsit_8x4` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
 | 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Ficsit_8x4` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Extension (4 m) | `QuarterPipeMiddleInCorner_PolishedConcrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeCorner_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
+| 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inner Corner Quarter Pipe | `QuarterPipeInCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (1 m) | `RampInverted_8x1_Corner_02` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
-| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (1 m) | `InvertedRamp_DCorner_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (2 m) | `RampInverted_8x2_Corner_02` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
-| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (2 m) | `InvertedRamp_DCorner_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Down Corner (4 m) | `RampInverted_8x4_Corner_02` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
+| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Down Corner (4 m) | `InvertedRamp_DCorner_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | ✅🎨 60 | Inverted Frame Ramp | `Ramp_Frame_Inverted_01` | 8 × 8 × 4 m | 5 Steel Beam | AWESOME Shop: Structural Frame Set |
-| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `QuarterPipeCorner_02` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
-| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Inner Corner Quarter Pipe | `DownQuarterPipeInCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `QuarterPipeCorner_04` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
-| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Outer Corner Quarter Pipe | `DownQuarterPipeOutCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Quarter Pipe | `QuarterPipe_02` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
-| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Quarter Pipe | `DownQuarterPipe_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (1 m) | `RampInverted_8x1` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Inverted Ramp Set |
-| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (1 m) | `InvertedRamp_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (2 m) | `RampInverted_8x2_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Inverted Ramp Set |
-| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (2 m) | `InvertedRamp_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp (4 m) | `Ramp_8x4_Inverted_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Inverted Ramp Set |
-| 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Ramp (4 m) | `InvertedRamp_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (1 m) | `RampInverted_8x1_Corner_01` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
-| 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Up Corner (1 m) | `InvertedRamp_UCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (2 m) | `RampInverted_8x2_Corner_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
-| 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Up Corner (2 m) | `InvertedRamp_UCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Inverted Up Corner (4 m) | `RampInverted_8x4_Corner_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Inverted Corner Ramp Pack |
-| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Concrete_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x1` | 4 × 4 × 1 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Inverted Up Corner (4 m) | `InvertedRamp_UCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Grip_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x1` | 4 × 4 × 1 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Concrete_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Extension (1 m) | `QuarterPipeMiddleOutCorner_PolishedConcrete_4x1` | 4 × 4 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Concrete_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x2` | 4 × 4 × 2 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
 | 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Grip_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x2` | 4 × 4 × 2 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Concrete_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Extension (2 m) | `QuarterPipeMiddleOutCorner_PolishedConcrete_4x2` | 4 × 4 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Concrete_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x4` | 4 × 4 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
 | 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Grip_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Ficsit_4x4` | 4 × 4 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipe Extensions Pack |
+| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Concrete_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_Asphalt_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Extension (4 m) | `QuarterPipeMiddleOutCorner_PolishedConcrete_4x4` | 4 × 4 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeCorner_03` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
+| 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Outer Corner Quarter Pipe | `QuarterPipeOutCorner_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Quarter Pipe | `QuarterPipe_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Quarter Pipe | `QuarterPipe` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Quarter Pipes Pack |
+| 🧪🎨 60 | Quarter Pipe | `QuarterPipe_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Quarter Pipe | `QuarterPipe_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Quarter Pipe | `QuarterPipe_ConcretePolished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Quarter Pipe | `QuarterPipe_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Quarter Pipe | `QuarterPipe_Grip_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Ramp (1 m) | `Ramp_8x1_01` | 8 × 8 × 1 m | 5 Concrete | Tier 1: Base Building |
-| 🧪🎨 60 | Ramp (1 m) | `Ramp_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Ramp (1 m) | `Ramp_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (1 m) | `Ramp_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (1 m) | `Ramp_8x1_01` | 8 × 8 × 1 m | 5 Concrete | Tier 1: Base Building |
+| 🧪🎨 60 | Ramp (1 m) | `Ramp_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (1 m) | `Ramp_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (1 m) | `Ramp_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Ramp (2 m) | `Ramp_8x2_01` | 8 × 8 × 2 m | 5 Concrete | Tier 1: Base Building |
-| 🧪🎨 60 | Ramp (2 m) | `Ramp_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Ramp (2 m) | `Ramp_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (2 m) | `Ramp_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (2 m) | `Ramp_8x2_01` | 8 × 8 × 2 m | 5 Concrete | Tier 1: Base Building |
+| 🧪🎨 60 | Ramp (2 m) | `Ramp_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (2 m) | `Ramp_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (2 m) | `Ramp_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Ramp (4 m) | `Ramp_8x4_01` | 8 × 8 × 4 m | 5 Concrete | Tier 1: Base Building |
-| 🧪🎨 60 | Ramp (4 m) | `Ramp_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| ✅🎨 60 | Ramp (4 m) | `Ramp_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (4 m) | `Ramp_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (4 m) | `Ramp_8x4_01` | 8 × 8 × 4 m | 5 Concrete | Tier 1: Base Building |
+| ✅🎨 60 | Ramp (4 m) | `Ramp_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Ramp (4 m) | `Ramp_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Ramp (4 m) | `Ramp_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_Diagonal_8x1_02` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Polished_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_Diagonal_8x2_02` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_Diagonal_8x1_02` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Up Corner Ramp (1 m) | `Ramp_UpCorner_Metal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Polished_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_Diagonal_8x4_02` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
-| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_Diagonal_8x2_02` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Up Corner Ramp (2 m) | `Ramp_UpCorner_Metal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | ✅🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Polished_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_Diagonal_8x4_02` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Corner Ramp Pack |
+| 🧪🎨 60 | Up Corner Ramp (4 m) | `Ramp_UpCorner_Metal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | ⛔ legacy | Half Foundation (1 m) | `QuarterPipeMiddle_Ficsit_8x1` | 8 × 4 × 1 m |  |  |
 | ⛔ legacy | Half Foundation (2 m) | `QuarterPipeMiddle_Ficsit_8x2` | 8 × 4 × 2 m |  |  |
 | ⛔ legacy | Half Foundation (4 m) | `QuarterPipeMiddle_Ficsit_8x4` | 8 × 4 × 4 m |  |  |
@@ -302,9 +302,9 @@ grid.
 |---|---|---|---|---|---|
 | 🧪🎨 60 | Angled Frame Window | `Wall_Window_8x4_05` |  | 2 Silica, 2 Steel Beam | AWESOME Shop: Steel-Framed Windows |
 | ✅🎨 60 | Flat Roof | `Roof_Window_01` | 8 × 8 × 0 m | 3 Concrete | Start |
-| 🧪🎨 60 | Frame Window | `SteelWall_8x4_Window_03` |  | 2 Silica | Start |
-| 🧪🎨 60 | Frame Window | `Wall_Concrete_8x4_Window_02` |  | 2 Silica | Start |
 | 🧪🎨 60 | Frame Window | `Wall_Window_8x4_02` |  | 2 Silica | AWESOME Shop: Windowed Walls |
+| 🧪🎨 60 | Frame Window | `Wall_Concrete_8x4_Window_02` |  | 2 Silica | Start |
+| 🧪🎨 60 | Frame Window | `SteelWall_8x4_Window_03` |  | 2 Silica | Start |
 | ✅🎨 60 | Full Frame Window | `Wall_Window_Thin_8x4_01` |  | 2 Silica, 2 Steel Beam | AWESOME Shop: Steel-Framed Windows |
 | ✅🎨 60 | Hex Frame Window | `Wall_Window_Thin_8x4_02` |  | 2 Silica, 2 Steel Beam | AWESOME Shop: Steel-Framed Windows |
 | 🧪🎨 60 | Honeycomb Frame Window | `Wall_Window_8x4_06` |  | 2 Silica, 2 Steel Beam | AWESOME Shop: Steel-Framed Windows |
@@ -314,18 +314,18 @@ grid.
 | 🧪🎨 60 | Outer Corner Roof (1 m) | `Roof_Window_OutCorner_01` | 8 m | 3 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Roof (2 m) | `Roof_Window_OutCorner_02` | 8 m | 3 Concrete | Start |
 | 🧪🎨 60 | Outer Corner Roof (4 m) | `Roof_Window_OutCorner_03` | 8 m | 3 Concrete | Start |
-| 🧪🎨 60 | Panel Window | `SteelWall_8x4_Window_04` |  | 2 Silica | Start |
-| 🧪🎨 60 | Panel Window | `Wall_Concrete_8x4_Window_03` |  | 2 Silica | Start |
 | 🧪🎨 60 | Panel Window | `Wall_Window_8x4_03` |  | 2 Silica | AWESOME Shop: Windowed Walls |
-| 🧪🎨 60 | Reinforced Window | `SteelWall_8x4_Window_02` |  | 2 Silica | Start |
-| 🧪🎨 60 | Reinforced Window | `Wall_Concrete_8x4_Window_04` |  | 2 Silica | Start |
+| 🧪🎨 60 | Panel Window | `Wall_Concrete_8x4_Window_03` |  | 2 Silica | Start |
+| 🧪🎨 60 | Panel Window | `SteelWall_8x4_Window_04` |  | 2 Silica | Start |
 | 🧪🎨 60 | Reinforced Window | `Wall_Window_8x4_04` |  | 2 Silica | AWESOME Shop: Windowed Walls |
+| 🧪🎨 60 | Reinforced Window | `Wall_Concrete_8x4_Window_04` |  | 2 Silica | Start |
+| 🧪🎨 60 | Reinforced Window | `SteelWall_8x4_Window_02` |  | 2 Silica | Start |
 | 🧪🎨 60 | Roof (1 m) | `Roof_Window_02` | 8 × 8 × 1 m | 3 Concrete | Start |
 | 🧪🎨 60 | Roof (2 m) | `Roof_Window_03` | 8 × 8 × 2 m | 3 Concrete | Start |
 | 🧪🎨 60 | Roof (4 m) | `Roof_Window_04` | 8 × 8 × 4 m | 3 Concrete | Start |
 | 🧪🎨 60 | Single Window | `SteelWall_8x4_Window_01` |  | 2 Silica | Start |
-| 🧪🎨 60 | Single Window | `Wall_Concrete_8x4_Window_01` |  | 2 Silica | Start |
 | 🧪🎨 60 | Single Window | `Wall_Window_8x4_01` |  | 2 Silica | AWESOME Shop: Windowed Walls |
+| 🧪🎨 60 | Single Window | `Wall_Concrete_8x4_Window_01` |  | 2 Silica | Start |
 | 🧪🎨 60 | Triple Frame Window | `Wall_Window_8x4_07` |  | 2 Silica, 2 Steel Beam | AWESOME Shop: Steel-Framed Windows |
 
 ## Doors & gates
@@ -340,8 +340,8 @@ grid.
 |---|---|---|---|---|---|
 | ✅🎨 60 | Automated Gate | `Gate_Automated_8x4` |  | 6 Iron Plate | AWESOME Shop: Gates |
 | 🧪🎨 60 | Center Door Wall | `Wall_Concrete_CDoor_8x4` |  | 2 Concrete | Start |
-| ✅🎨 60 | Center Door Wall | `Wall_Door_8x4_01` |  | 2 Concrete | AWESOME Shop: Door Walls |
 | 🧪🎨 60 | Center Door Wall | `Wall_Door_8x4_01_Steel` |  | 2 Concrete | Start |
+| ✅🎨 60 | Center Door Wall | `Wall_Door_8x4_01` |  | 2 Concrete | AWESOME Shop: Door Walls |
 | 🧪🎨 60 | Gate Hole Wall | `SteelWall_8x4_Gate_01` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Gate Hole Wall | `Wall_Concrete_Gate_8x4` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Gate Hole Wall | `Wall_Gate_8x4_01` |  | 2 Concrete | AWESOME Shop: Gates |
@@ -349,8 +349,8 @@ grid.
 | 🧪🎨 60 | Roll-Up Gate | `BigGarageDoor_16x8_Concrete` |  | 8 Concrete | Start |
 | 🧪🎨 60 | Roll-Up Gate | `BigGarageDoor_16x8_Steel` |  | 4 Concrete, 4 Steel Beam | Start |
 | 🧪🎨 60 | Side Door Wall | `Wall_Concrete_SDoor_8x4` |  | 2 Concrete | Start |
-| ✅🎨 60 | Side Door Wall | `Wall_Door_8x4_03` |  | 2 Concrete | AWESOME Shop: Door Walls |
 | 🧪🎨 60 | Side Door Wall | `Wall_Door_8x4_03_Steel` |  | 2 Concrete | Start |
+| ✅🎨 60 | Side Door Wall | `Wall_Door_8x4_03` |  | 2 Concrete | AWESOME Shop: Door Walls |
 
 ## Roofs
 
@@ -406,9 +406,9 @@ grid.
 | ✅🎨 60 | Basic Wall (1 m) | `SteelWall_8x1` |  | 2 Concrete | Start |
 | ✅🎨 60 | Basic Wall (1 m) | `Wall_Concrete_8x1` |  | 2 Concrete | Start |
 | ✅🎨 60 | Basic Wall (1 m) | `Wall_Orange_8x1` |  | 2 Concrete | Tier 1: Base Building |
-| ✅🎨 60 | Basic Wall (4 m) | `Wall_8x4_01` |  | 2 Concrete | Tier 1: Base Building |
 | ✅🎨 60 | Basic Wall (4 m) | `Wall_8x4_02` |  | 2 Concrete | Start |
 | ✅🎨 60 | Basic Wall (4 m) | `Wall_Concrete_8x4` |  | 2 Concrete | Start |
+| ✅🎨 60 | Basic Wall (4 m) | `Wall_8x4_01` |  | 2 Concrete | Tier 1: Base Building |
 | ✅🎨 60 | Frame Wall | `Wall_Frame_01` |  | 2 Steel Beam | AWESOME Shop: Structural Frame Set |
 | 🧪🎨 60 | Inverted Ramp Wall (1 m) | `SteelWall_FlipTris_8x1` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Inverted Ramp Wall (2 m) | `SteelWall_FlipTris_8x2` |  | 2 Concrete | Start |
@@ -420,11 +420,11 @@ grid.
 | 🧪🎨 60 | Ramp Wall (8 m) | `SteelWall_Tris_8x8` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Tilted Corner Wall (4 m) | `Wall_Orange_8x4_Corner_01` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
 | 🧪🎨 60 | Tilted Corner Wall (8 m) | `Wall_Orange_8x8_Corner_01` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
-| 🧪🎨 60 | Tilted Wall (4 m) | `WallSet_Steel_Angular_8x4` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Tilted Wall (4 m) | `Wall_Concrete_Angular_8x4` |  | 2 Concrete | Start |
+| 🧪🎨 60 | Tilted Wall (4 m) | `WallSet_Steel_Angular_8x4` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Tilted Wall (4 m) | `Wall_Orange_Angular_8x4` |  | 2 Concrete | AWESOME Shop: Tilted Walls |
-| 🧪🎨 60 | Tilted Wall (8 m) | `WallSet_Steel_Angular_8x8` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Tilted Wall (8 m) | `Wall_Concrete_Angular_8x8` |  | 2 Concrete | Start |
+| 🧪🎨 60 | Tilted Wall (8 m) | `WallSet_Steel_Angular_8x8` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Tilted Wall (8 m) | `Wall_Orange_Angular_8x8` |  | 2 Concrete | AWESOME Shop: Tilted Walls |
 | ✅ 60 | Wall-Mounted Flood Light | `FloodlightWall` |  | 25 Quickwire, 4 Copper Sheet, 2 Encased Industrial Beam | AWESOME Shop: Flood Lights |
 | ⛔ legacy | Inverted Ramp Wall (1 m) | `Wall_Concrete_FlipTris_8x1` |  |  |  |
@@ -444,15 +444,15 @@ grid.
 | ⛔ legacy | Ramp Wall (8 m) | `Wall_Concrete_Tris_8x8` |  |  |  |
 | ⛔ legacy | Ramp Wall (8 m) | `Wall_Orange_Tris_8x8` |  |  |  |
 |  | Tilted Concave Wall (4 m) | `Wall_Concrete_8x4_Corner_2` | 8 m | 2 Concrete | Start |
-|  | Tilted Concave Wall (4 m) | `Wall_Orange_8x4_Corner_02` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
 |  | Tilted Concave Wall (4 m) | `Wall_Steel_8x4_Corner_2` | 8 m | 2 Concrete | Start |
+|  | Tilted Concave Wall (4 m) | `Wall_Orange_8x4_Corner_02` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
 |  | Tilted Concave Wall (8 m) | `Wall_Concrete_8x8_Corner_2` | 8 m | 2 Concrete | Start |
-|  | Tilted Concave Wall (8 m) | `Wall_Orange_8x8_Corner_02` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
 |  | Tilted Concave Wall (8 m) | `Wall_Steel_8x8_Corner_2` | 8 m | 2 Concrete | Start |
-|  | Tilted Corner Wall (4 m) | `Wall_Concrete_8x4_Corner_01` | 8 m | 2 Concrete | Start |
+|  | Tilted Concave Wall (8 m) | `Wall_Orange_8x8_Corner_02` | 8 m | 2 Concrete | AWESOME Shop: Tilted Walls |
 |  | Tilted Corner Wall (4 m) | `Wall_Steel_8x4_Corner_01` | 8 m | 2 Concrete | Start |
-|  | Tilted Corner Wall (8 m) | `Wall_Concrete_8x8_Corner_01` | 8 m | 2 Concrete | Start |
+|  | Tilted Corner Wall (4 m) | `Wall_Concrete_8x4_Corner_01` | 8 m | 2 Concrete | Start |
 |  | Tilted Corner Wall (8 m) | `Wall_Steel_8x8_Corner_01` | 8 m | 2 Concrete | Start |
+|  | Tilted Corner Wall (8 m) | `Wall_Concrete_8x8_Corner_01` | 8 m | 2 Concrete | Start |
 | ⛔ legacy | Tilted Wall (4 m) | `SteelWall_8x4` |  |  |  |
 
 ## Beams, pillars & structure
@@ -503,20 +503,20 @@ grid.
 | 🧪🎨 60 | Construction Fence | `ChainLinkFence` |  | 2 Iron Rod | AWESOME Shop: Construction Fences |
 | 🧪🎨 60 | Corner Road Barrier | `Barrier_Corner` |  | 1 Concrete | AWESOME Shop: Road Barriers |
 | ✅ 60 | Elevator Floor Stop | `ElevatorFloorStop` |  | 2 Modular Frame, 1 Motor, 5 Steel Beam | AWESOME Shop: Personnel Elevator |
-| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_FicsitSet_8x1_01` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
 | 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_GripMetal_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_FicsitSet_8x1_01` | 8 × 8 × 1 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
+| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_Concrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_Asphalt_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation Stairs (1 m) | `Stair_PolishedConcrete_8x1` | 8 × 8 × 1 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_FicsitSet_8x2_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
 | 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_GripMetal_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_FicsitSet_8x2_01` | 8 × 8 × 2 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
+| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_Concrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_Asphalt_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation Stairs (2 m) | `Stair_PolishedConcrete_8x2` | 8 × 8 × 2 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
-| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_FicsitSet_8x4_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
 | 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_GripMetal_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_FicsitSet_8x4_01` | 8 × 8 × 4 m | 5 Concrete | AWESOME Shop: Foundation Stairs Set |
+| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_Concrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
+| 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_Asphalt_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | Foundation Stairs (4 m) | `Stair_PolishedConcrete_8x4` | 8 × 8 × 4 m | 5 Concrete | Start |
 | 🧪🎨 60 | High Barrier | `Barrier_Tall_01` |  | 1 Concrete, 1 Iron Plate | AWESOME Shop: Metal Barriers |
 | 🧪🎨 60 | Industrial Railing | `Fence_01` |  | 4 Iron Rod | Start |
@@ -673,15 +673,15 @@ grid.
 | ✅🎨 60 | Conveyor Throughput Monitor | `ConveyorMonitor` |  | 4 Reinforced Iron Plate, 10 Quartz Crystal, 1 Crystal Oscillator | AWESOME Shop: Conveyor Throughput Monitor |
 | ✅ 60 | Conveyor Wall Hole | `ConveyorWallHole` |  | 2 Iron Rod, 2 Iron Plate, 2 Concrete | AWESOME Shop: Conveyor Wall Hole |
 | ✅ 60 | Conveyor Wall Mount | `ConveyorPoleWall` |  | 2 Iron Rod, 2 Iron Plate, 2 Concrete | AWESOME Shop: Conveyor Wall Mount |
+| ✅🎨 60 | Conveyor Wall x 1 | `Wall_Conveyor_8x4_03_Steel` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 1 | `Wall_Concrete_8x4_ConveyorHole_01` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 1 | `Wall_Conveyor_8x4_03` |  | 2 Concrete | AWESOME Shop: Conveyor Walls |
-| ✅🎨 60 | Conveyor Wall x 1 | `Wall_Conveyor_8x4_03_Steel` |  | 2 Concrete | Start |
+| ✅ 60 | Conveyor Wall x 2 | `Wall_Conveyor_8x4_02_Steel` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 2 | `Wall_Concrete_8x4_ConveyorHole_02` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 2 | `Wall_Conveyor_8x4_02` |  | 2 Concrete | AWESOME Shop: Conveyor Walls |
-| ✅ 60 | Conveyor Wall x 2 | `Wall_Conveyor_8x4_02_Steel` |  | 2 Concrete | Start |
+| ✅ 60 | Conveyor Wall x 3 | `Wall_Conveyor_8x4_01_Steel` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 3 | `Wall_Concrete_8x4_ConveyorHole_03` |  | 2 Concrete | Start |
 | ✅ 60 | Conveyor Wall x 3 | `Wall_Conveyor_8x4_01` |  | 2 Concrete | AWESOME Shop: Conveyor Walls |
-| ✅ 60 | Conveyor Wall x 3 | `Wall_Conveyor_8x4_01_Steel` |  | 2 Concrete | Start |
 | 🧪🎨 60 | Perpendicular Wall Conveyor | `Wall_Conveyor_8x4_04` |  | 3 Iron Plate, 3 Concrete | Start |
 | 🧪🎨 60 | Perpendicular Wall Conveyor | `Wall_Conveyor_8x4_04_Steel` |  | 3 Iron Plate, 3 Concrete | Start |
 | ✅ 60 | Programmable Splitter | `ConveyorAttachmentSplitterProgrammable` |  | 1 Heavy Modular Frame, 2 Computer, 5 AI Limiter | MAM: Programmable Splitter |

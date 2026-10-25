@@ -8,6 +8,9 @@ Serves studio/index.html and a small JSON API on 127.0.0.1 only:
   POST /api/save                      apply edits (keep/move/recolour/duplicate/delete); old file kept in history/
   GET  /api/sessions                  the game's save folders that hold blueprints
   POST /api/install                   copy a build into a save's blueprint folder
+  GET  /planner                       production planner page (machines, resources, power)
+  GET  /api/items, /api/recipes?item= items that can be produced; recipes for one item
+  POST /api/plan                      {targets: [[item, rate]], use: [recipe], clock, miner, purity}
 Each build is a folder: <creations>/<folder>/<Name>.sbp (+ .sbpcfg, build.py, history/).
 """
 import argparse, json, math, re, shutil, sys, time
@@ -19,6 +22,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'scripts'))
 from sbp import (Blueprint, short, get_float, get_color, set_color, paint_key, sessions,
                  blueprints_root, install, size_name)
+import calc
 
 CREATIONS = None
 SAFE = re.compile(r'^[\w .\-\[\]()&,+]+$')
@@ -170,6 +174,20 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if u.path in ('/', '/index.html'):
                 return self.send(200, (HERE / 'index.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path in ('/planner', '/planner.html'):
+                return self.send(200, (HERE / 'planner.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path == '/api/items':
+                items = calc.db()['items']
+                return self.send(200, sorted(
+                    ([k, v['name'], v['form']] for k, v in items.items() if calc.producible(k) and v['name']),
+                    key=lambda x: x[1]))
+            if u.path == '/api/recipes':
+                item = q['item'][0]
+                rs = calc.db()['recipes']
+                return self.send(200, [dict(id=k, name=rs[k]['name'], alternate=rs[k]['alternate'],
+                                            default=k == calc.default_recipe(item),
+                                            machine=calc.db()['machines'][rs[k]['machine']]['name'])
+                                       for k in sorted(calc.producers(item), key=lambda k: (rs[k]['alternate'], rs[k]['name']))])
             if u.path == '/api/creations':
                 return self.send(200, list_creations())
             if u.path == '/api/creation':
@@ -190,6 +208,14 @@ class Handler(BaseHTTPRequestHandler):
             if u.path == '/api/install':
                 code, body = do_install(req)
                 return self.send(code, body)
+            if u.path == '/api/plan':
+                targets = [(calc.find_item(t[0]), float(t[1])) for t in req.get('targets', []) if float(t[1]) > 0]
+                if not targets:
+                    return self.send(200, None)
+                return self.send(200, calc.plan(targets, use=req.get('use', []),
+                                                clock=float(req.get('clock', 100)) / 100,
+                                                miner=req.get('miner', 'MinerMk2'),
+                                                purity=req.get('purity', 'normal')))
             return self.send(404, dict(error='not found'))
         except Exception as e:
             return self.send(400, dict(error=str(e)))
