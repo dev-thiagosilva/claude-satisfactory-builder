@@ -388,10 +388,45 @@ class Library:
         return bp
 
 
+_ASSETS = None
+
+
+def assets():
+    """Every buildable in the game (library/assets.json, from the game's Docs): name, category,
+    size_m, cost [[item, n]], cost_per_m (length-based pieces), unlock. Keys are short class
+    names like 'Beam_Painted'. See library/ASSETS.md for the readable list."""
+    global _ASSETS
+    if _ASSETS is None:
+        _ASSETS = json.loads((LIBRARY_DIR / 'assets.json').read_text(encoding='utf-8'))
+    return _ASSETS
+
+
 def item(name):
     """Class path of a cost item, e.g. item('Desc_SteelPlate') (Steel Beam), for Blueprint.cost."""
-    items = json.loads((LIBRARY_DIR / 'items.json').read_text())
-    return items[name]
+    key = name[len('Desc_'):] if name.startswith('Desc_') else name
+    paths = assets().get('item_paths', {})
+    if key in paths:
+        return paths[key]
+    return json.loads((LIBRARY_DIR / 'items.json').read_text())[name]
+
+
+def estimate_cost(bp):
+    """Build cost of every piece, from the game's own recipes: [(item class path, amount)].
+    Length-based pieces (beams, …) are charged per started length unit; the game may round
+    slightly differently, so call it an estimate when telling the player."""
+    import math
+    table, total = assets()['assets'], {}
+    for o in bp.actors():
+        a = table.get(short(o['cls']))
+        if not a:
+            continue
+        mult = 1
+        if a.get('cost_per_m'):
+            length = (get_float(o, 'mLength') or 0) / 100
+            mult = max(1, math.ceil(length * a['cost_per_m'] - 1e-6))
+        for it, n in a['cost']:
+            total[it] = total.get(it, 0) + n * mult
+    return [(item(i), int(math.ceil(n))) for i, n in sorted(total.items(), key=lambda kv: -kv[1])]
 
 
 def blueprints_root():

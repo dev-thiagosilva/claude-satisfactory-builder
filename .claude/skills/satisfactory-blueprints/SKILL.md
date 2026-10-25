@@ -46,7 +46,7 @@ overwrite if they ask for that.
 
 ```python
 import sys; sys.path.insert(0, r'<skill dir>/scripts')
-from sbp import Blueprint, get_float, set_float, get_color, set_color, short
+from sbp import Blueprint, Library, get_float, set_float, get_color, set_color, short, estimate_cost
 
 bp = Blueprint.load(src)
 beam = next(o for o in bp.actors() if short(o['cls']) == 'Beam_Painted')
@@ -65,9 +65,10 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
 
 ## Build something new (e.g. from a photo or an idea)
 
-1. **Pick pieces from the shipped library.** `library/CATALOG.md` lists every piece type with its
-   category, the game versions that have it, and whether it takes any colour
-   (`python -I scripts/sbp.py library` prints the same). `Library.load(needs=[...],
+1. **Pick pieces from `library/ASSETS.md`**, the list of every buildable piece in the game with
+   name, category, size, real build cost and unlock. ✅ marks pieces that have a sample in the
+   shipped library, so you can place them; 🎨 marks pieces that take any colour.
+   `python -I scripts/sbp.py library` prints the ready ones per game version. `Library.load(needs=[...],
    custom_paint=True)` picks one version that has them all. Mixing pieces across versions isn't
    verified, so don't. To use a piece that only exists in the user's own blueprints, run
    `sbp.py catalog "<blueprints root>"` and clone from their file, with their OK.
@@ -90,9 +91,8 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
    your **left**. Mirror x (positions and directions) when you design in a normal right-handed
    frame, or the build comes out flipped. The viewer reproduces this, so check it with
    `setView('front')`.
-6. **Header.** Recipes for every piece type used; cost from known rates (painted beam ≈ 1 Steel
-   Beam per 4 m; thin window wall 2 Silica + ~6 Steel Beam; 1 m concrete foundation ≈ 5
-   Concrete). Treat the cost as an estimate and say so.
+6. **Header.** Set `bp.recipes = lib.recipes_for([...])` for every piece type used, and set
+   `bp.cost = estimate_cost(bp)`, which uses the game's own build recipes from `assets.json`.
 7. **Install.** `write_sbpcfg(path, description)` writes the companion file. Then
    `install(sbp, session)` copies both into the save's blueprint folder, and refuses to overwrite.
 
@@ -104,8 +104,8 @@ Before saving a new or edited blueprint:
   `(0, 0, sin θ/2, cos θ/2)`, so 90° is `(0, 0, 0.7071, 0.7071)`.
 - **Recipes.** `bp.recipes` must list every building recipe used, or the game may treat the
   blueprint as locked.
-- **Cost.** `bp.cost` is what the blueprint menu shows. Update it when you add or remove
-  pieces. Unknown per-piece costs can be read off another blueprint that contains that piece.
+- **Cost.** `bp.cost` is what the blueprint menu shows. Recompute it with `estimate_cost(bp)`
+  after adding or removing pieces.
 - **Belt and pipe connections** live in component data. Moving a machine doesn't move the belt
   splines attached to it, so call out reconnecting in game when the layout changes.
 - **.sbpcfg.** Copy the original's `.sbpcfg` to the new name, then edit the description if wanted.

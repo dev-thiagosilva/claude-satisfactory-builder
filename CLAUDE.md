@@ -57,8 +57,9 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `install/satisfactory-builder/SKILL.md` | The skill players install. Fetches/updates this repo and hands over to this file |
 | `.claude/skills/satisfactory-blueprints/` | Project skill with all the tooling. **Load it before any blueprint work** |
 | `  scripts/sbp.py` | Read/write/edit/render `.sbp`; `Library`, `install`, `sessions`, `write_sbpcfg` |
-| `  library/` | **Building-piece library**: `donors-v<NN>.sbp` sample pieces per game version, `index.json`, `items.json` (cost items) |
-| `  library/CATALOG.md` | Every piece you can build with: category, versions, whether it takes any colour |
+| `  library/ASSETS.md` | **Every buildable piece in the game** (546): name, category, size, real build cost, unlock, and whether it's **ready** (has a library sample). Start here when choosing pieces |
+| `  library/assets.json` | The same data for code (`assets()`, `estimate_cost(bp)` in `sbp.py`) |
+| `  library/donors-v<NN>.sbp` | Sample pieces per game version that builds copy from (`index.json` lists them) |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds |
 | `  examples/heydar_aliyev_center.py` | Worked example: a famous building traced from a photo |
 | `  references/format.md` | Byte-level format, piece sizes and origins, designer limits |
@@ -71,7 +72,9 @@ own. Keep anything it needs inside its folder.
 
 ## Building a blueprint
 
-1. **Choose pieces from the library** (`library/CATALOG.md`). Painted beams make curves and
+1. **Choose pieces from `library/ASSETS.md`.** It lists everything the game can build. Only pieces
+   marked ✅ can be placed today; for the others, say the piece isn't in the library yet and
+   suggest the closest ready one. Painted beams make curves and
    surfaces at any angle and length. Thin window walls make framed glass. Foundations make floors
    and plazas. Walls, roofs, ramps and quarter pipes make conventional buildings. Prefer pieces
    marked "any colour" when colour matters.
@@ -79,7 +82,7 @@ own. Keep anything it needs inside its folder.
    `examples/heydar_aliyev_center.py`:
    `lib = Library.load(needs=[...], custom_paint=...)`, `bp = lib.new_blueprint(size='medium')`,
    `bp.add_copy(lib.donor(type), lib.bp, pos_cm, quat)`, `set_float(o, 'mLength', cm)`,
-   `set_color(o, rgba)`, then `bp.recipes = lib.recipes_for(...)`, `bp.cost = [(item(...), n)]`,
+   `set_color(o, rgba)`, then `bp.recipes = lib.recipes_for(...)`, `bp.cost = estimate_cost(bp)`,
    `bp.save(...)`, `write_sbpcfg(...)`. Everything in one blueprint comes from one library version,
    which `Library.load` guarantees.
 3. **Check it yourself first.** Open it in the studio (next section), and use
@@ -119,8 +122,8 @@ Rules that bite:
   `(0, 0, sin θ/2, cos θ/2)`. Beams extend along local +X from their origin, 0.5 × 0.5 m section.
 - **`dims`** (8 m units) comes from the size preset and must cover the pieces: x and y in
   ±dims·400 cm, z in 0…dims_z·800 cm.
-- **Header**: recipes for every piece type, and an estimated cost (painted beam ≈ 1 Steel Beam
-  per 4 m; thin window wall 2 Silica + ~6 Steel Beam; 1 m concrete foundation ≈ 5 Concrete).
+- **Header**: recipes for every piece type, and the cost from `estimate_cost(bp)`, which uses the
+  game's own build recipes. Length-based pieces may round slightly differently in game.
 - **Machines and logistics**: the library only holds samples that link to nothing else, so
   machines come without belts or power, and most belts, pipes and power lines are missing (the
   catalogue shows the few unconnected ones). The player wires things up in game.
@@ -136,7 +139,11 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 - After changing `sbp.py`, round-trip a large set of real blueprints and confirm every file is
   byte-identical (`roundtrip` command; the maintainer's set is 442 files, object versions 36–60).
 - To grow the library, run `scripts/build_library.py "<folder of blueprints>"` over blueprints
-  that contain the new pieces, check `CATALOG.md`, and commit `library/`. It keeps only samples
+  that contain the new pieces, check `ASSETS.md` (its ✅ column refreshes), and commit `library/`.
+  It keeps only samples
   that link to nothing outside themselves, and it records no file names.
+- After a game update, regenerate the full piece list from the game's modding data:
+  `scripts/build_assets.py "<game>/CommunityResources/Docs/en-US.json"`. It writes
+  `assets.json` and `ASSETS.md` with names and numbers only, no description text.
 - Not yet supported: belts/pipes/power lines in the library, drawing splines in the preview,
   exact game meshes in the preview.

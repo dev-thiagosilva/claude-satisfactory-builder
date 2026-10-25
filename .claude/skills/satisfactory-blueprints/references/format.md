@@ -32,7 +32,7 @@ bytes  extra header            object_version >= ~58: engine/custom-version bloc
                                ("++FactoryGame+rel-main-1.2.0", GUID+int list). Copy verbatim.
 ```
 The cost list is what the game shows in the blueprint menu. When adding pieces, update it
-(sum each piece's build cost) or the in-game preview will understate the price.
+(`estimate_cost(bp)` sums each piece's build recipe), or the in-game preview will understate the price.
 The recipe list must include every building recipe used, or the blueprint may show as locked.
 
 ## 3. Compressed chunks

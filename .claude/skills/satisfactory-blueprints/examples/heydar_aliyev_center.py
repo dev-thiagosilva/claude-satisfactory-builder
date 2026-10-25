@@ -14,7 +14,7 @@ import argparse, math, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
 from sbp import (Blueprint, Library, short, set_float, get_color, set_color, item, install,
-                 write_sbpcfg, SIZES, DEFAULT_SIZE, size_limits_m, out_of_bounds)
+                 write_sbpcfg, SIZES, DEFAULT_SIZE, size_limits_m, out_of_bounds, estimate_cost)
 
 ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
 ap.add_argument('--size', choices=list(SIZES), default=DEFAULT_SIZE)
@@ -254,9 +254,7 @@ for x in tiles(-HALF, HALF):
 
 # ---------- header ----------
 n_found = sum(1 for o in bp.objects if short(o['cls']) == 'Foundation_Concrete_8x1')
-bp.cost = [(item('Desc_SteelPlate'), math.ceil(beam_len / 4 + 6 * panes)),   # estimate
-           (item('Desc_Silica'), 2 * panes),
-           (item('Desc_Cement'), 5 * n_found)]
+bp.cost = estimate_cost(bp)   # from the game's own build recipes
 bp.recipes = lib.recipes_for(PIECES)
 Path(OUT).parent.mkdir(parents=True, exist_ok=True)
 bp.save(OUT)
