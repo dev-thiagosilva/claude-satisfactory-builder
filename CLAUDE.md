@@ -59,11 +59,12 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `  scripts/sbp.py` | Read/write/edit/render `.sbp`; `Library`, `install`, `sessions`, `write_sbpcfg` |
 | `  library/ASSETS.md` | **Every buildable piece in the game** (546), grouped by design purpose, with a **quick picker** ("I want X → use Y") and per-category use/tips/go-to pieces; name, size, real cost, unlock, and whether it's **ready**. Start here when choosing pieces |
 | `  library/assets.json` | The same data for code (`assets()`, `estimate_cost(bp)` in `sbp.py`) |
-| `  library/donors-v<NN>.sbp` | Sample pieces per game version that builds copy from (`index.json` lists them) |
+| `  library/donors-v60.sbp` | Sample pieces in game-1.2 format that builds copy from (`index.json` lists them). The project targets **game 1.2 only** |
+| `  scripts/sav.py` | Read-only reader for 1.2 save files (used to take building samples from a world) |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds |
 | `  examples/heydar_aliyev_center.py` | Worked example: a famous building traced from a photo |
 | `  references/format.md` | Byte-level format, piece sizes and origins, designer limits |
-| `  scripts/build_library.py` | Maintainer tool that regenerates `library/` from a folder of blueprints |
+| `  scripts/build_library.py` | Maintainer tool that regenerates `library/` from 1.1/1.2 blueprints and save files |
 | `.local/blueprints/<name>/` | The player's builds: `build.py`, the `.sbp`/`.sbpcfg`, reference images. **Gitignored** |
 | `out/` | Scratch output (previews, test saves). Gitignored |
 
@@ -138,18 +139,26 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 
 ## Maintaining this repo
 
+- **Game 1.2 only.** The library and every build are in game-1.2 format (object version 60).
+  The reader still opens older blueprints (Update 8 onwards) so players can look at old designs.
 - After changing `sbp.py`, round-trip a large set of real blueprints and confirm every file is
-  byte-identical (`roundtrip` command; the maintainer's set is 442 files, object versions 36–60).
-- To grow the library, run `scripts/build_library.py "<folder of blueprints>"` over blueprints
-  that contain the new pieces, check `ASSETS.md` (its ready column refreshes), and commit
-  `library/`. Run `build_assets.py` first so `assets.json` exists. For each game version it:
-  - takes one clean sample per piece type;
-  - for pieces only ever seen wired up, removes the links to other buildings (empty ports);
-  - for part-less structural pieces nobody has built, makes a sample from the closest piece of
-    the same kind by swapping class and recipe (1.0-format versions 36–46 only; marked 🧪);
-  - skips anything carrying a player's account data.
-  It keeps only samples
-  that link to nothing outside themselves, and it records no file names.
+  byte-identical (`roundtrip` command; the maintainer's set is 443 files).
+- To grow the library: run `scripts/build_assets.py` first (so `assets.json` exists), then
+  `scripts/build_library.py "<blueprints root>" --save "<world>.sav"` over 1.1/1.2 blueprints and
+  saves that contain the new pieces. Check `ASSETS.md` (its ready column refreshes), run
+  `examples/piece_test.py`, and commit `library/`. It:
+  - takes one sample per piece type, clean if possible. Pieces only ever seen wired up get their
+    links to other buildings removed (empty ports, no power);
+  - samples train platforms together with their built-in track (they don't work without it);
+  - makes every lightweight structure (foundations, ramps, walls, roofs, beams, pillars,
+    walkways…) from a real 1.2 structure sample by swapping class and recipe, since in 1.2 they
+    share one property set. Part-less pieces like doors and signs come from their own kind;
+    machine models (MinerMk1/2/3) from each other. Pieces made this way are marked 🧪;
+  - adds a custom-RGB paint variant by copying a real 1.2 customization block;
+  - skips anything carrying a player's account data, takes no signs from saves (player text),
+    drops the `BuiltBy` player handle, and records no file names.
+  New object ids keep the original digit count, because references also sit inside longer
+  strings whose stored sizes must not change. `sav.py` documents the save layout.
 - Confirm 🧪 pieces in game with `examples/piece_test.py`, which writes four test blueprints
   with one of every ready piece. Place them in a sandbox save and record broken pieces. A
   confirmed piece can be promoted by building it in game and re-running `build_library.py` on
@@ -157,5 +166,9 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 - After a game update, regenerate the full piece list from the game's modding data:
   `scripts/build_assets.py "<game>/CommunityResources/Docs/en-US.json"`. It writes
   `assets.json` and `ASSETS.md` with names and numbers only, no description text.
-- Not yet supported: belts/pipes/power lines in the library, drawing splines in the preview,
-  exact game meshes in the preview.
+- Still missing from the library (see ASSETS.md): power lines (need two ends), some hypertube
+  pieces, and pieces not in the maintainer's world yet: Biomass Burner, Nuclear Power Plant, Power Tower, Priority
+  Merger/Power Switch, Pipeline T-Junction, Street Light, Flood Light Tower, Buffer Stop, Fluid
+  Truck Station, landing/jump pads, and unique buildings (HUB, Space Elevator, MAM, designers).
+  Building one of each in a 1.2 world and re-running `build_library.py --save` adds them.
+- Not yet supported: drawing belt/pipe splines in the preview, exact game meshes in the preview.

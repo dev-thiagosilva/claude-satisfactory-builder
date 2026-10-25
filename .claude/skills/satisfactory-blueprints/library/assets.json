@@ -30,6 +30,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Alien Power Augmenter",
    "native": "FGBuildablePowerBooster",
    "recipe": "AlienPowerBuilding",
@@ -55,6 +56,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Assembler",
    "native": "FGBuildableManufacturer",
    "recipe": "AssemblerMk1",
@@ -72,6 +74,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Corner Road Barrier",
    "native": "FGBuildableBarrierCorner",
    "recipe": "Barrier_Corner",
@@ -93,6 +96,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Low Barrier",
    "native": "FGBuildableWallLightweight",
    "recipe": "Barrier_Low_01",
@@ -117,6 +121,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "High Barrier",
    "native": "FGBuildableWallLightweight",
    "recipe": "Barrier_Tall_01",
@@ -137,6 +142,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Metal Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam",
@@ -158,6 +164,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Braided Cable",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Cable",
@@ -179,6 +186,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Braided Cable Cluster",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Cable_Cluster",
@@ -200,6 +208,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Round Concrete Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Concrete",
@@ -221,6 +230,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Beam Connector",
    "native": "FGBuildableFactoryBuilding",
    "recipe": "Beam_Connector",
@@ -238,6 +248,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Double Beam Connector",
    "native": "FGBuildableFactoryBuilding",
    "recipe": "Beam_Connector_Double",
@@ -255,6 +266,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Cross Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Cross",
@@ -276,6 +288,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "H-Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam_H",
@@ -297,6 +310,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Painted Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Painted",
@@ -318,6 +332,7 @@
     ]
    ],
    "cost_per_m": 0.25,
+   "lightweight": true,
    "name": "Shelf Beam",
    "native": "FGBuildableBeam",
    "recipe": "Beam_Shelf",
@@ -339,6 +354,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Beam Support",
    "native": "FGBuildableFactoryBuilding",
    "recipe": "Beam_Support",
@@ -360,6 +376,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Roll-Up Gate",
    "native": "FGBuildableDoor",
    "recipe": "BigGarageDoor_16x8",
@@ -380,6 +397,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Roll-Up Gate",
    "native": "FGBuildableDoor",
    "recipe": "BigGarageDoor_16x8_Concrete",
@@ -404,6 +422,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Roll-Up Gate",
    "native": "FGBuildableDoor",
    "recipe": "BigGarageDoor_16x8_Steel",
@@ -436,6 +455,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Blender",
    "native": "FGBuildableManufacturer",
    "recipe": "Blender",
@@ -465,6 +485,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Blueprint Designer Mk.1",
    "native": "FGBuildableBlueprintDesigner",
    "recipe": "BlueprintDesigner",
@@ -494,6 +515,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Blueprint Designer Mk.2",
    "native": "FGBuildableBlueprintDesigner",
    "recipe": "BlueprintDesigner_Mk2",
@@ -506,6 +528,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Blueprint Designer Mk.3",
    "native": "FGBuildableBlueprintDesigner",
    "recipe": null,
@@ -527,6 +550,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Candy Cane",
    "native": "FGBuildable",
    "recipe": "CandyCaneDecor",
@@ -539,6 +563,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Catwalk Corner",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": null,
@@ -562,6 +587,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Catwalk Intersection",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Catwalk_Cross",
@@ -585,6 +611,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Catwalk Ramp",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Catwalk_Ramp",
@@ -608,6 +635,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Catwalk Stairs",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Catwalk_Stairs",
@@ -631,6 +659,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Straight Catwalk",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Catwalk_Straight",
@@ -654,6 +683,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Catwalk T-Junction",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Catwalk_T",
@@ -681,6 +711,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Ceiling Light",
    "native": "FGBuildableLightSource",
    "recipe": "CeilingLight",
@@ -710,6 +741,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Dimensional Depot Uploader",
    "native": "FGCentralStorageContainer",
    "recipe": "CentralStorage",
@@ -727,6 +759,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Construction Fence",
    "native": "FGBuildableWallLightweight",
    "recipe": "ChainLinkFence",
@@ -747,6 +780,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Road Barrier",
    "native": "FGBuildableWallLightweight",
    "recipe": "Concrete_Barrier_01",
@@ -771,6 +805,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Constructor",
    "native": "FGBuildableManufacturer",
    "recipe": "ConstructorMk1",
@@ -800,6 +835,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Converter",
    "native": "FGBuildableManufacturerVariablePower",
    "recipe": "Converter",
@@ -821,6 +857,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Merger",
    "native": "FGBuildableAttachmentMerger",
    "recipe": "ConveyorAttachmentMerger",
@@ -846,6 +883,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Priority Merger",
    "native": "FGBuildableMergerPriority",
    "recipe": "ConveyorAttachmentMergerPriority",
@@ -867,6 +905,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Splitter",
    "native": "FGBuildableAttachmentSplitter",
    "recipe": "ConveyorAttachmentSplitter",
@@ -892,6 +931,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Programmable Splitter",
    "native": "FGBuildableSplitterSmart",
    "recipe": "ConveyorAttachmentSplitterProgrammable",
@@ -917,6 +957,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Smart Splitter",
    "native": "FGBuildableSplitterSmart",
    "recipe": "ConveyorAttachmentSplitterSmart",
@@ -934,6 +975,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.1",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk1",
@@ -951,6 +993,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.2",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk2",
@@ -968,6 +1011,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.3",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk3",
@@ -985,6 +1029,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.4",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk4",
@@ -1002,6 +1047,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.5",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk5",
@@ -1023,6 +1069,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Belt Mk.6",
    "native": "FGBuildableConveyorBelt",
    "recipe": "ConveyorBeltMk6",
@@ -1048,6 +1095,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Ceiling Mount",
    "native": "FGBuildablePoleBase",
    "recipe": "ConveyorCeilingAttachment",
@@ -1065,6 +1113,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.1",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk1",
@@ -1082,6 +1131,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.2",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk2",
@@ -1099,6 +1149,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.3",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk3",
@@ -1116,6 +1167,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.4",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk4",
@@ -1133,6 +1185,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.5",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk5",
@@ -1154,6 +1207,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Mk.6",
    "native": "FGBuildableConveyorLift",
    "recipe": "ConveyorLiftMk6",
@@ -1179,6 +1233,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Throughput Monitor",
    "native": "FGBuildableConveyorMonitor",
    "recipe": "ConveyorMonitor",
@@ -1204,6 +1259,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Pole",
    "native": "FGBuildablePoleConveyor",
    "recipe": "ConveyorPole",
@@ -1231,6 +1287,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Stackable Conveyor Pole",
    "native": "FGBuildablePoleStackable",
    "recipe": "ConveyorPoleStackable",
@@ -1256,6 +1313,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall Mount",
    "native": "FGBuildable",
    "recipe": "ConveyorPoleWall",
@@ -1281,6 +1339,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall Hole",
    "native": "FGBuildable",
    "recipe": "ConveyorWallHole",
@@ -1298,6 +1357,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_AsphaltInCorner_8x4",
@@ -1319,6 +1379,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_ConcretePolishedInCorner_8x4",
@@ -1340,6 +1401,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_ConcreteInCorner_8x4",
@@ -1361,6 +1423,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_GripInCorner_8x4",
@@ -1382,6 +1445,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_AsphaltOutCorner_8x4",
@@ -1403,6 +1467,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_ConcretePolishedOutCorner_8x4",
@@ -1424,6 +1489,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_ConcreteOutCorner_8x4",
@@ -1445,6 +1511,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_GripOutCorner_8x4",
@@ -1466,6 +1533,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_Asphalt_8x4",
@@ -1487,6 +1555,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_ConcretePolished_8x4",
@@ -1508,6 +1577,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_Concrete_8x4",
@@ -1529,6 +1599,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "DownQuarterPipe_Grip_8x4",
@@ -1566,6 +1637,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Drone Port",
    "native": "FGBuildableDroneStation",
    "recipe": "DroneStation",
@@ -1587,6 +1659,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Personnel Elevator",
    "native": "FGBuildableElevator",
    "recipe": "Elevator",
@@ -1612,6 +1685,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Elevator Floor Stop",
    "native": "FGBuildableElevatorFloorStop",
    "recipe": "ElevatorFloorStop",
@@ -1629,6 +1703,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Industrial Railing",
    "native": "FGBuildableWallLightweight",
    "recipe": "Fence_01",
@@ -1649,6 +1724,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Floor",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Flat_Frame_01",
@@ -1678,6 +1754,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Flood Light Tower",
    "native": "FGBuildableFloodlight",
    "recipe": "FloodlightPole",
@@ -1703,6 +1780,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Wall-Mounted Flood Light",
    "native": "FGBuildableFloodlight",
    "recipe": "FloodlightWall",
@@ -1732,6 +1810,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Fluid Truck Station",
    "native": "FGBuildableDockingStation",
    "recipe": "FluidTruckStation",
@@ -1753,6 +1832,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Glass Frame Foundation",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "FoundationGlass_01",
@@ -1782,6 +1862,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Floor Hole",
    "native": "FGBuildablePassthroughPipeHyper",
    "recipe": "FoundationPassthrough_Hypertube",
@@ -1807,6 +1888,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Lift Floor Hole",
    "native": "FGBuildablePassthrough",
    "recipe": "FoundationPassthrough_Lift",
@@ -1832,6 +1914,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Floor Hole",
    "native": "FGBuildablePassthrough",
    "recipe": "FoundationPassthrough_Pipe",
@@ -1849,6 +1932,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_8x1_01",
@@ -1870,6 +1954,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_8x2_01",
@@ -1891,6 +1976,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_8x4_01",
@@ -1912,6 +1998,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Asphalt_8x1",
@@ -1933,6 +2020,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Asphalt_8x2",
@@ -1954,6 +2042,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Asphalt_8x4",
@@ -1975,6 +2064,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_ConcretePolished_8x1",
@@ -1991,6 +2081,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": null,
@@ -2012,6 +2103,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_ConcretePolished_8x4",
@@ -2033,6 +2125,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Concrete_8x1",
@@ -2054,6 +2147,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Concrete_8x2",
@@ -2075,6 +2169,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Concrete_8x4",
@@ -2096,6 +2191,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Foundation",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Frame_01",
@@ -2117,6 +2213,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Metal_8x1",
@@ -2138,6 +2235,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Metal_8x2",
@@ -2159,6 +2257,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Foundation_Metal_8x4",
@@ -2188,6 +2287,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Foundry",
    "native": "FGBuildableManufacturer",
    "recipe": "SmelterMk1",
@@ -2209,6 +2309,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Resource Well Extractor",
    "native": "FGBuildableFrackingExtractor",
    "recipe": "FrackingExtractor",
@@ -2242,6 +2343,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Resource Well Pressurizer",
    "native": "FGBuildableFrackingActivator",
    "recipe": "FrackingSmasher",
@@ -2259,6 +2361,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Automated Gate",
    "native": "FGBuildableDoor",
    "recipe": "Gate_Automated_8x4",
@@ -2287,6 +2390,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Biomass Burner",
    "native": "FGBuildableGeneratorFuel",
    "recipe": "GeneratorBiomass_Automated",
@@ -2312,6 +2416,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Coal-Powered Generator",
    "native": "FGBuildableGeneratorFuel",
    "recipe": "GeneratorCoal",
@@ -2345,6 +2450,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Fuel-Powered Generator",
    "native": "FGBuildableGeneratorFuel",
    "recipe": "GeneratorFuel",
@@ -2378,6 +2484,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Geothermal Generator",
    "native": "FGBuildableGeneratorGeoThermal",
    "recipe": "GeneratorGeoThermal",
@@ -2411,6 +2518,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Nuclear Power Plant",
    "native": "FGBuildableGeneratorNuclear",
    "recipe": "GeneratorNuclear",
@@ -2444,6 +2552,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Particle Accelerator",
    "native": "FGBuildableManufacturerVariablePower",
    "recipe": "HadronCollider",
@@ -2469,6 +2578,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Stackable Hypertube Support",
    "native": "FGBuildablePoleStackable",
    "recipe": "HyperPoleStackable",
@@ -2494,6 +2604,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Junction",
    "native": "FGBuildablePipeHyperJunction",
    "recipe": "HyperTubeJunction",
@@ -2515,6 +2626,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Wall Hole",
    "native": "FGBuildable",
    "recipe": "HyperTubeWallHole",
@@ -2536,6 +2648,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Wall Support",
    "native": "FGBuildable",
    "recipe": "HyperTubeWallSupport",
@@ -2561,6 +2674,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Branch",
    "native": "FGBuildablePipeHyperJunction",
    "recipe": "HyperTubeTJunction",
@@ -2586,6 +2700,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Industrial Fluid Buffer",
    "native": "FGBuildablePipeReservoir",
    "recipe": "IndustrialTank",
@@ -2603,6 +2718,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Asphalt_8x1",
@@ -2624,6 +2740,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Asphalt_8x2",
@@ -2645,6 +2762,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Asphalt_8x4",
@@ -2666,6 +2784,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Concrete_8x1",
@@ -2687,6 +2806,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Concrete_8x2",
@@ -2708,6 +2828,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Concrete_8x4",
@@ -2729,6 +2850,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Asphalt_8x1",
@@ -2750,6 +2872,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Asphalt_8x2",
@@ -2771,6 +2894,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Asphalt_8x4",
@@ -2792,6 +2916,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Concrete_8x1",
@@ -2813,6 +2938,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Concrete_8x2",
@@ -2834,6 +2960,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Concrete_8x4",
@@ -2855,6 +2982,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Metal_8x1",
@@ -2876,6 +3004,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Metal_8x2",
@@ -2897,6 +3026,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Metal_8x4",
@@ -2918,6 +3048,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Polished_8x1",
@@ -2939,6 +3070,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Polished_8x2",
@@ -2960,6 +3092,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_DCorner_Polished_8x4",
@@ -2981,6 +3114,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Metal_8x1",
@@ -3002,6 +3136,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Metal_8x2",
@@ -3023,6 +3158,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Metal_8x4",
@@ -3044,6 +3180,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Polished_8x1",
@@ -3065,6 +3202,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Polished_8x2",
@@ -3086,6 +3224,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "InvertedRamp_Polished_8x4",
@@ -3107,6 +3246,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Asphalt_8x1",
@@ -3128,6 +3268,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Asphalt_8x2",
@@ -3149,6 +3290,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Asphalt_8x4",
@@ -3170,6 +3312,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Concrete_8x1",
@@ -3191,6 +3334,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Concrete_8x2",
@@ -3212,6 +3356,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Concrete_8x4",
@@ -3233,6 +3378,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Metal_8x1",
@@ -3254,6 +3400,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Metal_8x2",
@@ -3275,6 +3422,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Metal_8x4",
@@ -3296,6 +3444,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Polished_8x1",
@@ -3317,6 +3466,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Polished_8x2",
@@ -3338,6 +3488,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "InvertedRamp_UCorner_Polished_8x4",
@@ -3354,6 +3505,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Old Jump Pad",
    "native": "FGBuildableFactory",
    "recipe": null,
@@ -3379,6 +3531,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Jump Pad",
    "native": "FGBuildableJumppad",
    "recipe": "JumpPadAdjustable",
@@ -3391,6 +3544,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Old Tilted Jump Pad",
    "native": "FGBuildableFactory",
    "recipe": null,
@@ -3408,6 +3562,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Ladder",
    "native": "FGBuildableLadder",
    "recipe": "Ladder",
@@ -3435,6 +3590,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "U-Jelly Landing Pad",
    "native": "FGBuildableFactory",
    "recipe": "UJellyLandingPad",
@@ -3456,6 +3612,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Large Fan",
    "native": "FGBuildable",
    "recipe": "LargeFan",
@@ -3477,6 +3634,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Large Vent",
    "native": "FGBuildable",
    "recipe": "LargeVent",
@@ -3502,6 +3660,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Light Control Panel",
    "native": "FGBuildableLightsControlPanel",
    "recipe": "LightsControlPanel",
@@ -3523,6 +3682,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Lookout Tower",
    "native": "FGBuildable",
    "recipe": "LookoutTower",
@@ -3548,6 +3708,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "MAM",
    "native": "FGBuildableMAM",
    "recipe": "Mam",
@@ -3577,6 +3738,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Manufacturer",
    "native": "FGBuildableManufacturer",
    "recipe": "ManufacturerMk1",
@@ -3602,6 +3764,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Miner Mk.1",
    "native": "FGBuildableResourceExtractor",
    "recipe": "MinerMk1",
@@ -3631,6 +3794,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Miner Mk.2",
    "native": "FGBuildableResourceExtractor",
    "recipe": "MinerMk2",
@@ -3664,6 +3828,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Miner Mk.3",
    "native": "FGBuildableResourceExtractor",
    "recipe": "MinerMk3",
@@ -3689,6 +3854,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Oil Extractor",
    "native": "FGBuildableResourceExtractor",
    "recipe": "OilPump",
@@ -3718,6 +3884,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Refinery",
    "native": "FGBuildableManufacturer",
    "recipe": "OilRefinery",
@@ -3743,6 +3910,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Packager",
    "native": "FGBuildableManufacturer",
    "recipe": "Packager",
@@ -3760,6 +3928,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Big Pillar Support",
    "native": "FGBuildablePillarLightweight",
    "recipe": "PillarBase",
@@ -3777,6 +3946,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Small Pillar Support",
    "native": "FGBuildablePillarLightweight",
    "recipe": "PillarBase_Small",
@@ -3798,6 +3968,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Big Metal Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "PillarMiddle",
@@ -3815,6 +3986,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Big Concrete Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "PillarMiddle_Concrete",
@@ -3832,6 +4004,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Big Frame Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "PillarMiddle_Frame",
@@ -3844,6 +4017,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Pillar Top",
    "native": "FGBuildablePillarLightweight",
    "recipe": null,
@@ -3861,6 +4035,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Small Concrete Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "Pillar_Small_Concrete",
@@ -3878,6 +4053,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Small Frame Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "Pillar_Small_Frame",
@@ -3899,6 +4075,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Small Metal Pillar",
    "native": "FGBuildablePillarLightweight",
    "recipe": "Pillar_Small_Metal",
@@ -3920,6 +4097,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube",
    "native": "FGBuildablePipeHyper",
    "recipe": "PipeHyper",
@@ -3945,6 +4123,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Entrance",
    "native": "FGPipeHyperStart",
    "recipe": "PipeHyperStart",
@@ -3966,6 +4145,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hypertube Support",
    "native": "FGBuildablePolePipe",
    "recipe": "PipeHyperSupport",
@@ -3989,6 +4169,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Fluid Buffer",
    "native": "FGBuildablePipeReservoir",
    "recipe": "PipeStorageTank",
@@ -4014,6 +4195,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Stackable Pipeline Support",
    "native": "FGBuildablePoleStackable",
    "recipe": "PipeSupportStackable",
@@ -4031,6 +4213,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Mk.1",
    "native": "FGBuildablePipeline",
    "recipe": "Pipeline",
@@ -4048,6 +4231,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Junction",
    "native": "FGBuildablePipelineJunction",
    "recipe": "PipelineJunction_Cross",
@@ -4065,6 +4249,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline T-Junction",
    "native": "FGBuildablePipelineJunction",
    "recipe": "PipelineJunction_T",
@@ -4086,6 +4271,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Mk.2",
    "native": "FGBuildablePipeline",
    "recipe": "PipelineMK2",
@@ -4107,6 +4293,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Clean Pipeline Mk.2",
    "native": "FGBuildablePipeline",
    "recipe": "PipelineMK2_NoIndicator",
@@ -4128,6 +4315,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Pump Mk.1",
    "native": "FGBuildablePipelinePump",
    "recipe": "PipelinePump",
@@ -4153,6 +4341,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Pump Mk.2",
    "native": "FGBuildablePipelinePump",
    "recipe": "PipelinePumpMK2",
@@ -4174,6 +4363,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Support",
    "native": "FGBuildablePolePipe",
    "recipe": "PipeSupport",
@@ -4201,6 +4391,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Wall Support",
    "native": "FGBuildable",
    "recipe": "PipeSupportWall",
@@ -4226,6 +4417,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Pipeline Wall Hole",
    "native": "FGBuildable",
    "recipe": "PipeSupportWallHole",
@@ -4243,6 +4435,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Clean Pipeline Mk.1",
    "native": "FGBuildablePipeline",
    "recipe": "Pipeline_NoIndicator",
@@ -4276,6 +4469,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Main Portal",
    "native": "FGBuildablePortal",
    "recipe": "Portal",
@@ -4305,6 +4499,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "SPWN",
    "native": "FGBuildable",
    "recipe": "PortalPotty",
@@ -4334,6 +4529,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Satellite Portal",
    "native": "FGBuildablePortalSatellite",
    "recipe": "PortalSatellite",
@@ -4351,6 +4547,7 @@
     ]
    ],
    "cost_per_m": 0.04,
+   "lightweight": false,
    "name": "Power Line",
    "native": "FGBuildableWire",
    "recipe": "PowerLine",
@@ -4378,6 +4575,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Pole Mk.1",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerPoleMk1",
@@ -4403,6 +4601,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Pole Mk.2",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerPoleMk2",
@@ -4428,6 +4627,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Pole Mk.3",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerPoleMk3",
@@ -4449,6 +4649,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Wall Outlet Mk.1",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerPoleWall",
@@ -4470,6 +4671,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Double Wall Outlet Mk.1",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerPoleWallDouble",
@@ -4482,6 +4684,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Double Wall Outlet Mk.2",
    "native": "FGBuildablePowerPole",
    "recipe": null,
@@ -4494,6 +4697,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Double Wall Outlet Mk.3",
    "native": "FGBuildablePowerPole",
    "recipe": null,
@@ -4506,6 +4710,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Wall Outlet Mk.2",
    "native": "FGBuildablePowerPole",
    "recipe": null,
@@ -4518,6 +4723,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Wall Outlet Mk.3",
    "native": "FGBuildablePowerPole",
    "recipe": null,
@@ -4543,6 +4749,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Storage",
    "native": "FGBuildablePowerStorage",
    "recipe": "PowerStorageMk1",
@@ -4568,6 +4775,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Switch",
    "native": "FGBuildableCircuitSwitch",
    "recipe": "PowerSwitch",
@@ -4593,6 +4801,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Tower",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerTower",
@@ -4618,6 +4827,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Power Tower Platform",
    "native": "FGBuildablePowerPole",
    "recipe": "PowerTowerPlatform",
@@ -4643,6 +4853,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Priority Power Switch",
    "native": "FGBuildablePriorityPowerSwitch",
    "recipe": "PriorityPowerSwitch",
@@ -4676,6 +4887,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Quantum Encoder",
    "native": "FGBuildableManufacturerVariablePower",
    "recipe": "QuantumEncoder",
@@ -4693,6 +4905,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe",
@@ -4714,6 +4927,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeCorner_01",
@@ -4735,6 +4949,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeCorner_02",
@@ -4756,6 +4971,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeCorner_03",
@@ -4777,6 +4993,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeCorner_04",
@@ -4798,6 +5015,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeInCorner_Asphalt_8x4",
@@ -4819,6 +5037,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeInCorner_ConcretePolished_8x4",
@@ -4840,6 +5059,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeInCorner_Concrete_8x4",
@@ -4861,6 +5081,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeInCorner_Grip_8x4",
@@ -4882,6 +5103,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Asphalt_8x1",
@@ -4903,6 +5125,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Asphalt_8x2",
@@ -4924,6 +5147,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Asphalt_8x4",
@@ -4945,6 +5169,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Concrete_8x1",
@@ -4966,6 +5191,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Concrete_8x2",
@@ -4987,6 +5213,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Concrete_8x4",
@@ -5008,6 +5235,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Ficsit_8x1",
@@ -5029,6 +5257,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Ficsit_8x2",
@@ -5050,6 +5279,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Ficsit_8x4",
@@ -5071,6 +5301,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Grip_8x1",
@@ -5092,6 +5323,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Grip_8x2",
@@ -5113,6 +5345,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_Grip_8x4",
@@ -5134,6 +5367,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_PolishedConcrete_8x1",
@@ -5155,6 +5389,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_PolishedConcrete_8x2",
@@ -5176,6 +5411,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleInCorner_PolishedConcrete_8x4",
@@ -5197,6 +5433,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Asphalt_4x1",
@@ -5218,6 +5455,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Asphalt_4x2",
@@ -5239,6 +5477,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Asphalt_4x4",
@@ -5260,6 +5499,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Concrete_4x1",
@@ -5281,6 +5521,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Concrete_4x2",
@@ -5302,6 +5543,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Concrete_4x4",
@@ -5323,6 +5565,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Ficsit_4x1",
@@ -5344,6 +5587,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Ficsit_4x2",
@@ -5365,6 +5609,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Ficsit_4x4",
@@ -5386,6 +5631,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Grip_4x1",
@@ -5407,6 +5653,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Grip_4x2",
@@ -5428,6 +5675,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_Grip_4x4",
@@ -5449,6 +5697,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_PolishedConcrete_4x1",
@@ -5470,6 +5719,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_PolishedConcrete_4x2",
@@ -5491,6 +5741,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Extension (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddleOutCorner_PolishedConcrete_4x4",
@@ -5512,6 +5763,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Asphalt_8x1",
@@ -5533,6 +5785,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Asphalt_8x2",
@@ -5554,6 +5807,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Asphalt_8x4",
@@ -5575,6 +5829,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Concrete_8x1",
@@ -5596,6 +5851,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Concrete_8x2",
@@ -5617,6 +5873,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Concrete_8x4",
@@ -5633,6 +5890,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": null,
@@ -5649,6 +5907,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": null,
@@ -5665,6 +5924,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": null,
@@ -5686,6 +5946,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Grip_8x1",
@@ -5707,6 +5968,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Grip_8x2",
@@ -5728,6 +5990,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_Grip_8x4",
@@ -5749,6 +6012,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_PolishedConcrete_8x1",
@@ -5770,6 +6034,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_PolishedConcrete_8x2",
@@ -5791,6 +6056,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Half Foundation (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeMiddle_PolishedConcrete_8x4",
@@ -5812,6 +6078,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeOutCorner_Asphalt_8x4",
@@ -5833,6 +6100,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeOutCorner_ConcretePolished_8x4",
@@ -5854,6 +6122,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeOutCorner_Concrete_8x4",
@@ -5875,6 +6144,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipeOutCorner_Grip_8x4",
@@ -5896,6 +6166,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe_02",
@@ -5917,6 +6188,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe_Asphalt_8x4",
@@ -5938,6 +6210,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe_ConcretePolished_8x4",
@@ -5959,6 +6232,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe_Concrete_8x4",
@@ -5980,6 +6254,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Quarter Pipe",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "QuarterPipe_Grip_8x4",
@@ -6013,6 +6288,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Radar Tower",
    "native": "FGBuildableRadarTower",
    "recipe": "RadarTower",
@@ -6030,6 +6306,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Modern Railing",
    "native": "FGBuildableWallLightweight",
    "recipe": "Railing_01",
@@ -6054,6 +6331,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Block Signal",
    "native": "FGBuildableRailroadSignal",
    "recipe": "RailroadBlockSignal",
@@ -6079,6 +6357,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Buffer Stop",
    "native": "FGBuildableRailroadAttachment",
    "recipe": "RailroadEndStop",
@@ -6100,6 +6379,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Path Signal",
    "native": "FGBuildableRailroadSignal",
    "recipe": "RailroadPathSignal",
@@ -6121,6 +6401,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Railway",
    "native": "FGBuildableRailroadTrack",
    "recipe": "RailroadTrack",
@@ -6138,6 +6419,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble",
@@ -6159,6 +6441,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_8x1",
@@ -6180,6 +6463,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Asphalt_8x1",
@@ -6201,6 +6485,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Asphalt_8x2",
@@ -6222,6 +6507,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (8 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Asphalt_8x4",
@@ -6243,6 +6529,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Concrete_8x1",
@@ -6264,6 +6551,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Concrete_8x2",
@@ -6285,6 +6573,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (8 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Concrete_8x4",
@@ -6306,6 +6595,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Metal_8x1",
@@ -6327,6 +6617,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Metal_8x2",
@@ -6348,6 +6639,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (8 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Metal_8x4",
@@ -6369,6 +6661,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Polished_8x1",
@@ -6390,6 +6683,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Polished_8x2",
@@ -6411,6 +6705,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (8 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampDouble_Polished_8x4",
@@ -6432,6 +6727,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampInverted_8x1",
@@ -6453,6 +6749,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x1_Corner_01",
@@ -6474,6 +6771,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x1_Corner_02",
@@ -6495,6 +6793,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "RampInverted_8x2_01",
@@ -6516,6 +6815,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x2_Corner_01",
@@ -6537,6 +6837,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x2_Corner_02",
@@ -6558,6 +6859,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Up Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x4_Corner_01",
@@ -6579,6 +6881,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Down Corner (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "RampInverted_8x4_Corner_02",
@@ -6600,6 +6903,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_8x1_01",
@@ -6621,6 +6925,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_8x2_01",
@@ -6642,6 +6947,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_8x4_01",
@@ -6663,6 +6969,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_8x4_Inverted_01",
@@ -6684,6 +6991,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Double Ramp (8 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_8x8x8",
@@ -6705,6 +7013,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Asphalt_8x1",
@@ -6726,6 +7035,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Asphalt_8x2",
@@ -6747,6 +7057,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Asphalt_8x4",
@@ -6768,6 +7079,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Concrete_8x1",
@@ -6789,6 +7101,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Concrete_8x2",
@@ -6810,6 +7123,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Concrete_8x4",
@@ -6831,6 +7145,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x1_01",
@@ -6852,6 +7167,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x1_02",
@@ -6873,6 +7189,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x2_01",
@@ -6894,6 +7211,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x2_02",
@@ -6915,6 +7233,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x4_01",
@@ -6936,6 +7255,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_Diagonal_8x4_02",
@@ -6957,6 +7277,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Asphalt_8x1",
@@ -6978,6 +7299,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Asphalt_8x2",
@@ -6999,6 +7321,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Asphalt_8x4",
@@ -7020,6 +7343,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Concrete_8x1",
@@ -7041,6 +7365,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Concrete_8x2",
@@ -7062,6 +7387,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Concrete_8x4",
@@ -7083,6 +7409,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Metal_8x1",
@@ -7104,6 +7431,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Metal_8x2",
@@ -7125,6 +7453,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Metal_8x4",
@@ -7146,6 +7475,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Polished_8x1",
@@ -7167,6 +7497,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Polished_8x2",
@@ -7188,6 +7519,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Down Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_DownCorner_Polished_8x4",
@@ -7209,6 +7541,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Ramp",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Frame_01",
@@ -7230,6 +7563,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Frame Ramp",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Frame_Inverted_01",
@@ -7251,6 +7585,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Metal_8x1",
@@ -7272,6 +7607,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Metal_8x2",
@@ -7293,6 +7629,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Metal_8x4",
@@ -7314,6 +7651,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Polished_8x1",
@@ -7335,6 +7673,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Polished_8x2",
@@ -7356,6 +7695,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Ramp_Polished_8x4",
@@ -7377,6 +7717,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Asphalt_8x1",
@@ -7398,6 +7739,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Asphalt_8x2",
@@ -7419,6 +7761,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Asphalt_8x4",
@@ -7440,6 +7783,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Concrete_8x1",
@@ -7461,6 +7805,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Concrete_8x2",
@@ -7482,6 +7827,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Concrete_8x4",
@@ -7503,6 +7849,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Metal_8x1",
@@ -7524,6 +7871,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Metal_8x2",
@@ -7545,6 +7893,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Metal_8x4",
@@ -7566,6 +7915,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (1 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Polished_8x1",
@@ -7587,6 +7937,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (2 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Polished_8x2",
@@ -7608,6 +7959,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Up Corner Ramp (4 m)",
    "native": "FGBuildableFoundationLightweight",
    "recipe": "Ramp_UpCorner_Polished_8x4",
@@ -7637,6 +7989,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "AWESOME Sink",
    "native": "FGBuildableResourceSink",
    "recipe": "ResourceSink",
@@ -7662,6 +8015,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "AWESOME Shop",
    "native": "FGBuildableResourceSinkShop",
    "recipe": "ResourceSinkShop",
@@ -7679,6 +8033,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Flat Roof",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_A_01",
@@ -7699,6 +8054,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_A_02",
@@ -7720,6 +8076,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_A_03",
@@ -7741,6 +8098,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_A_04",
@@ -7762,6 +8120,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_InCorner_01",
@@ -7782,6 +8141,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_InCorner_02",
@@ -7802,6 +8162,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_InCorner_03",
@@ -7822,6 +8183,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_OutCorner_01",
@@ -7842,6 +8204,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_OutCorner_02",
@@ -7862,6 +8225,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Metal_OutCorner_03",
@@ -7882,6 +8246,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Flat Roof",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Orange_01",
@@ -7902,6 +8267,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Orange_02",
@@ -7923,6 +8289,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Orange_03",
@@ -7944,6 +8311,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Orange_04",
@@ -7965,6 +8333,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_InCorner_01",
@@ -7985,6 +8354,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_InCorner_02",
@@ -8005,6 +8375,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_InCorner_03",
@@ -8025,6 +8396,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_OutCorner_01",
@@ -8045,6 +8417,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_OutCorner_02",
@@ -8065,6 +8438,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Orange_OutCorner_03",
@@ -8085,6 +8459,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Flat Roof",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Tar_01",
@@ -8105,6 +8480,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Tar_02",
@@ -8126,6 +8502,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Tar_03",
@@ -8147,6 +8524,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Tar_04",
@@ -8168,6 +8546,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_InCorner_01",
@@ -8188,6 +8567,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_InCorner_02",
@@ -8208,6 +8588,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_InCorner_03",
@@ -8228,6 +8609,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_OutCorner_01",
@@ -8248,6 +8630,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_OutCorner_02",
@@ -8268,6 +8651,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Tar_OutCorner_03",
@@ -8288,6 +8672,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Flat Roof",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Window_01",
@@ -8308,6 +8693,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Window_02",
@@ -8329,6 +8715,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Window_03",
@@ -8350,6 +8737,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Roof (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Roof_Window_04",
@@ -8371,6 +8759,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_InCorner_01",
@@ -8391,6 +8780,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_InCorner_02",
@@ -8411,6 +8801,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inner Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_InCorner_03",
@@ -8431,6 +8822,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (1 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_OutCorner_01",
@@ -8451,6 +8843,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (2 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_OutCorner_02",
@@ -8471,6 +8864,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Outer Corner Roof (4 m)",
    "native": "FGBuildableCornerWallLightweight",
    "recipe": "Roof_Window_OutCorner_03",
@@ -8495,6 +8889,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Smelter",
    "native": "FGBuildableManufacturer",
    "recipe": "SmelterBasicMk1",
@@ -8520,6 +8915,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Snow Cannon",
    "native": "FGBuildableSnowCannon",
    "recipe": "SnowCannon",
@@ -8545,6 +8941,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Snow Dispenser",
    "native": "FGBuildableSnowDispenser",
    "recipe": "SnowDispenser",
@@ -8578,6 +8975,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Snowman",
    "native": "FGBuildable",
    "recipe": "Snowman",
@@ -8607,6 +9005,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Space Elevator",
    "native": "FGBuildableSpaceElevator",
    "recipe": "SpaceElevator",
@@ -8628,6 +9027,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Shelf Unit",
    "native": "FGBuildableStackableShelf",
    "recipe": "StackableShelf",
@@ -8645,6 +9045,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Asphalt_8x1",
@@ -8666,6 +9067,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Asphalt_8x2",
@@ -8687,6 +9089,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Asphalt_8x4",
@@ -8708,6 +9111,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Concrete_8x1",
@@ -8729,6 +9133,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Concrete_8x2",
@@ -8750,6 +9155,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_Concrete_8x4",
@@ -8771,6 +9177,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_FicsitSet_8x1_01",
@@ -8792,6 +9199,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_FicsitSet_8x2_01",
@@ -8813,6 +9221,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_FicsitSet_8x4_01",
@@ -8834,6 +9243,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_GripMetal_8x1",
@@ -8855,6 +9265,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_GripMetal_8x2",
@@ -8876,6 +9287,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_GripMetal_8x4",
@@ -8897,6 +9309,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (1 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_PolishedConcrete_8x1",
@@ -8918,6 +9331,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (2 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_PolishedConcrete_8x2",
@@ -8939,6 +9353,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Foundation Stairs (4 m)",
    "native": "FGBuildableRampLightweight",
    "recipe": "Stair_PolishedConcrete_8x4",
@@ -8964,6 +9379,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Stairs Left",
    "native": "FGBuildableStair",
    "recipe": "Stairs_Left_01",
@@ -8988,6 +9404,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Stairs Right",
    "native": "FGBuildableStair",
    "recipe": "Stairs_Right_01",
@@ -9016,6 +9433,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Large Billboard",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Huge",
@@ -9041,6 +9459,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Small Billboard",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Large",
@@ -9062,6 +9481,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Display Sign",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Medium",
@@ -9083,6 +9503,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Portrait Sign",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Portrait",
@@ -9104,6 +9525,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Label Sign (2 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Small",
@@ -9125,6 +9547,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Label Sign (4 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_SmallVeryWide",
@@ -9146,6 +9569,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Label Sign (3 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_SmallWide",
@@ -9167,6 +9591,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Square Sign (2 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Square",
@@ -9188,6 +9613,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Square Sign (1 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Square_Small",
@@ -9209,6 +9635,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Square Sign (0.5 m)",
    "native": "FGBuildableWidgetSign",
    "recipe": "StandaloneWidgetSign_Square_Tiny",
@@ -9226,6 +9653,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x1",
@@ -9241,6 +9669,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -9261,6 +9690,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Gate Hole Wall",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x4_Gate_01",
@@ -9281,6 +9711,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Single Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x4_Window_01",
@@ -9301,6 +9732,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Reinforced Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x4_Window_02",
@@ -9321,6 +9753,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x4_Window_03",
@@ -9341,6 +9774,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Panel Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_8x4_Window_04",
@@ -9361,6 +9795,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_FlipTris_8x1",
@@ -9381,6 +9816,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_FlipTris_8x2",
@@ -9401,6 +9837,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_FlipTris_8x4",
@@ -9421,6 +9858,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (8 m)",
    "native": "FGBuildableWall",
    "recipe": "SteelWall_FlipTris_8x8",
@@ -9441,6 +9879,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_Tris_8x1",
@@ -9461,6 +9900,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_Tris_8x2",
@@ -9481,6 +9921,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_Tris_8x4",
@@ -9501,6 +9942,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "SteelWall_Tris_8x8",
@@ -9525,6 +9967,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Storage Container",
    "native": "FGBuildableStorage",
    "recipe": "StorageContainerMk1",
@@ -9546,6 +9989,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Industrial Storage Container",
    "native": "FGBuildableStorage",
    "recipe": "StorageContainerMk2",
@@ -9567,6 +10011,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Hazard Storage Box",
    "native": "FGBuildableStorage",
    "recipe": "StorageHazard",
@@ -9588,6 +10033,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Medical Storage Box",
    "native": "FGBuildableStorage",
    "recipe": "StorageMedkit",
@@ -9609,6 +10055,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Personal Storage Box",
    "native": "FGBuildableStorage",
    "recipe": "StoragePlayer",
@@ -9634,6 +10081,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Street Light",
    "native": "FGBuildableLightSource",
    "recipe": "StreetLight",
@@ -9651,6 +10099,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tarp Construction Fence",
    "native": "FGBuildableWallLightweight",
    "recipe": "TarpFence",
@@ -9671,6 +10120,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "The HUB",
    "native": "FGBuildableTradingPost",
    "recipe": "TradingPost",
@@ -9704,6 +10154,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Freight Platform",
    "native": "FGBuildableTrainPlatformCargo",
    "recipe": "TrainDockingStation",
@@ -9737,6 +10188,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Fluid Freight Platform",
    "native": "FGBuildableTrainPlatformCargo",
    "recipe": "TrainDockingStationLiquid",
@@ -9758,6 +10210,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Empty Platform",
    "native": "FGBuildableTrainPlatformEmpty",
    "recipe": "TrainPlatformEmpty",
@@ -9779,6 +10232,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Empty Platform With Catwalk",
    "native": "FGBuildableTrainPlatformEmpty",
    "recipe": "TrainPlatformEmpty_02",
@@ -9808,6 +10262,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Train Station",
    "native": "FGBuildableRailroadStation",
    "recipe": "TrainStation",
@@ -9837,6 +10292,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Gift Tree",
    "native": "FGBuildableFactorySimpleProducer",
    "recipe": "TreeGiftProducer",
@@ -9862,6 +10318,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Truck Station",
    "native": "FGBuildableDockingStation",
    "recipe": "TruckStation",
@@ -9883,6 +10340,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Valve",
    "native": "FGBuildablePipelinePump",
    "recipe": "Valve",
@@ -9895,6 +10353,7 @@
    "class_path": "/Game/FactoryGame/Buildable/Vehicle/Explorer/Build_VehiclePath_Explorer.Build_VehiclePath_Explorer_C",
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Explorer Vehicle Path",
    "native": "FGVehiclePathSegment",
    "recipe": "VehiclePath_Explorer",
@@ -9907,6 +10366,7 @@
    "class_path": "/Game/FactoryGame/Buildable/Vehicle/Golfcart/Build_VehiclePath_FactoryCart.Build_VehiclePath_FactoryCart_C",
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Factory Cart Vehicle Path",
    "native": "FGVehiclePathSegment",
    "recipe": "VehiclePath_FactoryCart",
@@ -9919,6 +10379,7 @@
    "class_path": "/Game/FactoryGame/Buildable/Vehicle/Tractor/Build_VehiclePath_Tractor.Build_VehiclePath_Tractor_C",
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tractor Vehicle Path",
    "native": "FGVehiclePathSegment",
    "recipe": "VehiclePath_Tractor",
@@ -9931,6 +10392,7 @@
    "class_path": "/Game/FactoryGame/Buildable/Vehicle/Truck/Build_VehiclePath_Truck.Build_VehiclePath_Truck_C",
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Truck Vehicle Path",
    "native": "FGVehiclePathSegment",
    "recipe": "VehiclePath_Truck",
@@ -9943,6 +10405,7 @@
    "class_path": "/Game/FactoryGame/Buildable/Vehicle/VehiclePath/Build_VehiclePath_Universal.Build_VehiclePath_Universal_C",
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Universal Vehicle Path",
    "native": "FGVehiclePathSegment",
    "recipe": "VehiclePath_Universal",
@@ -9964,6 +10427,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Walkway Intersection",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Walkway_Cross",
@@ -9987,6 +10451,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Walkway Ramp",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Walkway_Ramp",
@@ -10010,6 +10475,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Straight Walkway",
    "native": "FGBuildableWalkway",
    "recipe": "Walkway_Straight",
@@ -10033,6 +10499,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Walkway T-Junction",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": "Walkway_T",
@@ -10047,6 +10514,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Walkway Corner",
    "native": "FGBuildableWalkwayLightweight",
    "recipe": null,
@@ -10066,6 +10534,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "WallSet_Steel_Angular_8x4",
@@ -10086,6 +10555,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "WallSet_Steel_Angular_8x8",
@@ -10106,6 +10576,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_8x4_01",
@@ -10126,6 +10597,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_8x4_02",
@@ -10146,6 +10618,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x1",
@@ -10166,6 +10639,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4",
@@ -10186,6 +10660,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 1",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_ConveyorHole_01",
@@ -10206,6 +10681,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 2",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_ConveyorHole_02",
@@ -10226,6 +10702,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 3",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_ConveyorHole_03",
@@ -10246,6 +10723,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Corner Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Concrete_8x4_Corner_01",
@@ -10266,6 +10744,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Concrete_8x4_Corner_2",
@@ -10286,6 +10765,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Single Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_Window_01",
@@ -10306,6 +10786,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_Window_02",
@@ -10326,6 +10807,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Panel Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_Window_03",
@@ -10346,6 +10828,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Reinforced Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_8x4_Window_04",
@@ -10366,6 +10849,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Corner Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Concrete_8x8_Corner_01",
@@ -10386,6 +10870,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Concrete_8x8_Corner_2",
@@ -10406,6 +10891,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_Angular_8x4",
@@ -10426,6 +10912,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_Angular_8x8",
@@ -10446,6 +10933,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Center Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Concrete_CDoor_8x4",
@@ -10461,6 +10949,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10476,6 +10965,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10491,6 +10981,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10506,6 +10997,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10526,6 +11018,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Gate Hole Wall",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Concrete_Gate_8x4",
@@ -10546,6 +11039,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Side Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Concrete_SDoor_8x4",
@@ -10561,6 +11055,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10576,6 +11071,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10591,6 +11087,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10606,6 +11103,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -10626,6 +11124,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 3",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_01",
@@ -10646,6 +11145,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 3",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_01_Steel",
@@ -10666,6 +11166,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 2",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_02",
@@ -10686,6 +11187,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 2",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_02_Steel",
@@ -10706,6 +11208,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 1",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_03",
@@ -10726,6 +11229,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Conveyor Wall x 1",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Conveyor_8x4_03_Steel",
@@ -10750,6 +11254,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Perpendicular Wall Conveyor",
    "native": "FGBuildableWall",
    "recipe": "Wall_Conveyor_8x4_04",
@@ -10774,6 +11279,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Perpendicular Wall Conveyor",
    "native": "FGBuildableWall",
    "recipe": "Wall_Conveyor_8x4_04_Steel",
@@ -10794,6 +11300,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Center Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Door_8x4_01",
@@ -10814,6 +11321,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Center Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Door_8x4_01_Steel",
@@ -10834,6 +11342,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Side Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Door_8x4_03",
@@ -10854,6 +11363,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Side Door Wall",
    "native": "FGBuildableDoor",
    "recipe": "Wall_Door_8x4_03_Steel",
@@ -10874,6 +11384,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Wall",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Frame_01",
@@ -10894,6 +11405,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Gate Hole Wall",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Gate_8x4_01",
@@ -10914,6 +11426,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Basic Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Orange_8x1",
@@ -10934,6 +11447,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Corner Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Orange_8x4_Corner_01",
@@ -10954,6 +11468,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Orange_8x4_Corner_02",
@@ -10974,6 +11489,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Corner Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Orange_8x8_Corner_01",
@@ -10994,6 +11510,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Orange_8x8_Corner_02",
@@ -11014,6 +11531,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Orange_Angular_8x4",
@@ -11034,6 +11552,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Tilted Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Orange_Angular_8x8",
@@ -11049,6 +11568,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11064,6 +11584,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11079,6 +11600,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11094,6 +11616,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Inverted Ramp Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11109,6 +11632,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (1 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11124,6 +11648,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (2 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11139,6 +11664,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (4 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11154,6 +11680,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Ramp Wall (8 m)",
    "native": "FGBuildableWallLightweight",
    "recipe": null,
@@ -11174,6 +11701,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Corner Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Steel_8x4_Corner_01",
@@ -11194,6 +11722,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (4 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Steel_8x4_Corner_2",
@@ -11214,6 +11743,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Corner Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Steel_8x8_Corner_01",
@@ -11234,6 +11764,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Tilted Concave Wall (8 m)",
    "native": "FGBuildableCornerWall",
    "recipe": "Wall_Steel_8x8_Corner_2",
@@ -11254,6 +11785,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Single Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_01",
@@ -11274,6 +11806,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_02",
@@ -11294,6 +11827,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Panel Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_03",
@@ -11314,6 +11848,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Reinforced Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_04",
@@ -11338,6 +11873,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Angled Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_05",
@@ -11362,6 +11898,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Honeycomb Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_06",
@@ -11386,6 +11923,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Triple Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_8x4_07",
@@ -11410,6 +11948,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Full Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_Thin_8x4_01",
@@ -11434,6 +11973,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": true,
    "name": "Hex Frame Window",
    "native": "FGBuildableWallLightweight",
    "recipe": "Wall_Window_Thin_8x4_02",
@@ -11462,6 +12002,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Water Extractor",
    "native": "FGBuildableWaterPump",
    "recipe": "WaterPump",
@@ -11483,6 +12024,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Crafting Bench",
    "native": "FGBuildable",
    "recipe": "WorkBench",
@@ -11504,6 +12046,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Equipment Workshop",
    "native": "FGBuildable",
    "recipe": "Workshop",
@@ -11525,6 +12068,7 @@
     ]
    ],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "FICSMAS Decoration",
    "native": "FGBuildable",
    "recipe": "WreathDecor",
@@ -11537,6 +12081,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": 0.04,
+   "lightweight": false,
    "name": "FICSMAS Power Light",
    "native": "FGBuildableWire",
    "recipe": null,
@@ -11551,6 +12096,7 @@
    "class_path": null,
    "cost": [],
    "cost_per_m": null,
+   "lightweight": false,
    "name": "Giant FICSMAS Tree",
    "native": "FGBuildable",
    "recipe": null,

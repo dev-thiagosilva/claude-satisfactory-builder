@@ -247,6 +247,7 @@ def build(docs_path):
             desc = ITEM_PATHS.get(name)   # the building's descriptor, e.g. .../Desc_X.Desc_X_C
             class_path = re.sub(r'Desc_(\w+)\.Desc_\1_C$', r'Build_\1.Build_\1_C', desc) if desc else None
             assets[name] = dict(
+                lightweight=c.get('mManagedByLightweightBuildableSubsystem') == 'True',
                 class_path=class_path,
                 recipe_path=recipe_paths.get(rec[0]) if rec else None,
                 name=c.get('mDisplayName', '') or name,

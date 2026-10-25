@@ -9,7 +9,7 @@ puts it in your save. No programming needed.
 
 ## What you need
 
-- **Satisfactory** (1.0 or newer) on a Windows PC.
+- **Satisfactory 1.2** on a Windows PC.
 - **Claude running on your computer**: the [Claude desktop app](https://claude.ai/download)'s
   **Code** tab, or Claude Code. Claude needs to work on your PC to save blueprints into your game.
 - Claude sets up anything else it needs, like Python, and asks you first.
@@ -49,7 +49,7 @@ Claude will:
 2. Design it from the game's real building pieces: beams, foundations, walls, glass and more.
    The [full list of pieces](.claude/skills/satisfactory-blueprints/library/ASSETS.md) shows
    all 546 buildable pieces, grouped by what they're for, with costs, unlocks and which are
-   ready to use (455 today).
+   ready to use (479 today).
 3. Open the **Blueprint Studio** in your browser at `http://localhost:8770`, where you can
    orbit around your building and change it: click pieces to select them, then move, rotate,
    duplicate, delete or recolour them. Undo works, and every save keeps the previous version.
@@ -62,9 +62,10 @@ Then in Satisfactory: **reload your save**, open the build menu, and find it in 
 
 - The 3D preview uses simple shapes, not the game's exact models. The cost comes from the
   game's own recipes; beams may round slightly differently in game.
-- 455 of the 546 pieces are ready. Missing are mostly extractors, train stations, vehicle paths,
-  some power buildings and unique buildings (HUB, Space Elevator). Machines come without belts
-  or power connected, so hook those up in game.
+- Made for **Satisfactory 1.2**. 479 of the 546 pieces are ready, including machines, miners,
+  train stations and platforms, power and logistics. Missing are a few power and hypertube
+  pieces, some lights, and unique buildings (HUB, Space Elevator). Machines come without belts,
+  pipes or power connected, so hook those up in game.
 - Some pieces (🧪 in the list) were made from a similar piece and haven't been confirmed in game
   yet. If one looks wrong, tell Claude.
 - Only **small** matches an in-game blueprint designer (Mk3). Medium and bigger can be placed

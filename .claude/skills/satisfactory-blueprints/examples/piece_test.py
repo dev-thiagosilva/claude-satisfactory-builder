@@ -4,7 +4,7 @@ Writes one blueprint per group of categories into <out>/piece-test-<group>/. Pla
 sandbox save (Creative mode is easiest) and look for missing or broken pieces. Pieces made from a
 similar piece (🧪 in ASSETS.md) are the ones to watch.
 
-  python -I piece_test.py [--version 46] [--out .local/blueprints]
+  python -I piece_test.py [--out .local/blueprints]
 """
 import argparse, json, math, sys
 from pathlib import Path
@@ -23,7 +23,7 @@ GROUPS = {
 }
 
 ap = argparse.ArgumentParser()
-ap.add_argument('--version', type=int, default=46, help='library version to test (36, 42 or 46)')
+ap.add_argument('--version', type=int, default=None, help='library version (default: the shipped one)')
 ap.add_argument('--out', default='.local/blueprints')
 args = ap.parse_args()
 
@@ -57,7 +57,7 @@ for group, cats in GROUPS.items():
         continue
     bp.recipes = lib.recipes_for(picks)
     bp.cost = estimate_cost(bp)
-    title = 'Piece Test - %s (v%d)' % (group, args.version)
+    title = 'Piece Test - %s' % group
     d = Path(args.out) / ('piece-test-%s' % group)
     d.mkdir(parents=True, exist_ok=True)
     bp.save(d / (title + '.sbp'))

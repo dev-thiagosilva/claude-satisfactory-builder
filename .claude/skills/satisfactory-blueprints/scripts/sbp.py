@@ -259,32 +259,81 @@ class Blueprint:
             self.objects.append(nc)
         return o
 
+    def _fresh_path(self, path):
+        """A unique path like `path` whose id has the same number of digits. References also sit
+        inside longer strings (e.g. '...Track_C_123.TrackConnection1') whose stored sizes must
+        not change, so a copy's name must keep its length."""
+        if not hasattr(self, '_next_ids'):
+            self._next_ids, self._used = {}, set()
+            for o in self.objects:
+                m = re.search(r'_(\d+)$', o['path'])
+                if m:
+                    self._used.add(int(m.group(1)))
+        prefix, num = path.rsplit('_', 1)
+        n = len(num)
+        nxt = self._next_ids.get(n, 10 ** (n - 1) + (3000000 if n > 7 else 0))
+        while nxt in self._used:
+            nxt += 1
+        if len(str(nxt)) != n:
+            raise OverflowError('ran out of %d-digit ids' % n)
+        self._used.add(nxt)
+        self._next_ids[n] = nxt + 1
+        return '%s_%d' % (prefix, nxt)
+
+    def companions_of(self, actor):
+        """Other actors this one references and can't work without (e.g. a train station's
+        built-in track). Library samples only reference such companions."""
+        paths = {o['path'] for o in self.actors()} - {actor['path']}
+        found, todo = [], [actor]
+        seen = {actor['path']}
+        while todo:
+            cur = todo.pop()
+            blobs = [cur['data']] + [c['data'] for c in self.components_of(cur)]
+            for b in blobs:
+                for m in re.finditer(rb'Persistent_Level:PersistentLevel\.(Build_\w+?_C_\d+)', b):
+                    p = 'Persistent_Level:PersistentLevel.' + m.group(1).decode()
+                    if p in paths and p not in seen:
+                        seen.add(p)
+                        comp = next(o for o in self.actors() if o['path'] == p)
+                        found.append(comp)
+                        todo.append(comp)
+        return found
+
     def add_copy(self, actor, source, pos, rot=(0, 0, 0, 1), scale=None):
-        """Copy `actor` (and its components) from Blueprint `source` into this one at a new
-        transform, with fresh unique paths. Returns the new actor. Fast enough for 10k+ pieces."""
-        if not hasattr(self, '_next_id'):
-            used = [int(m.group(1)) for o in self.objects for m in [re.search(r'_(\d+)$', o['path'])] if m]
-            self._next_id = max(used + [2130000000]) + 1
-        new_path = '%s_%d' % (actor['path'].rsplit('_', 1)[0], self._next_id)
-        self._next_id += 1
-        comps = source.components_of(actor)
-        a = copy.deepcopy(actor)
-        for c in comps:
-            a['data'] = replace_string(a['data'], c['path'], c['path'].replace(actor['path'], new_path))
-        a['data'] = replace_string(a['data'], actor['path'], new_path)
-        a['path'] = new_path
-        a['pos'] = [float(v) for v in pos]
-        a['rot'] = [float(v) for v in rot]
-        if scale is not None:
-            a['scale'] = [float(v) for v in scale]
-        self.objects.append(a)
-        for c in comps:
-            nc = copy.deepcopy(c)
-            nc['data'] = replace_string(nc['data'], actor['path'], new_path)
-            nc['path'] = c['path'].replace(actor['path'], new_path)
-            nc['outer'] = new_path
-            self.objects.append(nc)
-        return a
+        """Copy `actor` (with its components, and any companion actors it needs, kept at the
+        same relative placement) from Blueprint `source` into this one at a new transform, with
+        fresh unique paths. Returns the new main actor. Fast enough for 10k+ pieces."""
+        group = [actor] + source.companions_of(actor)
+        renames = {g['path']: self._fresh_path(g['path']) for g in group}
+        inv = qconj(actor['rot'])
+        main = None
+        for g in group:
+            new_path = renames[g['path']]
+            comps = source.components_of(g)
+            a = copy.deepcopy(g)
+            for c in comps:
+                a['data'] = replace_string(a['data'], c['path'], c['path'].replace(g['path'], new_path))
+            for old, new in renames.items():
+                a['data'] = replace_string(a['data'], old, new)
+            a['path'] = new_path
+            if g is actor:
+                a['pos'], a['rot'] = [float(v) for v in pos], [float(v) for v in rot]
+                if scale is not None:
+                    a['scale'] = [float(v) for v in scale]
+                main = a
+            else:   # same placement relative to the main actor
+                rel = qrotate(inv, [g['pos'][i] - actor['pos'][i] for i in range(3)])
+                a['pos'] = [p + d for p, d in zip(pos, qrotate(rot, rel))]
+                a['rot'] = qmul(rot, qmul(inv, g['rot']))
+            self.objects.append(a)
+            for c in comps:
+                nc = copy.deepcopy(c)
+                for old, new in renames.items():
+                    nc['data'] = replace_string(nc['data'], old, new)
+                nc['path'] = c['path'].replace(g['path'], new_path)
+                nc['outer'] = new_path
+                self.objects.append(nc)
+        return main
 
     def remove(self, actor):
         drop = {id(actor)} | {id(c) for c in self.components_of(actor)}
@@ -471,6 +520,21 @@ def write_sbpcfg(path, description, color=(0.6, 0.6, 0.6, 1.0), icon_id=437):
                            struct.pack('<i4f', icon_id, *color))
 
 
+def qmul(a, b):
+    """Hamilton product of quaternions (x, y, z, w)."""
+    ax, ay, az, aw = a; bx, by, bz, bw = b
+    return [aw * bx + ax * bw + ay * bz - az * by, aw * by - ax * bz + ay * bw + az * bx,
+            aw * bz + ax * by - ay * bx + az * bw, aw * bw - ax * bx - ay * by - az * bz]
+
+
+def qconj(q):
+    return [-q[0], -q[1], -q[2], q[3]]
+
+
+def qrotate(q, v):
+    return qmul(qmul(q, [v[0], v[1], v[2], 0.0]), qconj(q))[:3]
+
+
 def replace_string(blob, old, new):
     """Swap an FString (length-prefixed, null-terminated) inside a serialized blob."""
     def enc(s):
@@ -484,16 +548,31 @@ def replace_string(blob, old, new):
 
 
 def find_prop(blob, name):
-    """Offset of a property's value and its type name, or (None, None)."""
+    """Offset of a property's value and its type name, or (None, None). Works for both tag
+    layouts (game 1.0: size, index, type header; game 1.2: type tree, size, flags)."""
     key = struct.pack('<i', len(name) + 1) + name.encode('latin1') + b'\0'
     i = blob.find(key)
     if i < 0:
         return None, None
     r = Reader(blob, i + len(key))
     ptype = r.string()
-    r.o += 8  # int64 size
-    if ptype in ('FloatProperty', 'IntProperty', 'DoubleProperty', 'Int64Property'):
-        r.o += 1  # has-guid flag
+    a, b = struct.unpack_from('<ii', blob, r.o)
+    if ptype == 'StructProperty' and a == 1 and b > 1:      # 1.2: type tree, size, flags
+        def tree():
+            r.string()
+            for _ in range(r.i32()):
+                tree()
+        r.i32(); tree()       # child count, then the struct's own tree
+        r.i32()               # size
+        flags = blob[r.o]; r.o += 1
+        if flags & 0x01: r.o += 4
+        if flags & 0x02: r.o += 16
+        return r.o, ptype
+    if ptype == 'StructProperty':                              # 1.0: size, index, name, guid, flag
+        r.o += 8; r.string(); r.o += 17
+        return r.o, ptype
+    # simple values: 1.0 = size + index + guid flag; 1.2 = 0 children + size + flags (same 9 bytes)
+    r.o += 9
     return r.o, ptype
 
 
@@ -518,20 +597,18 @@ def swatch(obj):
 
 
 def get_color(obj, prop='PrimaryColor'):
-    """Linear RGBA of a custom paint colour, or None. Struct value = 'LinearColor', GUID, flag, 4 floats."""
+    """Linear RGBA of a custom paint colour, or None."""
     off, _ = find_prop(obj['data'], prop)
     if off is None:
         return None
-    i = obj['data'].find(b'LinearColor\x00', off) + len(b'LinearColor\x00') + 17
-    return list(struct.unpack_from('<4f', obj['data'], i))
+    return list(struct.unpack_from('<4f', obj['data'], off))
 
 
 def set_color(obj, rgba, prop='PrimaryColor'):
     off, _ = find_prop(obj['data'], prop)
     if off is None:
         raise KeyError('%s has no %s; clone a donor painted with a Custom swatch' % (obj['path'], prop))
-    i = obj['data'].find(b'LinearColor\x00', off) + len(b'LinearColor\x00') + 17
-    b = bytearray(obj['data']); struct.pack_into('<4f', b, i, *rgba); obj['data'] = bytes(b)
+    b = bytearray(obj['data']); struct.pack_into('<4f', b, off, *rgba); obj['data'] = bytes(b)
 
 
 def paint_key(obj):

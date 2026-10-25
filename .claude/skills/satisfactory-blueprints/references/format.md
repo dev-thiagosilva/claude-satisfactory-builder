@@ -87,6 +87,22 @@ For Float/Int/Double properties the prefix is one byte (has-GUID flag, 0). Examp
 - Machines store `mCurrentRecipe`, `mCurrentPotential` (clock), and reference components:
   `FactoryConnection` (belt in/out), `PipeConnection`, `PowerConnection`, `InventoryComponent`.
 
+### Game 1.2 property layout (object version ≥ 53)
+```
+FString name                      ('None' ends the list)
+type tree: FString type, int32 child count, children (same shape), e.g.
+           StructProperty(1) → LinearColor(1) → /Script/CoreUObject(0)
+           ArrayProperty(1) → StructProperty(1) → SpawnData(1) → /Script/FactoryGame(0)
+int32  size of the value
+uint8  flags: 0x01 int32 array index follows, 0x02 16-byte GUID follows,
+              0x04 property extensions follow (not seen in buildings), 0x10 bool true
+value  (ObjectProperty: FString level + FString path, as in 1.0)
+```
+Actor data starts with the parent reference (level + path, usually BuildableSubsystem),
+an int32 component count + references, one byte, then the properties. Lightweight structures
+(foundations, walls, ramps, roofs, beams, pillars, walkways) carry only `BuiltBy`, `mColorSlot`,
+`mCustomizationData`, `mBuiltWithRecipe` and, for beams, `mLength`.
+
 ## 6. Building conventions
 | Piece | Local size (cm) | Origin |
 |---|---|---|
@@ -118,6 +134,13 @@ float   colour[4]           linear RGBA
   rewrite the description to stay safe (keep everything after the description verbatim).
 ```
 
-## 8. Where files live
+## 8. Save files (.sav)
+Same chunk compression as .sbp. Body: version block, world-partition grids, one record per
+grid-cell level (headers, objects, collectables), then the persistent level that holds the
+buildings. Objects carry their own version, and objects at version ≥ 53 have one extra int32
+after their data. Lightweight structures are not separate objects in saves. Full layout in
+`scripts/sav.py`, which reads saves without ever writing them.
+
+## 9. Where files live
 `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\blueprints\<session name>\`
 The game reads the folder at load; a new or changed file shows up after reloading the save.

@@ -1,12 +1,17 @@
-"""Build the donor library shipped with the skill (maintainer tool).
+"""Build the donor library shipped with the skill (maintainer tool). Game 1.2 only.
 
-Scans a blueprints root, and for every object version writes library/donors-v<NN>.sbp holding one
-clean sample of each building type: one with custom paint (PrimaryColor) when available, and one
-without. "Clean" means the building and its components reference nothing outside themselves, so
-the sample can be cloned anywhere. Samples are laid out on a grid, so rendering a library file
-gives a visual catalogue.
+Writes library/donors-v60.sbp with one sample of each building type (palette paint, and custom
+RGB paint when possible), taken from game-1.1/1.2 blueprints and save files:
+  - clean samples (referencing nothing outside themselves) are taken as they are;
+  - pieces only ever seen wired up get their links to other buildings removed (empty ports);
+  - every lightweight structure (foundations, ramps, walls, roofs, beams, pillars, walkways…)
+    is made from a real 1.2 structure sample by swapping class and recipe, since in 1.2 they all
+    share one property set;
+  - anything carrying a player's account data, and signs/stations from saves (player-typed
+    text), is skipped.
+Samples are laid out on a grid, so rendering the library file gives a visual catalogue.
 
-  python -I build_library.py "<blueprints root>" [<library dir>]
+  python -I build_library.py "<blueprints root>" [--save world.sav ...] [--out library]
 """
 import copy, json, re, struct, sys
 from collections import defaultdict
@@ -36,54 +41,27 @@ def is_clean(bp, actor, comps):
     return True
 
 
-# ---------- synthesis: samples for pieces nobody has built, from a sibling of the same kind ----------
-# Only for the 1.0 property-tag format (object versions 36-46): name, type, int32 size,
-# int32 array index, then for ObjectProperty a 1-byte GUID flag and the value
-# (FString level + FString path). 1.1+ files use a different tag layout.
+# ---------- tagged properties (both layouts) ----------
+# 1.0 layout (object versions <= 52): name, type, int32 size, int32 array index, a type-specific
+# header (struct name + GUID + flag, enum/inner type name + flag, ...), then the value.
+# 1.2 layout (object versions >= 53): name, the type as a tree (FString + int32 child count,
+# recursively), int32 size, uint8 flags (+ int32 index / 16-byte GUID when flagged), the value.
+NEW_TAGS_FROM = 53
+
 
 def _fstr(s):
     b = (s + '\0').encode('latin1') if s else b''
     return struct.pack('<i', len(b)) + b
 
 
-def _prop_span(blob, name):
-    """(start, value_start, end, type) of a top-level tagged property, or None."""
-    key = _fstr(name)
-    i = blob.find(key)
-    if i < 0:
-        return None
-    p = i + len(key)
-    tlen = struct.unpack_from('<i', blob, p)[0]
-    ptype = blob[p + 4:p + 4 + tlen - 1].decode('latin1')
-    p += 4 + tlen
-    size = struct.unpack_from('<i', blob, p)[0]
-    p += 8                                   # size + array index
-    if ptype != 'ObjectProperty':
-        raise ValueError('unsupported property type %s for %s' % (ptype, name))
-    p += 1                                   # has-GUID flag
-    return i, p, p + size, ptype
+def _type_tree(r):
+    name = r.string()
+    return [name] + [_type_tree(r) for _ in range(r.i32())]
 
 
-def set_object_prop(blob, name, path):
-    span = _prop_span(blob, name)
-    if not span:
-        raise KeyError(name)
-    i, v, end, _ = span
-    value = _fstr('') + _fstr(path)
-    size_at = v - 9                          # int32 size, int32 index, byte guid
-    head = bytearray(blob[:v])
-    struct.pack_into('<i', head, size_at, len(value))
-    return bytes(head) + value + blob[end:]
-
-
-def drop_prop(blob, name):
-    span = _prop_span(blob, name)
-    return blob if not span else blob[:span[0]] + blob[span[2]:]
-
-
-def prop_spans(blob):
-    """Spans (name, start, end) of the top-level tagged properties in a 1.0-format blob, plus the
-    offset of the closing 'None'. Raises if the list doesn't parse cleanly."""
+def prop_spans(blob, new=False):
+    """Top-level tagged properties of a blob: list of dicts (name, type, start, size_at, value,
+    end) and the offset of the closing 'None'. Raises if the list doesn't parse cleanly."""
     from sbp import Reader
     m = re.search(rb'\x00\x00\x00([A-Za-z]\w+)\x00.{4}(\w+Property)\x00', blob, re.S)
     if not m:
@@ -95,202 +73,358 @@ def prop_spans(blob):
         name = r.string()
         if name == 'None':
             return spans, s
-        t = r.string(); size = r.i32(); r.i32()
-        if t == 'StructProperty': r.string(); r.o += 17
-        elif t == 'BoolProperty': r.o += 2; size = 0
-        elif t in ('ByteProperty', 'EnumProperty', 'ArrayProperty', 'SetProperty'): r.string(); r.o += 1
-        elif t == 'MapProperty': r.string(); r.string(); r.o += 1
-        else: r.o += 1
+        if new:
+            t = _type_tree(r)[0]
+            size_at = r.o; size = r.i32()
+            flags = blob[r.o]; r.o += 1
+            if flags & 0x01: r.o += 4
+            if flags & 0x02: r.o += 16
+            if flags & 0x04:
+                raise ValueError('property extensions not supported (%s)' % name)
+        else:
+            t = r.string(); size_at = r.o; size = r.i32(); r.i32()
+            if t == 'StructProperty': r.string(); r.o += 17
+            elif t == 'BoolProperty': r.o += 2; size = 0
+            elif t in ('ByteProperty', 'EnumProperty', 'ArrayProperty', 'SetProperty'): r.string(); r.o += 1
+            elif t == 'MapProperty': r.string(); r.string(); r.o += 1
+            else: r.o += 1
         if size < 0 or r.o + size > len(blob):
             raise ValueError('bad property list at %s' % name)
+        v = r.o
         r.o += size
-        spans.append((name, s, r.o))
+        spans.append(dict(name=name, type=t, start=s, size_at=size_at, value=v, end=r.o))
 
 
-def cut_links(actor, comps):
+def _span(blob, name, new):
+    spans, _ = prop_spans(blob, new)
+    return next((sp for sp in spans if sp['name'] == name), None)
+
+
+def set_object_prop(blob, name, path, new=False):
+    sp = _span(blob, name, new)
+    if not sp:
+        raise KeyError(name)
+    if sp['type'] != 'ObjectProperty':
+        raise ValueError('%s is %s' % (name, sp['type']))
+    value = _fstr('') + _fstr(path)
+    head = bytearray(blob[:sp['value']])
+    struct.pack_into('<i', head, sp['size_at'], len(value))
+    return bytes(head) + value + blob[sp['end']:]
+
+
+def drop_prop(blob, name, new=False):
+    sp = _span(blob, name, new)
+    return blob if not sp else blob[:sp['start']] + blob[sp['end']:]
+
+
+def cut_links(actor, comps, new=False, extra=()):
     """Copy of (actor, comps) with every property that points outside them removed (belt/pipe
-    connections, wires, snapped attachments). None if that isn't possible cleanly."""
-    own = {actor['path'].split('.', 1)[1]} | {c['path'].split('.', 1)[1] for c in comps}
+    connections, wires, snapped attachments). `extra` are companion (actor, comps) pairs kept in
+    the sample, e.g. a station's built-in track; links between group members stay. Returns
+    (actor, comps, [(companion, comps)...]) or None if that isn't possible cleanly."""
+    group = [(actor, comps)] + list(extra)
+    own = {o['path'].split('.', 1)[1] for a, cs in group for o in [a] + cs}
 
     def external(b):
         return any(r.decode() != 'BuildableSubsystem' and r.decode() not in own and
                    r.decode().split('.')[0] not in own for r in REF.findall(b))
 
     out = []
-    for o in [actor] + comps:
+    for o in [o for a, cs in group for o in [a] + cs]:
         o = copy.deepcopy(o)
         if external(o['data']):
             try:
-                spans, _ = prop_spans(o['data'])
+                spans, _ = prop_spans(o['data'], new)
             except (ValueError, struct.error):
                 return None
             blob = o['data']
-            for name, s, e in reversed(spans):
-                if external(blob[s:e]):
-                    blob = blob[:s] + blob[e:]
+            for sp in reversed(spans):
+                if external(blob[sp['start']:sp['end']]):
+                    blob = blob[:sp['start']] + blob[sp['end']:]
             if external(blob):
                 return None
             o['data'] = blob
             o['_cut'] = True
         out.append(o)
-    return out[0], out[1:]
+    res, i = [], 0
+    for a, cs in group:
+        res.append((out[i], out[i + 1:i + 1 + len(cs)]))
+        i += 1 + len(cs)
+    return res[0][0], res[0][1], res[1:]
 
 
-# A wire/track with no ends makes no sense, and stations depend on their built-in track.
-NO_CUT = {'PowerLine', 'RailroadTrackIntegrated', 'TrainStation', 'TrainDockingStation',
-          'TrainDockingStationLiquid', 'TrainPlatformEmpty', 'TrainPlatformEmpty_02'}
+# A wire with no ends makes no sense.
+NO_CUT = {'PowerLine'}
+# Train platforms only work together with their built-in track: sample them as a group.
+GROUPED = {'TrainStation', 'TrainDockingStation', 'TrainDockingStationLiquid',
+           'TrainPlatformEmpty', 'TrainPlatformEmpty_02'}
+COMPANION = re.compile(r'/Build_RailroadTrackIntegrated\.')
 
 
-def synthesize(picks, assets, version):
-    """Add samples for every buildable whose kind (game native class) already has a sample in
-    this version. Returns the names added."""
-    have = {t for t, _ in picks}
-    by_native = defaultdict(list)
-    for (t, custom), pick in picks.items():
-        a = assets.get(t)
-        # Only part-less pieces (structures). Machines, storage, poles, belts carry components
-        # (inventories, connectors) whose layout differs between models: those need real samples.
-        if a and not pick[2] and not pick[1].get('_template'):
-            by_native[a['native']].append((t, custom, pick))
+TARGET_VERSION = 60      # game 1.2: the library holds only this format
+
+
+def _float_prop(name, value):
+    """A 1.2-layout FloatProperty tag + value."""
+    return _fstr(name) + _fstr('FloatProperty') + struct.pack('<iiBf', 0, 4, 0, value)
+
+
+def _with_props(blob, drop=(), replace=None, add=b''):
+    """Rebuild a 1.2-layout blob: drop named properties, replace whole property spans
+    ({name: tag+value bytes}), and append extra tags before the closing 'None'."""
+    spans, none_at = prop_spans(blob, True)
+    out, last = [], spans[0]['start'] if spans else none_at
+    head = blob[:last]
+    for sp in spans:
+        if sp['name'] in drop:
+            continue
+        out.append(replace.get(sp['name'], blob[sp['start']:sp['end']]) if replace else blob[sp['start']:sp['end']])
+    return head + b''.join(out) + add + blob[none_at:]
+
+
+def synthesize(picks, assets, custom_struct):
+    """Samples for every lightweight structure (foundations, ramps, walls, roofs, beams, pillars,
+    walkways…) from a real 1.2 structure sample of the closest kind. In 1.2 these all share one
+    property set (paint slot, customization, recipe, + length for beams). A custom-RGB variant
+    is made by copying a real 1.2 customization block (custom_struct). Returns names added."""
     import difflib
+    # templates: real samples without parts or companions
+    real = [(t, c, p) for (t, c), p in picks.items()
+            if t in assets and not p[2] and not p[1].get('_template') and not p[1].get('_companions')]
+    lw = [r for r in real if assets[r[0]].get('lightweight')]
+    has_parts = {t for (t, _), p in picks.items() if p[2]}
+    # Model variants of one machine (MinerMk1/2/3) share their part layout: a real sample of one
+    # model can stand in for the others.
+    variants = {}
+    for (t, c), p in picks.items():
+        if p[2] and not p[1].get('_companions') and not p[1].get('_template') and t in assets:
+            variants.setdefault((re.sub(r'Mk\d', 'Mk', t), assets[t]['native']), (t, c, p))
     added = []
     for name, a in sorted(assets.items()):
-        if name in have or not a.get('class_path') or not a.get('recipe_path'):
+        if not a.get('class_path') or not a.get('recipe_path'):
             continue
-        cands = by_native.get(a['native'])
-        if not cands:
+        comps_tpl = None
+        if name in has_parts:
             continue
-        # prefer a custom-paint template, then the most similar name (e.g. Ramp_8x2 for Ramp_8x4)
-        t, custom, (src_bp, actor, comps) = max(
-            cands, key=lambda c: (c[1], difflib.SequenceMatcher(None, c[0], name).ratio()))
-        new_path = 'Persistent_Level:PersistentLevel.Build_%s_C_1' % name
-        s = copy.deepcopy(actor)
-        s['cls'] = a['class_path']
-        data = s['data']
-        new_comps = []
-        for c in comps:
-            nc = copy.deepcopy(c)
-            nc['path'] = c['path'].replace(actor['path'], new_path)
-            nc['outer'] = new_path
-            nc['data'] = replace_string(nc['data'], actor['path'], new_path)
-            data = replace_string(data, c['path'], nc['path'])
-            new_comps.append(nc)
-        data = replace_string(data, actor['path'], new_path)
-        try:
-            data = set_object_prop(data, 'mBuiltWithRecipe', a['recipe_path'])
-            data = drop_prop(data, 'mOriginalBuildableVariant')
-        except (KeyError, ValueError) as e:
-            print('  v%d: cannot synthesize %s from %s (%s)' % (version, name, t, e), file=sys.stderr)
+        v = variants.get((re.sub(r'Mk\d', 'Mk', name), a['native']))
+        if v and v[0] != name and not any(t2 == name for (t2, _) in picks):
+            pool = [v]
+        else:
+            same = [r for r in real if assets[r[0]]['native'] == a['native']]
+            # lightweights share one property set, so any lightweight template will do; other
+            # part-less pieces (doors, signs, corner walls) need a template of their own kind
+            pool = same if same else (lw if a.get('lightweight') else [])
+        if not pool:
             continue
-        s['data'], s['path'] = data, new_path
-        s['_template'] = t
-        picks[(name, custom)] = (src_bp, s, new_comps)
-        added.append(name)
-    return added
+        t, _, (src, actor, comps_tpl) = max(pool, key=lambda r: difflib.SequenceMatcher(None, r[0], name).ratio())
+        for custom in (False, True):
+            if (name, custom) in picks:
+                continue
+            if custom and not custom_struct:
+                continue
+            # keep the template's id so only the class part of the path changes
+            new_path = 'Persistent_Level:PersistentLevel.Build_%s_C_%s' % (name, actor['path'].rsplit('_', 1)[1])
+            data = replace_string(actor['data'], actor['path'], new_path)
+            new_comps = []
+            for c in comps_tpl or []:
+                nc = copy.deepcopy(c)
+                nc['path'] = c['path'].replace(actor['path'], new_path)
+                nc['outer'] = new_path
+                nc['data'] = replace_string(nc['data'], actor['path'], new_path)
+                data = replace_string(data, c['path'], nc['path'])
+                new_comps.append(nc)
+            try:
+                data = set_object_prop(data, 'mBuiltWithRecipe', a['recipe_path'], True)
+                beam = a['native'] == 'FGBuildableBeam'
+                has_len = _span(data, 'mLength', True) is not None
+                data = _with_props(
+                    data,
+                    drop={'mOriginalBuildableVariant', 'BuiltBy'} | (set() if beam else {'mLength'}),
+                    replace={'mCustomizationData': custom_struct} if custom else None,
+                    add=_float_prop('mLength', 400.0) if beam and not has_len else b'')
+            except (KeyError, ValueError, struct.error) as e:
+                print('  cannot synthesize %s from %s (%s)' % (name, t, e), file=sys.stderr)
+                continue
+            s = dict(copy.deepcopy(actor), cls=a['class_path'], path=new_path, data=data,
+                     _template=t if name != t else None)
+            if name == t:          # same piece, only repainted
+                s['_repainted'] = True
+            picks[(name, custom)] = (src, s, new_comps)
+            added.append(name)
+    return sorted(set(added))
 
 
-def main(root, out_dir):
-    out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    by_version = defaultdict(dict)     # version -> {(type, custom): (bp, actor, comps)}
-    cut_candidates = defaultdict(dict)
-    bases = {}
-    items = {}                         # 'Desc_SteelPlate' -> item class path, for cost lists
+def modern_sources(root, saves):
+    """(origin, actor, components, lookup) for every 1.2-format building in the blueprints under
+    root and in the given save files, newest first. lookup maps a path to (actor, components)."""
+    import sav as savmod
+    bps = []
     for f in sorted(Path(root).rglob('*.sbp')):
         try:
             bp = Blueprint.load(f)
         except Exception as e:
             print('skip', f.name, e, file=sys.stderr)
             continue
-        v = bp.object_version
-        bases.setdefault(v, bp)
-        for item, _ in bp.cost:
-            items.setdefault(short(item), item)
+        if bp.object_version >= NEW_TAGS_FROM:
+            bps.append(bp)
+    bps.sort(key=lambda b: -b.object_version)
+    for bp in bps:
         comp_index = defaultdict(list)
         for o in bp.objects:
             if o['type'] == 0:
                 comp_index[o['outer']].append(o)
+        lookup = {a['path']: (a, comp_index.get(a['path'], [])) for a in bp.actors()}
         for a in bp.actors():
-            key = (short(a['cls']), b'PrimaryColor' in a['data'])
-            if key in by_version[v] or '/Build_' not in a['cls']:   # buildables only
-                continue
-            comps = comp_index.get(a['path'], [])
-            if PERSONAL.search(a['data']) or any(PERSONAL.search(c['data']) for c in comps):
-                continue
-            if is_clean(bp, a, comps):
-                by_version[v][key] = (bp, a, comps)
-            elif not bp.object_flags and key[0] not in NO_CUT and key not in cut_candidates[v]:
-                cut = cut_links(a, comps)
-                if cut:
-                    cut_candidates[v][key] = (bp, cut[0], cut[1])
-    # pieces only ever seen wired up: use the link-cut copy when no clean sample exists
-    for v, cands in cut_candidates.items():
-        for key, pick in cands.items():
-            by_version[v].setdefault(key, pick)
+            yield bp, a, comp_index.get(a['path'], []), lookup
+    for f in saves:
+        s = savmod.Save(f)
+        pairs = list(s.buildings())
+        lookup = {a['path']: (a, comps) for a, comps in pairs}
+        for a, comps in pairs:
+            if a['object_version'] >= NEW_TAGS_FROM and all(c['object_version'] >= NEW_TAGS_FROM for c in comps):
+                yield 'save', a, comps, lookup
 
-    assets_file = out_dir / 'assets.json'
-    assets = json.loads(assets_file.read_text(encoding='utf-8'))['assets'] if assets_file.exists() else {}
-    for v, picks in by_version.items():
-        if assets and not bases[v].object_flags:     # 1.0 tag format only
-            added = synthesize(picks, assets, v)
-            print('v%d: synthesized %d pieces from same-kind samples' % (v, len(added)))
 
-    index = {}
-    for v, picks in sorted(by_version.items()):
-        base = bases[v]
-        lib = Blueprint()
-        for attr in ('header_version', 'object_version', 'build_version', 'extra_header',
-                     'object_flags', 'chunk_v2'):
-            setattr(lib, attr, getattr(base, attr))
-        recipes, entries = set(), {}
-        next_id = 2140000000
-        keys = sorted(picks)
-        cols = max(1, int(len(keys) ** 0.5))
-        for i, key in enumerate(keys):
-            src_bp, actor, comps = picks[key]
-            new_actor_path = '%s_%d' % (actor['path'].rsplit('_', 1)[0], next_id)
-            next_id += 1
-            a = copy.deepcopy(actor)
-            a['pos'] = [(i % cols) * GRID, (i // cols) * GRID, 0.0]
-            for c in comps:
-                a['data'] = replace_string(a['data'], c['path'], c['path'].replace(actor['path'], new_actor_path))
-            a['data'] = replace_string(a['data'], actor['path'], new_actor_path)
-            a['path'] = new_actor_path
+# Free text players type on signs is theirs: never take signs from a save. (Station names live
+# in a separate object, not on the station.)
+SAVE_SKIP = re.compile(r'^(StandaloneWidgetSign|SignPole|Billboard)')
+
+
+def main(root, out_dir, saves=()):
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    assets = json.loads((out_dir / 'assets.json').read_text(encoding='utf-8'))['assets']
+    picks, cut_picks = {}, {}
+    base, custom_struct = None, None
+    for origin, a, comps, lookup in modern_sources(root, saves):
+        if base is None and origin != 'save' and origin.object_version == TARGET_VERSION:
+            base = origin
+        t = short(a['cls'])
+        if '/Build_' not in a['cls'] or t not in assets:
+            continue
+        if PERSONAL.search(a['data']) or any(PERSONAL.search(c['data']) for c in comps):
+            continue
+        if origin == 'save' and SAVE_SKIP.search(t):
+            continue
+        custom = b'PrimaryColor' in a['data']
+        if custom and custom_struct is None:
+            sp = _span(a['data'], 'mCustomizationData', True)
+            if sp:
+                custom_struct = a['data'][sp['start']:sp['end']]
+        key = (t, custom)
+        if key in picks:
+            continue
+        extra = []
+        if t in GROUPED:   # bring the built-in track(s) along
+            for m in REF.finditer(b''.join(o['data'] for o in [a] + comps)):
+                p = 'Persistent_Level:PersistentLevel.' + m.group(1).decode().split('.')[0]
+                if p in lookup and COMPANION.search(lookup[p][0]['cls']) and lookup[p] not in extra:
+                    extra.append(lookup[p])
+            if not extra:
+                continue
+        if not extra and is_clean(None, a, comps):
+            picks[key] = (origin, a, comps)
+        elif t not in NO_CUT and key not in cut_picks:
+            cut = cut_links(a, comps, True, extra)
+            if cut:
+                actor_c, comps_c, extra_c = cut
+                if extra_c:
+                    actor_c['_companions'] = extra_c
+                cut_picks[key] = (origin, actor_c, comps_c)
+    if base is None:
+        raise SystemExit('need at least one game-1.2 blueprint (object version %d) for the header' % TARGET_VERSION)
+    for key, pick in cut_picks.items():
+        picks.setdefault(key, pick)
+    added = synthesize(picks, assets, custom_struct)
+    print('real samples: %d types | pieces made from similar samples: %d'
+          % (len({t for (t, _), p in picks.items() if not p[1].get('_template')}), len(added)))
+
+    lib = Blueprint()
+    for attr in ('header_version', 'object_version', 'build_version', 'extra_header',
+                 'object_flags', 'chunk_v2'):
+        setattr(lib, attr, getattr(base, attr))
+    recipes, entries = set(), {}
+    next_id = 2140000000
+    keys = sorted(picks)
+    cols = max(1, int(len(keys) ** 0.5))
+    def clean(o):
+        return {k: v for k, v in copy.deepcopy(o).items() if not k.startswith('_')
+                and k not in ('object_version', 'save_tail')}
+
+    # New ids keep the original digit count: references also sit inside longer strings
+    # (e.g. '...Track_C_550377992.TrackConnection1') whose stored sizes must not change.
+    next_ids = {}
+
+    def fresh_path(path):
+        prefix, num = path.rsplit('_', 1)
+        n = len(num)
+        nxt = next_ids.get(n, 10 ** (n - 1) + 7000000 if n > 7 else 10 ** (n - 1))
+        next_ids[n] = nxt + 1
+        return '%s_%d' % (prefix, nxt)
+
+    for i, key in enumerate(keys):
+        origin, actor, comps = picks[key]
+        group = [(actor, comps)] + list(actor.get('_companions', []))
+        renames = {g['path']: fresh_path(g['path']) for g, _ in group}
+        grid = [(i % cols) * GRID, (i // cols) * GRID, 0.0]
+        for g, gcomps in group:
+            a = clean(g)
+            for old, new in renames.items():
+                a['data'] = replace_string(a['data'], old, new)
+            if g is actor:
+                a['pos'], a['scale'] = list(grid), [1.0, 1.0, 1.0]
+                if not group[1:]:
+                    a['rot'] = [0.0, 0.0, 0.0, 1.0]
+            else:    # companions keep their place relative to the main piece
+                a['pos'] = [grid[k] + g['pos'][k] - actor['pos'][k] for k in range(3)]
+            a['path'], a['level'] = renames[g['path']], 'Persistent_Level'
             lib.objects.append(a)
-            for c in comps:
-                nc = copy.deepcopy(c)
-                nc['data'] = replace_string(nc['data'], actor['path'], new_actor_path)
-                nc['path'] = c['path'].replace(actor['path'], new_actor_path)
-                nc['outer'] = new_actor_path
+            for c in gcomps:
+                nc = clean(c)
+                for old, new in renames.items():
+                    nc['data'] = replace_string(nc['data'], old, new)
+                nc['path'] = c['path'].replace(g['path'], renames[g['path']])
+                nc['outer'], nc['level'] = renames[g['path']], 'Persistent_Level'
                 lib.objects.append(nc)
-            m = RECIPE.search(actor['data'])
-            if m:
-                recipes.add(m.group(1).decode())
-            t, custom = key
-            e = entries.setdefault(t, dict(paints=[], recipe=m.group(1).decode() if m else None,
-                                            components=len(comps)))
-            e['paints'].append('custom' if custom else (swatch(actor) or 'none'))
-            if actor.get('_cut') or any(c.get('_cut') for c in comps):
-                e['cut'] = True                # links to other buildings removed
-            if actor.get('_template'):
-                e['synthetic'] = True          # made from a sibling sample, not seen in game yet
-                e['template'] = actor['_template']
-        span = cols * GRID / 800 + 1
-        lib.dims = [int(span) + 1, int((len(keys) // cols + 1) * GRID / 800) + 1, 4]
-        lib.recipes = sorted(recipes)
-        path = out_dir / ('donors-v%d.sbp' % v)
-        lib.save(path)
-        check = Blueprint.load(path)
-        assert len(check.objects) == len(lib.objects)
-        index[str(v)] = dict(file=path.name, types=entries)
-        print('v%d: %d types, %d objects, %.0f KB' % (v, len(entries), len(lib.objects), path.stat().st_size / 1024))
+            if g is actor:
+                main = a
+        a = main
+        m = RECIPE.search(a['data'])
+        if m:
+            recipes.add(m.group(1).decode())
+        t, custom = key
+        e = entries.setdefault(t, dict(paints=[], recipe=m.group(1).decode() if m else None,
+                                        components=len(comps)))
+        e['paints'].append('custom' if custom else (swatch(actor) or 'none'))
+        if actor.get('_cut') or any(c.get('_cut') for c in comps):
+            e['cut'] = True                     # links to other buildings removed
+        if actor.get('_template'):
+            e['synthetic'] = True               # made from a similar 1.2 sample
+            e['template'] = actor['_template']
+        e.setdefault('source', 'save' if origin == 'save' else 'blueprint')
+        if group[1:]:
+            e['companions'] = sorted({short(g['cls']) for g, _ in group[1:]})
+    lib.dims = [int(cols * GRID / 800) + 2, int((len(keys) // cols + 1) * GRID / 800) + 2, 4]
+    lib.recipes = sorted(recipes)
+    for old in out_dir.glob('donors-v*.sbp'):
+        old.unlink()
+    path = out_dir / ('donors-v%d.sbp' % TARGET_VERSION)
+    lib.save(path)
+    check = Blueprint.load(path)
+    assert len(check.objects) == len(lib.objects)
+    index = {str(TARGET_VERSION): dict(file=path.name, types=entries)}
     (out_dir / 'index.json').write_text(json.dumps(index, indent=1, sort_keys=True))
-    (out_dir / 'items.json').write_text(json.dumps(items, indent=1, sort_keys=True))
-    # Refresh the full piece list's "ready" column (needs library/assets.json from build_assets.py).
-    if (out_dir / 'assets.json').exists():
-        import build_assets
-        build_assets.write_markdown(json.loads((out_dir / 'assets.json').read_text(encoding='utf-8')))
+    print('v%d: %d types, %d objects, %.0f KB' % (TARGET_VERSION, len(entries), len(lib.objects),
+                                                 path.stat().st_size / 1024))
+    import build_assets
+    build_assets.write_markdown(json.loads((out_dir / 'assets.json').read_text(encoding='utf-8')))
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else Path(__file__).resolve().parent.parent / 'library')
+    import argparse
+    ap = argparse.ArgumentParser(description='Build the game-1.2 donor library.')
+    ap.add_argument('blueprints_root', help='folder with blueprint session folders')
+    ap.add_argument('--save', action='append', default=[], help='a .sav file to take samples from (repeatable)')
+    ap.add_argument('--out', default=str(Path(__file__).resolve().parent.parent / 'library'))
+    a = ap.parse_args()
+    main(a.blueprints_root, a.out, a.save)

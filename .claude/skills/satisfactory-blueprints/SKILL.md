@@ -70,8 +70,10 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
    pieces per category, then name, size, real build cost and unlock. ✅ = sample from a real
    build, 🧪 = sample made from a similar piece (not yet confirmed in game), 🎨 = takes any
    colour; unmarked pieces can't be placed yet.
-   `python -I scripts/sbp.py library` prints the ready ones per game version. `Library.load(needs=[...],
-   custom_paint=True)` picks one version that has them all. Mixing pieces across versions isn't
+   `python -I scripts/sbp.py library` prints the ready ones. The library is game-1.2 format
+   only (`donors-v60.sbp`), so every build comes out in the format the player's game writes.
+   Train platforms come with their built-in track: `add_copy` brings companions along. `Library.load(needs=[...],
+   custom_paint=True)` checks they're all available. Mixing pieces across versions isn't
    verified, so don't. To use a piece that only exists in the user's own blueprints, run
    `sbp.py catalog "<blueprints root>"` and clone from their file, with their OK.
 2. **Start the blueprint from the library**: `bp = lib.new_blueprint(size='medium')` copies the
