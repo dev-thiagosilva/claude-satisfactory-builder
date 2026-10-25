@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blueprint Studio</title>
+<style>
+  :root {
+    --bg:#13151a; --panel:#1b1e25; --panel2:#22262e; --fg:#e9e6df; --muted:#9a968d; --line:#2e333c;
+    --accent:#f39c3c; --accent-ink:#1b1206; --ok:#5cb87a; --err:#e06c6c;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
+  #app { display:grid; grid-template-columns:260px 1fr 280px; height:100%; }
+  aside { background:var(--panel); border-right:1px solid var(--line); overflow:auto; padding:14px; }
+  aside.right { border-right:0; border-left:1px solid var(--line); }
+  h1 { font-size:15px; margin:0 0 2px; letter-spacing:.2px; }
+  h2 { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin:18px 0 8px; font-weight:600; }
+  .sub { color:var(--muted); font-size:12px; }
+  .build { padding:9px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:6px; cursor:pointer; background:var(--panel2); }
+  .build:hover { border-color:#4a505c; }
+  .build.active { border-color:var(--accent); }
+  .build b { display:block; font-weight:600; }
+  .build span { color:var(--muted); font-size:12px; }
+  label.row { display:flex; align-items:center; gap:8px; padding:2px 0; cursor:pointer; }
+  .sw { width:12px; height:12px; border-radius:3px; flex:none; border:1px solid #0004; }
+  .n { margin-left:auto; color:var(--muted); font-variant-numeric:tabular-nums; }
+  button { background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:6px 9px; font:inherit; cursor:pointer; }
+  button:hover:not(:disabled) { border-color:#566070; }
+  button:disabled { opacity:.4; cursor:default; }
+  button.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600; }
+  button.danger:hover:not(:disabled) { border-color:var(--err); color:var(--err); }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+  select, input[type=color] { background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:5px; font:inherit; width:100%; }
+  input[type=color] { height:32px; padding:2px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  #stage { position:relative; }
+  #c { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .toolbar { position:absolute; top:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; background:#1b1e25e6; padding:6px; border-radius:10px; border:1px solid var(--line); }
+  .hint { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); color:var(--muted); background:#1b1e25e6; padding:6px 12px; border-radius:20px; border:1px solid var(--line); white-space:nowrap; font-size:12px; }
+  #status { min-height:18px; margin-top:8px; font-size:12px; color:var(--muted); }
+  #status.ok { color:var(--ok); } #status.err { color:var(--err); }
+  .empty { color:var(--muted); padding:10px 0; }
+  .desc { white-space:pre-wrap; color:var(--muted); font-size:12px; max-height:140px; overflow:auto; border-left:2px solid var(--line); padding-left:8px; }
+  .sel { font-variant-numeric:tabular-nums; }
+  @media (max-width: 900px) { #app { grid-template-columns:1fr; grid-template-rows:auto 60vh auto; overflow:auto; } html,body { overflow:auto; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>Blueprint Studio</h1>
+    <div class="sub">Buildings Claude made for you</div>
+    <h2>Your builds</h2>
+    <div id="builds"><div class="empty">Loading…</div></div>
+    <h2>Pieces</h2>
+    <div id="layers" class="sub">Pick a build.</div>
+    <h2>About this build</h2>
+    <div id="about" class="desc"></div>
+  </aside>
+
+  <main id="stage">
+    <canvas id="c"></canvas>
+    <div class="toolbar">
+      <button data-v="front">Front</button><button data-v="side">Side</button>
+      <button data-v="three">3/4</button><button data-v="top">Top</button>
+      <span style="width:8px"></span>
+      <label class="sub" style="display:flex;align-items:center;gap:6px">Cut <input id="cut" type="range" min="0" max="50" value="50" style="width:110px"></label>
+    </div>
+    <div class="hint">Click a piece to select · Shift+click to add · Drag to orbit · Right-drag to pan · Scroll to zoom</div>
+  </main>
+
+  <aside class="right">
+    <h2 style="margin-top:0">Selection</h2>
+    <div id="selinfo" class="sel sub">Nothing selected.</div>
+    <div class="grid2" style="margin-top:8px">
+      <button id="selType" disabled>Select same type</button>
+      <button id="selNone" disabled>Clear</button>
+    </div>
+    <h2>Move</h2>
+    <div class="grid3">
+      <button data-mv="x,-1">← Left</button><button data-mv="z,1">↑ Up</button><button data-mv="x,1">Right →</button>
+      <button data-mv="y,-1">Front</button><button data-mv="z,-1">↓ Down</button><button data-mv="y,1">Back</button>
+    </div>
+    <div style="margin-top:6px;display:flex;gap:6px;align-items:center" class="sub">Step
+      <select id="step"><option value="50">0.5 m</option><option value="100" selected>1 m</option><option value="400">4 m</option><option value="800">8 m</option></select>
+    </div>
+    <h2>Rotate (around selection)</h2>
+    <div class="grid2"><button data-rot="-90">⟲ 90°</button><button data-rot="90">⟳ 90°</button>
+      <button data-rot="-15">⟲ 15°</button><button data-rot="15">⟳ 15°</button></div>
+    <h2>Edit</h2>
+    <div class="grid2"><button id="dup">Duplicate</button><button id="del" class="danger">Delete</button></div>
+    <div style="margin-top:8px" class="sub">Colour (pieces that take any colour)</div>
+    <input id="color" type="color" value="#eeeeee">
+    <h2>History</h2>
+    <div class="grid2"><button id="undo">Undo</button><button id="redo">Redo</button></div>
+    <h2>Save &amp; use</h2>
+    <button id="save" class="primary" style="width:100%">Save changes</button>
+    <div style="margin-top:10px" class="sub">Put it in this save:</div>
+    <select id="session"></select>
+    <button id="install" style="width:100%;margin-top:6px">Use in game</button>
+    <div id="status"></div>
+  </aside>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const $ = s => document.querySelector(s);
+const api = async (path, body) => {
+  const r = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {});
+  const j = await r.json();
+  if (!r.ok) { const e = new Error(j.message || j.error || r.statusText); e.code = r.status; throw e; }
+  return j;
+};
+function status(msg, kind = '') { const s = $('#status'); s.textContent = msg; s.className = kind; }
+
+// ---------- scene ----------
+const canvas = $('#c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x13151a);
+const camera = new THREE.PerspectiveCamera(45, 1, 0.5, 3000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xe6eeff, 0x3a3226, 1.2));
+const sun = new THREE.DirectionalLight(0xffffff, 1.5); sun.position.set(60, 120, -40); scene.add(sun);
+const grid = new THREE.GridHelper(200, 25, 0x3a3f48, 0x23272e); scene.add(grid);
+
+// Geometry in Unreal local space (cm). Instance matrices convert to metres / Y-up.
+function box(sx, sy, sz, ox = 0, oy = 0, oz = 0) { const g = new THREE.BoxGeometry(sx, sy, sz); g.translate(ox, oy, oz); return g; }
+function quarterPipe(width, radius) {
+  const seg = 12, th = 20, pos = [], idx = [];
+  for (let i = 0; i <= seg; i++) {
+    const a = (i / seg) * Math.PI / 2;
+    for (const r of [radius, radius - th]) {
+      const x = radius / 2 - r * Math.cos(a), z = -radius / 2 + r * Math.sin(a);
+      pos.push(x, -width / 2, z, x, width / 2, z);
+    }
+  }
+  for (let i = 0; i < seg; i++) { const b = i * 4, n = b + 4;
+    idx.push(b, b + 1, n + 1, b, n + 1, n, b + 2, n + 2, n + 3, b + 2, n + 3, b + 3, b, n, n + 2, b, n + 2, b + 2, b + 1, b + 3, n + 3, b + 1, n + 3, n + 1); }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+  return g;
+}
+function geometryFor(type) {
+  const m = type.match(/(\d+)x(\d+)/), w = m ? +m[1] * 100 : 400, h = m ? +m[2] * 100 : 400;
+  if (/^QuarterPipe/.test(type)) return { geo: quarterPipe(w, h) };
+  if (/Beam|Pipeline|Conveyor|Belt|Wire/.test(type)) return { geo: box(1, 50, 50, 0.5), stretch: true };
+  if (/Window|Glass/.test(type) && /Wall/.test(type)) return { geo: box(20, w, h, 0, 0, h / 2), glass: true };
+  if (/Wall|Fence|Railing/.test(type)) return { geo: box(20, w, h, 0, 0, h / 2) };
+  if (/Foundation|Ramp|Roof|Floor/.test(type)) return { geo: box(w, w, h), glass: /Glass/.test(type) };
+  if (/Pillar/.test(type)) return { geo: box(70, 70, 100, 0, 0, 50) };
+  return { geo: box(400, 400, 400, 0, 0, 200) };
+}
+const SLOT = { Slot0: '#f39c3c', Slot1: '#6b7894', Slot2: '#3f8f6b', Slot16: '#d0d0d0', Concrete: '#b9b4a9' };
+const colorOf = p => p.color || (p.paint && p.paint.startsWith('#') ? p.paint : SLOT[p.paint] || '#8a8a8a');
+
+// Unreal (cm, Z-up, left-handed) -> three.js (m, Y-up): swap Y/Z rows (a mirror, so double-sided materials).
+const _m = new THREE.Matrix4();
+function matrixOf(p) {
+  const [x, y, z, w] = p.rot, s = [...p.scale];
+  if (p.len) s[0] *= p.len;
+  const R = [[1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
+             [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
+             [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)]];
+  const M = R.map(r => r.map((v, j) => v * s[j] * 0.01));
+  const t = p.pos.map(v => v * 0.01);
+  return _m.set(M[0][0], M[0][1], M[0][2], t[0], M[2][0], M[2][1], M[2][2], t[2], M[1][0], M[1][1], M[1][2], t[1], 0, 0, 0, 1);
+}
+
+// ---------- state ----------
+let build = null;          // {name, title, ...}
+let pieces = [];           // working copy: {i|from, type, pos, rot, scale, len, paint, custom, color?}
+let selected = new Set();  // indices into pieces
+let hiddenTypes = new Set();
+let undoStack = [], redoStack = [], dirty = false;
+let meshes = [];
+const zero = new THREE.Matrix4().makeScale(0, 0, 0);
+const hiColor = new THREE.Color(0xf39c3c), tmpColor = new THREE.Color();
+
+function snapshot() { undoStack.push(JSON.stringify(pieces)); if (undoStack.length > 60) undoStack.shift(); redoStack = []; dirty = true; updateButtons(); }
+function restore(s) { pieces = JSON.parse(s); selected.clear(); rebuild(); dirty = true; updateButtons(); }
+
+function rebuild() {
+  meshes.forEach(m => { scene.remove(m); m.geometry.dispose(); m.material.dispose(); });
+  meshes = [];
+  const byType = new Map();
+  pieces.forEach((p, k) => { if (!byType.has(p.type)) byType.set(p.type, []); byType.get(p.type).push(k); });
+  const cutH = +$('#cut').value;
+  for (const [type, ks] of byType) {
+    const def = geometryFor(type);
+    const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.05, roughness: 0.7, side: THREE.DoubleSide,
+      transparent: !!def.glass, opacity: def.glass ? 0.45 : 1, depthWrite: !def.glass });
+    const mesh = new THREE.InstancedMesh(def.geo, mat, ks.length);
+    ks.forEach((k, n) => {
+      const p = pieces[k];
+      const hide = hiddenTypes.has(type) || p.pos[2] / 100 > cutH;
+      mesh.setMatrixAt(n, hide ? zero : matrixOf(p));
+      mesh.setColorAt(n, selected.has(k) ? hiColor : tmpColor.set(colorOf(p)));
+    });
+    mesh.instanceMatrix.needsUpdate = true; if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.userData = { type, ks };
+    scene.add(mesh); meshes.push(mesh);
+  }
+  renderLayers(byType); renderSelection();
+}
+
+function renderLayers(byType) {
+  const el = $('#layers'); el.innerHTML = '';
+  for (const [type, ks] of [...byType].sort((a, b) => b[1].length - a[1].length)) {
+    const l = document.createElement('label'); l.className = 'row';
+    l.innerHTML = `<input type="checkbox" ${hiddenTypes.has(type) ? '' : 'checked'}><span class="sw" style="background:${colorOf(pieces[ks[0]])}"></span>${type.replace(/_/g, ' ')}<span class="n">${ks.length.toLocaleString()}</span>`;
+    l.querySelector('input').onchange = e => { e.target.checked ? hiddenTypes.delete(type) : hiddenTypes.add(type); rebuild(); };
+    el.appendChild(l);
+  }
+}
+
+function renderSelection() {
+  const n = selected.size;
+  if (!n) { $('#selinfo').textContent = build ? 'Nothing selected. Click a piece.' : 'Pick a build.'; }
+  else {
+    const types = {}; selected.forEach(k => types[pieces[k].type] = (types[pieces[k].type] || 0) + 1);
+    $('#selinfo').innerHTML = `<b>${n.toLocaleString()}</b> piece${n > 1 ? 's' : ''}<br>` +
+      Object.entries(types).map(([t, c]) => `${c} × ${t.replace(/_/g, ' ')}`).join('<br>');
+  }
+  updateButtons();
+}
+
+function updateButtons() {
+  const has = selected.size > 0;
+  document.querySelectorAll('[data-mv],[data-rot],#dup,#del,#selType,#selNone,#color').forEach(b => b.disabled = !has);
+  $('#undo').disabled = !undoStack.length; $('#redo').disabled = !redoStack.length;
+  $('#save').disabled = !build || !dirty; $('#install').disabled = !build || dirty || !$('#session').value;
+  $('#save').textContent = dirty ? 'Save changes' : 'Saved';
+}
+
+// ---------- camera ----------
+let R0 = 60, TOP = 40;
+function frame() {
+  if (!pieces.length) return;
+  const zs = pieces.map(p => p.pos[2] / 100), xs = pieces.map(p => Math.abs(p.pos[0]) / 100), ys = pieces.map(p => Math.abs(p.pos[1]) / 100);
+  TOP = Math.max(4, Math.max(...zs) + 2); R0 = Math.max(TOP, Math.max(...xs), Math.max(...ys), 20);
+  $('#cut').max = Math.ceil(TOP); $('#cut').value = Math.ceil(TOP);
+  setView('three');
+}
+const VIEWS = { front: [0, 0.35, -2.4], side: [2.4, 0.35, 0], three: [1.4, 0.9, -1.6], top: [0.001, 3, -0.001] };
+function setView(v) { const d = VIEWS[v]; camera.position.set(d[0] * R0, TOP / 2 + d[1] * R0, d[2] * R0); controls.target.set(0, TOP / 2, 0); }
+document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => setView(b.dataset.v));
+window.setView = setView;
+window.setCamera = (p, t) => { camera.position.set(...p); controls.target.set(...t); };
+$('#cut').oninput = () => rebuild();
+
+// ---------- picking ----------
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+let downAt = null;
+canvas.addEventListener('pointerdown', e => downAt = [e.clientX, e.clientY]);
+canvas.addEventListener('pointerup', e => {
+  if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 4 || e.button !== 0) return;
+  const r = canvas.getBoundingClientRect();
+  ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const hit = ray.intersectObjects(meshes, false).find(h => h.instanceId !== undefined);
+  if (!e.shiftKey) selected.clear();
+  if (hit) { const k = hit.object.userData.ks[hit.instanceId]; selected.has(k) && e.shiftKey ? selected.delete(k) : selected.add(k); }
+  rebuild();
+});
+
+// ---------- edits ----------
+const qmul = (a, b) => [a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
+                        a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3], a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2]];
+function move(axis, dir) {
+  // Screen-friendly directions: from the front view, "Right" is -X in Unreal (left-handed).
+  const step = +$('#step').value, d = [0, 0, 0];
+  if (axis === 'x') d[0] = -dir * step; if (axis === 'y') d[1] = dir * step; if (axis === 'z') d[2] = dir * step;
+  snapshot(); selected.forEach(k => pieces[k].pos = pieces[k].pos.map((v, i) => v + d[i])); rebuild();
+}
+function rotate(deg) {
+  snapshot();
+  const ks = [...selected], cx = ks.reduce((s, k) => s + pieces[k].pos[0], 0) / ks.length, cy = ks.reduce((s, k) => s + pieces[k].pos[1], 0) / ks.length;
+  const a = -deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a), q = [0, 0, Math.sin(a / 2), Math.cos(a / 2)];
+  ks.forEach(k => { const p = pieces[k], dx = p.pos[0] - cx, dy = p.pos[1] - cy;
+    p.pos = [cx + dx * c - dy * s, cy + dx * s + dy * c, p.pos[2]]; p.rot = qmul(q, p.rot); });
+  rebuild();
+}
+document.querySelectorAll('[data-mv]').forEach(b => b.onclick = () => { const [a, d] = b.dataset.mv.split(','); move(a, +d); });
+document.querySelectorAll('[data-rot]').forEach(b => b.onclick = () => rotate(+b.dataset.rot));
+$('#del').onclick = () => { snapshot(); pieces = pieces.filter((_, k) => !selected.has(k)); selected.clear(); rebuild(); };
+$('#dup').onclick = () => {
+  snapshot(); const step = +$('#step').value, start = pieces.length;
+  [...selected].forEach(k => { const p = pieces[k]; pieces.push({ ...p, i: undefined, from: p.i ?? p.from, pos: [p.pos[0] - step, p.pos[1], p.pos[2]] }); });
+  selected = new Set(pieces.slice(start).map((_, n) => start + n)); rebuild();
+};
+$('#color').oninput = e => {
+  const ks = [...selected].filter(k => pieces[k].custom);
+  if (!ks.length) { status('These pieces use a palette slot, so their colour is set in game.', 'err'); return; }
+  if (!$('#color').dataset.live) { snapshot(); $('#color').dataset.live = 1; }
+  ks.forEach(k => pieces[k].color = e.target.value); rebuild();
+};
+$('#color').onchange = () => delete $('#color').dataset.live;
+$('#selNone').onclick = () => { selected.clear(); rebuild(); };
+$('#selType').onclick = () => { const t = new Set([...selected].map(k => pieces[k].type)); pieces.forEach((p, k) => t.has(p.type) && selected.add(k)); rebuild(); };
+$('#undo').onclick = () => { if (!undoStack.length) return; redoStack.push(JSON.stringify(pieces)); restore(undoStack.pop()); };
+$('#redo').onclick = () => { if (!redoStack.length) return; undoStack.push(JSON.stringify(pieces)); restore(redoStack.pop()); };
+addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if ((e.key === 'Delete' || e.key === 'Backspace') && selected.size) $('#del').click();
+  if (e.ctrlKey && e.key.toLowerCase() === 'z') $('#undo').click();
+  if (e.ctrlKey && e.key.toLowerCase() === 'y') $('#redo').click();
+  if (e.key === 'Escape') $('#selNone').click();
+});
+
+// ---------- load / save / install ----------
+async function loadBuilds(select) {
+  const list = await api('/api/creations');
+  const el = $('#builds'); el.innerHTML = '';
+  if (!list.length) { el.innerHTML = '<div class="empty">No builds yet. Ask Claude to make one.</div>'; return; }
+  for (const c of list) {
+    const d = document.createElement('div'); d.className = 'build' + (build && build.name === c.name ? ' active' : '');
+    d.innerHTML = `<b>${c.title}</b><span>${c.pieces.toLocaleString()} pieces · ${new Date(c.modified * 1000).toLocaleString()}</span>`;
+    d.onclick = () => openBuild(c.name);
+    el.appendChild(d);
+  }
+  if (select && !build) openBuild(list[0].name);
+}
+async function openBuild(name) {
+  if (dirty && !confirm('Discard unsaved changes?')) return;
+  const m = await api('/api/creation?name=' + encodeURIComponent(name));
+  build = m; pieces = m.pieces; selected.clear(); undoStack = []; redoStack = []; dirty = false;
+  $('#about').textContent = m.description || '';
+  document.querySelectorAll('.build').forEach(b => b.classList.toggle('active', b.querySelector('b').textContent === m.title));
+  rebuild(); frame(); status(`${m.title} · ${m.pieces.length.toLocaleString()} pieces · cost ≈ ` + m.cost.map(([i, n]) => `${n} ${i.replace('Desc_', '')}`).join(', '));
+  history.replaceState(null, '', '?build=' + encodeURIComponent(name));
+}
+$('#save').onclick = async () => {
+  status('Saving…');
+  const keep = pieces.filter(p => p.i !== undefined).map(p => ({ i: p.i, pos: p.pos, rot: p.rot, color: p.color }));
+  const clones = pieces.filter(p => p.i === undefined).map(p => ({ from: p.from, pos: p.pos, rot: p.rot, color: p.color }));
+  try {
+    const m = await api('/api/save', { name: build.name, pieces: keep, clones });
+    build = m; pieces = m.pieces; selected.clear(); dirty = false; rebuild(); updateButtons();
+    status('Saved. The previous version is kept in the build\'s history folder.', 'ok'); loadBuilds();
+  } catch (e) { status('Could not save: ' + e.message, 'err'); }
+};
+$('#install').onclick = async (ev, overwrite = false) => {
+  const session = $('#session').value;
+  try {
+    await api('/api/install', { name: build.name, session, overwrite });
+    status(`Done! Reload "${session}" in Satisfactory and find "${build.title}" in the build menu's Blueprints tab.`, 'ok');
+  } catch (e) {
+    if (e.code === 409 && confirm(e.message + ' Replace it with this version?')) return $('#install').onclick(ev, true);
+    if (e.code !== 409) status('Could not install: ' + e.message, 'err');
+  }
+};
+(async () => {
+  try {
+    const s = await api('/api/sessions');
+    $('#session').innerHTML = s.sessions.length ? s.sessions.map(n => `<option>${n}</option>`).join('') : '<option value="">No saves with blueprints found</option>';
+  } catch { $('#session').innerHTML = '<option value="">Game folder not found</option>'; }
+  $('#session').onchange = updateButtons;
+  const want = new URLSearchParams(location.search).get('build');
+  await loadBuilds(!want);
+  if (want) openBuild(want);
+  updateButtons();
+})();
+
+function resize() { const r = $('#stage').getBoundingClientRect(); renderer.setSize(r.width, r.height, false); camera.aspect = r.width / r.height; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe($('#stage'));
+renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+</script>
+</body>
+</html>

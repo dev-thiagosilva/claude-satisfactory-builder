@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "studio",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-I", ".claude/skills/satisfactory-blueprints/studio/server.py", "--port", "8770", "--creations", ".local/blueprints"],
+      "port": 8770
+    },
+    {
+      "name": "viewer",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "out"],
+      "port": 8765
+    }
+  ]
+}

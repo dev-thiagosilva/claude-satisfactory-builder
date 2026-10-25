@@ -1,0 +1,2340 @@
+{
+ "36": {
+  "file": "donors-v36.sbp",
+  "types": {
+   "Beam": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam.Recipe_Beam_C"
+   },
+   "Beam_Connector": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector.Recipe_Beam_Connector_C"
+   },
+   "Beam_Connector_Double": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector_Double.Recipe_Beam_Connector_Double_C"
+   },
+   "Beam_Painted": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Painted.Recipe_Beam_Painted_C"
+   },
+   "Beam_Support": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Support.Recipe_Beam_Support_C"
+   },
+   "CatwalkCorner": {
+    "components": 0,
+    "paints": [
+     "Custom",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Turn.Recipe_Catwalk_Turn_C"
+   },
+   "CatwalkCross": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Cross.Recipe_Catwalk_Cross_C"
+   },
+   "CatwalkStairs": {
+    "components": 0,
+    "paints": [
+     "Custom",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Stairs.Recipe_Catwalk_Stairs_C"
+   },
+   "CatwalkStraight": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Straight.Recipe_Catwalk_Straight_C"
+   },
+   "CatwalkT": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_T.Recipe_Catwalk_T_C"
+   },
+   "Concrete_Barrier_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Concrete_Barrier_01.Recipe_Concrete_Barrier_01_C"
+   },
+   "ConveyorAttachmentSplitter": {
+    "components": 5,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorAttachmentSplitter.Recipe_ConveyorAttachmentSplitter_C"
+   },
+   "ConveyorCeilingAttachment": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorCeilingAttachment.Recipe_ConveyorCeilingAttachment_C"
+   },
+   "ConveyorPole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPole.Recipe_ConveyorPole_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "FoundationPassthrough_Lift": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Factory/FoundationPassthrough/Recipe_FoundationPassthrough_Lift.Recipe_FoundationPassthrough_Lift_C"
+   },
+   "Foundation_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x1.Recipe_Foundation_Asphalt_8x1_C"
+   },
+   "Foundation_Asphalt_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x2.Recipe_Foundation_Asphalt_8x2_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Foundation_Concrete_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x2.Recipe_Foundation_Concrete_8x2_C"
+   },
+   "Gate_Automated_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Doors/Recipe_Gate_Automated_8x4.Recipe_Gate_Automated_8x4_C"
+   },
+   "InvertedRamp_UCorner_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_InvertedRamp_UCorner_Concrete_8x1.Recipe_InvertedRamp_UCorner_Concrete_8x1_C"
+   },
+   "Ladder": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Ladder/Recipe_Ladder.Recipe_Ladder_C"
+   },
+   "PillarBase": {
+    "components": 0,
+    "paints": [
+     "Slot16",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarBase.Recipe_PillarBase_C"
+   },
+   "PillarBase_Small": {
+    "components": 0,
+    "paints": [
+     "Slot16",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_PillarBase_Small.Recipe_PillarBase_Small_C"
+   },
+   "Pillar_Small_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Concrete.Recipe_Pillar_Small_Concrete_C"
+   },
+   "Pillar_Small_Frame": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Frame.Recipe_Pillar_Small_Frame_C"
+   },
+   "PipelineSupportWall": {
+    "components": 1,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportWall.Recipe_PipeSupportWall_C"
+   },
+   "PipelineSupportWallHole": {
+    "components": 1,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportWallHole.Recipe_PipeSupportWallHole_C"
+   },
+   "QuarterPipeMiddleInCorner_Asphalt_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2_C"
+   },
+   "QuarterPipeMiddleOutCorner_Asphalt_4x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2_C"
+   },
+   "QuarterPipeMiddleOutCorner_Asphalt_4x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4_C"
+   },
+   "QuarterPipeMiddle_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x2.Recipe_QuarterPipeMiddle_Concrete_8x2_C"
+   },
+   "Railing_01": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Railing_01.Recipe_Railing_01_C"
+   },
+   "Ramp_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Ramp_Asphalt_8x1.Recipe_Ramp_Asphalt_8x1_C"
+   },
+   "Ramp_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Ramp_Concrete_8x4.Recipe_Ramp_Concrete_8x4_C"
+   },
+   "Ramp_UpCorner_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Ramp_UpCorner_Asphalt_8x1.Recipe_Ramp_UpCorner_Asphalt_8x1_C"
+   },
+   "Roof_Tar_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Tar_01.Recipe_Roof_Tar_01_C"
+   },
+   "Roof_Window_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_01.Recipe_Roof_Window_01_C"
+   },
+   "Roof_Window_03": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_03.Recipe_Roof_Window_03_C"
+   },
+   "Roof_Window_InCorner_02": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_InCorner_02.Recipe_Roof_Window_InCorner_02_C"
+   },
+   "Roof_Window_OutCorner_02": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_OutCorner_02.Recipe_Roof_Window_OutCorner_02_C"
+   },
+   "StandaloneWidgetSign_Medium": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Medium.Recipe_StandaloneWidgetSign_Medium_C"
+   },
+   "StandaloneWidgetSign_Portrait": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Portrait.Recipe_StandaloneWidgetSign_Portrait_C"
+   },
+   "StandaloneWidgetSign_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Small.Recipe_StandaloneWidgetSign_Small_C"
+   },
+   "StandaloneWidgetSign_SmallVeryWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallVeryWide.Recipe_StandaloneWidgetSign_SmallVeryWide_C"
+   },
+   "StandaloneWidgetSign_SmallWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallWide.Recipe_StandaloneWidgetSign_SmallWide_C"
+   },
+   "StandaloneWidgetSign_Square": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square.Recipe_StandaloneWidgetSign_Square_C"
+   },
+   "StandaloneWidgetSign_Square_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Small.Recipe_StandaloneWidgetSign_Square_Small_C"
+   },
+   "StandaloneWidgetSign_Square_Tiny": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Tiny.Recipe_StandaloneWidgetSign_Square_Tiny_C"
+   },
+   "SteelWall_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_SteelWall_8x1.Recipe_SteelWall_8x1_C"
+   },
+   "StorageHazard": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StorageHazard.Recipe_StorageHazard_C"
+   },
+   "StorageMedkit": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StorageMedkit.Recipe_StorageMedkit_C"
+   },
+   "StoragePlayer": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StoragePlayer.Recipe_StoragePlayer_C"
+   },
+   "Wall_8x4_01": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_01.Recipe_Wall_8x4_01_C"
+   },
+   "Wall_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_02.Recipe_Wall_8x4_02_C"
+   },
+   "Wall_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x1.Recipe_Wall_Concrete_8x1_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_02": {
+    "components": 2,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_02.Recipe_Wall_Concrete_8x4_ConveyorHole_02_C"
+   },
+   "Wall_Concrete_8x4_Window_01": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_01.Recipe_Wall_Concrete_8x4_Window_01_C"
+   },
+   "Wall_Concrete_8x4_Window_03": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_03.Recipe_Wall_Concrete_8x4_Window_03_C"
+   },
+   "Wall_Concrete_8x4_Window_04": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_04.Recipe_Wall_Concrete_8x4_Window_04_C"
+   },
+   "Wall_Concrete_8x8_Corner_01": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x8_Corner_01.Recipe_Wall_Concrete_8x8_Corner_01_C"
+   },
+   "Wall_Concrete_Angular_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Angular_8x4.Recipe_Wall_Concrete_Angular_8x4_C"
+   },
+   "Wall_Concrete_Angular_8x8": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Angular_8x8.Recipe_Wall_Concrete_Angular_8x8_C"
+   },
+   "Wall_Concrete_CDoor_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_CDoor_8x4.Recipe_Wall_Concrete_CDoor_8x4_C"
+   },
+   "Wall_Concrete_FlipTris_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x2.Recipe_Wall_Concrete_FlipTris_8x2_C"
+   },
+   "Wall_Concrete_FlipTris_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x4.Recipe_Wall_Concrete_FlipTris_8x4_C"
+   },
+   "Wall_Concrete_FlipTris_8x8": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x8.Recipe_Wall_Concrete_FlipTris_8x8_C"
+   },
+   "Wall_Concrete_Gate_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Gate_8x4.Recipe_Wall_Concrete_Gate_8x4_C"
+   },
+   "Wall_Concrete_Tris_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Tris_8x1.Recipe_Wall_Concrete_Tris_8x1_C"
+   },
+   "Wall_Concrete_Tris_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Tris_8x2.Recipe_Wall_Concrete_Tris_8x2_C"
+   },
+   "Wall_Concrete_Tris_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Tris_8x4.Recipe_Wall_Concrete_Tris_8x4_C"
+   },
+   "Wall_Concrete_Tris_8x8": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_Tris_8x8.Recipe_Wall_Concrete_Tris_8x8_C"
+   },
+   "Wall_Door_8x4_03_Steel": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Door_8x4_03_Steel.Recipe_Wall_Door_8x4_03_Steel_C"
+   },
+   "Wall_Orange_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_8x1.Recipe_Wall_Orange_8x1_C"
+   },
+   "Wall_Window_8x4_02": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_02.Recipe_Wall_Window_8x4_02_C"
+   },
+   "Wall_Window_8x4_03": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_03.Recipe_Wall_Window_8x4_03_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   },
+   "Wall_Window_Thin_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_02.Recipe_Wall_Window_Thin_8x4_02_C"
+   },
+   "WorkBench": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_WorkBench.Recipe_WorkBench_C"
+   },
+   "Workshop": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_Workshop.Recipe_Workshop_C"
+   }
+  }
+ },
+ "42": {
+  "file": "donors-v42.sbp",
+  "types": {
+   "Beam": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam.Recipe_Beam_C"
+   },
+   "Beam_Connector": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector.Recipe_Beam_Connector_C"
+   },
+   "Beam_Painted": {
+    "components": 0,
+    "paints": [
+     "Slot1",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Painted.Recipe_Beam_Painted_C"
+   },
+   "Beam_Support": {
+    "components": 0,
+    "paints": [
+     "Slot16",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Support.Recipe_Beam_Support_C"
+   },
+   "CatwalkCorner": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Turn.Recipe_Catwalk_Turn_C"
+   },
+   "CatwalkT": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_T.Recipe_Catwalk_T_C"
+   },
+   "Fence_01": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Fence_01.Recipe_Fence_01_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "Foundation_ConcretePolished_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x1.Recipe_Foundation_ConcretePolished_8x1_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Gate_Automated_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Doors/Recipe_Gate_Automated_8x4.Recipe_Gate_Automated_8x4_C"
+   },
+   "PillarMiddle_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle_Concrete.Recipe_PillarMiddle_Concrete_C"
+   },
+   "Pillar_Small_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Concrete.Recipe_Pillar_Small_Concrete_C"
+   },
+   "Pillar_Small_Metal": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Metal.Recipe_Pillar_Small_Metal_C"
+   },
+   "PowerPoleMk1": {
+    "components": 1,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PowerPoleMk1.Recipe_PowerPoleMk1_C"
+   },
+   "QuarterPipeMiddle_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C"
+   },
+   "QuarterPipeMiddle_Asphalt_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x4.Recipe_QuarterPipeMiddle_Asphalt_8x4_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x4.Recipe_QuarterPipeMiddle_Concrete_8x4_C"
+   },
+   "QuarterPipeMiddle_Grip_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x1.Recipe_QuarterPipeMiddle_Grip_8x1_C"
+   },
+   "QuarterPipeMiddle_PolishedConcrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x1.Recipe_QuarterPipeMiddle_PolishedConcrete_8x1_C"
+   },
+   "QuarterPipeMiddle_PolishedConcrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x4.Recipe_QuarterPipeMiddle_PolishedConcrete_8x4_C"
+   },
+   "Railing_01": {
+    "components": 0,
+    "paints": [
+     "Custom",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Railing_01.Recipe_Railing_01_C"
+   },
+   "Ramp_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Ramp_Concrete_8x4.Recipe_Ramp_Concrete_8x4_C"
+   },
+   "Roof_Window_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_01.Recipe_Roof_Window_01_C"
+   },
+   "SM_RailingRamp_8x4_01": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Railing_01.Recipe_Railing_01_C"
+   },
+   "SignPole": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_SignPole_Medium.Recipe_SignPole_Medium_C"
+   },
+   "StandaloneWidgetSign_Large": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Large.Recipe_StandaloneWidgetSign_Large_C"
+   },
+   "StandaloneWidgetSign_Medium": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Medium.Recipe_StandaloneWidgetSign_Medium_C"
+   },
+   "StandaloneWidgetSign_Portrait": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Portrait.Recipe_StandaloneWidgetSign_Portrait_C"
+   },
+   "StandaloneWidgetSign_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Small.Recipe_StandaloneWidgetSign_Small_C"
+   },
+   "StandaloneWidgetSign_SmallVeryWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallVeryWide.Recipe_StandaloneWidgetSign_SmallVeryWide_C"
+   },
+   "StandaloneWidgetSign_SmallWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallWide.Recipe_StandaloneWidgetSign_SmallWide_C"
+   },
+   "StandaloneWidgetSign_Square": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square.Recipe_StandaloneWidgetSign_Square_C"
+   },
+   "StandaloneWidgetSign_Square_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Small.Recipe_StandaloneWidgetSign_Square_Small_C"
+   },
+   "StandaloneWidgetSign_Square_Tiny": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Tiny.Recipe_StandaloneWidgetSign_Square_Tiny_C"
+   },
+   "WalkwayCross": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walkways/Recipe_Walkway_Cross.Recipe_Walkway_Cross_C"
+   },
+   "WalkwayRamp": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walkways/Recipe_Walkway_Ramp.Recipe_Walkway_Ramp_C"
+   },
+   "WalkwayStraight": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walkways/Recipe_Walkway_Straight.Recipe_Walkway_Straight_C"
+   },
+   "WalkwayT": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walkways/Recipe_Walkway_T.Recipe_Walkway_T_C"
+   },
+   "WalkwayTrun": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walkways/Recipe_Walkway_Turn.Recipe_Walkway_Turn_C"
+   },
+   "Wall_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Custom",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_01.Recipe_Wall_8x4_01_C"
+   },
+   "Wall_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x1.Recipe_Wall_Concrete_8x1_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_Window_02": {
+    "components": 0,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_02.Recipe_Wall_Concrete_8x4_Window_02_C"
+   },
+   "Wall_Door_8x4_01": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Door_8x4_01.Recipe_Wall_Door_8x4_01_C"
+   },
+   "Wall_Door_8x4_03": {
+    "components": 0,
+    "paints": [
+     "Slot15",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Door_8x4_03.Recipe_Wall_Door_8x4_03_C"
+   },
+   "Wall_Gate_8x4_01": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Gate_8x4_01.Recipe_Wall_Gate_8x4_01_C"
+   },
+   "Wall_Orange_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_8x1.Recipe_Wall_Orange_8x1_C"
+   },
+   "Wall_Orange_FlipTris_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_FlipTris_8x1.Recipe_Wall_Orange_FlipTris_8x1_C"
+   },
+   "Wall_Orange_Tris_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot15",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_Tris_8x1.Recipe_Wall_Orange_Tris_8x1_C"
+   },
+   "Wall_Orange_Tris_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_Tris_8x4.Recipe_Wall_Orange_Tris_8x4_C"
+   },
+   "Wall_Window_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_02.Recipe_Wall_Window_8x4_02_C"
+   },
+   "Wall_Window_8x4_03": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_03.Recipe_Wall_Window_8x4_03_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot1",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   }
+  }
+ },
+ "46": {
+  "file": "donors-v46.sbp",
+  "types": {
+   "Barrier_Tall_01": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Barrier_Tall_01.Recipe_Barrier_Tall_01_C"
+   },
+   "Beam": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam.Recipe_Beam_C"
+   },
+   "Beam_Connector": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector.Recipe_Beam_Connector_C"
+   },
+   "Beam_Connector_Double": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector_Double.Recipe_Beam_Connector_Double_C"
+   },
+   "Beam_Painted": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Painted.Recipe_Beam_Painted_C"
+   },
+   "Beam_Support": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Support.Recipe_Beam_Support_C"
+   },
+   "CatwalkStraight": {
+    "components": 0,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Catwalks/Recipe_Catwalk_Straight.Recipe_Catwalk_Straight_C"
+   },
+   "Concrete_Barrier_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Concrete_Barrier_01.Recipe_Concrete_Barrier_01_C"
+   },
+   "ConveyorBeltMk3": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk3.Recipe_ConveyorBeltMk3_C"
+   },
+   "ConveyorBeltMk4": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk4.Recipe_ConveyorBeltMk4_C"
+   },
+   "ConveyorBeltMk5": {
+    "components": 2,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk5.Recipe_ConveyorBeltMk5_C"
+   },
+   "ConveyorBeltMk6": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk6.Recipe_ConveyorBeltMk6_C"
+   },
+   "ConveyorCeilingAttachment": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorCeilingAttachment.Recipe_ConveyorCeilingAttachment_C"
+   },
+   "ConveyorPole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPole.Recipe_ConveyorPole_C"
+   },
+   "ConveyorPoleStackable": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPoleStackable.Recipe_ConveyorPoleStackable_C"
+   },
+   "ConveyorPoleWall": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPoleWall.Recipe_ConveyorPoleWall_C"
+   },
+   "DroneStation": {
+    "components": 10,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_DroneStation.Recipe_DroneStation_C"
+   },
+   "Fence_01": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Fence_01.Recipe_Fence_01_C"
+   },
+   "Flat_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Flat_Frame_01.Recipe_Flat_Frame_01_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "Foundation_8x1_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_8x1_01.Recipe_Foundation_8x1_01_C"
+   },
+   "Foundation_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_8x4_01.Recipe_Foundation_8x4_01_C"
+   },
+   "Foundation_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x1.Recipe_Foundation_Asphalt_8x1_C"
+   },
+   "Foundation_Asphalt_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x4.Recipe_Foundation_Asphalt_8x4_C"
+   },
+   "Foundation_ConcretePolished_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x1.Recipe_Foundation_ConcretePolished_8x1_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Foundation_Concrete_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x2.Recipe_Foundation_Concrete_8x2_C"
+   },
+   "Foundation_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_Frame_01.Recipe_Foundation_Frame_01_C"
+   },
+   "Gate_Automated_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot7"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Doors/Recipe_Gate_Automated_8x4.Recipe_Gate_Automated_8x4_C"
+   },
+   "HyperPoleStackable": {
+    "components": 1,
+    "paints": [
+     "Slot2"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_HyperPoleStackable.Recipe_HyperPoleStackable_C"
+   },
+   "HyperTubeWallHole": {
+    "components": 1,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_HyperTubeWallHole.Recipe_HyperTubeWallHole_C"
+   },
+   "Ladder": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Ladder/Recipe_Ladder.Recipe_Ladder_C"
+   },
+   "PillarBase": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarBase.Recipe_PillarBase_C"
+   },
+   "PillarBase_Small": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_PillarBase_Small.Recipe_PillarBase_Small_C"
+   },
+   "PillarMiddle": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle.Recipe_PillarMiddle_C"
+   },
+   "PillarMiddle_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle_Concrete.Recipe_PillarMiddle_Concrete_C"
+   },
+   "PillarMiddle_Frame": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle_Frame.Recipe_PillarMiddle_Frame_C"
+   },
+   "Pillar_Small_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Concrete.Recipe_Pillar_Small_Concrete_C"
+   },
+   "Pillar_Small_Frame": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Frame.Recipe_Pillar_Small_Frame_C"
+   },
+   "Pillar_Small_Metal": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Metal.Recipe_Pillar_Small_Metal_C"
+   },
+   "PipeHyper": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeHyper.Recipe_PipeHyper_C"
+   },
+   "PipeHyperSupport": {
+    "components": 1,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeHyperSupport.Recipe_PipeHyperSupport_C"
+   },
+   "PipeSupportStackable": {
+    "components": 1,
+    "paints": [
+     "Slot17"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportStackable.Recipe_PipeSupportStackable_C"
+   },
+   "PipelineSupport": {
+    "components": 1,
+    "paints": [
+     "Slot17",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupport.Recipe_PipeSupport_C"
+   },
+   "PowerPoleMk1": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PowerPoleMk1.Recipe_PowerPoleMk1_C"
+   },
+   "PowerPoleWallDouble": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PowerPoleWallDouble.Recipe_PowerPoleWallDouble_C"
+   },
+   "QuarterPipeMiddle_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x2.Recipe_QuarterPipeMiddle_Concrete_8x2_C"
+   },
+   "QuarterPipeMiddle_PolishedConcrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x1.Recipe_QuarterPipeMiddle_PolishedConcrete_8x1_C"
+   },
+   "Railing_01": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Railing_01.Recipe_Railing_01_C"
+   },
+   "RailroadTrack": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_RailroadTrack.Recipe_RailroadTrack_C"
+   },
+   "ResourceSink": {
+    "components": 6,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ResourceSink.Recipe_ResourceSink_C"
+   },
+   "Roof_Orange_01": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Orange_01.Recipe_Roof_Orange_01_C"
+   },
+   "SignPole": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_SignPole_Medium.Recipe_SignPole_Medium_C"
+   },
+   "StandaloneWidgetSign_Huge": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Huge.Recipe_StandaloneWidgetSign_Huge_C"
+   },
+   "StandaloneWidgetSign_Large": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Large.Recipe_StandaloneWidgetSign_Large_C"
+   },
+   "StandaloneWidgetSign_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Small.Recipe_StandaloneWidgetSign_Small_C"
+   },
+   "StandaloneWidgetSign_SmallVeryWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallVeryWide.Recipe_StandaloneWidgetSign_SmallVeryWide_C"
+   },
+   "StandaloneWidgetSign_SmallWide": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_SmallWide.Recipe_StandaloneWidgetSign_SmallWide_C"
+   },
+   "StandaloneWidgetSign_Square": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square.Recipe_StandaloneWidgetSign_Square_C"
+   },
+   "StandaloneWidgetSign_Square_Tiny": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Tiny.Recipe_StandaloneWidgetSign_Square_Tiny_C"
+   },
+   "Wall_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_01.Recipe_Wall_8x4_01_C"
+   },
+   "Wall_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x1.Recipe_Wall_Concrete_8x1_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_01": {
+    "components": 1,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_01.Recipe_Wall_Concrete_8x4_ConveyorHole_01_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_02": {
+    "components": 2,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_02.Recipe_Wall_Concrete_8x4_ConveyorHole_02_C"
+   },
+   "Wall_Concrete_8x4_Window_01": {
+    "components": 0,
+    "paints": [
+     "Slot2"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_01.Recipe_Wall_Concrete_8x4_Window_01_C"
+   },
+   "Wall_Concrete_8x4_Window_02": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_Window_02.Recipe_Wall_Concrete_8x4_Window_02_C"
+   },
+   "Wall_Concrete_FlipTris_8x1": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x1.Recipe_Wall_Concrete_FlipTris_8x1_C"
+   },
+   "Wall_Concrete_FlipTris_8x2": {
+    "components": 0,
+    "paints": [
+     "Custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x2.Recipe_Wall_Concrete_FlipTris_8x2_C"
+   },
+   "Wall_Concrete_FlipTris_8x8": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_FlipTris_8x8.Recipe_Wall_Concrete_FlipTris_8x8_C"
+   },
+   "Wall_Conveyor_8x4_02": {
+    "components": 2,
+    "paints": [
+     "Slot5"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_02.Recipe_Wall_Conveyor_8x4_02_C"
+   },
+   "Wall_Conveyor_8x4_03": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_03.Recipe_Wall_Conveyor_8x4_03_C"
+   },
+   "Wall_Door_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot2"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Door_8x4_01.Recipe_Wall_Door_8x4_01_C"
+   },
+   "Wall_Door_8x4_03": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Door_8x4_03.Recipe_Wall_Door_8x4_03_C"
+   },
+   "Wall_Gate_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot7"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Gate_8x4_01.Recipe_Wall_Gate_8x4_01_C"
+   },
+   "Wall_Orange_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_8x1.Recipe_Wall_Orange_8x1_C"
+   },
+   "Wall_Orange_Angular_8x8": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_Angular_8x8.Recipe_Wall_Orange_Angular_8x8_C"
+   },
+   "Wall_Window_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_02.Recipe_Wall_Window_8x4_02_C"
+   },
+   "Wall_Window_8x4_04": {
+    "components": 0,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_04.Recipe_Wall_Window_8x4_04_C"
+   },
+   "Wall_Window_8x4_06": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_06.Recipe_Wall_Window_8x4_06_C"
+   },
+   "Wall_Window_8x4_07": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_07.Recipe_Wall_Window_8x4_07_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   },
+   "Wall_Window_Thin_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot2"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_02.Recipe_Wall_Window_Thin_8x4_02_C"
+   }
+  }
+ },
+ "52": {
+  "file": "donors-v52.sbp",
+  "types": {
+   "Beam_Connector": {
+    "components": 0,
+    "paints": [
+     "Slot6"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Connector.Recipe_Beam_Connector_C"
+   },
+   "Beam_Painted": {
+    "components": 0,
+    "paints": [
+     "Slot6",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Prototype/Buildable/Beams/Recipe_Beam_Painted.Recipe_Beam_Painted_C"
+   },
+   "ConveyorBeltMk6": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk6.Recipe_ConveyorBeltMk6_C"
+   },
+   "ConveyorCeilingAttachment": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorCeilingAttachment.Recipe_ConveyorCeilingAttachment_C"
+   },
+   "ConveyorPole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPole.Recipe_ConveyorPole_C"
+   },
+   "ConveyorPoleWall": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPoleWall.Recipe_ConveyorPoleWall_C"
+   },
+   "Flat_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Flat_Frame_01.Recipe_Flat_Frame_01_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "Foundation_ConcretePolished_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x1.Recipe_Foundation_ConcretePolished_8x1_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Foundation_Frame_01": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_Frame_01.Recipe_Foundation_Frame_01_C"
+   },
+   "Foundation_Metal_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Foundation_Metal_8x1.Recipe_Foundation_Metal_8x1_C"
+   },
+   "Gate_Automated_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Doors/Recipe_Gate_Automated_8x4.Recipe_Gate_Automated_8x4_C"
+   },
+   "Ladder": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Ladder/Recipe_Ladder.Recipe_Ladder_C"
+   },
+   "LargeFan": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Vent/Recipe_LargeFan.Recipe_LargeFan_C"
+   },
+   "PillarBase_Small": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_PillarBase_Small.Recipe_PillarBase_Small_C"
+   },
+   "PillarMiddle_Frame": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle_Frame.Recipe_PillarMiddle_Frame_C"
+   },
+   "Pillar_Small_Metal": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Metal.Recipe_Pillar_Small_Metal_C"
+   },
+   "PipelineSupport": {
+    "components": 1,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupport.Recipe_PipeSupport_C"
+   },
+   "PipelineSupportWall": {
+    "components": 1,
+    "paints": [
+     "Slot3"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportWall.Recipe_PipeSupportWall_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C"
+   },
+   "QuarterPipeMiddle_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x4.Recipe_QuarterPipeMiddle_Concrete_8x4_C"
+   },
+   "QuarterPipeMiddle_Grip_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x1.Recipe_QuarterPipeMiddle_Grip_8x1_C"
+   },
+   "Railing_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Fence/Recipe_Railing_01.Recipe_Railing_01_C"
+   },
+   "Roof_A_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_A_01.Recipe_Roof_A_01_C"
+   },
+   "StandaloneWidgetSign_Square": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square.Recipe_StandaloneWidgetSign_Square_C"
+   },
+   "SteelWall_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_SteelWall_8x1.Recipe_SteelWall_8x1_C"
+   },
+   "Wall_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_02.Recipe_Wall_8x4_02_C"
+   },
+   "Wall_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x1.Recipe_Wall_Concrete_8x1_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot6"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_01": {
+    "components": 1,
+    "paints": [
+     "Slot6"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_01.Recipe_Wall_Concrete_8x4_ConveyorHole_01_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_02": {
+    "components": 2,
+    "paints": [
+     "Slot6"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_02.Recipe_Wall_Concrete_8x4_ConveyorHole_02_C"
+   },
+   "Wall_Conveyor_8x4_02_Steel": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_02_Steel.Recipe_Wall_Conveyor_8x4_02_Steel_C"
+   },
+   "Wall_Conveyor_8x4_03_Steel": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_03_Steel.Recipe_Wall_Conveyor_8x4_03_Steel_C"
+   },
+   "Wall_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Frame_01.Recipe_Wall_Frame_01_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   },
+   "Wall_Window_Thin_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_02.Recipe_Wall_Window_Thin_8x4_02_C"
+   }
+  }
+ },
+ "58": {
+  "file": "donors-v58.sbp",
+  "types": {
+   "BigGarageDoor_16x8": {
+    "components": 0,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Doors/Recipe_BigGarageDoor_16x8.Recipe_BigGarageDoor_16x8_C"
+   },
+   "ConveyorPole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPole.Recipe_ConveyorPole_C"
+   },
+   "ConveyorWallHole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/ConveyorHole/Recipe_ConveyorWallHole.Recipe_ConveyorWallHole_C"
+   },
+   "Flat_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Flat_Frame_01.Recipe_Flat_Frame_01_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "Foundation_Asphalt_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x1.Recipe_Foundation_Asphalt_8x1_C"
+   },
+   "Foundation_Asphalt_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Foundation_Asphalt_8x4.Recipe_Foundation_Asphalt_8x4_C"
+   },
+   "Foundation_ConcretePolished_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x1.Recipe_Foundation_ConcretePolished_8x1_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Foundation_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x4.Recipe_Foundation_Concrete_8x4_C"
+   },
+   "Foundation_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_Frame_01.Recipe_Foundation_Frame_01_C"
+   },
+   "Foundation_Metal_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Foundation_Metal_8x1.Recipe_Foundation_Metal_8x1_C"
+   },
+   "Foundation_Metal_8x2": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Foundation_Metal_8x2.Recipe_Foundation_Metal_8x2_C"
+   },
+   "LightsControlPanel": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_LightsControlPanel.Recipe_LightsControlPanel_C"
+   },
+   "Pillar_Small_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Concrete.Recipe_Pillar_Small_Concrete_C"
+   },
+   "Pillar_Small_Metal": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Metal.Recipe_Pillar_Small_Metal_C"
+   },
+   "PipeSupportStackable": {
+    "components": 1,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportStackable.Recipe_PipeSupportStackable_C"
+   },
+   "PipelineMK2": {
+    "components": 2,
+    "paints": [
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipelineMK2.Recipe_PipelineMK2_C"
+   },
+   "PipelineSupport": {
+    "components": 1,
+    "paints": [
+     "Slot17"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupport.Recipe_PipeSupport_C"
+   },
+   "PipelineSupportWall": {
+    "components": 1,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeSupportWall.Recipe_PipeSupportWall_C"
+   },
+   "Ramp_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Ramp_Concrete_8x4.Recipe_Ramp_Concrete_8x4_C"
+   },
+   "Ramp_UpCorner_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Ramp_UpCorner_Concrete_8x4.Recipe_Ramp_UpCorner_Concrete_8x4_C"
+   },
+   "Roof_A_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_A_01.Recipe_Roof_A_01_C"
+   },
+   "StandaloneWidgetSign_Square": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square.Recipe_StandaloneWidgetSign_Square_C"
+   },
+   "StandaloneWidgetSign_Square_Small": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Square_Small.Recipe_StandaloneWidgetSign_Square_Small_C"
+   },
+   "SteelWall_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_SteelWall_8x1.Recipe_SteelWall_8x1_C"
+   },
+   "Wall_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_02.Recipe_Wall_8x4_02_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_01": {
+    "components": 1,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_01.Recipe_Wall_Concrete_8x4_ConveyorHole_01_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_02": {
+    "components": 2,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_02.Recipe_Wall_Concrete_8x4_ConveyorHole_02_C"
+   },
+   "Wall_Conveyor_8x4_02_Steel": {
+    "components": 2,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_02_Steel.Recipe_Wall_Conveyor_8x4_02_Steel_C"
+   },
+   "Wall_Conveyor_8x4_03_Steel": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Conveyor_8x4_03_Steel.Recipe_Wall_Conveyor_8x4_03_Steel_C"
+   },
+   "Wall_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Frame_01.Recipe_Wall_Frame_01_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   },
+   "Wall_Window_Thin_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_02.Recipe_Wall_Window_Thin_8x4_02_C"
+   }
+  }
+ },
+ "59": {
+  "file": "donors-v59.sbp",
+  "types": {
+   "Foundation_Metal_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Foundation_Metal_8x1.Recipe_Foundation_Metal_8x1_C"
+   }
+  }
+ },
+ "60": {
+  "file": "donors-v60.sbp",
+  "types": {
+   "ConveyorPole": {
+    "components": 1,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorPole.Recipe_ConveyorPole_C"
+   },
+   "FoundationGlass_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_FoundationGlass_01.Recipe_FoundationGlass_01_C"
+   },
+   "Foundation_ConcretePolished_8x1": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x1.Recipe_Foundation_ConcretePolished_8x1_C"
+   },
+   "Foundation_ConcretePolished_8x2_2": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x2.Recipe_Foundation_ConcretePolished_8x2_C"
+   },
+   "Foundation_ConcretePolished_8x4": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Foundation_ConcretePolished_8x4.Recipe_Foundation_ConcretePolished_8x4_C"
+   },
+   "Foundation_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x1.Recipe_Foundation_Concrete_8x1_C"
+   },
+   "Foundation_Concrete_8x2": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Foundation_Concrete_8x2.Recipe_Foundation_Concrete_8x2_C"
+   },
+   "Foundation_Frame_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_Foundation_Frame_01.Recipe_Foundation_Frame_01_C"
+   },
+   "Foundation_Metal_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Foundation_Metal_8x1.Recipe_Foundation_Metal_8x1_C"
+   },
+   "LargeFan": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Vent/Recipe_LargeFan.Recipe_LargeFan_C"
+   },
+   "PillarBase": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarBase.Recipe_PillarBase_C"
+   },
+   "PillarMiddle_Concrete": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarMiddle_Concrete.Recipe_PillarMiddle_Concrete_C"
+   },
+   "Pillar_Small_Concrete": {
+    "components": 0,
+    "paints": [
+     "Concrete"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Pillars/Recipe_Pillar_Small_Concrete.Recipe_Pillar_Small_Concrete_C"
+   },
+   "PipeHyperSupport": {
+    "components": 1,
+    "paints": [
+     "Slot17"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PipeHyperSupport.Recipe_PipeHyperSupport_C"
+   },
+   "Ramp_Frame_Inverted_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Ramps/Recipe_Ramp_Frame_Inverted_01.Recipe_Ramp_Frame_Inverted_01_C"
+   },
+   "Roof_Window_01": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Roof/Recipe_Roof_Window_01.Recipe_Roof_Window_01_C"
+   },
+   "StandaloneWidgetSign_Huge": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Huge.Recipe_StandaloneWidgetSign_Huge_C"
+   },
+   "StandaloneWidgetSign_Large": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_StandaloneWidgetSign_Large.Recipe_StandaloneWidgetSign_Large_C"
+   },
+   "SteelWall_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_SteelWall_8x1.Recipe_SteelWall_8x1_C"
+   },
+   "Wall_8x4_01": {
+    "components": 0,
+    "paints": [
+     "none"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_01.Recipe_Wall_8x4_01_C"
+   },
+   "Wall_8x4_02": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_8x4_02.Recipe_Wall_8x4_02_C"
+   },
+   "Wall_Concrete_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x1.Recipe_Wall_Concrete_8x1_C"
+   },
+   "Wall_Concrete_8x4": {
+    "components": 0,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4.Recipe_Wall_Concrete_8x4_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_01": {
+    "components": 1,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_01.Recipe_Wall_Concrete_8x4_ConveyorHole_01_C"
+   },
+   "Wall_Concrete_8x4_ConveyorHole_02": {
+    "components": 2,
+    "paints": [
+     "Slot16"
+    ],
+    "recipe": "/Game/FactoryGame/Buildable/Building/Wall/ConcreteWallSet/Recipe_Wall_Concrete_8x4_ConveyorHole_02.Recipe_Wall_Concrete_8x4_ConveyorHole_02_C"
+   },
+   "Wall_Orange_8x1": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Orange_8x1.Recipe_Wall_Orange_8x1_C"
+   },
+   "Wall_Window_Thin_8x4_01": {
+    "components": 0,
+    "paints": [
+     "Slot0"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_Thin_8x4_01.Recipe_Wall_Window_Thin_8x4_01_C"
+   }
+  }
+ }
+}

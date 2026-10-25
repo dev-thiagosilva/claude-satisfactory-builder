@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blueprint Preview</title>
+<style>
+  :root { --bg:#14161a; --panel:rgba(24,27,33,.88); --fg:#e8e6e1; --muted:#9a978f; --accent:#f39c3c; --line:#2c3038; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
+  #c { position:fixed; inset:0; }
+  .panel { position:fixed; top:12px; left:12px; max-width:min(300px, calc(100vw - 48px)); background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; backdrop-filter:blur(6px); }
+  h1 { font-size:15px; margin:0 0 2px; }
+  .sub { color:var(--muted); margin-bottom:10px; }
+  label { display:flex; align-items:center; gap:8px; padding:2px 0; cursor:pointer; }
+  .sw { width:12px; height:12px; border-radius:3px; flex:none; }
+  .n { margin-left:auto; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .cost { border-top:1px solid var(--line); margin-top:8px; padding-top:8px; color:var(--muted); }
+  .cost b { color:var(--fg); font-weight:600; }
+  .hint { position:fixed; bottom:12px; left:50%; transform:translateX(-50%); color:var(--muted); background:var(--panel); padding:6px 12px; border-radius:20px; border:1px solid var(--line); white-space:nowrap; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .views { display:flex; gap:6px; margin-top:8px; }
+  .views button { flex:1; background:#262a31; color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:4px 0; font:inherit; cursor:pointer; }
+  .views button:hover { border-color:var(--accent); }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="panel">
+  <h1 id="title"></h1>
+  <div class="sub" id="subtitle"></div>
+  <div id="layers"></div>
+  <div style="margin-top:8px">Cut height: <span id="cutv">all</span></div>
+  <input id="cut" type="range" min="0" step="1">
+  <div class="views"><button data-v="front">Front</button><button data-v="side">Side</button><button data-v="three">3/4</button><button data-v="top">Top</button></div>
+  <div class="cost">Cost: <span id="cost"></span></div>
+</div>
+<div class="hint">Drag to orbit · right-drag to pan · scroll to zoom</div>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const DATA = __DATA__;
+const META = __META__;
+document.title = META.title;
+document.getElementById('title').textContent = META.title;
+document.getElementById('subtitle').textContent = META.subtitle;
+document.getElementById('cost').innerHTML = META.cost;
+const TOP = Math.ceil(META.height) + 2;
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x14161a);
+scene.fog = new THREE.Fog(0x14161a, 250, 600);
+const camera = new THREE.PerspectiveCamera(45, 1, 0.5, 2000);
+const R0 = Math.max(TOP, 30);
+camera.position.set(R0 * 1.45, R0 * 0.95, R0 * 1.65);
+const controls = new OrbitControls(camera, canvas);
+controls.target.set(0, TOP / 2, 0);
+controls.enableDamping = true;
+
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x3a3226, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+sun.position.set(60, 120, 40);
+scene.add(sun);
+const grid = new THREE.GridHelper(80, 10, 0x3a3f48, 0x262a31);
+scene.add(grid);
+
+// Geometry in Unreal local space (cm); instance matrices convert to metres / Y-up.
+function box(sx, sy, sz, ox = 0, oy = 0, oz = 0) {
+  const g = new THREE.BoxGeometry(sx, sy, sz);
+  g.translate(ox, oy, oz);
+  return g;
+}
+function quarterPipe(width, radius) {
+  // curved shell, axis along local Y, centred on the piece's bounding box
+  const seg = 12, th = 20, pos = [], idx = [];
+  for (let i = 0; i <= seg; i++) {
+    const a = (i / seg) * Math.PI / 2;
+    for (const r of [radius, radius - th]) {
+      const x = radius / 2 - r * Math.cos(a), z = -radius / 2 + r * Math.sin(a);
+      pos.push(x, -width / 2, z, x, width / 2, z);
+    }
+  }
+  for (let i = 0; i < seg; i++) {
+    const b = i * 4, n = b + 4;
+    idx.push(b, b + 1, n + 1, b, n + 1, n, b + 2, n + 2, n + 3, b + 2, n + 3, b + 3,
+             b, n, n + 2, b, n + 2, b + 2, b + 1, b + 3, n + 3, b + 1, n + 3, n + 1);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  return g;
+}
+
+const SLOT = { Slot0: 0xf39c3c, Slot1: 0x6b7894, Slot2: 0x3f8f6b, Slot16: 0xd0d0d0, Concrete: 0xb9b4a9 };
+const TYPES = {
+  Beam_Painted:              { label: 'Painted beams',   geo: () => box(1, 50, 50, 0.5) },
+  Beam:                      { label: 'Steel beams',     geo: () => box(1, 50, 50, 0.5) },
+  Wall_Window_Thin_8x4_01:   { label: 'Window walls',    geo: () => box(20, 800, 400, 0, 0, 200), glass: true },
+  Pillar_Small_Concrete:     { label: 'Concrete pillars', geo: () => box(70, 70, 100, 0, 0, 50) },
+  Pillar_Small_Metal:        { label: 'Metal pillars',   geo: () => box(70, 70, 100, 0, 0, 50) },
+  Foundation_Concrete_8x1:   { label: 'Foundations',     geo: () => box(800, 800, 100) },
+  QuarterPipeMiddle_Asphalt_8x4:  { label: 'Quarter pipes 8×4', geo: () => quarterPipe(800, 400) },
+  QuarterPipeMiddle_Concrete_8x1: { label: 'Quarter pipes 8×1', geo: () => quarterPipe(800, 100) },
+  QuarterPipeMiddle_Asphalt_8x1:  { label: 'Quarter pipes 8×1 (asphalt)', geo: () => quarterPipe(800, 100) },
+};
+
+// Any type not listed above: size it from an "WxH" in the name, else draw a 4 m machine block.
+function guessType(type) {
+  const m = type.match(/(\d+)x(\d+)/), w = m ? +m[1] * 100 : 400, h = m ? +m[2] * 100 : 400;
+  const label = type.replace(/_/g, ' ');
+  if (/Beam|Pipeline|Conveyor|Belt|Wire/.test(type)) return { label, geo: () => box(1, 50, 50, 0.5) };
+  if (/Wall|Fence|Railing/.test(type)) return { label, geo: () => box(20, w, h, 0, 0, h / 2) };
+  if (/Foundation|Ramp|Roof|Floor/.test(type)) return { label, geo: () => box(w, w, h) };
+  if (/Pillar/.test(type)) return { label, geo: () => box(70, 70, 100, 0, 0, 50) };
+  return { label, geo: () => box(400, 400, 400, 0, 0, 200) };
+}
+
+const byType = {};
+const layersEl = document.getElementById('layers');
+for (const [key, arr] of Object.entries(DATA)) {
+  const [type, slot] = key.split('|');
+  const def = TYPES[type] ?? guessType(type);
+  const color = slot.startsWith('#') ? parseInt(slot.slice(1), 16) : (SLOT[slot] ?? 0x888888);
+  const mat = def.glass
+    ? new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.35, metalness: 0.3, roughness: 0.2, side: THREE.DoubleSide, depthWrite: false })
+    : new THREE.MeshStandardMaterial({ color, metalness: 0.05, roughness: 0.7, side: THREE.DoubleSide });
+  const count = arr.length / 12;
+  const mesh = new THREE.InstancedMesh(def.geo(), mat, count);
+  const m = new THREE.Matrix4(), ys = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    const e = arr.slice(i * 12, i * 12 + 12);
+    m.set(e[0], e[3], e[6], e[9],  e[1], e[4], e[7], e[10],  e[2], e[5], e[8], e[11],  0, 0, 0, 1);
+    mesh.setMatrixAt(i, m);
+    ys[i] = e[10];
+  }
+  mesh.userData = { arr, ys };
+  scene.add(mesh);
+  (byType[type] ??= { def, meshes: [], n: 0, color }).meshes.push(mesh);
+  byType[type].n += count;
+}
+for (const [type, t] of Object.entries(byType)) {
+  const l = document.createElement('label');
+  l.innerHTML = `<input type="checkbox" checked><span class="sw" style="background:#${t.color.toString(16).padStart(6, '0')}"></span>${t.def.label}<span class="n">${t.n.toLocaleString()}</span>`;
+  l.querySelector('input').onchange = e => t.meshes.forEach(m => m.visible = e.target.checked);
+  layersEl.appendChild(l);
+}
+
+// Cut height: hide instances above a level to see inside.
+const cut = document.getElementById('cut'), cutv = document.getElementById('cutv');
+cut.max = TOP; cut.value = TOP;
+const hidden = new THREE.Matrix4().makeScale(0, 0, 0), tmp = new THREE.Matrix4();
+cut.oninput = () => {
+  const h = +cut.value;
+  cutv.textContent = h >= TOP ? 'all' : h + ' m';
+  for (const t of Object.values(byType)) for (const mesh of t.meshes) {
+    const { arr, ys } = mesh.userData;
+    for (let i = 0; i < ys.length; i++) {
+      if (ys[i] > h) { mesh.setMatrixAt(i, hidden); continue; }
+      const e = arr.slice(i * 12, i * 12 + 12);
+      tmp.set(e[0], e[3], e[6], e[9],  e[1], e[4], e[7], e[10],  e[2], e[5], e[8], e[11],  0, 0, 0, 1);
+      mesh.setMatrixAt(i, tmp);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+  }
+};
+
+// Unreal -Y (the usual blueprint "front") maps to three.js -Z.
+const VIEWS = {
+  front: [0, 0.45, -2.6], side: [2.6, 0.45, 0], three: [1.45, 0.95, -1.65], top: [0.001, 3, -0.001],
+};
+function setView(name) {
+  const v = VIEWS[name];
+  camera.position.set(v[0] * R0, TOP / 2 + v[1] * R0, v[2] * R0);
+  controls.target.set(0, TOP / 2, 0);
+}
+document.querySelectorAll('.views button').forEach(b => b.onclick = () => setView(b.dataset.v));
+window.setView = setView;
+// For scripted screenshots: setCamera([x, y, z], [tx, ty, tz]) in three.js metres (Y up, Unreal -Y = -Z).
+window.setCamera = (p, t) => { camera.position.set(...p); controls.target.set(...t); };
+setView('three');
+
+function resize() {
+  const w = innerWidth, h = innerHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+resize();
+renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+</script>
+</body>
+</html>
