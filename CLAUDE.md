@@ -15,8 +15,31 @@ skill (see `install/`), which put this repo on their PC and moved you into it.
 - Never ask them to run a command, edit a file or find a folder. Do it, then say what happened in
   a sentence.
 - Ask only what changes the build, a few questions at a time, with a suggested default for each:
-  what to build (photo/idea), roughly how big, colours/materials, and which save to put it in.
-  List their saves with `sessions()` from `sbp.py` and offer the most recent.
+  what to build (photo/idea), which **size** (below; default **medium**), colours/materials, and
+  which save to put it in. List their saves with `sessions()` from `sbp.py` and offer the most
+  recent.
+
+## Build sizes
+
+Every build uses one of four sizes. **Ask the player which size before building**, and offer
+**medium** as the default. Then build only that size. Don't generate the other sizes unless
+they ask. If they later want it bigger or smaller, regenerate at the new size.
+
+| Size | Footprint (foundations) | In metres | Max height |
+|---|---|---|---|
+| `small` | 6 × 6 | 48 × 48 m | 48 m |
+| `medium` *(default)* | 10 × 10 | 80 × 80 m | 80 m |
+| `large` | 20 × 20 | 160 × 160 m | 160 m |
+| `extra-large` | 40 × 40 | 320 × 320 m | 320 m |
+
+- The size is the blueprint's plot: `lib.new_blueprint(size=...)` sets `dims`, and every piece
+  must stay inside it (`size_limits_m(size)` gives half-width and height; `out_of_bounds(bp)`
+  must be empty before saving). Scale the design to fill the plot sensibly.
+- Pieces don't scale: beams stay 0.5 m wide, glass panes 8 × 4 m, foundations 8 m. Bigger sizes
+  mean more pieces and more cost. Mention it for large and extra-large. For example, the Heydar
+  example is ~3,800 pieces small, ~6,400 medium, ~13,000 large and ~29,000 extra-large.
+- Only small (6 × 6 × 6) matches an in-game designer (Mk3), so it's the only size the player can
+  reopen in a designer. Every size can be placed from the blueprint menu.
 - Show before you install, in the **Blueprint Studio** (see below). Point them at it, describe
   what they're looking at, and say plainly what's approximate. Iterate: take their feedback in
   chat and regenerate, or let them tweak it in the studio themselves.
@@ -54,7 +77,7 @@ own. Keep anything it needs inside its folder.
    marked "any colour" when colour matters.
 2. **Write a generator** at `.local/blueprints/<kebab-name>/build.py`, modelled on
    `examples/heydar_aliyev_center.py`:
-   `lib = Library.load(needs=[...], custom_paint=...)`, `bp = lib.new_blueprint(dims)`,
+   `lib = Library.load(needs=[...], custom_paint=...)`, `bp = lib.new_blueprint(size='medium')`,
    `bp.add_copy(lib.donor(type), lib.bp, pos_cm, quat)`, `set_float(o, 'mLength', cm)`,
    `set_color(o, rgba)`, then `bp.recipes = lib.recipes_for(...)`, `bp.cost = [(item(...), n)]`,
    `bp.save(...)`, `write_sbpcfg(...)`. Everything in one blueprint comes from one library version,
@@ -94,9 +117,8 @@ Rules that bite:
   x when designing in a normal frame, then check with the front view.
 - **Units are centimetres**, rotations are quaternions (x, y, z, w), Z is up. Yaw θ =
   `(0, 0, sin θ/2, cos θ/2)`. Beams extend along local +X from their origin, 0.5 × 0.5 m section.
-- **`dims`** (8 m units) must cover the pieces: x and y in ±dims·400 cm, z in 0…dims_z·800 cm.
-  Vanilla designers are Mk1 4×4×4, Mk2 5×5×5, Mk3 6×6×6. Bigger works for placing, but can't be
-  reopened in a designer: tell the player.
+- **`dims`** (8 m units) comes from the size preset and must cover the pieces: x and y in
+  ±dims·400 cm, z in 0…dims_z·800 cm.
 - **Header**: recipes for every piece type, and an estimated cost (painted beam ≈ 1 Steel Beam
   per 4 m; thin window wall 2 Silica + ~6 Steel Beam; 1 m concrete foundation ≈ 5 Concrete).
 - **Machines and logistics**: the library only holds samples that link to nothing else, so

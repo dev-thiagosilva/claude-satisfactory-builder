@@ -71,8 +71,11 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
    custom_paint=True)` picks one version that has them all. Mixing pieces across versions isn't
    verified, so don't. To use a piece that only exists in the user's own blueprints, run
    `sbp.py catalog "<blueprints root>"` and clone from their file, with their OK.
-2. **Start the blueprint from the library**: `bp = lib.new_blueprint(dims)` copies the right
-   header for that version. Add pieces with
+2. **Start the blueprint from the library**: `bp = lib.new_blueprint(size='medium')` copies the
+   right header for that version and sets the plot size. Sizes, in foundations per side, cubed:
+   `small` 6, `medium` 10 (default), `large` 20, `extra-large` 40 (`SIZES`, `DEFAULT_SIZE`).
+   `size_limits_m(size)` gives the half-width and height in metres to design within, and
+   `out_of_bounds(bp)` must be empty before saving. Add pieces with
    `bp.add_copy(lib.donor(type, custom=True), lib.bp, pos_cm, quat)`.
 3. **Generate geometry in code.** Painted beams are the most flexible piece: any length via
    `mLength`, any angle via the quaternion, 0.5 × 0.5 m section. Laying beam lines 0.5 m apart

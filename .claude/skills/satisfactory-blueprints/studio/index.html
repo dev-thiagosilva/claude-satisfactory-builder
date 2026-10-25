@@ -321,13 +321,15 @@ addEventListener('keydown', e => {
 });
 
 // ---------- load / save / install ----------
+const SIZE_LABELS = { small: 'Small', medium: 'Medium', large: 'Large', 'extra-large': 'Extra-large' };
+const sizeLabel = c => SIZE_LABELS[c.size] ? `${SIZE_LABELS[c.size]} (${c.dims[0]}×${c.dims[1]})` : `Custom ${c.dims[0]}×${c.dims[1]}`;
 async function loadBuilds(select) {
   const list = await api('/api/creations');
   const el = $('#builds'); el.innerHTML = '';
   if (!list.length) { el.innerHTML = '<div class="empty">No builds yet. Ask Claude to make one.</div>'; return; }
   for (const c of list) {
     const d = document.createElement('div'); d.className = 'build' + (build && build.name === c.name ? ' active' : '');
-    d.innerHTML = `<b>${c.title}</b><span>${c.pieces.toLocaleString()} pieces · ${new Date(c.modified * 1000).toLocaleString()}</span>`;
+    d.innerHTML = `<b>${c.title}</b><span>${sizeLabel(c)} · ${c.pieces.toLocaleString()} pieces<br>${new Date(c.modified * 1000).toLocaleString()}</span>`;
     d.onclick = () => openBuild(c.name);
     el.appendChild(d);
   }
@@ -339,7 +341,7 @@ async function openBuild(name) {
   build = m; pieces = m.pieces; selected.clear(); undoStack = []; redoStack = []; dirty = false;
   $('#about').textContent = m.description || '';
   document.querySelectorAll('.build').forEach(b => b.classList.toggle('active', b.querySelector('b').textContent === m.title));
-  rebuild(); frame(); status(`${m.title} · ${m.pieces.length.toLocaleString()} pieces · cost ≈ ` + m.cost.map(([i, n]) => `${n} ${i.replace('Desc_', '')}`).join(', '));
+  frame(); rebuild(); status(`${m.title} · ${sizeLabel(m)} · ${m.pieces.length.toLocaleString()} pieces · cost ≈ ` + m.cost.map(([i, n]) => `${n} ${i.replace('Desc_', '')}`).join(', '));
   history.replaceState(null, '', '?build=' + encodeURIComponent(name));
 }
 $('#save').onclick = async () => {

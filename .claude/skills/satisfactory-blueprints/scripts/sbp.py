@@ -293,6 +293,38 @@ class Blueprint:
 
 LIBRARY_DIR = Path(__file__).resolve().parent.parent / 'library'
 
+# Build sizes offered to players, in foundations (8 m) per side. Each is a cube like the game's
+# own designers: footprint n x n foundations, height n x 8 m.
+SIZES = {'small': 6, 'medium': 10, 'large': 20, 'extra-large': 40}
+DEFAULT_SIZE = 'medium'
+
+
+def size_dims(size=DEFAULT_SIZE):
+    """[n, n, n] blueprint dims for a size name (or a number of foundations)."""
+    n = SIZES[size] if isinstance(size, str) else int(size)
+    return [n, n, n]
+
+
+def size_limits_m(size=DEFAULT_SIZE):
+    """(half-width, height) in metres: pieces must sit within x, y in ±half-width, z in 0…height."""
+    n = size_dims(size)[0]
+    return n * 4.0, n * 8.0
+
+
+def size_name(dims):
+    """'medium' etc. for preset dims, else e.g. '7x5x6'."""
+    for name, n in SIZES.items():
+        if list(dims) == [n, n, n]:
+            return name
+    return 'x'.join(map(str, dims))
+
+
+def out_of_bounds(bp):
+    """Actors whose origin lies outside the blueprint's dims volume (should be none)."""
+    hx, hy, top = bp.dims[0] * 400, bp.dims[1] * 400, bp.dims[2] * 800
+    return [o for o in bp.actors()
+            if abs(o['pos'][0]) > hx or abs(o['pos'][1]) > hy or not (-1 <= o['pos'][2] <= top)]
+
 
 class Library:
     """Donor pieces shipped with the skill: one clean sample per building type and game version.
@@ -345,12 +377,14 @@ class Library:
     def recipes_for(self, type_names):
         return sorted({self.index['types'][t]['recipe'] for t in type_names if self.index['types'][t]['recipe']})
 
-    def new_blueprint(self, dims):
+    def new_blueprint(self, size=DEFAULT_SIZE, dims=None):
+        """Empty blueprint with this library version's header, sized by preset (small, medium,
+        large, extra-large) unless explicit dims are given."""
         bp = Blueprint()
         for attr in ('header_version', 'object_version', 'build_version', 'extra_header',
                      'object_flags', 'chunk_v2'):
             setattr(bp, attr, getattr(self.bp, attr))
-        bp.dims = list(dims)
+        bp.dims = list(dims) if dims else size_dims(size)
         return bp
 
 

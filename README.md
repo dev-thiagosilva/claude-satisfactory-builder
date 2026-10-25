@@ -32,6 +32,17 @@ Just ask, for example:
 - *"Make me a glass dome greenhouse, about 40 m wide, white frame"*
 - *"A train station roof like this sketch"* + a drawing
 
+Pick a size, or let Claude use **medium**:
+
+| Size | Plot (foundations) | About |
+|---|---|---|
+| Small | 6 × 6 | 48 m across, up to 48 m tall |
+| **Medium** (default) | 10 × 10 | 80 m across, up to 80 m tall |
+| Large | 20 × 20 | 160 m across, up to 160 m tall |
+| Extra-large | 40 × 40 | 320 m across, up to 320 m tall |
+
+Bigger builds use many more pieces and cost much more to build in game.
+
 Claude will:
 
 1. Ask a few quick questions (size, colours, which save it's for).
@@ -48,8 +59,8 @@ Then in Satisfactory: **reload your save**, open the build menu, and find it in 
 ## Good to know
 
 - The 3D preview uses simple shapes, not the game's exact models, and the cost is an estimate.
-- Big custom builds can be larger than the in-game blueprint designers. You can still place
-  them; you just can't reopen them in a designer.
+- Only **small** matches an in-game blueprint designer (Mk3). Medium and bigger can be placed
+  normally, but can't be reopened in a designer.
 - Your own blueprints are never changed or overwritten. Claude's builds live in
   `claude-satisfactory-builder\.local\blueprints` until you install them.
 - Machines come without belts, pipes or power attached. Hook those up in game.

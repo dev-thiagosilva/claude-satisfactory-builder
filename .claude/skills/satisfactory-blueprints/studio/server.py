@@ -18,7 +18,7 @@ from urllib.parse import urlparse, parse_qs
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'scripts'))
 from sbp import (Blueprint, short, get_float, get_color, set_color, paint_key, sessions,
-                 blueprints_root, install)
+                 blueprints_root, install, size_name)
 
 CREATIONS = None
 SAFE = re.compile(r'^[\w .\-\[\]()&,+]+$')
@@ -62,6 +62,7 @@ def list_creations():
         except Exception:
             continue
         out.append(dict(name=d.name, title=f.stem, pieces=len(bp.actors()), dims=bp.dims,
+                        size=size_name(bp.dims),
                         modified=f.stat().st_mtime,
                         description=cfg_description(f.with_suffix('.sbpcfg'))))
     return sorted(out, key=lambda c: c['modified'], reverse=True)
@@ -75,7 +76,7 @@ def model(name):
         custom = get_color(o) is not None
         pieces.append(dict(i=i, type=short(o['cls']), pos=o['pos'], rot=o['rot'], scale=o['scale'],
                            len=get_float(o, 'mLength'), paint=paint_key(o), custom=custom))
-    return dict(name=name, title=f.stem, dims=bp.dims, version=bp.object_version,
+    return dict(name=name, title=f.stem, dims=bp.dims, size=size_name(bp.dims), version=bp.object_version,
                 cost=[[short(i), n] for i, n in bp.cost], pieces=pieces,
                 description=cfg_description(f.with_suffix('.sbpcfg')))
 
