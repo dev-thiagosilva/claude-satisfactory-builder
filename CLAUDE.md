@@ -121,20 +121,31 @@ blueprint** in the planner. Either way the result is a ready production line in
   column; short hops use a low pass or stay at belt height);
 - raw resources arrive as open belt ends on the south edge (the player connects miners there);
   products and solid byproducts go into storage containers;
+- power: a Mk.1 pole beside every machine, wired to it and chained along the row and from row
+  to row; the player connects their grid to the pole beside the first machine of the first row;
 - a foundation floor, and a plot sized to fit (production lines are long; they don't use the
   four building sizes).
 
 `python -I .claude/skills/satisfactory-blueprints/scripts/factory.py "Motor" 2 [--use "..."] [--name "..."]`
-prints a report: rows, raw inputs, outputs, size, warnings and belt collisions. The generator
-retries lane layouts until no belts touch. A remaining collision is cosmetic (belts clip, items
-still flow); say where it is.
+prints a report: rows, raw inputs, outputs, size, power, warnings, `collisions` (belts passing
+too close), `lane_conflicts` (a lane forced to stay low across another's turn-in) and
+`belt_problems` (too short, too steep, doubling back). The generator retries lane layouts until
+all of these are zero; anything left over, say where it is.
+
+Belts must be built the way the game builds its own, or placement goes wrong. A zero-length or
+folded belt can't be built: the game drops it, which cuts the line, and its broken collision
+pushes the player into the air. So `belt_path` makes one belt per run with several spline
+points, a straight 1 m lead out of every connector, corners rounded into arcs, tangents sized as
+the game does (half the segment on straights, 4·r·tan(θ/4) on arcs), at most 35° and ~50 m per
+belt. Drops from raised manifolds into machines go level, ramp, level (`feeder`).
 
 Tell the player plainly what isn't done yet: **pipes for fluids** (fluid ports are left open;
-the report lists which steps), **power** (no poles or wires; they connect it), and **byproducts
-fed back into the line** (they go to storage). Machine ports come from `library/ports.json`,
-learned from belts and pipes plugged into machines in a real 1.2 save (`build_library.py
---save`). Ports never seen plugged in are mirrored from a sibling and marked `inferred`. The
-first in-game test of a generated line should be a small one (e.g. 30 Iron Plate).
+the report lists which steps) and **byproducts fed back into the line** (they go to storage).
+Machine ports and power points come from `library/ports.json`, learned from belts, pipes and
+power lines plugged into machines in a real 1.2 save (`build_library.py --save`). Ports never
+seen plugged in are mirrored from a sibling and marked `inferred`; machines with no known power
+point (Particle Accelerator, Quantum Encoder) are listed in the warnings. The first in-game test
+of a generated line should be a small one (e.g. 30 Iron Plate).
 
 ## Blueprint Studio
 
@@ -167,9 +178,14 @@ Rules that bite:
   ±dims·400 cm, z in 0…dims_z·800 cm.
 - **Header**: recipes for every piece type, and the cost from `estimate_cost(bp)`, which uses the
   game's own build recipes. Length-based pieces may round slightly differently in game.
-- **Machines and logistics** come with empty ports and no power, as if freshly placed. The player
-  connects belts, pipes and power in game. Power lines aren't in the library, because a wire
-  needs two ends.
+- **Machines and logistics** come with empty ports and no power, as if freshly placed, unless the
+  build links them (the factory generator does; so can a building's own lights). Links are
+  data on both sides: belts and pipes in `mConnectedComponent` on both connectors; a power line
+  carries its two connections after its properties, and each connection lists its wires in
+  `mWires`. Anything added to a piece goes **before** the `None` that ends its property list
+  (`add_prop` in `build_library.py`); the game stops reading there, so a link written after it
+  is silently lost. The power line in the library is a template with both ends blank:
+  `factory.Factory.make_wires` shows how to fill one in.
 
 ## The player's game files
 
@@ -199,7 +215,9 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
     drops the `BuiltBy` player handle, and records no file names;
   - empties every inventory (machines, storage, stations) and resets clock and production boost
     to 100%, so no items, power shards or Somersloops travel with the samples;
-  - with `--save`, learns machine port positions into `ports.json` for the factory generator.
+  - keeps power lines as a template with both ends blank (a wire needs two ends to be placed);
+  - with `--save`, learns machine port positions and power-line attach points into
+    `ports.json` for the factory generator.
   New object ids keep the original digit count, because references also sit inside longer
   strings whose stored sizes must not change. `sav.py` documents the save layout.
 - Confirm 🧪 pieces in game with `examples/piece_test.py`, which writes four test blueprints
@@ -209,7 +227,7 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 - After a game update, regenerate the full piece list from the game's modding data:
   `scripts/build_assets.py "<game>/CommunityResources/Docs/en-US.json"`. It writes
   `assets.json` and `ASSETS.md` with names and numbers only, no description text.
-- Still missing from the library (see ASSETS.md): power lines (need two ends), some hypertube
+- Still missing from the library (see ASSETS.md): some hypertube
   pieces, and pieces not in the maintainer's world yet: Biomass Burner, Nuclear Power Plant, Power Tower, Priority
   Merger/Power Switch, Pipeline T-Junction, Street Light, Flood Light Tower, Buffer Stop, Fluid
   Truck Station, landing/jump pads, and unique buildings (HUB, Space Elevator, MAM, designers).

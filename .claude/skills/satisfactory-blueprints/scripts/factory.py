@@ -6,10 +6,17 @@ feeders pass over the first), merger manifolds collect the outputs, and belt lan
 on the west side link the rows. Lanes run overhead in their own column and ramp down only where
 they join a row, so lines never cross. Raw resources arrive as open belt ends on the south edge
 (connect your miners there); the products and any solid byproducts go into storage containers.
-Everything stands on a foundation floor. A collision check runs before saving.
+Every machine gets a power pole wired to it; the poles are chained along each row and from row
+to row, and the first row's first pole has a free connection for the player's grid.
+Everything stands on a foundation floor.
 
-Not yet: pipes for fluids (fluid ports are left open), power lines, and routing byproducts back
-into the line.
+Belts are built the way the game builds its own: one belt per run with several spline points,
+a straight 1 m lead out of every connector, rounded corners, never steeper than 35 degrees and
+never zero-length (the game drops a belt it can't build, which cuts the line). Before saving,
+the layout is checked for touching belts, lanes that would have to stay low across another, and
+belts the game would refuse; it's retried with other lane orders until all of these are zero.
+
+Not yet: pipes for fluids (fluid ports are left open) and routing byproducts back into the line.
 
   python -I factory.py "Reinforced Iron Plate" 5 --out ".local/blueprints/rip-factory/RIP Factory.sbp"
   python -I factory.py "Modular Frame" 2 --use "Stitched Iron Plate" --name "Frames"
@@ -22,22 +29,33 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from sbp import (Library, SIZES, set_float, short, estimate_cost, write_sbpcfg, out_of_bounds,
                  qrotate, find_prop)
-from build_library import prop_spans, _span, _element_tags, _fstr, set_object_prop
+from build_library import prop_spans, _span, _element_tags, _fstr, set_object_prop, add_prop
 import calc
 
 LIB_DIR = Path(__file__).resolve().parent.parent / 'library'
 FLOOR_TOP = 100.0            # foundations 0..100 cm; machines stand at z = 100
 BELT_Z = FLOOR_TOP + 100.0   # machine belt ports are 1 m above the machine's base
-MAX_BELT = 2400.0            # longest single belt piece (cm)
+MAX_BELT = 5000.0            # longest single belt (cm); the game allows about 56 m
+MAX_STRAIGHT = 2400.0        # straight runs get a spline point at least this often
+LEAD = 100.0                 # straight lead out of every connector, as the game builds belts
+CORNER = 200.0               # corner radius where there's room
+MAX_SLOPE = 35.0             # steepest belt the game builds (degrees)
 # Lane height classes: (height, lead-in before the ramp, ramp run). Long lanes go well overhead;
 # shorter ones use a low pass with gentle ramps; very short hops stay at belt height.
 LANE_CLASSES = {'high': (BELT_Z + 600.0, 200.0, 900.0), 'low': (BELT_Z + 300.0, 200.0, 450.0)}   # ramps ~34 deg (belts allow 35)
-MANIFOLD_GAP = 400.0         # between parallel input (or output) manifolds of one row
+ROW_GAP = 1200.0             # between one row's outputs and the next row's inputs: room for lanes to climb
+MANIFOLD_GAP = 900.0         # between parallel input (or output) manifolds of one row
+INPUT_OFFSET = 500.0         # from a machine's input face to its first input manifold
+RAISE = 250.0                # each extra input manifold sits this much higher, so its feeders
+                             # pass over the lower ones; drops stay under 35 degrees with the gap above
 LANE_Z, RAMP_RUN = LANE_CLASSES['high'][0], LANE_CLASSES['high'][2]
 COLUMN_GAP = 300.0
 SPLITTER = {'Input1': (-100, 0, 0), 'Output1': (100, 0, 0), 'Output2': (0, 100, 0), 'Output3': (0, -100, 0)}
 MERGER = {'Input1': (-100, 0, 0), 'Input2': (0, 100, 0), 'Input3': (0, -100, 0), 'Output1': (100, 0, 0)}
 BELT_TIERS = [(60, 1), (120, 2), (270, 3), (480, 4), (780, 5), (1200, 6)]
+POLE = 'PowerPoleMk1'        # 4 connections: its machine, the poles either side, and one spare
+WIRE_MAX = 9000.0            # the game allows 100 m per power line; keep a margin
+WIRE_VEC = re.compile(rb'(Locations|CachedRelativeLocations)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00[\x08\x09]', re.S)
 
 
 def yaw_q(deg):
@@ -49,6 +67,7 @@ def add(a, b): return [a[i] + b[i] for i in range(3)]
 def sub(a, b): return [a[i] - b[i] for i in range(3)]
 def mul(a, s): return [v * s for v in a]
 def norm(a): return math.sqrt(sum(v * v for v in a))
+def dot(a, b): return sum(a[i] * b[i] for i in range(3))
 def unit(a):
     n = norm(a)
     return [v / n for v in a] if n else [1.0, 0.0, 0.0]
@@ -61,6 +80,10 @@ class Factory:
         self.ports = json.loads((LIB_DIR / 'ports.json').read_text())
         self.belts = []          # (actor, [sample points]) for the collision check
         self.machines = []       # (type, pos, yaw) for the collision check and report
+        self.folds = 0           # belts that double back on themselves (should stay 0)
+        self.wire_jobs = []      # (piece, its power connection, piece, its power connection)
+        self.wire_lengths = []   # metres, for the report
+        self.poles = []
         self._tags = None
 
     # ---------- placing pieces ----------
@@ -93,10 +116,7 @@ class Factory:
                 blob = set_object_prop(blob, 'mConnectedComponent', other['path'], True)
                 # keep the level part as Persistent_Level
             else:
-                spans, none_at = prop_spans(blob, True)
-                if none_at is None:
-                    none_at = blob.index(_fstr('None'))
-                blob = blob[:none_at] + tag + value + blob[none_at:]
+                blob = add_prop(blob, tag + value)
             c['data'] = blob
 
     # ---------- belts ----------
@@ -118,78 +138,110 @@ class Factory:
         struct.pack_into('<i', head, sp['size_at'], len(value))
         belt['data'] = bytes(head) + value + belt['data'][sp['end']:]
 
-    def belt_piece(self, p0, d0, p1, d1, rate, src=None, dst=None):
-        """One belt from p0 (heading d0) to p1 (heading d1). src/dst: connection components."""
-        tier = next((t for cap, t in BELT_TIERS if rate <= cap + 1e-6), 6)
-        b = self.place('ConveyorBeltMk%d' % tier, p0, 0.0)
-        span = norm(sub(p1, p0))
-        k = span
-        self._set_spline(b['actor'], [([0, 0, 0], mul(unit(d0), k), mul(unit(d0), k)),
-                                      (sub(p1, p0), mul(unit(d1), k), mul(unit(d1), k))])
-        if src is not None:
-            self.connect(src, b['comps']['ConveyorAny0'])
-        if dst is not None:
-            self.connect(b['comps']['ConveyorAny1'], dst)
-        # sample the curve for the collision check (cubic Hermite)
-        t0, t1 = mul(unit(d0), k), mul(unit(d1), k)
-        pts = []
-        n = max(2, int(span / 50))
-        for i in range(n + 1):
-            s = i / n
-            h00, h10, h01, h11 = 2*s**3 - 3*s**2 + 1, s**3 - 2*s**2 + s, -2*s**3 + 3*s**2, s**3 - s**2
-            pts.append([h00 * p0[j] + h10 * t0[j] + h01 * p1[j] + h11 * t1[j] for j in range(3)])
-        self.belts.append((b, pts))
-        return b
-
     def belt_path(self, waypoints, rate, src=None, dst=None, d_start=None, d_end=None):
-        """Belts along a polyline (waypoints), rounding corners, splitting long runs, chained
-        together; src feeds the first piece, the last piece feeds dst."""
+        """A belt along a polyline (waypoints), shaped the way the game shapes its own belts: one
+        belt with several spline points, a straight 1 m lead out of each connector, corners
+        rounded into arcs, and the game's tangent sizes (half the length on straights, 4·r·tan(θ/4)
+        on arcs). Runs longer than one belt allows are split into belts joined end to end.
+        src feeds the first belt, the last belt feeds dst. Never makes a zero-length belt."""
         pts = []
         for w in waypoints:                     # drop repeated points
             if not pts or norm(sub(w, pts[-1])) > 1:
                 pts.append(list(w))
-        segs = []                     # (p0, d0, p1, d1)
+        i = 1
+        while i < len(pts) - 1:                 # drop points in the middle of a straight line
+            if dot(unit(sub(pts[i], pts[i - 1])), unit(sub(pts[i + 1], pts[i]))) > 0.9999:
+                pts.pop(i)
+            else:
+                i += 1
+        if len(pts) < 2:
+            raise ValueError('belt with no length between %s and its target' % (pts,))
         n = len(pts)
         lens = [norm(sub(pts[i + 1], pts[i])) for i in range(n - 1)]
-        # each corner's radius fits within half of the straight runs on both sides
-        radius = [0.0] + [min(200.0, lens[i - 1] / 2, lens[i] / 2) for i in range(1, n - 1)] + [0.0]
+
+        def room(j):
+            """How much of segment j one corner may use (keeps the 1 m connector leads straight)."""
+            if n == 2:
+                return 0.0
+            if j == 0:
+                return max(0.0, lens[j] - (LEAD if src is not None else 0.0))
+            if j == n - 2:
+                return max(0.0, lens[j] - (LEAD if dst is not None else 0.0))
+            return lens[j] / 2
+
+        pieces = []                              # (p0, p1, d0, d1, tangent size)
         cur = pts[0]
         cur_d = unit(d_start) if d_start else unit(sub(pts[1], pts[0]))
         for i in range(1, n):
-            a, b = pts[i - 1], pts[i]
-            d = unit(sub(b, a))
-            R = radius[i]
+            d = unit(sub(pts[i], pts[i - 1]))
+            turn, R = False, 0.0
             if i < n - 1:
-                d_next = unit(sub(pts[i + 1], b))
-                turn = sum(d[j] * d_next[j] for j in range(3)) < 0.999 and R > 1
-            else:
-                turn = False
-            end = sub(b, mul(d, R)) if turn else b
-            # straight run (split if long)
+                d_next = unit(sub(pts[i + 1], pts[i]))
+                R = min(CORNER, room(i - 1), room(i))
+                turn = R >= 1.0
+            end = sub(pts[i], mul(d, R)) if turn else pts[i]
             run = norm(sub(end, cur))
-            pieces = max(1, math.ceil(run / MAX_BELT))
-            for k in range(pieces):
-                q0 = add(cur, mul(sub(end, cur), k / pieces))
-                q1 = add(cur, mul(sub(end, cur), (k + 1) / pieces))
-                segs.append((q0, cur_d if (k == 0) else d, q1, d))
-                cur_d = d
+            if run >= 1.0:
+                k = max(1, math.ceil(run / MAX_STRAIGHT))
+                for m in range(k):
+                    q0, q1 = add(cur, mul(sub(end, cur), m / k)), add(cur, mul(sub(end, cur), (m + 1) / k))
+                    pieces.append((q0, q1, cur_d if m == 0 else d, d, run / k / 2))
+                    cur_d = d
             cur = end
+            if i < n - 1 and dot(d, d_next) < -0.5:
+                self.folds += 1                  # belt doubling back on itself: a layout bug
             if turn:
-                after = add(b, mul(d_next, R))
-                segs.append((cur, d, after, d_next))
+                theta = math.acos(max(-1.0, min(1.0, dot(d, d_next))))
+                r = R / math.tan(theta / 2)
+                after = add(pts[i], mul(d_next, R))
+                pieces.append((cur, after, d, d_next, 4 * r * math.tan(theta / 4)))
                 cur, cur_d = after, d_next
         if d_end:
-            p0, d0, p1, _ = segs[-1]
-            segs[-1] = (p0, d0, p1, unit(d_end))
+            p0, p1, d0, _, mag = pieces[-1]
+            pieces[-1] = (p0, p1, d0, unit(d_end), mag)
+        # pack the pieces into belts no longer than the game allows
+        belts, acc = [[]], 0.0
+        for pc in pieces:
+            ln = norm(sub(pc[1], pc[0]))
+            if belts[-1] and acc + ln > MAX_BELT:
+                belts.append([])
+                acc = 0.0
+            belts[-1].append(pc)
+            acc += ln
         prev = None
-        for i, (p0, d0, p1, d1) in enumerate(segs):
-            s = src if i == 0 else prev['comps']['ConveyorAny1']
-            t = dst if i == len(segs) - 1 else None
-            b = self.belt_piece(p0, d0, p1, d1, rate, src=s if i == 0 else None, dst=t)
-            if i > 0:
+        for bi, group in enumerate(belts):
+            b = self._belt(group, rate)
+            if bi == 0 and src is not None:
+                self.connect(src, b['comps']['ConveyorAny0'])
+            if prev is not None:
                 self.connect(prev['comps']['ConveyorAny1'], b['comps']['ConveyorAny0'])
             prev = b
+        if dst is not None:
+            self.connect(prev['comps']['ConveyorAny1'], dst)
         return prev
+
+    def _belt(self, pieces, rate):
+        """One belt through consecutive pieces (p0, p1, d0, d1, tangent size)."""
+        tier = next((t for cap, t in BELT_TIERS if rate <= cap + 1e-6), 6)
+        origin = pieces[0][0]
+        b = self.place('ConveyorBeltMk%d' % tier, origin, 0.0)
+        spline = [(sub(origin, origin), mul(pieces[0][2], pieces[0][4]), mul(pieces[0][2], pieces[0][4]))]
+        for k, (p0, p1, d0, d1, mag) in enumerate(pieces):
+            arrive = mul(d1, mag)
+            leave = mul(pieces[k + 1][2], pieces[k + 1][4]) if k + 1 < len(pieces) else arrive
+            spline.append((sub(p1, origin), arrive, leave))
+        self._set_spline(b['actor'], spline)
+        # sample the curve for the collision and slope checks (cubic Hermite)
+        pts = []
+        for p0, p1, d0, d1, mag in pieces:
+            t0, t1 = mul(d0, mag), mul(d1, mag)
+            steps = max(2, int(norm(sub(p1, p0)) / 50))
+            for i in range(0 if not pts else 1, steps + 1):
+                s = i / steps
+                h00, h10, h01, h11 = 2*s**3 - 3*s**2 + 1, s**3 - 2*s**2 + s, -2*s**3 + 3*s**2, s**3 - s**2
+                pts.append([h00 * p0[j] + h10 * t0[j] + h01 * p1[j] + h11 * t1[j] for j in range(3)])
+        self.belts.append((b, pts))
+        return b
 
     # ---------- machines ----------
     def set_machine(self, piece, recipe_path, clock):
@@ -200,12 +252,70 @@ class Factory:
             if off is not None:
                 set_float(a, name, clock)
             else:
-                spans, none_at = prop_spans(a['data'], True)
-                tag = _fstr(name) + _fstr('FloatProperty') + struct.pack('<iiBf', 0, 4, 0, clock)
-                a['data'] = a['data'][:none_at] + tag + a['data'][none_at:]
+                a['data'] = add_prop(a['data'], _fstr(name) + _fstr('FloatProperty') + struct.pack('<iiBf', 0, 4, 0, clock))
+
+    # ---------- power ----------
+    def power_name(self, piece):
+        """The piece's power connection component name, if we know where wires attach to it."""
+        known = self.ports.get(piece['type'], {})
+        return next((n for n in piece['comps'] if re.match(r'Power(Input|Connection)', n) and n in known), None)
+
+    def wire_later(self, a, b):
+        """Queue a power line between two placed pieces (wires are drawn once positions are final)."""
+        self.wire_jobs.append((a, self.power_name(a), b, self.power_name(b)))
+
+    def _attach(self, piece, name):
+        o = piece['actor']
+        local = self.ports[piece['type']][name]['pos']
+        w = qrotate(o['rot'], local)
+        return [o['pos'][k] + w[k] for k in range(3)]
+
+    def make_wires(self):
+        """Every queued power line, as the game stores one: the wire actor at its second end, both
+        end positions (world and relative), its length, the two connections it joins after its
+        properties, and each connection listing its wires in mWires."""
+        lists = {}
+        ref = lambda path: _fstr('Persistent_Level') + _fstr(path)
+        for a, na, b, nb in self.wire_jobs:
+            pa, pb = self._attach(a, na), self._attach(b, nb)
+            w = self.bp.add_copy(self.lib.donor('PowerLine'), self.lib.bp, pb, [0.0, 0.0, 0.0, 1.0])
+            blob = bytearray(w['data'])
+            sp = _span(bytes(blob), 'mWireInstances', True)
+            offs = [m.end() + (4 if blob[m.end() - 1] & 1 else 0)
+                    for m in WIRE_VEC.finditer(bytes(blob), sp['value'], sp['end'])]
+            for off, vec in zip(offs, (pa, pb, sub(pa, pb), [0.0, 0.0, 0.0])):
+                struct.pack_into('<3d', blob, off, *vec)
+            w['data'] = bytes(blob)
+            set_float(w, 'mCachedLength', norm(sub(pa, pb)))
+            spans, none_at = prop_spans(w['data'], True)
+            end = none_at + len(_fstr('None'))
+            ca, cb = a['comps'][na], b['comps'][nb]
+            w['data'] = w['data'][:end] + bytes(4) + ref(ca['path']) + ref(cb['path'])
+            for c in (ca, cb):
+                lists.setdefault(id(c), (c, []))[1].append(w['path'])
+            self.wire_lengths.append(norm(sub(pa, pb)) / 100)
+        for c, paths in lists.values():
+            value = struct.pack('<i', len(paths)) + b''.join(ref(p) for p in paths)
+            tag = _fstr('mWires') + _fstr('ArrayProperty') + struct.pack('<i', 1) + _fstr('ObjectProperty') + \
+                struct.pack('<iiB', 0, len(value), 0)
+            c['data'] = add_prop(c['data'], tag + value)
 
 
 # ---------- layout ----------
+def feeder(a, b, over=(), lead=150.0, clear=130.0):
+    """Waypoints for a belt from a splitter (a) straight ahead into a machine port (b): level out
+    of the splitter, then down in straight ramps passing `clear` cm above each lower manifold it
+    crosses (over: [(y, height)] in the order met), level again into the port."""
+    d = unit(sub([b[0], b[1], 0], [a[0], a[1], 0]))
+    if abs(a[2] - b[2]) < 1:
+        return [a, b]
+    pts = [a, [a[0] + d[0] * lead, a[1] + d[1] * lead, a[2]]]
+    for y, z in over:
+        pts.append([a[0], y, min(a[2], max(b[2], z + clear))])
+    pts += [[b[0] - d[0] * lead, b[1] - d[1] * lead, b[2]], b]
+    return pts
+
+
 def machine_info(f, mtype):
     ports = f.ports.get(mtype, {})
     ins = sorted([k for k in ports if k.startswith('Input')])
@@ -271,10 +381,11 @@ def build_factory(plan, name='Factory', seed=0):
     for r in rows:
         info, n = r['info'], r['step']['machines']
         r['x0'] = x_rows
-        y_min = info['y_in'] - 300 - MANIFOLD_GAP * max(0, len(r['ins']) - 1) - 200
+        y_min = info['y_in'] - INPUT_OFFSET - MANIFOLD_GAP * max(0, len(r['ins']) - 1) - 200
         y_max = info['y_out'] + 300 + MANIFOLD_GAP * max(0, len(r['outs']) - 1) + 200
         r['y'] = y_cursor - y_min
-        y_cursor += (y_max - y_min) + 400
+        r['y_bottom'], r['y_top'] = y_cursor, y_cursor + (y_max - y_min)
+        y_cursor += (y_max - y_min) + ROW_GAP
         r['n'] = n
     y_north = y_cursor + 600
 
@@ -290,7 +401,7 @@ def build_factory(plan, name='Factory', seed=0):
             y1 = y_north
         else:
             ri, k = L['dst']
-            y1 = rows[ri]['y'] + rows[ri]['info']['y_in'] - 300 - MANIFOLD_GAP * k
+            y1 = rows[ri]['y'] + rows[ri]['info']['y_in'] - INPUT_OFFSET - MANIFOLD_GAP * k
         return y0, y1
     for L in lanes:
         y0, y1 = lane_ys(L)
@@ -300,6 +411,21 @@ def build_factory(plan, name='Factory', seed=0):
     order = {'high': 0, 'low': 1, 'ground': 2}
     for c, L in enumerate(sorted(lanes, key=lambda L: (order[L['cls']], rnd.random() if seed else 0))):
         L['col'] = c
+    # Lanes feeding one row from the same side: the one whose manifold is met first must sit
+    # west of the ones going further, or its turn into the row crosses them while they come down.
+    # Column 0 is the easternmost, so sort the group's columns that way.
+    groups = {}
+    for L in lanes:
+        if L.get('store') or L['dst'] is None:
+            continue
+        y0, y1 = lane_ys(L)
+        dy = 1 if y1 > y0 else -1
+        groups.setdefault((L['dst'][0], dy, L['ground']), []).append(L)
+    for (ri, dy, ground), ls in groups.items():
+        cols = sorted(L['col'] for L in ls)
+        ls.sort(key=lambda L: -L['dst'][1] if dy > 0 else L['dst'][1])
+        for L, c in zip(ls, cols):
+            L['col'] = c
 
     # place machines and manifolds
     for ri, r in enumerate(rows):
@@ -317,14 +443,15 @@ def build_factory(plan, name='Factory', seed=0):
         r['entries'] = []
         for k, (item, rate) in enumerate(r['ins']):
             port = info['ins'][k]
-            y_k = r['y'] + info['y_in'] - 300 - MANIFOLD_GAP * k
-            z_k = BELT_Z + 300 * k
+            y_k = r['y'] + info['y_in'] - INPUT_OFFSET - MANIFOLD_GAP * k
+            over = [(r['y'] + info['y_in'] - INPUT_OFFSET - MANIFOLD_GAP * j, BELT_Z + RAISE * j) for j in range(k - 1, -1, -1)]
+            z_k = BELT_Z + RAISE * k
             splits = []
             for p in r['machines']:
                 ppos, pcomp = f.port(p, port)
                 s = f.place('ConveyorAttachmentSplitter', [ppos[0], y_k, z_k], 0.0)
                 o2, o2c = f.port(s, 'Output2')
-                f.belt_path([o2, ppos], rate / n, src=o2c, dst=pcomp, d_start=[0, 1, 0], d_end=[0, 1, 0])
+                f.belt_path(feeder(o2, ppos, over), rate / n, src=o2c, dst=pcomp, d_start=[0, 1, 0], d_end=[0, 1, 0])
                 splits.append(s)
             for a, b in zip(splits, splits[1:]):
                 pa, ca = f.port(a, 'Output1'); pb, cb = f.port(b, 'Input1')
@@ -374,8 +501,52 @@ def build_factory(plan, name='Factory', seed=0):
             prev_p, prev_c = f.port(s, 'Output1')
         exit_tail[(ri, oi)] = (prev_p, prev_c)
 
+    # Level runs at belt height that cross lane columns: each lane's turn east into its row, and
+    # each row's exit line west to its branch columns. A lane must be up at full height wherever
+    # one of these crosses its column, so it climbs and descends only in clear stretches.
+    runs = []                                            # (y, west x, east x, owner key)
+    for L in lanes:
+        if not L.get('store'):
+            ri, k = L['dst']
+            edge = rows[ri]['entries'][k][0]
+            runs.append((edge[1], col_x(L['col']), edge[0], ('lane', id(L))))
+    for (ri, oi), ls in by_src.items():
+        p_out = rows[ri]['exits'][oi][0]
+        runs.append((p_out[1], min(col_x(L['col']) for L in ls), p_out[0], ('exit', ri, oi)))
+
+    def crossings(L, x):
+        own = {('lane', id(L))}
+        if L['src'] is not None:
+            own.add(('exit',) + tuple(L['src']))
+        return sorted(y for y, lo, hi, who in runs if who not in own and lo + 1 < x < hi - 1)
+
+    def ramps(L, x, y0, y_t, dy, ramp, lead):
+        """Where to climb and descend: (c0, c1, d0, d1) along y, or None if no clear stretch."""
+        ys = crossings(L, x)
+        ahead = [y for y in ys if (y - y0) * dy > 0 and (y_t - y) * dy > 0]
+        c0 = y0 + dy * 150.0                              # climb as soon as the lane is clear of its start
+        c1 = c0 + dy * ramp
+        d1 = y_t - dy * lead
+        d0 = d1 - dy * ramp
+        if (d0 - c1) * dy < 0:
+            return None
+        for y in ahead:                                   # every crossing must meet the lane fully up
+            if (y - (c1 + dy * 150)) * dy < 0 or (y - (d0 - dy * 150)) * dy > 0:
+                return None
+        return c0, c1, d0, d1
+
+    def lane_plan(L, x, y0, y_t, dy):
+        """The lane's own height class if it fits between crossings, else the low pass."""
+        for cls in dict.fromkeys([L['cls'], 'low']):
+            hz, lead, ramp = LANE_CLASSES[cls]
+            r = ramps(L, x, y0, y_t, dy, ramp, lead)
+            if r:
+                return (hz,) + r
+        return None
+
     # lanes: up the column, along it overhead, down at the far end
     raw_x = {}
+    report['lane_conflicts'] = 0
     for L in lanes:
         x = col_x(L['col'])
         if L['src'] is None:                            # raw resource from the south edge
@@ -388,9 +559,15 @@ def build_factory(plan, name='Factory', seed=0):
             y_end = y_north
             box = f.place('StorageContainerMk2', [x, y_end + 400, FLOOR_TOP], 0.0)
             end_p, end_c = f.port(box, 'Input0')
-            dy = 1
-            pts = [start_p, [x, start_p[1] + dy * 600, BELT_Z], [x, start_p[1] + dy * (600 + RAMP_RUN), LANE_Z],
-                   [x, end_p[1] - 600 - RAMP_RUN, LANE_Z], [x, end_p[1] - 600, BELT_Z], end_p]
+            plan_ = None if L['ground'] else lane_plan(L, x, start_p[1], end_p[1], 1)
+            if plan_ is None:
+                if any(start_p[1] < y < end_p[1] for y in crossings(L, x)):
+                    report['lane_conflicts'] += 1
+                    report.setdefault('conflict_detail', []).append((L['item'], L['src'], 'store', round(start_p[1]), round(end_p[1]), [round(y) for y in crossings(L, x)]))
+                pts = [start_p, end_p]
+            else:                                   # same overhead pattern as the other lanes
+                hz, c0, c1, d0, d1 = plan_
+                pts = [start_p, [x, c0, BELT_Z], [x, c1, hz], [x, d0, hz], [x, d1, BELT_Z], end_p]
             f.belt_path(pts, L['rate'], src=start_c, dst=end_c, d_start=sdir, d_end=[0, 1, 0])
             report['outputs'].append('%s %s/min into a storage container' % (items[L['item']]['name'], calc.fmt(L['rate'])))
             continue
@@ -398,15 +575,51 @@ def build_factory(plan, name='Factory', seed=0):
         edge, p_in, c_in, rate = rows[ri]['entries'][k]
         y_t = edge[1]
         dy = 1 if y_t > start_p[1] else -1
-        if not L['ground']:                                        # overhead lane
-            hz, lead, ramp = LANE_CLASSES[L['cls']]
-            out_lead = 600.0          # leave the branching splitter level before climbing
-            run = [[x, start_p[1] + dy * out_lead, BELT_Z], [x, start_p[1] + dy * (out_lead + ramp), hz],
-                   [x, y_t - dy * (lead + ramp), hz], [x, y_t - dy * lead, BELT_Z]]
+        plan_ = None if L['ground'] else lane_plan(L, x, start_p[1], y_t, dy)
+        if plan_ is not None:                                      # overhead lane
+            hz, c0, c1, d0, d1 = plan_
+            run = [[x, c0, BELT_Z], [x, c1, hz], [x, d0, hz], [x, d1, BELT_Z]]
         else:                                                      # short hop: stay at belt height
+            if any((y - start_p[1]) * dy > 0 and (y_t - y) * dy > 0 for y in crossings(L, x)):
+                report['lane_conflicts'] += 1
+                report.setdefault('conflict_detail', []).append((L['item'], L['src'], L['dst'], L['cls'], round(start_p[1]), round(y_t), [round(y) for y in crossings(L, x)]))
             run = []
         pts = [start_p] + run + [[x, y_t, BELT_Z], edge, [p_in[0] - 600, p_in[1], p_in[2]], p_in]
         f.belt_path(pts, L['rate'], src=start_c, dst=c_in, d_start=sdir, d_end=[1, 0, 0])
+
+    # power: a pole just west of every machine, wired to it and to the poles beside it; the first
+    # pole of each row is wired to the next row's first pole (with a relay pole in the gap if the
+    # rows are far apart). Row 1's first pole keeps a free connection for the player's grid.
+    spine = None
+    no_power = set()
+    for ri, r in enumerate(rows):
+        prev = None
+        for p in r['machines']:
+            pole = f.place(POLE, [p['pos'][0] - r['info']['pitch'] / 2, r['y'], FLOOR_TOP], 0.0)
+            f.poles.append(pole)
+            if f.power_name(p):
+                f.wire_later(pole, p)
+            else:
+                no_power.add(r['step']['machine_name'])
+            if prev is not None:
+                f.wire_later(prev, pole)
+            else:
+                first = pole
+            prev = pole
+        if spine is not None:
+            a = spine
+            gap_y = (rows[ri - 1]['y_top'] + r['y_bottom']) / 2
+            if abs(first['pos'][1] - a['pos'][1]) > WIRE_MAX:
+                relay = f.place(POLE, [first['pos'][0], gap_y, FLOOR_TOP], 0.0)
+                f.poles.append(relay)
+                f.wire_later(a, relay)
+                a = relay
+            f.wire_later(a, first)
+        spine = first
+        if ri == 0:
+            report['power'] = 'connect your power grid to the pole beside the first machine of the first row'
+    for name in sorted(no_power):
+        report['warnings'].append('%s: no known power point, wire it in game' % name)
 
     # floor, then a plot that fits the factory (production lines are long and narrow, so they get
     # their own dimensions rather than one of the square building sizes)
@@ -430,8 +643,16 @@ def build_factory(plan, name='Factory', seed=0):
     for b, pts in f.belts:
         for p in pts:
             p[0] -= cx; p[1] -= cy
+    f.make_wires()
     report['size'] = '%d x %d m (%d x %d foundations)' % (f.bp.dims[0] * 8, f.bp.dims[1] * 8, f.bp.dims[0], f.bp.dims[1])
     report['collisions'] = collisions(f)
+    report['belt_problems'] = belt_problems(f)
+    # nothing may pass through a pole (poles are ~7 m tall, ~0.5 m wide)
+    report['pole_clearance_m'] = round(min(
+        (math.hypot(q[0] - p['actor']['pos'][0], q[1] - p['actor']['pos'][1])
+         for p in f.poles for b, pts in f.belts for q in pts if q[2] < FLOOR_TOP + 800), default=99) / 100, 1)
+    report['power_lines'] = len(f.wire_lengths)
+    report['longest_power_line_m'] = round(max(f.wire_lengths, default=0), 1)
     used = sorted({short(o['cls']) for o in f.bp.actors()})
     f.bp.recipes = f.lib.recipes_for([t for t in used if t in f.lib.index['types']])
     f.bp.cost = estimate_cost(f.bp)
@@ -442,16 +663,38 @@ def build_factory(plan, name='Factory', seed=0):
 
 
 def build_best(plan, name='Factory', tries=30):
-    """build_factory, retrying with shuffled lane columns until no belts collide."""
+    """build_factory, retrying with shuffled lane columns until no belts collide, no lane has to
+    stay low across another, and every belt is one the game can build."""
+    def score(rep):
+        b = rep['belt_problems']
+        return rep['collisions'] + rep['lane_conflicts'] + b['too_short'] + b['too_steep'] + b['doubling_back']
     best = None
     for seed in range(tries):
         f, rep = build_factory(plan, name, seed)
-        if best is None or rep['collisions'] < best[1]['collisions']:
+        if best is None or score(rep) < score(best[1]):
             best = (f, rep)
-        if rep['collisions'] == 0:
+        if score(rep) == 0:
             break
     best[1]['attempts'] = seed + 1
     return best
+
+
+def belt_problems(f):
+    """Belts the game would refuse or draw wrong: too short, or steeper than it allows."""
+    short_, steep = 0, 0
+    for b, pts in f.belts:
+        length = sum(norm(sub(q, p)) for p, q in zip(pts, pts[1:]))
+        if length < 50:
+            short_ += 1
+        for p, q in zip(pts, pts[1:]):
+            h = math.hypot(q[0] - p[0], q[1] - p[1])
+            if h > 1e-6 and math.degrees(math.atan2(abs(q[2] - p[2]), h)) > MAX_SLOPE + 0.5:
+                steep += 1
+                break
+            if h <= 1e-6 and abs(q[2] - p[2]) > 1:
+                steep += 1
+                break
+    return dict(too_short=short_, too_steep=steep, doubling_back=f.folds)
 
 
 def collisions(f, clearance=110.0):
@@ -474,6 +717,7 @@ def collisions(f, clearance=110.0):
                 if other is not None:
                     joined.add((min(bi, other), max(bi, other)))
     hits = set()
+    f.clashes = []           # (point on one belt, point on the other) for each clash
     for key, pts in grid.items():
         near = []
         for dx in (-1, 0, 1):
@@ -490,6 +734,7 @@ def collisions(f, clearance=110.0):
                     if min(norm(sub(p, e)) for e in ends) < 150 or min(norm(sub(q, e)) for e in ends) < 150:
                         continue
                     hits.add((bi, bj))
+                    f.clashes.append(([round(v) for v in p], [round(v) for v in q]))
     return len(hits)
 
 
@@ -508,8 +753,8 @@ def main(argv=None):
     out = Path(a.out) if a.out else Path('.local/blueprints') / re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-') / (name + '.sbp')
     out.parent.mkdir(parents=True, exist_ok=True)
     f.bp.save(out)
-    write_sbpcfg(out.with_suffix('.sbpcfg'), '%s\n\nMachines: %s\n\nRaw inputs: %s\n\nGenerated by claude-satisfactory-builder.' % (
-        name, '; '.join(rep['rows']), '; '.join(rep['raw_inputs'])))
+    write_sbpcfg(out.with_suffix('.sbpcfg'), '%s\n\nMachines: %s\n\nRaw inputs: %s\n\nPower: %s.\n\nGenerated by claude-satisfactory-builder.' % (
+        name, '; '.join(rep['rows']), '; '.join(rep['raw_inputs']), rep.get('power', 'wire it in game')))
     print(json.dumps(dict(file=str(out), **rep), indent=1))
 
 

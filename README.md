@@ -78,26 +78,28 @@ Happy with a plan? Press **Build this factory as a blueprint** in the planner, o
 - all the machines, set to the right recipe and speed
 - splitters and mergers feeding and collecting every machine
 - belts linking each step to the next
+- a power pole wired to every machine, all linked together
 - a foundation floor
 
 Raw resources come in as open belt ends along one edge: connect your miners there. Finished
-items go into a storage container. You still connect **power** and any **pipes** (fluids) in game.
+items go into a storage container. Connect your power grid to the pole beside the first
+machine. You still connect any **pipes** (fluids) in game.
 
 ## Good to know
 
 - The 3D preview uses simple shapes, not the game's exact models. The cost comes from the
   game's own recipes; beams may round slightly differently in game.
-- Made for **Satisfactory 1.2**. 479 of the 546 pieces are ready, including machines, miners,
+- Made for **Satisfactory 1.2**. 480 of the 546 pieces are ready, including machines, miners,
   train stations and platforms, power and logistics. Missing are a few power and hypertube
-  pieces, some lights, and unique buildings (HUB, Space Elevator). Machines come without belts,
-  pipes or power connected, so hook those up in game.
+  pieces, some lights, and unique buildings (HUB, Space Elevator).
 - Some pieces (🧪 in the list) were made from a similar piece and haven't been confirmed in game
   yet. If one looks wrong, tell Claude.
 - Only **small** matches an in-game blueprint designer (Mk3). Medium and bigger can be placed
   normally, but can't be reopened in a designer.
 - Your own blueprints are never changed or overwritten. Claude's builds live in
   `claude-satisfactory-builder\.local\blueprints` until you install them.
-- Machines come without belts, pipes or power attached. Hook those up in game.
+- Machines you place in your own designs come without belts, pipes or power attached. Hook
+  those up in game. Production lines come with belts and power already linked.
 
 ## For contributors
 

@@ -150,17 +150,23 @@ add items, switch each step's recipe, and set max clock, miner tier and node pur
 
 `scripts/factory.py` turns a plan into a ready-to-place production line: rows of machines set to
 their recipe and clock, splitter/merger manifolds, overhead belt lanes linking the rows, raw
-inputs as open belt ends, products into storage, and a foundation floor. Belts are real splines
-with both ends connected; a collision check and layout retries keep belts from touching.
+inputs as open belt ends, products into storage, a power pole wired to every machine (chained
+along and between rows, one free connection for the player's grid), and a foundation floor.
+Belts are built like the game's own (one belt per run, 1 m straight leads at connectors, rounded
+corners, at most 35°, never zero-length) with both ends connected; checks for touching belts,
+lane conflicts and unbuildable belts drive layout retries until all are zero.
 
 ```bash
 python -I scripts/factory.py "Reinforced Iron Plate" 5 [--use "Stitched Iron Plate"] [--name "RIP Line"] [--out file.sbp]
 ```
 
 In code: `factory.build_best(calc.plan(...), name)` returns `(Factory, report)`, and you save
-`factory.bp`. Machine ports come from `library/ports.json`. Not yet included: pipes for fluids,
-power, and byproducts fed back in. The studio planner's **Build this factory** button does the
-same.
+`factory.bp`. Machine ports and power points come from `library/ports.json`. Not yet included:
+pipes for fluids and byproducts fed back in. The studio planner's **Build this factory** button
+does the same.
+
+When adding properties to a piece (links, wires, settings), insert them before the `None` that
+closes its property list with `build_library.add_prop`: the game stops reading at that `None`.
 
 ## Formats and details
 

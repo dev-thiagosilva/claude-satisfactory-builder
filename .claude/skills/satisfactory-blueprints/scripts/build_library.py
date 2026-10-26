@@ -100,6 +100,21 @@ def _span(blob, name, new):
     return next((sp for sp in spans if sp['name'] == name), None)
 
 
+def none_offset(blob, new=True):
+    """Offset of the 'None' that closes a blob's top-level property list, where new properties
+    go. Works for blobs with no properties yet (prop_spans finds no list to walk there)."""
+    spans, none_at = prop_spans(blob, new)
+    if none_at is None:
+        none_at = blob.index(_fstr('None'))
+    return none_at
+
+
+def add_prop(blob, tag_and_value, new=True):
+    """Append one tagged property (tag + value bytes) to a blob's property list."""
+    at = none_offset(blob, new)
+    return blob[:at] + tag_and_value + blob[at:]
+
+
 def set_object_prop(blob, name, path, new=False):
     sp = _span(blob, name, new)
     if not sp:
