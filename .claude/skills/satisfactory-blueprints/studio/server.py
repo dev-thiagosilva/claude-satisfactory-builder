@@ -20,7 +20,7 @@ from urllib.parse import urlparse, parse_qs
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'scripts'))
-from sbp import (Blueprint, short, get_float, get_color, set_color, paint_key, sessions,
+from sbp import (Blueprint, spline_points, wire_ends, short, get_float, get_color, set_color, paint_key, sessions,
                  blueprints_root, install, size_name)
 import calc
 
@@ -72,29 +72,6 @@ def list_creations():
     return sorted(out, key=lambda c: c['modified'], reverse=True)
 
 
-def spline_of(o):
-    """Belt/pipe path as world points (cm), sampled from its spline, or None."""
-    import re, struct
-    from sbp import qrotate
-    d = o['data']
-    i = d.find(b'mSplineData\x00')
-    if i < 0:
-        return None
-    d = d[i:]
-    vals = [(m.group(1), struct.unpack_from('<3d', d, m.end())) for m in re.finditer(
-        rb'(Location|ArriveTangent|LeaveTangent)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00\x08', d, re.S)]
-    pts = [dict(vals[k:k + 3]) for k in range(0, len(vals) - 2, 3)]
-    out = []
-    for a, b in zip(pts, pts[1:]):
-        p0, p1, t0, t1 = a[b'Location'], b[b'Location'], a[b'LeaveTangent'], b[b'ArriveTangent']
-        for s in [k / 8 for k in range(9)]:
-            h = (2*s**3 - 3*s**2 + 1, s**3 - 2*s**2 + s, -2*s**3 + 3*s**2, s**3 - s**2)
-            loc = [h[0]*p0[j] + h[1]*t0[j] + h[2]*p1[j] + h[3]*t1[j] for j in range(3)]
-            w = qrotate(o['rot'], loc)
-            out.append([round(o['pos'][j] + w[j], 1) for j in range(3)])
-    return out or None
-
-
 def model(name):
     f = sbp_in(build_dir(name))
     bp = Blueprint.load(f)
@@ -103,7 +80,7 @@ def model(name):
         custom = get_color(o) is not None
         pieces.append(dict(i=i, type=short(o['cls']), pos=o['pos'], rot=o['rot'], scale=o['scale'],
                            len=get_float(o, 'mLength'), paint=paint_key(o), custom=custom,
-                           spline=spline_of(o)))
+                           spline=spline_points(o) or wire_ends(o)))
     return dict(name=name, title=f.stem, dims=bp.dims, size=size_name(bp.dims), version=bp.object_version,
                 cost=[[short(i), n] for i, n in bp.cost], pieces=pieces,
                 description=cfg_description(f.with_suffix('.sbpcfg')))

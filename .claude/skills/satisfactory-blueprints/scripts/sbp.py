@@ -14,7 +14,7 @@ Library:
 
 Format notes live in ../references/format.md.
 """
-import base64, copy, json, os, re, struct, sys, zlib
+import base64, copy, json, math, os, re, struct, sys, zlib
 from pathlib import Path
 
 CHUNK_TAG = 0x9E2A83C1
@@ -461,9 +461,8 @@ def item(name):
 
 def estimate_cost(bp):
     """Build cost of every piece, from the game's own recipes: [(item class path, amount)].
-    Length-based pieces (beams, …) are charged per started length unit; the game may round
+    Length-based pieces (beams, belts, pipes, power lines) are charged per started length unit; the game may round
     slightly differently, so call it an estimate when telling the player."""
-    import math
     table, total = assets()['assets'], {}
     for o in bp.actors():
         a = table.get(short(o['cls']))
@@ -471,8 +470,7 @@ def estimate_cost(bp):
             continue
         mult = 1
         if a.get('cost_per_m'):
-            length = (get_float(o, 'mLength') or 0) / 100
-            mult = max(1, math.ceil(length * a['cost_per_m'] - 1e-6))
+            mult = max(1, math.ceil(piece_length_m(o) * a['cost_per_m'] - 1e-6))
         for it, n in a['cost']:
             total[it] = total.get(it, 0) + n * mult
     return [(item(i), int(math.ceil(n))) for i, n in sorted(total.items(), key=lambda kv: -kv[1])]
@@ -609,6 +607,58 @@ def set_color(obj, rgba, prop='PrimaryColor'):
     if off is None:
         raise KeyError('%s has no %s; clone a donor painted with a Custom swatch' % (obj['path'], prop))
     b = bytearray(obj['data']); struct.pack_into('<4f', b, off, *rgba); obj['data'] = bytes(b)
+
+
+_SPLINE_VEC = re.compile(rb'(Location|ArriveTangent|LeaveTangent)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00\x08', re.S)
+_WIRE_VEC = re.compile(rb'(Locations|CachedRelativeLocations)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00[\x08\x09]', re.S)
+
+
+def spline_points(obj, steps=8):
+    """A belt's or pipe's path as world points (cm), sampled from its spline, or None."""
+    d = obj['data']
+    i = d.find(b'mSplineData\x00')
+    if i < 0:
+        return None
+    d = d[i:]
+    vals = [(m.group(1), struct.unpack_from('<3d', d, m.end())) for m in _SPLINE_VEC.finditer(d)]
+    pts = [dict(vals[k:k + 3]) for k in range(0, len(vals) - 2, 3)]
+    out = []
+    for a, b in zip(pts, pts[1:]):
+        p0, p1, t0, t1 = a[b'Location'], b[b'Location'], a[b'LeaveTangent'], b[b'ArriveTangent']
+        for s in [k / steps for k in range(steps + 1)]:
+            h = (2*s**3 - 3*s**2 + 1, s**3 - 2*s**2 + s, -2*s**3 + 3*s**2, s**3 - s**2)
+            loc = [h[0]*p0[j] + h[1]*t0[j] + h[2]*p1[j] + h[3]*t1[j] for j in range(3)]
+            w = qrotate(obj['rot'], loc)
+            out.append([round(obj['pos'][j] + w[j], 1) for j in range(3)])
+    return out or None
+
+
+def wire_ends(obj):
+    """A power line's two ends as world points (cm), or None."""
+    d = obj['data']
+    i = d.find(b'mWireInstances\x00')
+    if i < 0:
+        return None
+    vecs = []
+    for m in _WIRE_VEC.finditer(d, i):
+        at = m.end() + (4 if d[m.end() - 1] & 1 else 0)
+        vecs.append((m.group(1), struct.unpack_from('<3d', d, at)))
+    rel = [v for n, v in vecs if n == b'CachedRelativeLocations'][:2]
+    if len(rel) < 2:
+        return None
+    return [[round(obj['pos'][j] + qrotate(obj['rot'], r)[j], 1) for j in range(3)] for r in rel]
+
+
+def piece_length_m(obj):
+    """Length of a length-based piece in metres: beams (mLength), belts and pipes (spline),
+    power lines (mCachedLength)."""
+    n = get_float(obj, 'mLength') or get_float(obj, 'mCachedLength')
+    if n:
+        return n / 100
+    pts = spline_points(obj)
+    if pts:
+        return sum(math.dist(a, b) for a, b in zip(pts, pts[1:])) / 100
+    return 0.0
 
 
 def paint_key(obj):

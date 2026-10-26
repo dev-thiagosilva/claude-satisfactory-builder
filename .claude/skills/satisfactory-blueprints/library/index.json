@@ -371,7 +371,7 @@
      "custom"
     ],
     "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk1.Recipe_ConveyorBeltMk1_C",
-    "source": "save"
+    "source": "blueprint"
    },
    "ConveyorBeltMk2": {
     "components": 2,
@@ -380,7 +380,7 @@
      "Slot0"
     ],
     "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk2.Recipe_ConveyorBeltMk2_C",
-    "source": "save"
+    "source": "blueprint"
    },
    "ConveyorBeltMk3": {
     "components": 2,
@@ -390,7 +390,7 @@
      "custom"
     ],
     "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_ConveyorBeltMk3.Recipe_ConveyorBeltMk3_C",
-    "source": "save"
+    "source": "blueprint"
    },
    "ConveyorBeltMk4": {
     "components": 2,
@@ -903,8 +903,8 @@
     "paints": [
      "none"
     ],
-    "recipe": "/Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_Alternate_CopperAlloyIngot.Recipe_Alternate_CopperAlloyIngot_C",
-    "source": "save"
+    "recipe": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotSteel.Recipe_IngotSteel_C",
+    "source": "blueprint"
    },
    "FrackingExtractor": {
     "components": 4,
@@ -1749,6 +1749,15 @@
     "synthetic": true,
     "template": "LargeFan"
    },
+   "PowerLine": {
+    "components": 0,
+    "paints": [
+     "Slot0",
+     "custom"
+    ],
+    "recipe": "/Game/FactoryGame/Recipes/Buildings/Recipe_PowerLine.Recipe_PowerLine_C",
+    "source": "blueprint"
+   },
    "PowerPoleMk1": {
     "components": 1,
     "cut": true,
@@ -1892,13 +1901,13 @@
    "QuarterPipeCorner_03": {
     "components": 0,
     "paints": [
-     "Slot16",
+     "none",
      "custom"
     ],
     "recipe": "/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_QuarterPipeCorner_03.Recipe_QuarterPipeCorner_03_C",
     "source": "blueprint",
     "synthetic": true,
-    "template": "Foundation_Concrete_8x2"
+    "template": "Foundation_Concrete_8x1"
    },
    "QuarterPipeCorner_04": {
     "components": 0,
@@ -3790,7 +3799,7 @@
      "Slot0"
     ],
     "recipe": "/Game/FactoryGame/Recipes/Smelter/Recipe_IngotIron.Recipe_IngotIron_C",
-    "source": "save"
+    "source": "blueprint"
    },
    "Snowman": {
     "components": 0,

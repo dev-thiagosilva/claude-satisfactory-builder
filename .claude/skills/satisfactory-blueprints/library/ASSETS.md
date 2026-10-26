@@ -3,7 +3,7 @@
 Generated from the game's own modding data (`CommunityResources/Docs/en-US.json`) by
 `scripts/build_assets.py`; machine-readable copy in `assets.json`.
 
-**546 pieces** in the game. **479 are ready** (152 from real builds, 327 made from similar pieces):
+**546 pieces** in the game. **480 are ready** (153 from real builds, 327 made from similar pieces):
 the donor library has a sample, so Claude can place them in a blueprint today.
 
 - **Ready**: ✅ = sample taken from a real build; 🧪 = sample made from a similar piece of the
@@ -59,7 +59,7 @@ grid.
 
 - [Production machines](#production-machines): 11 pieces, 11 ready
 - [Extraction](#extraction): 7 pieces, 7 ready
-- [Power](#power): 21 pieces, 14 ready
+- [Power](#power): 21 pieces, 15 ready
 - [Belts, lifts & sorting](#belts-lifts--sorting): 34 pieces, 33 ready
 - [Pipes & fluids](#pipes--fluids): 16 pieces, 15 ready
 - [Hypertubes](#hypertubes): 9 pieces, 5 ready
@@ -627,6 +627,7 @@ grid.
 | ✅ 60 | Double Wall Outlet Mk.3 | `PowerPoleWallDouble_Mk3` |  |  |  |
 | ✅ 60 | Fuel-Powered Generator | `GeneratorFuel` |  | 15 Motor, 15 Encased Industrial Beam, 30 Copper Sheet, 50 Rubber, 50 Quickwire | Tier 5: Petroleum Power |
 | ✅ 60 | Geothermal Generator | `GeneratorGeoThermal` |  | 10 Motor, 25 Modular Frame, 25 High-Speed Connector, 50 Copper Sheet, 250 Wire | MAM: Geothermal Generator |
+| ✅🎨 60 | Power Line | `PowerLine` |  | 1 Cable per 25 m | Onboarding: HUB Upgrade 2 |
 | ✅ 60 | Power Pole Mk.1 | `PowerPoleMk1` |  | 3 Wire, 1 Iron Rod, 1 Concrete | Onboarding: HUB Upgrade 3 |
 | ✅ 60 | Power Pole Mk.2 | `PowerPoleMk2` |  | 6 Quickwire, 2 Iron Rod, 2 Concrete | MAM: Power Poles Mk.2 |
 | ✅ 60 | Power Pole Mk.3 | `PowerPoleMk3` |  | 2 High-Speed Connector, 2 Steel Pipe, 3 Rubber | MAM: Power Poles Mk.3 |
@@ -640,7 +641,6 @@ grid.
 | ⛔ legacy | Double Wall Outlet Mk.2 | `PowerPoleWallDouble_Mk2` |  |  |  |
 | ⛔ legacy | FICSMAS Power Light | `XmassLightsLine` |  |  |  |
 |  | Nuclear Power Plant | `GeneratorNuclear` |  | 10 Supercomputer, 25 Heavy Modular Frame, 100 Alclad Aluminum Sheet, 200 Cable, 250 Concrete | Tier 8: Nuclear Power |
-|  | Power Line | `PowerLine` |  | 1 Cable per 25 m | Onboarding: HUB Upgrade 2 |
 |  | Power Tower | `PowerTower` |  | 10 Concrete, 20 Wire, 20 Steel Beam | Tier 4: Expanded Power Infrastructure |
 |  | Priority Power Switch | `PriorityPowerSwitch` |  | 2 High-Speed Connector, 6 Steel Beam, 50 Quickwire | MAM: Priority Power Switch |
 

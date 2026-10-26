@@ -153,8 +153,26 @@ def cut_links(actor, comps, new=False, extra=()):
     return res[0][0], res[0][1], res[1:]
 
 
-# A wire with no ends makes no sense.
+# A wire with no ends makes no sense: power lines are kept as a template with both ends blanked
+# (factory.py fills in where each one runs and what it joins).
 NO_CUT = {'PowerLine'}
+WIRE_VEC = re.compile(rb'(Locations|CachedRelativeLocations)\x00.*?/Script/CoreUObject\x00\x00\x00\x00\x00\x18\x00\x00\x00[\x08\x09]', re.S)
+
+
+def blank_wire(actor):
+    """Copy of a power line with no ends: zero positions and length, empty end references."""
+    from sbp import find_prop
+    a = copy.deepcopy(actor)
+    spans, none_at = prop_spans(a['data'], True)
+    blob = bytearray(a['data'][:none_at + len(_fstr('None'))] + bytes(4) + (_fstr('') + _fstr('')) * 2)
+    sp = _span(bytes(blob), 'mWireInstances', True)
+    for m in WIRE_VEC.finditer(bytes(blob), sp['value'], sp['end']):
+        struct.pack_into('<3d', blob, m.end() + (4 if blob[m.end() - 1] & 1 else 0), 0.0, 0.0, 0.0)
+    off, t = find_prop(bytes(blob), 'mCachedLength')
+    if off is not None:
+        struct.pack_into('<f', blob, off, 0.0)
+    a['data'] = bytes(blob)
+    return a
 # Train platforms only work together with their built-in track: sample them as a group.
 GROUPED = {'TrainStation', 'TrainDockingStation', 'TrainDockingStationLiquid',
            'TrainPlatformEmpty', 'TrainPlatformEmpty_02'}
@@ -353,8 +371,8 @@ def sanitize(objs):
 
 
 def learn_ports(saves, sample_comps):
-    """Where each machine's belt/pipe ports sit, in the machine's own frame (cm), learned from
-    the ends of belts and pipes plugged into machines in the given saves. `sample_comps` maps a
+    """Where each machine's belt/pipe ports and power connections sit, in the machine's own frame
+    (cm), learned from the ends of belts, pipes and power lines plugged into it in the given saves. `sample_comps` maps a
     machine type to its port component names; ports never seen plugged in are filled by
     mirroring a sibling port across the machine's centre (marked inferred)."""
     import statistics
@@ -388,6 +406,23 @@ def learn_ports(saves, sample_comps):
                 local = qrotate(qconj(target['rot']), [world[i] - target['pos'][i] for i in range(3)])
                 tan = qrotate(qconj(target['rot']), qrotate(a['rot'], p['LeaveTangent'] if first else p['ArriveTangent']))
                 obs[(short(target['cls']), m.group(2).decode())].append((local, tan))
+        # power: where each wire end sits on the building it's plugged into
+        for a, comps in pairs:
+            if a['object_version'] < NEW_TAGS_FROM or short(a['cls']) != 'PowerLine':
+                continue
+            sp = _span(a['data'], 'mWireInstances', True)
+            spans, none_at = prop_spans(a['data'], True)
+            if not sp or none_at is None:
+                continue
+            v = a['data']
+            locs = [struct.unpack_from('<3d', v, m.end() + (4 if v[m.end() - 1] & 1 else 0))
+                    for m in WIRE_VEC.finditer(v, sp['value'], sp['end']) if m.group(1) == b'Locations'][:2]
+            ends = re.findall(rb'PersistentLevel\.(Build_\w+?_C_\d+)\.(\w+)\x00', v[none_at:])
+            for (path, comp), loc in zip(ends, locs):
+                target = actors.get('Persistent_Level:PersistentLevel.' + path.decode())
+                if target:
+                    local = qrotate(qconj(target['rot']), [loc[i] - target['pos'][i] for i in range(3)])
+                    obs[(short(target['cls']), comp.decode())].append((local, None))
     ports = defaultdict(dict)
     for (t, port), L in obs.items():
         pos = [round(statistics.median(o[0][i] for o in L), 1) for i in range(3)]
@@ -446,7 +481,9 @@ def main(root, out_dir, saves=()):
                     extra.append(lookup[p])
             if not extra:
                 continue
-        if not extra and is_clean(None, a, comps):
+        if t in NO_CUT:
+            picks[key] = (origin, blank_wire(a), comps)
+        elif not extra and is_clean(None, a, comps):
             picks[key] = (origin, a, comps)
         elif t not in NO_CUT and key not in cut_picks:
             cut = cut_links(a, comps, True, extra)
