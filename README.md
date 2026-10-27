@@ -83,7 +83,8 @@ Happy with a plan? Press **Build this factory as a blueprint** in the planner, o
 
 Raw resources come in as open belt ends along one edge: connect your miners there. Finished
 items go into a storage container. Connect your power grid to the pole beside the first
-machine. You still connect any **pipes** (fluids) in game.
+machine. Fluids such as crude oil run on pipes: connect your supply pipe to the fluid buffer
+on the south side, and each input or output has a sign with the item and the rate it expects.
 
 ## Good to know
 
