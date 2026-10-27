@@ -18,6 +18,20 @@ skill (see `install/`), which put this repo on their PC and moved you into it.
   what to build (photo/idea), which **size** (below; default **medium**), colours/materials, and
   which save to put it in. List their saves with `sessions()` from `sbp.py` and offer the most
   recent.
+- Their screenshots from the game are the real test. Read them closely, fix what they show, and
+  turn a complaint into a rule here or in the skill so it doesn't come back.
+
+**Lessons from the player's in-game checks** (keep to these):
+- Beams are 0.5 m thick: never use them for thin or small things (road markings, crossings,
+  lamp posts, traffic lights, bollards, cars). Use the game's real piece (road barriers, Street
+  Light, signs copied from their examples) or leave it out.
+- Glass facades on hollow boxes look empty: put a dark core and floor slabs behind glass.
+- Streets: the player prefers them clean. Lay the road surface and sidewalks, and don't add
+  street furniture unless they ask for a specific piece.
+- A reference ("make it like Night City") is inspiration, not a survey: match the look and
+  layout, not every detail.
+- Big creations go straight into a save copy when the player asks ("put it in the map, no
+  blueprints"). Work in passes (ground and boxes first, then detail) and number the copies.
 
 ## Build sizes
 
@@ -240,9 +254,19 @@ hologram), put them into a copy of the player's save instead. Open
 (the player in cyan), and lets them pick a build, drop it, move it by compass steps, turn it,
 see how many existing pieces it overlaps, and **Put in a copy of my save**. Or call
 `world.World(sav).add_blueprint(...)` + `write(next_free_save(...))` yourself.
-- Only **structural pieces** go in (everything `lightweight` in `assets.json`). They are added
-  to the game's own compact list, as if built by hand. Machines, belts, doors, lights and
-  other separate objects are skipped and listed: say so.
+- **Structural pieces** (everything `lightweight` in `assets.json`) are added to the game's own
+  compact list, as if built by hand. `add_blueprint` skips separate objects (machines, belts,
+  doors, lights, signs) and lists them: say so.
+- **Separate objects** can be copied from examples the player built: ask them to build one of
+  each (e.g. a Large Billboard alone and on its pole, a Label Sign, a Street Light) in a save
+  and save the game, then `World.add_actor_group(...)` copies them with fresh names, and
+  `set_sign_text` / `set_sign_icon` / `set_linear_color` edit signs (see the skill). Only
+  stand-alone pieces: wires and belts to things outside the copied group aren't remapped.
+- **City-scale builds** (the Night City centre, `.local/blueprints/night-city/build.py`, ~120k
+  pieces + signs) are generated in code into an in-memory `Blueprint` and written straight into
+  a new save copy: no `.sbp` when the player says so. Each version is a new numbered copy; the
+  player's loaded copies are never overwritten. Lay a foundation slab above the terrain on piers
+  down to the ground (`tiles.json`/`heights.bin`), so nothing floats.
 - **The ground** comes from the game's own files, not the save: `tools/terrain` reads every
   landscape tile (2,289 tiles of 128 × 128 points, 1 m apart) into `.local/terrain/data`
   (`heights.bin` + `tiles.json`; game data, never committed). The map shows it at 4 m and swaps
@@ -287,8 +311,8 @@ see how many existing pieces it overlaps, and **Put in a copy of my save**. Or c
 - Then they load the new save from the game's **Load Game** menu (same session). Their
   original save is never changed. Saves from before game 1.2 must be loaded and saved once in
   1.2 first.
-- After changing `world.py`, run `world.py roundtrip` on every 1.2 save: each must come back
-  byte-identical (19 saves on the maintainer's PC).
+- After changing `world.py` or `sav.py`, run `world.py roundtrip` on every 1.2 save: each must
+  come back byte-identical (see "Maintaining this repo").
 
 ## The player's game files
 
@@ -338,5 +362,8 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
   Building one of each in a 1.2 world and re-running `build_library.py --save` adds them.
 - Not yet supported: drawing belt/pipe splines in the studio preview, exact game meshes (the
   World map uses the game's simplified models), objects inside blueprint actors whose model is
-  set only in the blueprint's construction script, and writing
-  machines/belts/doors (non-lightweight pieces) into a save.
+  set only in the blueprint's construction script, writing separate objects from scratch (they
+  can only be copied from the player's own examples, unwired), and removing native flora from a
+  save (`RemovedLocationLookup` hash unknown; see the skill).
+- After changing `sav.py` or `world.py`, run `world.py roundtrip` on every 1.2 save (29 on the
+  maintainer's PC on 2026-10-27; older saves are refused, which is expected).

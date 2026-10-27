@@ -200,6 +200,65 @@ class World:
             n += 1
         return n, skipped
 
+    # ---------- adding separate objects (signs, lights, machines...) ----------
+    def add_actor_group(self, group, pos, rot=(0, 0, 0, 1)):
+        """Copy a group of actors, each with its components, e.g. a sign and its pole taken from a save
+        where the player built them: [(actor, components)] as Save.buildings() yields them. The first
+        actor goes to `pos` (cm) / `rot`; the others keep their offset from it. Every object gets a
+        fresh name (same digit count: names also sit inside longer strings with stored sizes), and all
+        the group's names are renamed in all its data, so links inside the group (sign -> pole, actor ->
+        power connection) hold. Links to anything outside the group are left as they are, so copy
+        pieces that stand alone (an unwired light, a sign). Returns the new actors, to edit their data."""
+        if not hasattr(self, '_ids'):
+            self._ids = {int(m) for o in self.save.objects() for m in re.findall(r'_C_(\d+)$', o['path'])}
+            self._next_id = 2100000000
+            self.new_objects = []
+        a0 = group[0][0]
+        dq = qmul(rot, (-a0['rot'][0], -a0['rot'][1], -a0['rot'][2], a0['rot'][3]))
+        rename = {}
+        for a, _ in group:
+            m = re.search(r'_C_(\d+)$', a['path'])
+            while self._next_id in self._ids or len(str(self._next_id)) != len(m.group(1)):
+                self._next_id += 1
+            self._ids.add(self._next_id)
+            rename[a['path']] = a['path'][:m.start(1)] + str(self._next_id)
+        def ren(s):
+            for old, new in rename.items():
+                s = s.replace(old, new)
+            return s
+        def ren_b(b):
+            for old, new in rename.items():
+                b = b.replace(old.encode('latin1'), new.encode('latin1'))
+            return b
+        out = []
+        for a, comps in group:
+            off = qrotate(dq, [a['pos'][i] - a0['pos'][i] for i in range(3)])
+            na = dict(a, path=ren(a['path']), data=ren_b(a['data']),
+                      pos=[pos[i] + off[i] for i in range(3)], rot=list(qmul(dq, a['rot'])))
+            self.new_objects.append(na)
+            out.append(na)
+            for c in comps:
+                self.new_objects.append(dict(c, path=ren(c['path']), outer=ren(c['outer']), data=ren_b(c['data'])))
+        return out
+
+    def _header_bytes(self, o):
+        w = Writer()
+        w.i32(o['type']); w.string(o['cls']); w.string(o['level']); w.string(o['path'])
+        if self.save.save_version >= 52:
+            w.i32(o['flags'])
+        if o['type'] == 1:
+            w.i32(o['need_transform']); w.floats(o['rot']); w.floats(o['pos']); w.floats(o['scale']); w.i32(o['placed'])
+        else:
+            w.string(o['outer'])
+        return w.getvalue()
+
+    @staticmethod
+    def _record_bytes(o):
+        b = struct.pack('<iii', o['object_version'], o['object_flag'], len(o['data'])) + o['data']
+        if o['object_version'] >= 53:
+            b += struct.pack('<i', o.get('save_tail', 0))
+        return b
+
     # ---------- writing ----------
     def lightweight_bytes(self):
         out = [self.lw_prefix, struct.pack('<ii', self.lw_version, len(self.classes))]
@@ -209,16 +268,36 @@ class World:
         return b''.join(out)
 
     def body_bytes(self):
+        """The changed body: the lightweight list swapped in, and new objects appended to the
+        persistent level (headers after its last header, records after its last record), with every
+        count and size that encloses them updated. Splices are applied from the end backwards so
+        the original offsets stay valid."""
         body, sub = self.save.body, self.sub
-        old, new = len(sub['data']), self.lightweight_bytes()
-        delta = len(new) - old
-        if not delta and new == sub['data']:
+        new_lw = self.lightweight_bytes()
+        objs = getattr(self, 'new_objects', [])
+        if new_lw == sub['data'] and not objs:
             return body
-        at = sub['data_at']
-        b = bytearray(body[:at - 4]) + struct.pack('<i', len(new)) + new + body[at + old:]
-        for off in (0, self.save.osize_at['Persistent_Level']):   # sizes that enclose the subsystem
-            struct.pack_into('<q', b, off, struct.unpack_from('<q', b, off)[0] + delta)
-        return bytes(b)
+        at = self.save.at['Persistent_Level']
+        q = lambda off: struct.unpack_from('<q', body, off)[0]
+        i = lambda off: struct.unpack_from('<i', body, off)[0]
+        heads = b''.join(self._header_bytes(o) for o in objs)
+        recs = b''.join(self._record_bytes(o) for o in objs)
+        lw_delta = len(new_lw) - len(sub['data'])
+        osize_at = self.save.osize_at['Persistent_Level']
+        splices = [
+            (0, 8, struct.pack('<q', q(0) + lw_delta + len(heads) + len(recs))),
+            (at['hsize'], 8, struct.pack('<q', q(at['hsize']) + len(heads))),
+            (at['hcount'], 4, struct.pack('<i', i(at['hcount']) + len(objs))),
+            (at['hend'], 0, heads),
+            (osize_at, 8, struct.pack('<q', q(osize_at) + lw_delta + len(recs))),
+            (at['ocount'], 4, struct.pack('<i', i(at['ocount']) + len(objs))),
+            (sub['data_at'] - 4, 4 + len(sub['data']), struct.pack('<i', len(new_lw)) + new_lw),
+            (at['oend'], 0, recs),
+        ]
+        b = body
+        for off, n, rep in sorted(splices, key=lambda s: s[0], reverse=True):
+            b = b[:off] + rep + b[off + n:]
+        return b
 
     def file_bytes(self, save_name=None):
         body = self.body_bytes()
@@ -269,6 +348,48 @@ def piece_props(o):
         out['colors'] = struct.unpack_from('<4f', d, off) + struct.unpack_from('<4f', d, off2)
     out['paint'] = paint
     return out
+
+
+# ---------- editing copied signs (Standalone Widget Signs, billboards) ----------
+# Their text lives in mPrefabTextElementSaveData: an array of structs {ElementName, Text} (StrProperty:
+# FString name, FString type, int32 0, int32 size, byte flag, FString value), icons likewise in
+# mPrefabIconElementSaveData {ElementName, IconID}. Colours are LinearColor structs.
+
+def _fstr(s):
+    w = Writer(); w.string(s); return w.getvalue()
+
+
+def set_sign_text(d, element, text):
+    """Set the text of one sign element ('Name', 'Other_0', 'Label'...). Resizes the property and its array."""
+    e = d.find(_fstr(element), d.find(b'mPrefabTextElementSaveData\x00'))
+    if e < 0:
+        raise KeyError('sign has no text element %r' % element)
+    t = d.find(b'\x05\x00\x00\x00Text\x00', e) + 9
+    size_at = t + len(_fstr('StrProperty')) + 4
+    v = size_at + 5
+    r = Reader(d, v); r.string()
+    old, new = d[v:r.o], _fstr(text)
+    delta = len(new) - len(old)
+    d = d[:size_at] + struct.pack('<i', struct.unpack_from('<i', d, size_at)[0] + delta) + d[size_at + 4:v] + new + d[r.o:]
+    a = d.find(b'mPrefabTextElementSaveData\x00')
+    asize = d.find(b'/Script/FactoryGame\x00', a) + 20 + 4
+    return d[:asize] + struct.pack('<i', struct.unpack_from('<i', d, asize)[0] + delta) + d[asize + 4:]
+
+
+def set_sign_icon(d, element, icon_id):
+    """IconID of one icon element ('Icon', 'Other_Icon'); -1 shows no icon."""
+    e = d.find(_fstr(element), d.find(b'mPrefabIconElementSaveData\x00'))
+    i = d.find(b'IconID\x00', e) + 7 + len(_fstr('IntProperty')) + 4 + 4 + 1
+    return d[:i] + struct.pack('<i', icon_id) + d[i + 4:]
+
+
+def set_linear_color(d, prop, rgba):
+    """A LinearColor struct property (mForegroundColor, mBackgroundColor...)."""
+    i = d.find(prop.encode() + b'\x00')
+    if i < 0:
+        raise KeyError(prop)
+    v = d.find(b'/Script/CoreUObject\x00', i) + 20 + 4 + 4 + 1
+    return d[:v] + struct.pack('<4f', *rgba) + d[v + 16:]
 
 
 def next_free_save(src, name):

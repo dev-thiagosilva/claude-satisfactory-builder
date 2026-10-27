@@ -88,6 +88,14 @@ yet, take it from another blueprint in the folder: `bp.objects.append(...)` afte
    Foundations give floors. `examples/heydar_aliyev_center.py` is a full worked example: a curve
    traced from a photo, a lofted shell, a rim band, glass fill clipped to the shell, slab and
    plaza, cost and recipes, ~4,100 pieces.
+   **Beams are 0.5 m thick and min 4 m long, and pieces never scale.** They're right for shells,
+   fins, frames, bracing and neon strips, and wrong for anything that should look thin or small:
+   road markings, crossings, lamp posts, traffic lights, bollards and cars made of beams read as
+   chunky blocks in game (the player rejected them). Use the game's real piece instead (road
+   barriers, Street Light, signs; see "Separate objects" below), or leave it out.
+   **Glass needs something behind it.** Window walls on a hollow box show sky straight through
+   and read as an empty shell. Put a dark core (walls one cell in) and floor slabs behind glass
+   facades, and a ceiling over ground-floor shopfronts.
 4. **Paint.** A donor with a Custom swatch stores `PrimaryColor`/`SecondaryColor`.
    `set_color(obj, (r, g, b, a))` with linear values (white ≈ 0.86) recolours it. Swatch-slot
    donors only reference the user's palette slot, so their colour is whatever that slot is in game.
@@ -141,10 +149,45 @@ w.write(next_free_save(save_path, 'base 1 - Tower'))   # refuses to overwrite
 
 Structural pieces (everything `lightweight` in `assets.json`: foundations, walls, beams, roofs,
 ramps, pillars, walkways...) go into the game's compact list (FGLightweightBuildableSubsystem),
-the same place the game puts them when built by hand. Machines, belts, doors, lights and other
-separate objects are not written yet; `skipped` lists them, so tell the player. The writer
-re-encodes a save byte-identically when nothing is added (`world.py roundtrip <file.sav>`), and
-updates the MD5 the header keeps of the compressed body.
+the same place the game puts them when built by hand. `add_blueprint` skips separate objects
+(machines, belts, doors, lights, signs) and lists them in `skipped`. The writer re-encodes a
+save byte-identically when nothing is added (`world.py roundtrip <file.sav>`), and updates the
+MD5 the header keeps of the compressed body.
+
+A big build doesn't need a `.sbp` at all: generate a `Blueprint` in memory (`lib.new_blueprint(
+dims=...)`, any size; it's only a container), then `w.add_blueprint(bp, origin)`. When the player
+says "put it in the map, no blueprints", don't write `.sbp` files. Write each version to a new
+save copy (`next_free_save` numbers them), never over one they've loaded.
+
+**Separate objects (signs, Street Lights, ...)**: copy ones the player built. Ask them to build one
+of each in a save and save the game, then:
+
+```python
+tw = World(template_save)                  # holds the player's examples
+grp = [(a, comps) for a, comps in tw.save.buildings() if ...]   # e.g. a billboard and its pole
+new = w.add_actor_group(grp, [x, y, z], yaw_quat)   # fresh names, links inside the group kept
+d = set_sign_text(new[0]['data'], 'Name', 'KIROSHI')        # 'Name', 'Other_0', 'Label'...
+d = set_sign_icon(d, 'Icon', -1); d = set_linear_color(d, 'mForegroundColor', (0, .9, 1, 1))
+new[0]['data'] = d
+```
+
+New objects go into the persistent level (headers after its last header, records after its last
+record; `sav.py` records those offsets in `Save.at`). Only copy pieces that stand alone: links
+to objects outside the group (power wires, belts) aren't remapped. Signs carry the player's own
+`BuiltBy` handle; fine inside their save, never copy them into the library.
+Facing learned from real saves: walls and railings run along local Y; signs run along local X
+and face local +Y (their pole is behind, at -Y). The Large Billboard is 16 × 8 m centred on its
+pivot (5 m pole), the 4 m Label Sign 4 × 1 m.
+
+**Checking colours**: the World map draws pieces by type and ignores paint. For colour and
+facade checks, render your own elevation of the generated pieces (painter's sort, walls as
+quads, beams as lines, colours from `get_color`).
+
+**Native flora**: trees and plants growing through a slab can't be moved, only removed. The save
+keeps cleared plants in FGFoliageRemovalSubsystem (`mSaveData`: 64 m cell → per FoliageType
+`RemovedLocations` (doubles) + `RemovedLocationLookup` (uint32 hashes)). The hash isn't
+identified yet (not MemCrc_DEPRECATED, crc32 or HashCombine of the location as doubles, floats
+or ints), so writing removals is untested; try it on a test save first.
 
 The studio's **World map** (`/map`) shows a save's buildings in 3D (structural pieces, machines
 at their clearance size, belts/pipes/wires/rails as straight segments, the player in cyan), lets

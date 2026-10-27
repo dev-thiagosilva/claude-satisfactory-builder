@@ -56,6 +56,7 @@ class Save:
         (self.header_version, self.save_version, self.build_version), body = decompress(path)
         self.body = body
         self.osize_at = {}        # level name -> offset of its int64 object-block size in body
+        self.at = {}              # level name -> {hsize, hcount, hend, ocount, oend} offsets in body
         self.levels = []          # (name, [objects]) — objects shaped like Blueprint.objects
         r = Reader(body, 8)
         r.i32()
@@ -76,8 +77,11 @@ class Save:
 
     def _level(self, r, name):
         d = r.d
+        at = self.at.setdefault(name, {})     # offsets world.py needs to insert objects into this level
+        at['hsize'] = r.o
         hsize = struct.unpack_from('<q', d, r.o)[0]; r.o += 8; hend = r.o + hsize
         objs = []
+        at['hcount'] = r.o
         for _ in range(r.i32()):
             t = r.i32()
             o = dict(type=t, cls=r.string(), level=r.string(), path=r.string())
@@ -90,20 +94,23 @@ class Save:
             else:
                 o['outer'] = r.string()
             objs.append(o)
+        at['hend'] = r.o                       # end of the headers (collectables follow)
         r.o = hend                             # skip collectables listed in the header block
         self.osize_at[name] = r.o
         osize = struct.unpack_from('<q', d, r.o)[0]; r.o += 8; oend = r.o + osize
+        at['ocount'] = r.o
         n = r.i32()
         if n != len(objs):
             raise ValueError('level %s: %d headers but %d objects' % (name, len(objs), n))
         for o in objs:
             o['object_version'] = r.i32()
-            r.i32()
+            o['object_flag'] = r.i32()
             n = r.i32()
             o['data_at'] = r.o
             o['data'] = r.bytes(n)
             if o['object_version'] >= 53:    # newer objects carry one extra int32 (seen as 0)
                 o['save_tail'] = r.i32()
+        at['oend'] = r.o                       # end of the last object record
         r.o = oend
         if name != 'Persistent_Level':        # its trailer differs and holds nothing we need
             r.i32()                            # level save version
