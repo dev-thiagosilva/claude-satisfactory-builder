@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Map</title>
+<style>
+  :root {
+    --bg:#13151a; --panel:#1b1e25; --panel2:#22262e; --fg:#e9e6df; --muted:#9a968d; --line:#2e333c;
+    --accent:#f39c3c; --accent-ink:#1b1206; --ok:#5cb87a; --err:#e06c6c; --warn:#e0b04c;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:13px/1.4 system-ui, sans-serif; overflow:hidden; }
+  #app { display:grid; grid-template-columns:270px 1fr 290px; height:100%; }
+  aside { background:var(--panel); border-right:1px solid var(--line); overflow:auto; padding:14px; }
+  aside.right { border-right:0; border-left:1px solid var(--line); }
+  h1 { font-size:15px; margin:0 0 2px; }
+  h2 { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin:18px 0 8px; font-weight:600; }
+  a { color:var(--accent); text-decoration:none; }
+  .sub { color:var(--muted); font-size:12px; }
+  .build { padding:8px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:6px; cursor:pointer; background:var(--panel2); }
+  .build:hover { border-color:#4a505c; } .build.active { border-color:var(--accent); }
+  .build b { display:block; font-weight:600; } .build span { color:var(--muted); font-size:12px; }
+  label.row { display:flex; align-items:center; gap:8px; padding:2px 0; cursor:pointer; }
+  .sw { width:12px; height:12px; border-radius:3px; flex:none; border:1px solid #0004; }
+  .n { margin-left:auto; color:var(--muted); font-variant-numeric:tabular-nums; }
+  button { background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:6px 9px; font:inherit; cursor:pointer; }
+  button:hover:not(:disabled) { border-color:#566070; }
+  button:disabled { opacity:.4; cursor:default; }
+  button.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+  select, input[type=text] { background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:6px; font:inherit; width:100%; }
+  #stage { position:relative; }
+  #c { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .toolbar { position:absolute; top:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; background:#1b1e25e6; padding:6px; border-radius:10px; border:1px solid var(--line); }
+  .hint { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); color:var(--muted); background:#1b1e25e6; padding:6px 12px; border-radius:20px; border:1px solid var(--line); white-space:nowrap; font-size:12px; }
+  #loading { position:absolute; inset:0; display:none; align-items:center; justify-content:center; color:var(--muted); font-size:14px; background:#13151acc; }
+  #status { min-height:18px; margin-top:8px; font-size:12px; color:var(--muted); white-space:pre-wrap; }
+  #status.ok { color:var(--ok); } #status.err { color:var(--err); }
+  #overlap { font-size:12px; margin-top:6px; white-space:pre-line; } #overlap.warn { color:var(--warn); } #overlap.ok { color:var(--ok); }
+  .readout { font-variant-numeric:tabular-nums; }
+  .empty { color:var(--muted); padding:6px 0; }
+  details summary { cursor:pointer; color:var(--muted); font-size:12px; }
+  @media (max-width: 900px) { #app { grid-template-columns:1fr; grid-template-rows:auto 60vh auto; overflow:auto; } html,body { overflow:auto; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>World Map</h1>
+    <div class="sub">Your world in 3D · <a href="/">Blueprint Studio →</a></div>
+    <h2>Save</h2>
+    <select id="save"></select>
+    <div id="worldinfo" class="sub" style="margin-top:6px"></div>
+    <div id="groundinfo" class="sub" style="margin-top:4px"></div>
+    <div style="display:flex;gap:14px;margin-top:4px" class="sub">
+      <label class="row"><input id="showRocks" type="checkbox">Cliffs &amp; rocks</label>
+      <label class="row"><input id="showWater" type="checkbox">Water</label>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 14px" class="sub">
+      <label class="row"><input data-kind="tree" type="checkbox" checked>Trees</label>
+      <label class="row"><input data-kind="rock" type="checkbox" checked>Boulders</label>
+      <label class="row"><input data-kind="object" type="checkbox" checked>Other objects</label>
+      <label class="row"><input data-kind="plant" type="checkbox">Bushes &amp; plants</label>
+    </div>
+    <h2>Place a build</h2>
+    <div id="builds"><div class="empty">Loading…</div></div>
+    <h2>Pieces in this world</h2>
+    <details><summary>Show / hide by type</summary><div id="layers" style="margin-top:6px"></div></details>
+  </aside>
+
+  <main id="stage">
+    <canvas id="c"></canvas>
+    <div class="toolbar">
+      <button id="goPlayer">Go to you</button><button id="goBuild" disabled>Go to build</button><button id="goTop">Top view</button>
+    </div>
+    <div class="hint" id="hint">Drag to orbit · Right-drag to pan · Scroll to zoom · Double-click to look at a spot</div>
+    <div id="loading">Reading your save…</div>
+  </main>
+
+  <aside class="right">
+    <h2 style="margin-top:0">Placement</h2>
+    <div id="placeinfo" class="sub">Pick a build on the left, then click on the map to drop it.</div>
+    <div class="readout sub" id="readout" style="margin-top:6px"></div>
+    <div id="overlap"></div>
+    <h2>Move</h2>
+    <div class="grid3">
+      <button data-mv="x,-1">← West</button><button data-mv="y,-1">↑ North</button><button data-mv="x,1">East →</button>
+      <button data-mv="z,1">Raise</button><button data-mv="y,1">↓ South</button><button data-mv="z,-1">Lower</button>
+    </div>
+    <div style="margin-top:6px;display:flex;gap:6px;align-items:center" class="sub">Step
+      <select id="step"><option value="100">1 m</option><option value="400">4 m</option><option value="800" selected>8 m</option><option value="4000">40 m</option></select>
+    </div>
+    <div class="grid2" style="margin-top:6px"><button id="follow">Move with mouse</button><button id="snap">Sit on surface below</button></div>
+    <h2>Rotate</h2>
+    <div class="grid2"><button data-rot="-90">⟲ 90°</button><button data-rot="90">⟳ 90°</button>
+      <button data-rot="-15">⟲ 15°</button><button data-rot="15">⟳ 15°</button></div>
+    <h2>Put it in the game</h2>
+    <div class="sub">New save name (your current save is not changed):</div>
+    <input id="newname" type="text">
+    <button id="place" class="primary" style="width:100%;margin-top:8px" disabled>Put in a copy of my save</button>
+    <div id="status"></div>
+  </aside>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { geometryFor, matrixOf } from '/pieces.js';
+
+const $ = s => document.querySelector(s);
+const api = async (path, body) => {
+  const r = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {});
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.message || j.error || r.statusText);
+  return j;
+};
+function status(msg, kind = '') { const s = $('#status'); s.textContent = msg; s.className = kind; }
+
+// ---------- scene (three.js metres, Y up; Unreal x -> x, Unreal y -> z, Unreal z -> y) ----------
+const canvas = $('#c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, logarithmicDepthBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1a1d23);
+const camera = new THREE.PerspectiveCamera(50, 1, 0.5, 40000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; controls.screenSpacePanning = false; controls.maxPolarAngle = Math.PI * 0.495;
+scene.add(new THREE.HemisphereLight(0xe6eeff, 0x3a3226, 1.25));
+const sun = new THREE.DirectionalLight(0xffffff, 1.4); sun.position.set(0.4, 1, -0.3); scene.add(sun);
+const toThree = p => new THREE.Vector3(p[0] / 100, p[2] / 100, p[1] / 100);
+
+// a grid + invisible plane at the placement height (there's no terrain yet)
+const grid = new THREE.GridHelper(800, 100, 0x4a505c, 0x2a2e36); scene.add(grid);
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(1e5, 1e5).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ visible: false }));
+scene.add(plane);
+const playerMark = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 30, 12).translate(0, 15, 0), new THREE.MeshBasicMaterial({ color: 0x41d1e6 }));
+playerMark.visible = false; scene.add(playerMark);
+
+// ---------- ground: landscape heights read from the game's files (tools/terrain) ----------
+// Each tile is 128 x 128 points 1 m apart. The whole world loads at 4 m (33 x 33 per tile); tiles
+// near the view swap to full detail. Rocks and cliffs are separate models in the game: not drawn.
+const ground = { meta: null, group: new THREE.Group(), meshes: [], detail: new Map(), loading: 0 };
+scene.add(ground.group);
+const groundMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, metalness: 0 });
+const gridIndex = {};
+function indexFor(m) {
+  if (!gridIndex[m]) {
+    const idx = [];
+    for (let j = 0; j < m - 1; j++) for (let i = 0; i < m - 1; i++) { const a = j * m + i, b = a + 1, c = a + m, d = c + 1; idx.push(a, c, b, b, c, d); }
+    gridIndex[m] = new THREE.BufferAttribute(new Uint16Array(idx), 1);
+  }
+  return gridIndex[m];
+}
+const GRASS = new THREE.Color(0x5d7a45), ROCK = new THREE.Color(0x8a8276), SAND = new THREE.Color(0xb8a987), HOLE = new THREE.Color(0x2b2620), _c = new THREE.Color();
+function tileGeometry(k, h, picks) {
+  const [wx, wy, zb, sc, zs] = ground.meta.tiles[k], m = picks.length;
+  // height 0 marks a hole in the ground (sinkholes, cave mouths; the game fills them with cliff models):
+  // draw those points as a dark floor at the tile's lowest real height instead of a 255 m spike
+  let floor = 65535;
+  for (let v = 0; v < m * m; v++) if (h[v] && h[v] < floor) floor = h[v];
+  const pos = new Float32Array(m * m * 3);
+  for (let j = 0; j < m; j++) for (let i = 0; i < m; i++) {
+    const o = (j * m + i) * 3, hv = h[j * m + i] || floor;
+    pos[o] = (wx + picks[i] * sc) / 100; pos[o + 1] = (zb + (hv - 32768) / 128 * zs) / 100; pos[o + 2] = (wy + picks[j] * sc) / 100;
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setIndex(indexFor(m)); g.computeVertexNormals();
+  const n = g.attributes.normal.array, col = new Float32Array(m * m * 3);
+  for (let v = 0; v < m * m; v++) {
+    const steep = THREE.MathUtils.smoothstep(n[v * 3 + 1], 0.72, 0.9), low = THREE.MathUtils.smoothstep(pos[v * 3 + 1], -17.5, -15.5);
+    if (!h[v]) _c.copy(HOLE);
+    else _c.copy(ROCK).lerp(GRASS, steep).lerp(SAND, (1 - low) * steep);
+    col.set([_c.r, _c.g, _c.b], v * 3);
+  }
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  g.computeBoundingSphere();
+  return g;
+}
+async function loadGround() {
+  const meta = await api('/api/terrain');
+  if (meta.missing) { $('#groundinfo').textContent = 'Ground not extracted yet (ask Claude to read it from your game files).'; return; }
+  ground.meta = meta;
+  const over = new Uint16Array(await (await fetch('/api/terrain.bin')).arrayBuffer()), m = meta.picks.length;
+  meta.tiles.forEach((t, k) => {
+    const mesh = new THREE.Mesh(tileGeometry(k, over.subarray(k * m * m, (k + 1) * m * m), meta.picks), groundMat);
+    mesh.userData = { k, over: mesh.geometry, center: [t[0] + 63.5 * t[3], t[1] + 63.5 * t[3]] };
+    ground.group.add(mesh); ground.meshes.push(mesh);
+  });
+  if (!$('#groundinfo').textContent) $('#groundinfo').textContent = `Ground: ${meta.tiles.length.toLocaleString()} tiles from your game files.`;
+  grid.visible = !!ghost;
+}
+// Cliffs and rocks: the game's own simplified far-view models (one per 256 m area), and water:
+// the top faces of every water volume (lakes, rivers, ocean). Both from tools/terrain.
+const rocks = { meshes: [], verts: null }, water = { mesh: null };
+const rockMat = new THREE.MeshStandardMaterial({ color: 0x7f776c, roughness: 1, metalness: 0, flatShading: true, side: THREE.DoubleSide });
+// Water volumes overlap (the ocean is several boxes at the same height): write depth and reject equal depth,
+// so each spot of water is blended once instead of showing the boxes' edges.
+const waterMat = new THREE.MeshStandardMaterial({ color: 0x2f7fc4, roughness: 0.25, metalness: 0.1, transparent: true, opacity: 0.6,
+  depthWrite: true, depthFunc: THREE.LessDepth, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1 });
+async function loadRocksAndWater() {
+  const r = await fetch('/api/rocks.bin');
+  if (r.ok) {
+    const buf = await r.arrayBuffer(), dv = new DataView(buf), all = [];
+    for (let o = 0; o < buf.byteLength;) {
+      const nv = dv.getUint32(o, true), ni = dv.getUint32(o + 4, true); o += 8;
+      const src = new Float32Array(buf, o, nv * 3), pos = new Float32Array(nv * 3); o += nv * 12;
+      for (let v = 0; v < nv; v++) { pos[v * 3] = src[v * 3] / 100; pos[v * 3 + 1] = src[v * 3 + 2] / 100; pos[v * 3 + 2] = src[v * 3 + 1] / 100; }
+      all.push(src);
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      g.setIndex(new THREE.BufferAttribute(new Uint32Array(buf.slice(o, o + ni * 4)), 1)); o += ni * 4;
+      g.computeVertexNormals(); g.computeBoundingSphere();
+      const mesh = new THREE.Mesh(g, rockMat); scene.add(mesh); rocks.meshes.push(mesh);
+    }
+    rocks.verts = all;
+  }
+  const w = await fetch('/api/water.json');
+  if (w.ok) {
+    const list = await w.json(), pos = [];
+    for (const [, t] of list) for (let k = 0; k < t.length; k += 3) pos.push(t[k] / 100, t[k + 2] / 100, t[k + 1] / 100);
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.computeVertexNormals();
+    water.mesh = new THREE.Mesh(g, waterMat); water.mesh.renderOrder = 2; scene.add(water.mesh);
+  }
+  const bits = [];
+  if (rocks.meshes.length) bits.push('cliffs and rocks');
+  if (water.mesh) bits.push('water');
+  if (bits.length) $('#groundinfo').textContent = `Ground, ${bits.join(' and ')} from your game files.`;
+  $('#showRocks').checked = $('#showWater').checked = true;
+}
+const surfaces = () => [...ground.meshes, ...(rocks.meshes[0]?.visible ? rocks.meshes : []), ...(water.mesh?.visible ? [water.mesh] : [])];
+
+// Trees, bushes, boulders and other placed models (3 m and bigger; grass skipped). Each model's simplest
+// detail level, drawn as copies. Copies load per 500 m area around the view; models over 300 m
+// (background mountains, canyon backdrops) are always shown.
+const KIND_COLOR = { tree: 0x3d6634, plant: 0x6b8f4b, rock: 0x857c70, object: 0xa89c88 };
+const objs = { meta: null, geos: [], mats: {}, areas: new Map(), loading: 0, big: null, removed: new Set(),
+  show: { tree: true, plant: false, rock: true, object: true } };
+const _om = new THREE.Matrix4(), _op = { pos: [0, 0, 0], rot: [0, 0, 0, 1], scale: [1, 1, 1], len: 0 };
+async function loadObjects() {
+  const r = await fetch('/api/objects/meta');
+  if (!r.ok) return;
+  objs.meta = await r.json();
+  for (const [k, c] of Object.entries(KIND_COLOR))
+    objs.mats[k] = new THREE.MeshStandardMaterial({ color: c, roughness: 0.9, metalness: 0, flatShading: true, side: THREE.DoubleSide });
+  const buf = await (await fetch('/api/objects/shapes.bin')).arrayBuffer(), dv = new DataView(buf);
+  let o = 4;
+  for (let m = 0, n = dv.getUint32(0, true); m < n; m++) {
+    const nv = dv.getUint32(o, true), ni = dv.getUint32(o + 4, true); o += 8;
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(buf.slice(o, o + nv * 12)), 3)); o += nv * 12;
+    g.setIndex(new THREE.BufferAttribute(new Uint32Array(buf.slice(o, o + ni * 4)), 1)); o += ni * 4;
+    g.computeVertexNormals(); g.computeBoundingSphere();
+    objs.geos.push(g);
+  }
+  objs.big = copiesGroup(await (await fetch('/api/objects/big.bin')).arrayBuffer());
+  scene.add(objs.big);
+  setInterval(updateObjects, 600);
+}
+function copiesGroup(buf) {
+  const dv = new DataView(buf), byModel = new Map(), group = new THREE.Group();
+  for (let k = 0; k < buf.byteLength / 44; k++) {
+    const m = dv.getUint16(k * 44, true);
+    // skip trees, bushes and boulders the player cleared in this save
+    if (objs.removed.size && objs.removed.has(Math.round(dv.getFloat32(k * 44 + 4, true) / 100) + ',' + Math.round(dv.getFloat32(k * 44 + 8, true) / 100))) continue;
+    if (!byModel.has(m)) byModel.set(m, []);
+    byModel.get(m).push(k * 44);
+  }
+  for (const [m, offs] of byModel) {
+    const kind = objs.meta.models[m].kind, mesh = new THREE.InstancedMesh(objs.geos[m], objs.mats[kind], offs.length);
+    offs.forEach((o, n) => {
+      const f = i => dv.getFloat32(o + 4 + i * 4, true);
+      _op.pos = [f(0), f(1), f(2)]; _op.rot = [f(3), f(4), f(5), f(6)]; _op.scale = [f(7), f(8), f(9)];
+      mesh.setMatrixAt(n, matrixOf(_op, _om));
+    });
+    mesh.instanceMatrix.needsUpdate = true; mesh.computeBoundingSphere();
+    mesh.userData.kind = kind; mesh.visible = objs.show[kind];
+    group.add(mesh);
+  }
+  return group;
+}
+function updateObjects() {
+  const t = controls.target, cx = t.x * 100, cy = t.z * 100, near = camera.position.distanceTo(t) < 4000;
+  for (const [key, count] of Object.entries(objs.meta.areas)) {
+    if (!count) continue;
+    const [ax, ay] = key.split(',').map(Number), d = Math.hypot((ax + 0.5) * 50000 - cx, (ay + 0.5) * 50000 - cy) / 100;
+    const have = objs.areas.get(key);
+    if (near && d < 800 && !have && objs.loading < 3) {
+      objs.areas.set(key, 'loading'); objs.loading++;
+      fetch('/api/objects/area?k=' + key).then(r => r.arrayBuffer()).then(b => {
+        if (objs.areas.get(key) !== 'loading') return;
+        const g = copiesGroup(b); scene.add(g); objs.areas.set(key, g);
+      }).finally(() => objs.loading--);
+    } else if (have && (!near || d > 1300)) {
+      objs.areas.delete(key);
+      if (have !== 'loading') { scene.remove(have); have.children.forEach(m => m.dispose()); }
+    }
+  }
+}
+function showKind(kind, on) {
+  objs.show[kind] = on;
+  for (const g of [objs.big, ...objs.areas.values()]) if (g && g !== 'loading') g.children.forEach(m => { if (m.userData.kind === kind) m.visible = on; });
+}
+
+const FULL = [...Array(128).keys()];
+function updateDetail() {
+  if (!ground.meta) return;
+  const t = controls.target, cx = t.x * 100, cy = t.z * 100;
+  const near = camera.position.distanceTo(t) < 1500;
+  for (const mesh of ground.meshes) {
+    const [x, y] = mesh.userData.center, d = Math.hypot(x - cx, y - cy) / 100, k = mesh.userData.k;
+    if (near && d < 450 && !ground.detail.has(k) && ground.loading < 6) {
+      ground.detail.set(k, 'loading'); ground.loading++;
+      fetch('/api/terrain/tile?i=' + k).then(r => r.arrayBuffer()).then(b => {
+        if (ground.detail.get(k) !== 'loading') return;
+        mesh.geometry = tileGeometry(k, new Uint16Array(b), FULL); ground.detail.set(k, mesh.geometry);
+      }).finally(() => ground.loading--);
+    } else if ((!near || d > 700) && ground.detail.has(k)) {
+      const g = ground.detail.get(k); ground.detail.delete(k);
+      if (g !== 'loading') { mesh.geometry = mesh.userData.over; g.dispose(); }
+    }
+  }
+}
+setInterval(updateDetail, 500);
+
+const CATS = [
+  [/Conveyor/, '#e0a040'], [/Pipe|Pump|Valve|Junction/, '#5aa9e6'], [/Power|Wire|Generator/, '#e8d44d'],
+  [/Window|Glass/, '#8fc6e8'], [/Wall|Fence|Railing|Barrier|Door|Gate/, '#c8c3b8'], [/Roof/, '#7d8a99'],
+  [/Beam|Pillar|Catwalk|Walkway|Stair|Ladder/, '#b08d5a'], [/Foundation|Ramp|QuarterPipe|Floor/, '#9aa0a8'],
+  [/Sign/, '#d977c8'],
+];
+const colorFor = t => (CATS.find(([re]) => re.test(t)) || [0, '#e07b39'])[1];
+
+let meta = null, data = null, meshes = [], hidden = new Set();
+const tmp = new THREE.Matrix4(), zero = new THREE.Matrix4().makeScale(0, 0, 0);
+const piece = { pos: [0, 0, 0], rot: [0, 0, 0, 1], len: 0 };
+
+function drawWorld() {
+  meshes.forEach(m => { scene.remove(m); m.geometry.dispose(); m.material.dispose(); });
+  meshes = [];
+  if (!meta) return;
+  const byType = meta.types.map(() => []);
+  for (let k = 0; k < meta.count; k++) byType[data[k * 9]].push(k);
+  meta.types.forEach((type, ti) => {
+    const ks = byType[ti]; if (!ks.length) return;
+    const def = geometryFor(type, meta.boxes);
+    const mat = new THREE.MeshStandardMaterial({ color: colorFor(type), roughness: 0.75, metalness: 0.05, side: THREE.DoubleSide,
+      transparent: !!def.glass, opacity: def.glass ? 0.5 : 1, depthWrite: !def.glass });
+    const mesh = new THREE.InstancedMesh(def.geo, mat, ks.length);
+    ks.forEach((k, n) => {
+      const o = k * 9;
+      piece.pos = [data[o + 1], data[o + 2], data[o + 3]]; piece.rot = [data[o + 4], data[o + 5], data[o + 6], data[o + 7]]; piece.len = data[o + 8];
+      mesh.setMatrixAt(n, hidden.has(type) ? zero : matrixOf(piece, tmp));
+    });
+    mesh.instanceMatrix.needsUpdate = true; mesh.computeBoundingSphere();
+    mesh.userData = { type };
+    scene.add(mesh); meshes.push(mesh);
+  });
+  renderLayers(byType);
+}
+
+function renderLayers(byType) {
+  const el = $('#layers'); el.innerHTML = '';
+  meta.types.map((t, i) => [t, byType[i].length]).sort((a, b) => b[1] - a[1]).forEach(([type, n]) => {
+    const l = document.createElement('label'); l.className = 'row';
+    l.innerHTML = `<input type="checkbox" ${hidden.has(type) ? '' : 'checked'}><span class="sw" style="background:${colorFor(type)}"></span>${type.replace(/_/g, ' ')}<span class="n">${n.toLocaleString()}</span>`;
+    l.querySelector('input').onchange = e => { e.target.checked ? hidden.delete(type) : hidden.add(type); drawWorld(); };
+    el.appendChild(l);
+  });
+}
+
+function lookAt(p, dist = 120) {
+  const t = toThree(p);
+  controls.target.copy(t);
+  camera.position.set(t.x + dist * 0.6, t.y + dist * 0.7, t.z + dist * 0.8);
+}
+
+async function loadWorld(path) {
+  $('#loading').style.display = 'flex';
+  try {
+    meta = await api('/api/world?path=' + encodeURIComponent(path));
+    const buf = await (await fetch('/api/world.bin?path=' + encodeURIComponent(path))).arrayBuffer();
+    data = new Float32Array(buf);
+    hidden.clear(); drawWorld();
+    // this save's cleared trees: rebuild the loaded object areas without them
+    objs.removed = new Set();
+    for (let k = 0; k < (meta.removed || []).length; k += 2) objs.removed.add(Math.round(meta.removed[k] / 100) + ',' + Math.round(meta.removed[k + 1] / 100));
+    for (const [key, g] of objs.areas) { if (g !== 'loading') { scene.remove(g); g.children.forEach(m => m.dispose()); } objs.areas.delete(key); }
+    const home = meta.player || (meta.bounds && [(meta.bounds[0] + meta.bounds[3]) / 2, (meta.bounds[1] + meta.bounds[4]) / 2, meta.bounds[5]]) || [0, 0, 0];
+    playerMark.visible = !!meta.player; if (meta.player) playerMark.position.copy(toThree(meta.player));
+    if (!ghost) { place.pos = [...home]; setHeight(home[2]); }
+    lookAt(ghost ? place.pos : home, ghost ? 160 : 250);
+    $('#worldinfo').innerHTML = `Session <b>${meta.session}</b><br>${meta.count.toLocaleString()} pieces (${meta.lightweight.toLocaleString()} structural)`;
+    $('#newname').value = ghostBuild ? `${meta.name} - ${ghostBuild.title}` : '';
+    updateOverlap();
+  } catch (e) { status('Could not read this save: ' + e.message, 'err'); }
+  $('#loading').style.display = 'none';
+}
+
+// ---------- placing a build ----------
+// Compass: on the game's map +X is east and +Y is south.
+let ghost = null, ghostBuild = null, ghostBox = null, following = false;
+const place = { pos: [0, 0, 0], yaw: 0 };   // Unreal cm / degrees
+const ghostMat = new THREE.MeshStandardMaterial({ color: 0xf39c3c, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide });
+
+function setHeight(z) { place.pos[2] = z; grid.position.y = z / 100; plane.position.y = z / 100; }
+function updateGhost() {
+  if (!ghost) return;
+  ghost.position.copy(toThree(place.pos));
+  ghost.rotation.y = -place.yaw * Math.PI / 180;   // Unreal yaw is about Z in a left-handed frame
+  grid.position.x = Math.round(place.pos[0] / 800) * 8; grid.position.z = Math.round(place.pos[1] / 800) * 8;
+  const p = place.pos.map(v => (v / 100).toFixed(1));
+  $('#readout').innerHTML = `Origin x ${p[0]} · y ${p[1]} · height ${p[2]} m<br>Turned ${((place.yaw % 360) + 360) % 360}°`;
+}
+
+async function pickBuild(c) {
+  document.querySelectorAll('.build').forEach(b => b.classList.toggle('active', b.dataset.name === c.name));
+  const m = await api('/api/creation?name=' + encodeURIComponent(c.name));
+  if (ghost) { scene.remove(ghost); ghost.traverse(o => o.geometry && o.geometry.dispose()); }
+  ghost = new THREE.Group(); ghostBuild = m;
+  const byType = new Map();
+  m.pieces.forEach(p => { if (!byType.has(p.type)) byType.set(p.type, []); byType.get(p.type).push(p); });
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (const [type, ps] of byType) {
+    const mesh = new THREE.InstancedMesh(geometryFor(type).geo, ghostMat, ps.length);
+    ps.forEach((p, n) => { mesh.setMatrixAt(n, matrixOf(p, tmp)); p.pos.forEach((v, i) => { lo[i] = Math.min(lo[i], v); hi[i] = Math.max(hi[i], v); }); });
+    mesh.instanceMatrix.needsUpdate = true; mesh.computeBoundingSphere(); mesh.raycast = () => {};
+    ghost.add(mesh);
+  }
+  ghostBox = { lo: [lo[0] - 400, lo[1] - 400, lo[2] - 100], hi: [hi[0] + 400, hi[1] + 400, hi[2] + 400] };
+  scene.add(ghost); grid.visible = true;
+  following = true; updateGhost(); updateButtons();
+  $('#newname').value = meta ? `${meta.name} - ${m.title}` : m.title;
+  $('#placeinfo').innerHTML = `<b>${m.title}</b> · ${m.pieces.length.toLocaleString()} pieces<br>Move the mouse over the map and click to drop it.`;
+  $('#hint').textContent = 'Click to drop · Q/E turn 15° · arrows move · PageUp/PageDown raise/lower · Shift = bigger steps';
+  status('');
+}
+
+function clearGhost() {
+  if (ghost) { scene.remove(ghost); ghost.traverse(o => o.geometry && o.geometry.dispose()); }
+  ghost = null; ghostBuild = null; following = false; grid.visible = !ground.meta;
+  document.querySelectorAll('.build').forEach(b => b.classList.remove('active'));
+  $('#placeinfo').textContent = 'Pick a build on the left, then click on the map to drop it.';
+  $('#readout').textContent = ''; $('#overlap').textContent = ''; $('#newname').value = '';
+  $('#hint').textContent = 'Drag to orbit · Right-drag to pan · Scroll to zoom · Double-click to look at a spot';
+  updateButtons();
+}
+
+// pieces of the world inside the build's box (rotated with it), so the player sees clashes
+function updateOverlap() {
+  const el = $('#overlap');
+  if (!ghost || !meta) { el.textContent = ''; return; }
+  const a = place.yaw * Math.PI / 180, c = Math.cos(-a), s = Math.sin(-a);
+  let n = 0;
+  for (let k = 0; k < meta.count; k++) {
+    const o = k * 9, dx = data[o + 1] - place.pos[0], dy = data[o + 2] - place.pos[1], dz = data[o + 3] - place.pos[2];
+    const lx = dx * c - dy * s, ly = dx * s + dy * c;
+    if (lx > ghostBox.lo[0] && lx < ghostBox.hi[0] && ly > ghostBox.lo[1] && ly < ghostBox.hi[1] && dz > ghostBox.lo[2] && dz < ghostBox.hi[2]) n++;
+  }
+  // cliff and rock points inside the same box (the game's simplified models, so roughly)
+  let rock = 0;
+  for (const src of rocks.verts || []) for (let v = 0; v < src.length; v += 3) {
+    const dx = src[v] - place.pos[0], dy = src[v + 1] - place.pos[1], dz = src[v + 2] - place.pos[2];
+    const lx = dx * c - dy * s, ly = dx * s + dy * c;
+    if (lx > ghostBox.lo[0] && lx < ghostBox.hi[0] && ly > ghostBox.lo[1] && ly < ghostBox.hi[1] && dz > ghostBox.lo[2] && dz < ghostBox.hi[2]) rock++;
+  }
+  const msgs = [];
+  if (n) msgs.push(`⚠ ${n.toLocaleString()} of your existing pieces are inside this spot. Pieces would overlap in game.`);
+  if (rock) msgs.push('⚠ Cliffs or rocks reach into this spot. Check it in game, or move it.');
+  el.className = msgs.length ? 'warn' : 'ok';
+  el.textContent = msgs.length ? msgs.join('\n') : '✓ Nothing of yours, and no cliffs or rocks, in the way.';
+}
+let overlapTimer = 0;
+const overlapSoon = () => { clearTimeout(overlapTimer); overlapTimer = setTimeout(updateOverlap, 120); };
+
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+function rayAt(e) {
+  const r = canvas.getBoundingClientRect();
+  ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+}
+const fromThree = v => [v.x * 100, v.z * 100, v.y * 100];
+const snapCm = (v, step = 100) => Math.round(v / step) * step;
+
+canvas.addEventListener('pointermove', e => {
+  if (!ghost || !following) return;
+  rayAt(e);
+  const g = ray.intersectObjects(surfaces(), false)[0];         // on the ground, rocks or water when they're there
+  const h = g || ray.intersectObject(plane, false)[0];
+  if (h) { const p = fromThree(h.point); place.pos[0] = snapCm(p[0]); place.pos[1] = snapCm(p[1]); if (g) setHeight(snapCm(p[2], 50)); updateGhost(); }
+});
+let downAt = null;
+canvas.addEventListener('pointerdown', e => downAt = [e.clientX, e.clientY]);
+canvas.addEventListener('pointerup', e => {
+  if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 4 || e.button !== 0) return;
+  if (ghost && following) {
+    following = false; updateOverlap(); updateButtons();
+    $('#placeinfo').innerHTML = `<b>${ghostBuild.title}</b> · ${ghostBuild.pieces.length.toLocaleString()} pieces<br>Dropped. Fine-tune it on the right, then put it in a copy of your save.`;
+  }
+});
+canvas.addEventListener('dblclick', e => {
+  rayAt(e);
+  const h = ray.intersectObjects([...meshes, ...surfaces()], false)[0] || ray.intersectObject(plane, false)[0];
+  if (h) controls.target.copy(h.point);
+});
+
+function move(axis, dir, step = +$('#step').value) {
+  if (!ghost) return;
+  if (axis === 'z') setHeight(place.pos[2] + dir * step); else place.pos[axis === 'x' ? 0 : 1] += dir * step;
+  updateGhost(); overlapSoon();
+}
+function turn(deg) { if (!ghost) return; place.yaw = (place.yaw + deg + 360) % 360; updateGhost(); overlapSoon(); }
+// "Sit on surface below": the highest existing piece under the build's middle, else keep the height
+function snapDown() {
+  if (!ghost) return;
+  const mid = [(ghostBox.lo[0] + ghostBox.hi[0]) / 2, (ghostBox.lo[1] + ghostBox.hi[1]) / 2];
+  const a = place.yaw * Math.PI / 180;
+  const c = toThree([place.pos[0] + mid[0] * Math.cos(a) - mid[1] * Math.sin(a), place.pos[1] + mid[0] * Math.sin(a) + mid[1] * Math.cos(a), place.pos[2] + 5e5]);
+  ray.set(c, new THREE.Vector3(0, -1, 0));
+  const h = ray.intersectObjects([...meshes, ...surfaces()], false)[0];
+  if (h) { setHeight(Math.round(h.point.y * 100)); updateGhost(); updateOverlap(); status(''); }
+  else status('Nothing below it (no ground or buildings here). Set the height with Raise/Lower.', 'err');
+}
+document.querySelectorAll('[data-mv]').forEach(b => b.onclick = () => { const [a, d] = b.dataset.mv.split(','); move(a, +d); });
+document.querySelectorAll('[data-rot]').forEach(b => b.onclick = () => turn(+b.dataset.rot));
+$('#follow').onclick = () => { following = true; updateButtons(); };
+$('#snap').onclick = snapDown;
+addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || !ghost) return;
+  const big = e.shiftKey;
+  const keys = { ArrowLeft: ['x', -1], ArrowRight: ['x', 1], ArrowUp: ['y', -1], ArrowDown: ['y', 1], PageUp: ['z', 1], PageDown: ['z', -1] };
+  if (keys[e.key]) { e.preventDefault(); move(...keys[e.key], big ? 800 : 100); }
+  if (e.key === 'q' || e.key === 'Q') turn(big ? -90 : -15);
+  if (e.key === 'e' || e.key === 'E') turn(big ? 90 : 15);
+  if (e.key === 'Escape' && following) { following = false; updateButtons(); }
+});
+$('#goPlayer').onclick = () => meta && meta.player && lookAt(meta.player, 250);
+$('#goBuild').onclick = () => ghost && lookAt(place.pos, 160);
+$('#goTop').onclick = () => { const t = controls.target; camera.position.set(t.x + 0.01, t.y + 600, t.z + 0.01); };
+
+function updateButtons() {
+  document.querySelectorAll('[data-mv],[data-rot],#snap,#follow').forEach(b => b.disabled = !ghost);
+  $('#follow').disabled = !ghost || following;
+  $('#goBuild').disabled = !ghost;
+  $('#place').disabled = !ghost || following || !meta;
+}
+
+$('#place').onclick = async () => {
+  const name = $('#newname').value.trim();
+  status('Writing a new save…'); $('#place').disabled = true;
+  try {
+    const r = await api('/api/place', { path: meta.path, build: ghostBuild.name, pos: place.pos, yaw: place.yaw, name });
+    const skipped = Object.entries(r.skipped);
+    status(`Done! Saved as "${r.name}" (${r.added.toLocaleString()} pieces added). Your original save is unchanged.\n\n` +
+      `In Satisfactory: Load Game → ${meta.session} → "${r.name}".` +
+      (skipped.length ? `\n\nNot placed yet (these need a newer version of this tool): ` + skipped.map(([t, n]) => `${n} × ${t.replace(/_/g, ' ')}`).join(', ') : ''), 'ok');
+    const at = [...place.pos];
+    clearGhost();
+    await loadSaves(r.path);          // show the new save, with the build now part of it
+    lookAt(at, 160);
+  } catch (e) { status('Could not write the save: ' + e.message, 'err'); }
+  updateButtons();
+};
+
+// ---------- lists ----------
+async function loadSaves(select) {
+  const saves = await api('/api/saves');
+  const ok = saves.filter(s => s.ok);
+  $('#save').innerHTML = ok.length ? ok.map(s => `<option value="${s.path.replace(/"/g, '&quot;')}">${s.name}  ·  ${new Date(s.modified * 1000).toLocaleDateString()}</option>`).join('')
+    : '<option value="">No game 1.2 saves found</option>';
+  const want = select || new URLSearchParams(location.search).get('save');
+  if (want && ok.some(s => s.path === want)) $('#save').value = want;
+  if ($('#save').value) await loadWorld($('#save').value);
+}
+$('#save').onchange = () => loadWorld($('#save').value);
+
+async function loadBuilds() {
+  const list = await api('/api/creations');
+  const el = $('#builds'); el.innerHTML = '';
+  if (!list.length) { el.innerHTML = '<div class="empty">No builds yet. Ask Claude to make one.</div>'; return; }
+  for (const c of list) {
+    const d = document.createElement('div'); d.className = 'build'; d.dataset.name = c.name;
+    d.innerHTML = `<b>${c.title}</b><span>${c.pieces.toLocaleString()} pieces</span>`;
+    d.onclick = () => pickBuild(c);
+    el.appendChild(d);
+  }
+}
+
+loadBuilds(); loadSaves(); loadGround(); loadRocksAndWater(); loadObjects(); updateButtons();
+document.querySelectorAll('[data-kind]').forEach(c => c.onchange = () => showKind(c.dataset.kind, c.checked));
+$('#showRocks').onchange = e => rocks.meshes.forEach(m => m.visible = e.target.checked);
+$('#showWater').onchange = e => { if (water.mesh) water.mesh.visible = e.target.checked; };
+function resize() { const r = $('#stage').getBoundingClientRect(); renderer.setSize(r.width, r.height, false); camera.aspect = r.width / r.height; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe($('#stage'));
+renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+window.lookAt = lookAt; window.setCamera = (p, t) => { camera.position.set(...p); controls.target.set(...t); };
+</script>
+</body>
+</html>

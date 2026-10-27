@@ -127,6 +127,35 @@ pieces, undo, save (a backup goes to `history/`), and install it into a save wit
 **Use in game**. Prefer the studio over a static render whenever the player should see or change
 a build.
 
+## Build straight into the world (no blueprint)
+
+For creations too big for a blueprint (designer limits, or the game freezing while it places a
+huge hologram), write the build into a **new copy** of a game-1.2 save. `scripts/world.py`:
+
+```python
+from world import World, next_free_save
+w = World(save_path)                                   # 1.2 saves only (save version 60)
+n, skipped = w.add_blueprint(Blueprint.load(sbp), [x, y, z], yaw_deg)   # world cm
+w.write(next_free_save(save_path, 'base 1 - Tower'))   # refuses to overwrite
+```
+
+Structural pieces (everything `lightweight` in `assets.json`: foundations, walls, beams, roofs,
+ramps, pillars, walkways...) go into the game's compact list (FGLightweightBuildableSubsystem),
+the same place the game puts them when built by hand. Machines, belts, doors, lights and other
+separate objects are not written yet; `skipped` lists them, so tell the player. The writer
+re-encodes a save byte-identically when nothing is added (`world.py roundtrip <file.sav>`), and
+updates the MD5 the header keeps of the compressed body.
+
+The studio's **World map** (`/map`) shows a save's buildings in 3D (structural pieces, machines
+at their clearance size, belts/pipes/wires/rails as straight segments, the player in cyan), lets
+the player drop a build, move it with compass steps, turn it, see how many existing pieces it
+overlaps, and **Put in a copy of my save**. The ground comes from the player's game install
+(`tools/terrain`, output in `.local/terrain/data`; see CLAUDE.md for how to extract it): a
+dropped build follows the ground, cliffs and water under the mouse. Cliffs and rocks are the
+game's simplified far-view models (a few metres off at edges); water is exact. Trees, boulders
+and other models (3 m and up) load per area around the view; trees the player cleared are hidden.
+Compass: +X is east, +Y is south.
+
 ## Production planning
 
 `scripts/calc.py` answers "how many machines / resources / how much power" from the game's own
@@ -150,8 +179,11 @@ add items, switch each step's recipe, and set max clock, miner tier and node pur
 
 `scripts/factory.py` turns a plan into a ready-to-place production line: rows of machines set to
 their recipe and clock, splitter/merger manifolds, overhead belt lanes linking the rows, raw
-inputs as open belt ends, products into storage, a power pole wired to every machine (chained
-along and between rows, one free connection for the player's grid), and a foundation floor.
+inputs into buffer containers (≤ 1200/min each), products into storage, shared power poles
+(Mk.2 by default, `--pole`), a Label Sign with item and rate at every input and output, and a
+foundation floor; steps over 1200/min split into parallel rows, belts are tiered to their flow,
+and `build_best` keeps the most compact clean layout. Signs: `Factory.sign`; smart splitter
+rules: `Factory.sort_rules`.
 Belts are built like the game's own (one belt per run, 1 m straight leads at connectors, rounded
 corners, at most 35°, never zero-length) with both ends connected; checks for touching belts,
 lane conflicts and unbuildable belts drive layout retries until all are zero.
@@ -161,12 +193,44 @@ python -I scripts/factory.py "Reinforced Iron Plate" 5 [--use "Stitched Iron Pla
 ```
 
 In code: `factory.build_best(calc.plan(...), name)` returns `(Factory, report)`, and you save
-`factory.bp`. Machine ports and power points come from `library/ports.json`. Not yet included:
-pipes for fluids and byproducts fed back in. The studio planner's **Build this factory** button
+`factory.bp`. Machine ports and power points come from `library/ports.json`. Fluids run on pipes (junction
+manifolds, pipe lanes, fluid buffers at inputs and outputs). Not yet included: byproducts fed
+back in, pumps. The studio planner's **Build this factory** button
 does the same.
 
 When adding properties to a piece (links, wires, settings), insert them before the `None` that
 closes its property list with `build_library.add_prop`: the game stops reading at that `None`.
+
+### Factory rules (the player's standing requirements)
+
+Every production line must follow these:
+
+1. **Exact output, default recipes.** Build exactly the rate asked for (e.g. 500 Circuit Boards/min
+   out), using each item's default recipe unless the player names an alternate. Machine counts
+   and clocks (≤ 100%) come from `calc.plan` so the total is exact.
+2. **Belts sized to the flow.** Every belt uses the lowest tier that carries its rate (Mk.1 60,
+   Mk.2 120, Mk.3 270, Mk.4 480, Mk.5 780, Mk.6 1200 /min); a 700/min input never gets a Mk.1.
+   Nothing ever runs above 1200/min: larger flows split into parallel belts (and rows).
+3. **Inputs assume full Mk.6 supply belts.** Plan raw inputs as belts of up to 1200/min each,
+   one belt per item (more belts when one isn't enough), and split them into the machines in an
+   orderly, even way.
+4. **A buffer on every input, followed by a label sign.** Each factory input enters a buffer
+   first: a storage container for belts, a fluid buffer for pipes (crude oil, water...). The
+   player's supply belt or pipe feeds the buffer, the buffer feeds the line, and a label sign at
+   the buffer's inlet names the item and the rate to supply. Fluids are inputs too: never leave a
+   machine's pipe port unconnected.
+5. **Few poles.** One pole powers several machines (as many as its connection count allows),
+   chained efficiently, with one free connection for the player's grid.
+6. **Smallest footprint.** No fixed size presets for factories: the plot fits the layout, and
+   the generator picks the most compact layout that still has zero belt problems.
+7. **Labelled workflow.** A Label Sign (2 m × 1 m) next to every belt connection the player
+   needs to understand: each factory input (item and expected rate to supply), each machine
+   input and output (item and rate on that belt), and each product output. Text is the item
+   name and its rate, e.g. "IRON ORE 450/min".
+8. **Nothing floats.** Every piece above the floor stands on something: raised splitters and
+   mergers get a vertical beam down to the floor, overhead belts get beam posts about every 8 m,
+   and signs stand on a beam post beside their belt. Posts never pass through a belt below them.
+   This applies to buildings too: no hanging pieces without a visible support.
 
 ## Formats and details
 

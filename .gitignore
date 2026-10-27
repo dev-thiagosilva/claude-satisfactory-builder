@@ -3,3 +3,5 @@ out/
 __pycache__/
 *.pyc
 .idea/
+bin/
+obj/

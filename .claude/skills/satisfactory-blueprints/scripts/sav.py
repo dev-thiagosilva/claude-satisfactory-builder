@@ -1,10 +1,12 @@
-"""Read-only reader for Satisfactory 1.0+ save files (.sav), used to collect building samples.
+"""Reader for Satisfactory 1.0+ save files (.sav), used to collect building samples and by
+world.py, which writes changed copies.
 
   python -I sav.py <file.sav>            summary: version, levels, buildings per type
 
 Only what the donor library needs is decoded: each level's object headers and object data.
 Buildings come out in the same dict shape as Blueprint.objects, so blueprint tooling can use
-them. Nothing is ever written back to a save.
+them. This module never writes; it records where things sit (`data_at`, `osize_at`) so
+world.py can patch a copy.
 
 Layout (save header version 14 / save version 60, game 1.2), all little-endian:
   header ... then zlib chunks exactly like .sbp (see references/format.md §3)
@@ -52,6 +54,8 @@ def decompress(path):
 class Save:
     def __init__(self, path):
         (self.header_version, self.save_version, self.build_version), body = decompress(path)
+        self.body = body
+        self.osize_at = {}        # level name -> offset of its int64 object-block size in body
         self.levels = []          # (name, [objects]) — objects shaped like Blueprint.objects
         r = Reader(body, 8)
         r.i32()
@@ -87,6 +91,7 @@ class Save:
                 o['outer'] = r.string()
             objs.append(o)
         r.o = hend                             # skip collectables listed in the header block
+        self.osize_at[name] = r.o
         osize = struct.unpack_from('<q', d, r.o)[0]; r.o += 8; oend = r.o + osize
         n = r.i32()
         if n != len(objs):
@@ -95,6 +100,7 @@ class Save:
             o['object_version'] = r.i32()
             r.i32()
             n = r.i32()
+            o['data_at'] = r.o
             o['data'] = r.bytes(n)
             if o['object_version'] >= 53:    # newer objects carry one extra int32 (seen as 0)
                 o['save_tail'] = r.i32()

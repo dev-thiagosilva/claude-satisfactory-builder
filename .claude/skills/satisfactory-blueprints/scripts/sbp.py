@@ -633,8 +633,9 @@ def spline_points(obj, steps=8):
     return out or None
 
 
-def wire_ends(obj):
-    """A power line's two ends as world points (cm), or None."""
+def wire_ends(obj, in_save=False):
+    """A power line's two ends as world points (cm), or None. Blueprints place them by
+    CachedRelativeLocations; in a save the world points are in Locations (in_save=True)."""
     d = obj['data']
     i = d.find(b'mWireInstances\x00')
     if i < 0:
@@ -643,7 +644,10 @@ def wire_ends(obj):
     for m in _WIRE_VEC.finditer(d, i):
         at = m.end() + (4 if d[m.end() - 1] & 1 else 0)
         vecs.append((m.group(1), struct.unpack_from('<3d', d, at)))
-    rel = [v for n, v in vecs if n == b'CachedRelativeLocations'][:2]
+    if in_save:
+        ends = [list(v) for n, v in vecs if n == b'Locations'][:2]
+        return ends if len(ends) == 2 else None
+    rel =[v for n, v in vecs if n == b'CachedRelativeLocations'][:2]
     if len(rel) < 2:
         return None
     return [[round(obj['pos'][j] + qrotate(obj['rot'], r)[j], 1) for j in range(3)] for r in rel]

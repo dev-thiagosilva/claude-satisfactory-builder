@@ -60,8 +60,10 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `  library/ASSETS.md` | **Every buildable piece in the game** (546), grouped by design purpose, with a **quick picker** ("I want X → use Y") and per-category use/tips/go-to pieces; name, size, real cost, unlock, and whether it's **ready**. Start here when choosing pieces |
 | `  library/assets.json` | The same data for code (`assets()`, `estimate_cost(bp)` in `sbp.py`) |
 | `  library/donors-v60.sbp` | Sample pieces in game-1.2 format that builds copy from (`index.json` lists them). The project targets **game 1.2 only** |
-| `  scripts/sav.py` | Read-only reader for 1.2 save files (used to take building samples from a world) |
-| `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds |
+| `  scripts/sav.py` | Reader for 1.2 save files (building samples; offsets for the writer) |
+| `  scripts/world.py` | Builds straight into a **new copy** of a 1.2 save: `World(sav).add_blueprint(bp, pos, yaw)`, `write()` |
+| `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds; `map.html` is the **World map**, `pieces.js` the shapes both share |
+| `  tools/terrain/` | C# tool (CUE4Parse) that reads the ground heights from the player's game install into `.local/terrain/data` for the World map |
 | `  examples/heydar_aliyev_center.py` | Worked example: a famous building traced from a photo |
 | `  references/format.md` | Byte-level format, piece sizes and origins, designer limits |
 | `  scripts/build_library.py` | Maintainer tool that regenerates `library/` from 1.1/1.2 blueprints and save files |
@@ -114,17 +116,34 @@ with `calc.py`, then build it with `scripts/factory.py`. Or they press **Build t
 blueprint** in the planner. Either way the result is a ready production line in
 `.local/blueprints/<name>/`:
 - one row per recipe step, each machine set to its recipe and clock (≤ 100%, because blueprints
-  can't hold power shards);
-- splitter manifolds feeding every input (extra inputs on raised manifolds), merger manifolds
-  collecting outputs;
-- overhead belt lanes in a corridor on the west side linking the rows (each lane in its own
-  column; short hops use a low pass or stay at belt height);
-- raw resources arrive as open belt ends on the south edge (the player connects miners there);
-  products and solid byproducts go into storage containers;
-- power: a Mk.1 pole beside every machine, wired to it and chained along the row and from row
-  to row; the player connects their grid to the pole beside the first machine of the first row;
-- a foundation floor, and a plot sized to fit (production lines are long; they don't use the
-  four building sizes).
+  can't hold power shards); a step whose belts would carry more than 1200/min (or pipes more
+  than 600 m³/min) is split into parallel rows;
+- solids on belts, fluids on pipes, built the same way: splitter / pipe-junction manifolds
+  feeding every input (extra inputs on raised manifolds), merger / junction manifolds collecting
+  outputs (a fluid output beside a solid one hops over its line); every belt and pipe is the
+  lowest tier that carries its flow (belts Mk.1–6, pipes Mk.1 300 / Mk.2 600 m³/min);
+- flows balanced item by item: producer rows feed consumer rows (a consumer fed by two sources
+  gets a merger per lane), what's left goes to storage, and a source that feeds both gives its
+  consumers priority through smart splitters (overflow to storage);
+- overhead belt and pipe lanes in a corridor on the west side linking the rows (each lane in its
+  own column; short hops use a low pass or stay at belt height; pipes only use the low pass, to
+  keep the head lift small);
+- raw resources arrive in **input buffers** on the south side, each with a label sign: storage
+  containers for solids (≤ 1200/min, one supply belt) and fluid buffers for fluids (≤ 600 m³/min,
+  one supply pipe); products go into storage containers / fluid buffers on the north side. A
+  fluid byproduct nobody uses (e.g. Heavy Oil Residue from Plastic) goes to a fluid buffer with a
+  warning: the line stops when it's full, so tell the player to use it or pick a recipe that does;
+- power: Mk.2 poles by default (`--pole Mk1|Mk3`), each powering as many machines as its
+  connections allow, chained along each row and from row to row; the player connects their
+  grid to the first pole of the first row;
+- a Label Sign (2 × 1 m) beside every machine input and output, every input container and
+  every product container, standing on a beam post: item name and rate ("IRON ORE" /
+  "IN 22.5/min");
+- supports (`add_supports`): a vertical painted beam under every raised splitter/merger and
+  under raised belts about every 8 m, never through a belt, machine, container or sign;
+- a foundation floor, and the most compact plot: `build_best` tries tight row and manifold
+  spacings first and keeps the smallest layout with zero problems (production lines don't use
+  the four building sizes).
 
 `python -I .claude/skills/satisfactory-blueprints/scripts/factory.py "Motor" 2 [--use "..."] [--name "..."]`
 prints a report: rows, raw inputs, outputs, size, power, warnings, `collisions` (belts passing
@@ -139,8 +158,34 @@ points, a straight 1 m lead out of every connector, corners rounded into arcs, t
 the game does (half the segment on straights, 4·r·tan(θ/4) on arcs), at most 35° and ~50 m per
 belt. Drops from raised manifolds into machines go level, ramp, level (`feeder`).
 
-Tell the player plainly what isn't done yet: **pipes for fluids** (fluid ports are left open;
-the report lists which steps) and **byproducts fed back into the line** (they go to storage).
+**Factory rules: the player's standing requirements for every line** (also in the project
+skill's "Factory rules"):
+1. **Exact output, default recipes.** Build exactly the rate asked for (500 Circuit Boards/min
+   means 500 out), with each item's default recipe unless the player names an alternate.
+2. **Belts sized to the flow.** Each belt is the lowest tier that carries its rate (Mk.1 60,
+   Mk.2 120, Mk.3 270, Mk.4 480, Mk.5 780, Mk.6 1200 /min). Nothing runs above 1200/min: larger
+   flows split into parallel belts and rows.
+3. **Inputs as full Mk.6 belts.** Plan each raw input as belts of up to 1200/min, one item per
+   belt, split into the machines in an orderly, even way.
+4. **A buffer on every input, followed by a label sign.** Each factory input enters a buffer:
+   a storage container for belts, a fluid buffer for pipes (crude oil, water...). The player's
+   supply belt or pipe feeds it, it feeds the line, and a label sign at its inlet names the item
+   and the rate to supply. Fluids are inputs too: never leave a machine's pipe port unconnected.
+5. **Few poles.** One pole powers several machines (up to its connection limit), chained
+   efficiently, with one free connection for the player's grid.
+6. **Smallest footprint.** Factories don't use the size presets; the plot fits the most compact
+   layout that has zero belt problems.
+7. **Labelled workflow.** A Label Sign (2 m × 1 m) beside every belt connection that matters:
+   each factory input (item and the rate to supply), each machine input and output, and each
+   product output, reading e.g. "IRON ORE 450/min".
+8. **Nothing floats.** Every piece above the floor stands on something: raised splitters and
+   mergers on a vertical beam to the floor, overhead belts on beam posts about every 8 m, signs
+   on a beam post beside their belt. Posts never pass through a belt below. Buildings too: no
+   hanging pieces without a visible support.
+
+Tell the player plainly what isn't done yet: **byproducts fed back into the line** (leftovers go
+to storage), **pumps** (pipe lanes stay low, but long fluid runs may need a pump in game), and
+**packaging** of leftover fluids.
 Machine ports and power points come from `library/ports.json`, learned from belts, pipes and
 power lines plugged into machines in a real 1.2 save (`build_library.py --save`). Ports never
 seen plugged in are mirrored from a sibling and marked `inferred`; machines with no known power
@@ -161,8 +206,8 @@ chosen save.
   `python -I .claude/skills/satisfactory-blueprints/studio/server.py --port 8770 --creations .local/blueprints`
   in the background and call `preview_start` with `url: http://localhost:8770`. The player can
   also open that address in their own browser.
-- It listens on this PC only (127.0.0.1) and only writes inside `.local/blueprints/<build>/` and
-  the game's blueprint folders.
+- It listens on this PC only (127.0.0.1) and only writes inside `.local/blueprints/<build>/`,
+  the game's blueprint folders, and new save files next to the player's saves (World map).
 - After the player edits and saves in the studio, re-read the `.sbp` before regenerating, so
   you don't overwrite their manual changes. Ask whether to keep them if a regenerate would lose
   them.
@@ -187,10 +232,69 @@ Rules that bite:
   is silently lost. The power line in the library is a template with both ends blank:
   `factory.Factory.make_wires` shows how to fill one in.
 
+## Building straight into a save (World map)
+
+For builds too big for a blueprint (designer limits, or the game freezing while it places a big
+hologram), put them into a copy of the player's save instead. Open
+`http://localhost:8770/map`: it lists their game-1.2 saves, draws everything in the chosen one
+(the player in cyan), and lets them pick a build, drop it, move it by compass steps, turn it,
+see how many existing pieces it overlaps, and **Put in a copy of my save**. Or call
+`world.World(sav).add_blueprint(...)` + `write(next_free_save(...))` yourself.
+- Only **structural pieces** go in (everything `lightweight` in `assets.json`). They are added
+  to the game's own compact list, as if built by hand. Machines, belts, doors, lights and
+  other separate objects are skipped and listed: say so.
+- **The ground** comes from the game's own files, not the save: `tools/terrain` reads every
+  landscape tile (2,289 tiles of 128 × 128 points, 1 m apart) into `.local/terrain/data`
+  (`heights.bin` + `tiles.json`; game data, never committed). The map shows it at 4 m and swaps
+  in 1 m detail near the view. **Cliffs and rocks** come from the game's own simplified
+  far-view models (`WPHLOD_Landscape` layer, 518 areas of 256 m, ~1.1 M triangles, `rocks.bin`):
+  complete but blocky, so edges can be a few metres off. **Water** is the top faces of the 270
+  `FGWaterVolume`s (lakes, rivers, ocean; `water.json`), exact heights (lake at your base:
+  −16.75 m, matching the water extractors). A dropped build lands on ground, rock or water under
+  the mouse, and the overlap line also warns when cliffs or rocks reach into its space.
+  **Trees, boulders, plants and other placed models** (`objects.bin/json`): every model 3 m or
+  bigger (grass, flowers, waterfalls, fog and flat water/field planes skipped), 275 models,
+  ~763,000 copies, each model at its most detailed level within ~600 (trees) / 400 triangles
+  (levels of ≤ 12 triangles are flat cards and skipped). Copies load per 500 m area within
+  ~800 m of the view; models over 300 m (background mountains, canyon backdrops) always show.
+  Switches: Trees, Boulders, Other objects on; Bushes & plants off (70 % of copies). Trees the
+  player cleared are hidden using the save's `FGFoliageRemovalSubsystem` (`World.removed_foliage`).
+  Satisfactory's own foliage component `FGFoliageInstancedSMC` must be registered as a
+  `UFoliageInstancedStaticMeshComponent` in CUE4Parse, or none of its ~3 M copies are read.
+- Extracting the ground (once per game update; ~40 s). It needs the .NET 10 SDK in
+  `.local/dotnet` (Microsoft's zip from builds.dotnet.microsoft.com, SHA-512 checked against the
+  release metadata, unzipped; ask the player before downloading, ~300 MB) and the CUE4Parse
+  NuGet package (ask too). Oodle is decoded by the managed `OodleSharp` that comes with it, so
+  no Oodle DLL is needed. Satisfactory 1.2 runs on **Unreal 5.6**, and the shipped
+  `FactoryGame.usmap` doesn't parse with CUE4Parse but isn't needed (the packages are versioned):
+  ```
+  set DOTNET_ROOT=.local\dotnet
+  .local\dotnet\dotnet build -c Release .claude/skills/satisfactory-blueprints/tools/terrain
+  set TERRAIN_USMAP=0
+  .local\terrain\bin\Release\net10.0\terrain.exe extract "<game dir>" managed .local/terrain/data
+  .local\terrain\bin\Release\net10.0\terrain.exe hlod    "<game dir>" managed .local/terrain/data
+  .local\terrain\bin\Release\net10.0\terrain.exe water   "<game dir>" managed .local/terrain/data
+  .local\terrain\bin\Release\net10.0\terrain.exe objects "<game dir>" managed .local/terrain/data
+  ```
+  Each tile's world position comes from its own section (`RootComponent` + (SectionBase −
+  LandscapeSectionOffset) × scale), not the parent Landscape actor. **A cell can hold two
+  sections, and texture names (`Heightmap_0`…) repeat in each**: match a tile's height texture
+  by full path and take the transform from the tile's own section (`comp.Outer`), or tiles get
+  another section's heights (it showed as dark strips on the map). Check after extracting:
+  every neighbouring tile edge should match (4,463 of 4,465 do). Height 0 marks a hole in the
+  ground (sinkholes, cave mouths, filled by cliff models in game); the map draws it as a dark floor. Heights: world z = base +
+  (h − 32768) / 128 × scale z. Restart the studio afterwards.
+- Then they load the new save from the game's **Load Game** menu (same session). Their
+  original save is never changed. Saves from before game 1.2 must be loaded and saved once in
+  1.2 first.
+- After changing `world.py`, run `world.py roundtrip` on every 1.2 save: each must come back
+  byte-identical (19 saves on the maintainer's PC).
+
 ## The player's game files
 
 `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\blueprints\<save session>\`. Never modify or delete
-a player's existing blueprints. Read them only if the player asks, e.g. to look at or remix one of
+a player's existing blueprints or saves (world.py only writes new save files next to them and
+refuses to overwrite). Read them only if the player asks, e.g. to look at or remix one of
 their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they contain).
 
 ## Maintaining this repo
@@ -232,4 +336,7 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
   Merger/Power Switch, Pipeline T-Junction, Street Light, Flood Light Tower, Buffer Stop, Fluid
   Truck Station, landing/jump pads, and unique buildings (HUB, Space Elevator, MAM, designers).
   Building one of each in a 1.2 world and re-running `build_library.py --save` adds them.
-- Not yet supported: drawing belt/pipe splines in the preview, exact game meshes in the preview.
+- Not yet supported: drawing belt/pipe splines in the studio preview, exact game meshes (the
+  World map uses the game's simplified models), objects inside blueprint actors whose model is
+  set only in the blueprint's construction script, and writing
+  machines/belts/doors (non-lightweight pieces) into a save.

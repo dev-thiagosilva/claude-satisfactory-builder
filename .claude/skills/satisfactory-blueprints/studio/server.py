@@ -8,12 +8,22 @@ Serves studio/index.html and a small JSON API on 127.0.0.1 only:
   POST /api/save                      apply edits (keep/move/recolour/duplicate/delete); old file kept in history/
   GET  /api/sessions                  the game's save folders that hold blueprints
   POST /api/install                   copy a build into a save's blueprint folder
+  GET  /map                           world map: a save's buildings in 3D; place a build into a copy
+  GET  /api/saves                     the player's saves (ok = game 1.2, can be written)
+  GET  /api/world?path=, /api/world.bin?path=   a save's pieces: meta JSON, then 9 floats per piece
+  POST /api/place                     {path, build, pos (cm), yaw, name?} -> a NEW save next to it
+  GET  /api/terrain, /api/terrain.bin the ground: tile list + 33 x 33 overview heights per tile (uint16)
+  GET  /api/terrain/tile?i=           one tile's full 128 x 128 heights (1 m)
+  GET  /api/rocks.bin, /api/water.json  cliffs/rocks (the game's far-view models) and water surfaces
+  GET  /api/objects/meta, shapes.bin, big.bin, area?k=ax,ay   trees, boulders and objects: model list,
+                                      model shapes, always-shown big models, copies of one 500 m area
   GET  /planner                       production planner page (machines, resources, power)
   GET  /api/items, /api/recipes?item= items that can be produced; recipes for one item
   POST /api/plan                      {targets: [[item, rate]], use: [recipe], clock, miner, purity}
 Each build is a folder: <creations>/<folder>/<Name>.sbp (+ .sbpcfg, build.py, history/).
 """
-import argparse, json, math, re, shutil, sys, time
+import argparse, json, math, re, shutil, struct, sys, time
+from array import array
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -21,8 +31,9 @@ from urllib.parse import urlparse, parse_qs
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'scripts'))
 from sbp import (Blueprint, spline_points, wire_ends, short, get_float, get_color, set_color, paint_key, sessions,
-                 blueprints_root, install, size_name)
+                 blueprints_root, install, size_name, qmul)
 import calc
+import world as worldlib
 
 CREATIONS = None
 SAFE = re.compile(r'^[\w .\-\[\]()&,+]+$')
@@ -168,6 +179,151 @@ def make_factory(req):
     return dict(name=d.name, title=title, **rep)
 
 
+WORLDS = {}   # save path -> (mtime, World, packed pieces)
+
+
+def list_saves():
+    """The player's game-1.2 saves, newest first (older saves can't be written)."""
+    out = []
+    for s in worldlib.save_files():
+        try:
+            with open(s['path'], 'rb') as fh:
+                s['ok'] = struct.unpack('<3i', fh.read(12))[1] >= 60
+        except OSError:
+            continue
+        s['session'] = Path(s['path']).parent.name
+        out.append(s)
+    return out
+
+
+def known_save(path):
+    for s in list_saves():
+        if s['path'] == path and s['ok']:
+            return Path(path)
+    raise ValueError('not one of your game 1.2 saves')
+
+
+def world_of(path):
+    p = known_save(path)
+    mt = p.stat().st_mtime
+    hit = WORLDS.get(str(p))
+    if hit and hit[0] == mt:
+        return hit[1], hit[2]
+    w = worldlib.World(p)
+    packed = pack_world(w)
+    WORLDS.clear()                      # one world in memory at a time
+    WORLDS[str(p)] = (mt, w, packed)
+    return w, packed
+
+
+def pack_world(w):
+    """Meta (types, player, bounds) and a Float32 array, 9 per piece: type, x, y, z, qx, qy, qz, qw, length (cm)."""
+    types, idx, vals = [], {}, array('f')
+
+    def put(t, pos, rot, length):
+        if t not in idx:
+            idx[t] = len(types); types.append(t)
+        vals.extend((idx[t], pos[0], pos[1], pos[2], rot[0], rot[1], rot[2], rot[3], length))
+
+    for i in w.lightweight():
+        put(short(i.cls), i.pos, i.rot, i.length or 0)
+    for a, _ in w.save.buildings():
+        t = short(a['cls'])
+        pts = spline_points(a, steps=2) or wire_ends(a, in_save=True)
+        if not pts:
+            put(t, a['pos'], a['rot'], 0)
+            continue
+        for p, q in zip(pts, pts[1:]):            # belts, pipes, wires, rails: straight segments
+            d = [q[k] - p[k] for k in range(3)]
+            n = math.sqrt(sum(v * v for v in d))
+            if n < 1:
+                continue
+            yaw, pitch = math.atan2(d[1], d[0]), math.asin(max(-1, min(1, d[2] / n)))
+            rot = qmul((0, 0, math.sin(yaw / 2), math.cos(yaw / 2)), (0, math.sin(-pitch / 2), 0, math.cos(-pitch / 2)))
+            put(t, p, rot, n)
+    player = next((o['pos'] for o in w.save.objects() if o['type'] == 1 and '/Char_Player.' in o['cls']), None)
+    xs, ys, zs = vals[1::9], vals[2::9], vals[3::9]
+    machines = calc.db()['machines']
+    boxes = {t: machines[t]['clearance'] for t in types if machines.get(t, {}).get('clearance')}
+    for t in types:          # rough sizes for logistics pieces that aren't lines
+        if t in boxes or re.search(r'^ConveyorBelt|^Pipeline(MK2)?$|PipeHyper$|PowerLine|Wire|RailroadTrack', t):
+            continue
+        if re.search(r'Pole|Support', t):
+            boxes[t] = [-30, -30, 0, 30, 30, 500 if 'Power' in t else 150]
+        elif re.search(r'Conveyor|Pipe|Valve|Junction', t):
+            boxes[t] = [-100, -100, -50, 100, 100, 150]
+    meta = dict(name=w.path.stem, session=w.session_name(), path=str(w.path), count=len(vals) // 9,
+                lightweight=sum(1 for _ in w.lightweight()), types=types, boxes=boxes, player=player,
+                removed=[round(v) for p in w.removed_foliage() for v in p[:2]],   # x, y of cleared trees/bushes
+                bounds=[min(xs), min(ys), min(zs), max(xs), max(ys), max(zs)] if xs else None)
+    return meta, vals.tobytes()
+
+
+TERRAIN = None        # folder with tiles.json + heights.bin (tools/terrain extract)
+_TERRAIN = {}
+
+
+def terrain():
+    """The ground, read once: meta, raw heights, and a 4 m overview (33 x 33 per 128 x 128 tile)."""
+    if 'meta' not in _TERRAIN:
+        if not (TERRAIN / 'tiles.json').is_file():
+            return None
+        meta = json.loads((TERRAIN / 'tiles.json').read_text())
+        raw = (TERRAIN / 'heights.bin').read_bytes()
+        n = 128
+        picks = list(range(0, n - 1, 4)) + [n - 1]
+        over = array('H')
+        for k in range(len(meta['tiles'])):
+            tile = array('H'); tile.frombytes(raw[k * n * n * 2:(k + 1) * n * n * 2])
+            for y in picks:
+                row = y * n
+                over.extend(tile[row + x] for x in picks)
+        _TERRAIN.update(meta=dict(tiles=[t[3:8] for t in meta['tiles']], n=n, picks=picks, mid=32768, zscale=1 / 128),
+                        raw=raw, over=over.tobytes())
+    return _TERRAIN
+
+
+_OBJECTS = {}
+BIG_CM = 30000      # models over 300 m (background mountains, backdrops) are always loaded, not by area
+REC = 44            # one copy in objects.bin: uint16 model, uint16 0, 10 float32 (pos, quaternion, scale)
+
+
+def objects():
+    """Trees, boulders and other placed models (tools/terrain objects): meta, model shapes, copies by 500 m area."""
+    if 'meta' not in _OBJECTS:
+        if not (TERRAIN / 'objects.json').is_file():
+            return None
+        meta = json.loads((TERRAIN / 'objects.json').read_text())
+        raw = (TERRAIN / 'objects.bin').read_bytes()
+        n, o = struct.unpack_from('<I', raw, 0)[0], 4
+        for _ in range(n):
+            nv, ni = struct.unpack_from('<II', raw, o); o += 8 + nv * 12 + ni * 4
+        big = {i for i, m in enumerate(meta['models']) if m['size'] >= BIG_CM}
+        areas, always = {}, []
+        for key, (off, count) in meta['areas'].items():
+            keep = []
+            for k in range(count):
+                rec = raw[off + k * REC:off + (k + 1) * REC]
+                (always if struct.unpack_from('<H', rec)[0] in big else keep).append(rec)
+            areas[key] = b''.join(keep)
+        _OBJECTS.update(meta=dict(models=[{k: m[k] for k in ('name', 'kind', 'tris', 'size')} for m in meta['models']],
+                                  areas={k: len(v) // REC for k, v in areas.items()}, area_m=500),
+                        shapes=raw[:o], areas=areas, big=b''.join(always))
+    return _OBJECTS
+
+
+def do_place(req):
+    """Put a build into a NEW copy of a save: {path, build, pos: [x, y, z] cm, yaw, name?}."""
+    src = known_save(req['path'])
+    f = sbp_in(build_dir(req['build']))
+    w = worldlib.World(src)                       # fresh copy: placing never touches the cached one
+    n, skipped = w.add_blueprint(Blueprint.load(f), [float(v) for v in req['pos']], float(req.get('yaw', 0)))
+    name = req.get('name') or '%s - %s' % (src.stem, f.stem)
+    out = worldlib.next_free_save(src, name)
+    w.write(out)
+    return dict(ok=True, path=str(out), name=out.stem, added=n, skipped=dict(skipped))
+
+
 def do_install(req):
     d = build_dir(req['name'])
     f = sbp_in(d)
@@ -202,6 +358,39 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, (HERE / 'index.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path in ('/planner', '/planner.html'):
                 return self.send(200, (HERE / 'planner.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path in ('/map', '/map.html'):
+                return self.send(200, (HERE / 'map.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path == '/pieces.js':
+                return self.send(200, (HERE / 'pieces.js').read_bytes(), 'text/javascript; charset=utf-8')
+            if u.path == '/api/saves':
+                return self.send(200, list_saves())
+            if u.path == '/api/world':
+                return self.send(200, world_of(q['path'][0])[1][0])
+            if u.path == '/api/terrain':
+                t = terrain()
+                return self.send(200, t['meta'] if t else dict(missing=True))
+            if u.path == '/api/terrain.bin':
+                return self.send(200, terrain()['over'], 'application/octet-stream')
+            if u.path.startswith('/api/objects/'):
+                ob = objects()
+                if not ob:
+                    return self.send(404, dict(error='not extracted'))
+                part = u.path.rsplit('/', 1)[-1]
+                if part == 'meta':
+                    return self.send(200, ob['meta'])
+                if part == 'area':
+                    return self.send(200, ob['areas'].get(q['k'][0], b''), 'application/octet-stream')
+                return self.send(200, ob[{'shapes.bin': 'shapes', 'big.bin': 'big'}[part]], 'application/octet-stream')
+            if u.path in ('/api/rocks.bin', '/api/water.json'):
+                f = TERRAIN / u.path.split('/')[-1]
+                if not f.is_file():
+                    return self.send(404, dict(error='not extracted'))
+                return self.send(200, f.read_bytes(), 'application/json' if f.suffix == '.json' else 'application/octet-stream')
+            if u.path == '/api/terrain/tile':
+                t, k, size = terrain(), int(q['i'][0]), 128 * 128 * 2
+                return self.send(200, t['raw'][k * size:(k + 1) * size], 'application/octet-stream')
+            if u.path == '/api/world.bin':
+                return self.send(200, world_of(q['path'][0])[1][1], 'application/octet-stream')
             if u.path == '/api/items':
                 items = calc.db()['items']
                 return self.send(200, sorted(
@@ -234,6 +423,8 @@ class Handler(BaseHTTPRequestHandler):
             if u.path == '/api/install':
                 code, body = do_install(req)
                 return self.send(code, body)
+            if u.path == '/api/place':
+                return self.send(200, do_place(req))
             if u.path == '/api/factory':
                 return self.send(200, make_factory(req))
             if u.path == '/api/plan':
@@ -254,8 +445,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--port', type=int, default=8770)
     ap.add_argument('--creations', default=str(Path.cwd() / '.local' / 'blueprints'))
+    ap.add_argument('--terrain', default=None, help='folder with tiles.json + heights.bin (default: <creations>/../terrain/data)')
     a = ap.parse_args()
     CREATIONS = Path(a.creations).resolve()
+    global TERRAIN
+    TERRAIN = Path(a.terrain).resolve() if a.terrain else CREATIONS.parent / 'terrain' / 'data'
     CREATIONS.mkdir(parents=True, exist_ok=True)
     srv = ThreadingHTTPServer(('127.0.0.1', a.port), Handler)
     print('Blueprint Studio on http://localhost:%d  (builds in %s)' % (a.port, CREATIONS), flush=True)
