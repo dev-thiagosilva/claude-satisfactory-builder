@@ -180,7 +180,7 @@ def networks(save):
 def sites(sav):
     """Every producing building for the factory map: position (m), what it is, its recipe, the
     productivity the game measured, its belt network, and its full-speed flows. Items are indexes
-    into `items` ([name, form, raw, sink points]) to keep the list small."""
+    into `items` ([name, form, raw, sink points, id]) to keep the list small."""
     D = calc.db()
     save = Save(sav)
     net = networks(save)
@@ -190,7 +190,7 @@ def sites(sav):
         if i not in index:
             index[i] = len(names)
             it = D['items'].get(i, {})
-            names.append([it.get('name') or i, it.get('form', 'solid'), bool(it.get('raw')), it.get('points', 0)])
+            names.append([it.get('name') or i, it.get('form', 'solid'), bool(it.get('raw')), it.get('points', 0), i])
         return index[i]
     out = []
     for m in machines(save):

@@ -76,6 +76,7 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `  library/donors-v60.sbp` | Sample pieces in game-1.2 format that builds copy from (`index.json` lists them). The project targets **game 1.2 only** |
 | `  scripts/sav.py` | Reader for 1.2 save files (building samples; offsets for the writer) |
 | `  scripts/production.py` | What a save produces/uses per minute, power balance, missing resources |
+| `  scripts/logistics.py` | A save's trains, trucks/tractors and drones: tracks, roads, stations, ports, what each moves per minute |
 | `  scripts/world.py` | Builds straight into a **new copy** of a 1.2 save: `World(sav).add_blueprint(bp, pos, yaw)`, `write()` |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds; `map.html` is the **World map**, `pieces.js` the shapes both share |
 | `  tools/terrain/` | C# tool (CUE4Parse) that reads the ground heights from the player's game install into `.local/terrain/data` for the World map |
@@ -134,7 +135,16 @@ studio page, **Production report** at `http://localhost:8770/production?save=<sa
 chosen distance (default 40 m) that share a belt and pipe network, so one area can hold several.
 Each is labelled with what it puts out and the power it needs, counting its pumps, freight
 platforms, stations, lights, sinks and other powered buildings (`consumers` in
-`production.json`). Click it for its outputs, inputs, power breakdown and machines. Node purity needs
+`production.json`). Click it for its outputs, inputs, power breakdown and machines. Rail lines
+and train stations are on the map too (`scripts/logistics.py`). Hovering a factory shows its
+stations, where its trains go, and each import short of what it needs, with "+N trains" to close
+it. Clicking it shows import and export tables against train capacity. The capacity is an
+estimate: 32 stacks per wagon, trains at ~90 km/h, 27 s per stop. Roads with truck stations,
+trucks and tractors are on the map too, and so are drone ports with their links. Truck and drone
+rates come from what the save measured: items per docking and time between dockings, or drone
+trips. Trucks that never docked are estimated. Each factory's status (imports short, exports
+piling up, covered, no transport link) counts trains, trucks and drones. A "Transport check"
+board under the map lists every factory by status. Node purity needs
 `.local/terrain/data/nodes.json` (`terrain.exe nodes`, see the World map section). Details are in
 the skill's "What a save produces".
 
@@ -342,6 +352,18 @@ their own designs (`sbp.py info/render/dump`, `catalog` for the pieces they cont
 
 ## Maintaining this repo
 
+- **Every improvement is saved into the skill, the same day.** A new tool, calculation, page or
+  lesson from the player's in-game checks goes into the project skill (`scripts/`, `studio/`,
+  `library/`) together with its notes in the skill's `SKILL.md` and in this file. Then commit it.
+  The player asked for this standing rule: never leave a capability only in a chat or in `out/`.
+- **One copy of the skill.** `~/.claude/skills/satisfactory-blueprints` on the maintainer's PC is a
+  directory junction to this repo's `.claude/skills/satisfactory-blueprints`, so it updates with
+  every edit and every pull. The old copy is in `~/.claude/skills/.trash/`. Never copy files there
+  by hand. If it's ever a plain folder again, replace it with a junction:
+  `New-Item -ItemType Junction -Path ~/.claude/skills/satisfactory-blueprints -Target <repo>/.claude/skills/satisfactory-blueprints`.
+- **Players get updates from `master` on GitHub.** The installer skill
+  (`install/satisfactory-builder`) runs `git pull --ff-only` every time it's used. Work done on
+  `dev` reaches players only once it's merged to `master` and pushed. Ask before pushing.
 - **Game 1.2 only.** The library and every build are in game-1.2 format (object version 60).
   The reader still opens older blueprints (Update 8 onwards) so players can look at old designs.
 - After changing `sbp.py`, round-trip a large set of real blueprints and confirm every file is

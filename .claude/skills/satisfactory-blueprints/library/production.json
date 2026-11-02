@@ -320,4341 +320,5060 @@
    "form": "solid",
    "name": "Alien DNA Capsule",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "AlienPowerBuilding": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "AlienPowerFuel": {
    "form": "solid",
    "name": "Alien Power Matrix",
    "points": 210,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "AlienProtein": {
    "form": "solid",
    "name": "Alien Protein",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "AluminaSolution": {
    "form": "liquid",
    "name": "Alumina Solution",
    "points": 20,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "AluminumCasing": {
    "form": "solid",
    "name": "Aluminum Casing",
    "points": 393,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "AluminumIngot": {
    "form": "solid",
    "name": "Aluminum Ingot",
    "points": 131,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "AluminumPlate": {
    "form": "solid",
    "name": "Alclad Aluminum Sheet",
    "points": 266,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "AluminumPlateReinforced": {
    "form": "solid",
    "name": "Heat Sink",
    "points": 2804,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "AluminumScrap": {
    "form": "solid",
    "name": "Aluminum Scrap",
    "points": 27,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "AssemblerMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Barrier_Corner": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Barrier_Low_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Barrier_Tall_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Battery": {
    "energy": 6000.0,
    "form": "solid",
    "name": "Battery",
    "points": 465,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Beam": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Cable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Cable_Cluster": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Concrete": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Connector": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Connector_Double": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Cross": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_H": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Painted": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Shelf": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Beam_Support": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Berry": {
    "form": "solid",
    "name": "Paleberry",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "BigGarageDoor_16x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "BigGarageDoor_16x8_Concrete": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "BigGarageDoor_16x8_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Biofuel": {
    "energy": 450.0,
    "form": "solid",
    "name": "Solid Biofuel",
    "points": 48,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Blender": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "BlueprintDesigner": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "BlueprintDesigner_MK2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "BlueprintDesigner_MK3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Cable": {
    "form": "solid",
    "name": "Cable",
    "points": 24,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "CandyCane": {
    "form": "solid",
    "name": "Candy Cane",
    "points": 6,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CandyCaneDecor": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkCross": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkRamp": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkStairs": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkStraight": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkT": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CatwalkTurn": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CeilingLight": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Cement": {
    "form": "solid",
    "name": "Concrete",
    "points": 12,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "CentralStorage": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "ChainLinkFence": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Chainsaw": {
    "form": "solid",
    "name": "Chainsaw",
    "points": 2760,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "CircuitBoard": {
    "form": "solid",
    "name": "Circuit Board",
    "points": 696,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "CircuitBoardHighSpeed": {
    "form": "solid",
    "name": "AI Limiter",
    "points": 920,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Coal": {
    "energy": 300.0,
    "form": "solid",
    "name": "Coal",
    "points": 3,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "CompactedCoal": {
    "energy": 630.0,
    "form": "solid",
    "name": "Compacted Coal",
    "points": 28,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Computer": {
    "form": "solid",
    "name": "Computer",
    "points": 8352,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "ComputerSuper": {
    "form": "solid",
    "name": "Supercomputer",
    "points": 97352,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Concrete_Barrier_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConstructorMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Converter": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorAttachmentMerger": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorAttachmentMergerPriority": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorAttachmentSplitter": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorAttachmentSplitterProgrammable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorAttachmentSplitterSmart": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk5": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorBeltMk6": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorCeilingAttachment": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk5": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorLiftMk6": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorMonitor": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorPole": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorPoleStackable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorPoleWall": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ConveyorWallHole": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CoolingSystem": {
    "form": "solid",
    "name": "Cooling System",
    "points": 12006,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CopperDust": {
    "form": "solid",
    "name": "Copper Powder",
    "points": 72,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "CopperIngot": {
    "form": "solid",
    "name": "Copper Ingot",
    "points": 6,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CopperSheet": {
    "form": "solid",
    "name": "Copper Sheet",
    "points": 24,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Crystal": {
    "form": "solid",
    "name": "Blue Power Slug",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "CrystalOscillator": {
    "form": "solid",
    "name": "Crystal Oscillator",
    "points": 3072,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "CrystalShard": {
    "form": "solid",
    "name": "Power Shard",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Crystal_mk2": {
    "form": "solid",
    "name": "Yellow Power Slug",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Crystal_mk3": {
    "form": "solid",
    "name": "Purple Power Slug",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "CyberWagon": {
    "form": "solid",
    "name": "Cyber Wagon",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "DarkEnergy": {
    "form": "gas",
    "name": "Dark Matter Residue",
    "points": 130,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "DarkMatter": {
    "form": "solid",
    "name": "Dark Matter Crystal",
    "points": 1780,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Diamond": {
    "form": "solid",
    "name": "Diamonds",
    "points": 240,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "DissolvedSilica": {
    "form": "liquid",
    "name": "Dissolved Silica",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "DownQuarterPipeInCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeInCorner_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeInCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeInCorner_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeOutCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeOutCorner_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeOutCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipeOutCorner_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipe_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipe_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipe_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DownQuarterPipe_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DroneStation": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "DroneTransport": {
    "form": "solid",
    "name": "Drone",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ElectromagneticControlRod": {
    "form": "solid",
    "name": "Electromagnetic Control Rod",
    "points": 2560,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Elevator": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ElevatorFloorStop": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Explorer": {
    "form": "solid",
    "name": "Explorer",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "Fabric": {
    "form": "solid",
    "name": "Fabric",
    "points": 140,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Fence_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FicsiteIngot": {
    "form": "solid",
    "name": "Ficsite Ingot",
    "points": 1936,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FicsiteMesh": {
    "form": "solid",
    "name": "Ficsite Trigon",
    "points": 1291,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Ficsonium": {
    "form": "solid",
    "name": "Ficsonium",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FicsoniumFuelRod": {
    "energy": 150000.0,
    "form": "solid",
    "name": "Ficsonium Fuel Rod",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Filter": {
    "form": "solid",
    "name": "Gas Filter",
    "points": 608,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Flat_Frame_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FloodlightPole": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FloodlightWall": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FluidCanister": {
    "form": "solid",
    "name": "Empty Canister",
    "points": 60,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FluidTruck": {
    "form": "solid",
    "name": "Fluid Truck",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "FluidTruckStation": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FoundationGlass_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FoundationPassthrough_Hypertube": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FoundationPassthrough_Lift": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FoundationPassthrough_Pipe": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_8x1_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_8x2_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_ConcretePolished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Frame_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Foundation_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FoundryMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FrackingExtractor": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FrackingSmasher": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "FreightWagon": {
    "form": "solid",
    "name": "Freight Car",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Fuel": {
    "energy": 750.0,
    "form": "solid",
    "name": "Packaged Fuel",
    "points": 270,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GasTank": {
    "form": "solid",
    "name": "Empty Fluid Tank",
    "points": 170,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Gate_Automated_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GeneratorBiomass_Automated": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GeneratorCoal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GeneratorFuel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GeneratorGeoThermal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GeneratorNuclear": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GenericBiomass": {
    "energy": 180.0,
    "form": "solid",
    "name": "Biomass",
    "points": 12,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Gift": {
    "form": "solid",
    "name": "FICSMAS Gift",
    "points": 1,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "GoldIngot": {
    "form": "solid",
    "name": "Caterium Ingot",
    "points": 42,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "GolfCart": {
    "form": "solid",
    "name": "Factory Cart™",
    "points": 1552,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "GolfCartGold": {
    "form": "solid",
    "name": "Golden Factory Cart™",
    "points": 1852,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "Gunpowder": {
    "form": "solid",
    "name": "Black Powder",
    "points": 14,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "GunpowderMK2": {
    "form": "solid",
    "name": "Smokeless Powder",
    "points": 58,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HadronCollider": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HatcherParts": {
    "form": "solid",
    "name": "Hatcher Remains",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "HazmatFilter": {
    "form": "solid",
    "name": "Iodine-Infused Filter",
    "points": 2274,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "HeavyOilResidue": {
    "energy": 400.0,
    "form": "liquid",
    "name": "Heavy Oil Residue",
    "points": 30,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "HighSpeedConnector": {
    "form": "solid",
    "name": "High-Speed Connector",
    "points": 3776,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HighSpeedWire": {
    "form": "solid",
    "name": "Quickwire",
    "points": 17,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "HogParts": {
    "form": "solid",
    "name": "Hog Remains",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "HyperPoleStackable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HyperTubeJunction": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HyperTubeWallHole": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HyperTubeWallSupport": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "HypertubeTJunction": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "IndustrialTank": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_DCorner_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "InvertedRamp_UCorner_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "IonizedFuel": {
    "energy": 5000.0,
    "form": "gas",
    "name": "Ionized Fuel",
    "points": 2398,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "IronIngot": {
    "form": "solid",
    "name": "Iron Ingot",
    "points": 2,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "IronPlate": {
    "form": "solid",
    "name": "Iron Plate",
    "points": 6,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "IronPlateReinforced": {
    "form": "solid",
    "name": "Reinforced Iron Plate",
    "points": 120,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "IronRod": {
    "form": "solid",
    "name": "Iron Rod",
    "points": 4,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "IronScrew": {
    "form": "solid",
    "name": "Screws",
    "points": 2,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "JumpPad": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "JumpPadAdjustable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "JumpPadTilted": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ladder": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "LandingPad": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "LargeFan": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "LargeVent": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Leaves": {
    "energy": 15.0,
    "form": "solid",
    "name": "Leaves",
    "points": 3,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "LightsControlPanel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "LiquidBiofuel": {
    "energy": 750.0,
    "form": "liquid",
    "name": "Liquid Biofuel",
    "points": 261,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "LiquidFuel": {
    "energy": 750.0,
    "form": "liquid",
    "name": "Fuel",
    "points": 75,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "LiquidOil": {
    "energy": 320.0,
    "form": "liquid",
    "name": "Crude Oil",
    "points": 30,
-   "raw": true
+   "raw": true,
+   "stack": 50.0
   },
   "LiquidTurboFuel": {
    "energy": 2000.0,
    "form": "liquid",
    "name": "Turbofuel",
    "points": 225,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Locomotive": {
    "form": "solid",
    "name": "Electric Locomotive",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "LookoutTower": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Mam": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ManufacturerMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Medkit": {
    "form": "solid",
    "name": "Medicinal Inhaler",
    "points": 125,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "MinerMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "MinerMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "MinerMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ModularFrame": {
    "form": "solid",
    "name": "Modular Frame",
    "points": 408,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "ModularFrameFused": {
    "form": "solid",
    "name": "Fused Modular Frame",
    "points": 62840,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "ModularFrameHeavy": {
    "form": "solid",
    "name": "Heavy Modular Frame",
    "points": 10800,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "ModularFrameLightweight": {
    "form": "solid",
    "name": "Radio Control Unit",
    "points": 32352,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Motor": {
    "form": "solid",
    "name": "Motor",
    "points": 1520,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "MotorLightweight": {
    "form": "solid",
    "name": "Turbo Motor",
    "points": 240496,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Mycelia": {
    "energy": 20.0,
    "form": "solid",
    "name": "Mycelia",
    "points": 10,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "NitricAcid": {
    "form": "liquid",
    "name": "Nitric Acid",
    "points": 94,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "NitrogenGas": {
    "form": "gas",
    "name": "Nitrogen Gas",
    "points": 10,
-   "raw": true
+   "raw": true,
+   "stack": 50.0
   },
   "NonFissibleUranium": {
    "form": "solid",
    "name": "Non-Fissile Uranium",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "NuclearFuelRod": {
    "energy": 750000.0,
    "form": "solid",
    "name": "Uranium Fuel Rod",
    "points": 43468,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "NuclearWaste": {
    "form": "solid",
    "name": "Uranium Waste",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "Nut": {
    "form": "solid",
    "name": "Beryl Nut",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "OilPump": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "OilRefinery": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "OreBauxite": {
    "form": "solid",
    "name": "Bauxite",
    "points": 8,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "OreCopper": {
    "form": "solid",
    "name": "Copper Ore",
    "points": 3,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "OreGold": {
    "form": "solid",
    "name": "Caterium Ore",
    "points": 7,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "OreIron": {
    "form": "solid",
    "name": "Iron Ore",
    "points": 1,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "OreUranium": {
    "form": "solid",
    "name": "Uranium",
    "points": 35,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "PackagedAlumina": {
    "form": "solid",
    "name": "Packaged Alumina Solution",
    "points": 160,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedBiofuel": {
    "energy": 750.0,
    "form": "solid",
    "name": "Packaged Liquid Biofuel",
    "points": 370,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedIonizedFuel": {
    "energy": 10000.0,
    "form": "solid",
    "name": "Packaged Ionized Fuel",
    "points": 5246,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedNitricAcid": {
    "form": "solid",
    "name": "Packaged Nitric Acid",
    "points": 412,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedNitrogenGas": {
    "form": "solid",
    "name": "Packaged Nitrogen Gas",
    "points": 312,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedOil": {
    "energy": 320.0,
    "form": "solid",
    "name": "Packaged Oil",
    "points": 180,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedOilResidue": {
    "energy": 400.0,
    "form": "solid",
    "name": "Packaged Heavy Oil Residue",
    "points": 180,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedRocketFuel": {
    "energy": 7200.0,
    "form": "solid",
    "name": "Packaged Rocket Fuel",
    "points": 1028,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedSulfuricAcid": {
    "form": "solid",
    "name": "Packaged Sulfuric Acid",
    "points": 152,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PackagedWater": {
    "form": "solid",
    "name": "Packaged Water",
    "points": 130,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Packager": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Parachute": {
    "form": "solid",
    "name": "Parachute",
    "points": 6080,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "PetroleumCoke": {
    "energy": 180.0,
    "form": "solid",
    "name": "Petroleum Coke",
    "points": 20,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "PillarBase": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PillarBase_Small": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PillarMiddle": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PillarMiddle_Concrete": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PillarMiddle_Frame": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PillarTop": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Pillar_Small_Concrete": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Pillar_Small_Frame": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Pillar_Small_Metal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipeHyper": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipeHyperStart": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipeHyperSupport": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipeStorageTank": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipeSupportStackable": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Pipeline": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineJunction_Cross": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineJunction_T": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineMK2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineMK2_NoIndicator": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelinePump": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelinePumpMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineSupport": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineSupportWall": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PipelineSupportWallHole": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Pipeline_NoIndicator": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Plastic": {
    "form": "solid",
    "name": "Plastic",
    "points": 75,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "PlutoniumCell": {
    "form": "solid",
    "name": "Encased Plutonium Cell",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "PlutoniumFuelRod": {
    "energy": 1500000.0,
    "form": "solid",
    "name": "Plutonium Fuel Rod",
    "points": 153184,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "PlutoniumPellet": {
    "form": "solid",
    "name": "Plutonium Pellet",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PlutoniumWaste": {
    "form": "solid",
    "name": "Plutonium Waste",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "PolymerResin": {
    "form": "solid",
    "name": "Polymer Resin",
    "points": 12,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Portal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PortalPotty": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PortalSatellite": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerLine": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWall": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWallDouble": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWallDoubleMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWallDoubleMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWallMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerPoleWallMk3": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerStorageMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerSwitch": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerTower": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PowerTowerPlatform": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "PressureConversionCube": {
    "form": "solid",
    "name": "Pressure Conversion Cube",
    "points": 255088,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "PriorityPowerSwitch": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuantumEncoder": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuantumEnergy": {
    "form": "gas",
    "name": "Excited Photonic Matter",
    "points": 100,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "QuantumOscillator": {
    "form": "solid",
    "name": "Superposition Oscillator",
    "points": 37292,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeCorner_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeInCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeInCorner_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeInCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeInCorner_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Ficsit_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Ficsit_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Ficsit_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Grip_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Grip_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_PolishedConcrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_PolishedConcrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleInCorner_PolishedConcrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Asphalt_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Asphalt_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Asphalt_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Concrete_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Concrete_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Concrete_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Ficsit_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Ficsit_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Ficsit_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Grip_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Grip_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_Grip_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_PolishedConcrete_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_PolishedConcrete_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddleOutCorner_PolishedConcrete_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Ficsit_4x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Ficsit_4x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Ficsit_4x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Grip_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Grip_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_PolishedConcrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_PolishedConcrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeMiddle_PolishedConcrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeOutCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeOutCorner_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeOutCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipeOutCorner_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe_ConcretePolished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuarterPipe_Grip_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "QuartzCrystal": {
    "form": "solid",
    "name": "Quartz Crystal",
    "points": 50,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "RadarTower": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Railing_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RailroadBlockSignal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RailroadEndStop": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RailroadPathSignal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RailroadTrack": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "RampDouble": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampDouble_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x1_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x1_Corner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x2_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x2_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x2_Corner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x4_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RampInverted_8x4_Corner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_8x1_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_8x2_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_8x4_Inverted_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_8x8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x1_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x1_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x2_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x2_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Diagonal_8x4_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_DownCorner_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Frame_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Frame_Inverted_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Metal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Metal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Metal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Polished_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Polished_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Ramp_UpCorner_Polished_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RawQuartz": {
    "form": "solid",
    "name": "Raw Quartz",
    "points": 15,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "RebarGunProjectile": {
    "form": "solid",
    "name": "Rebar Gun",
    "points": 1968,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "ResourceSink": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "ResourceSinkShop": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "RocketFuel": {
    "energy": 3600.0,
    "form": "gas",
    "name": "Rocket Fuel",
    "points": 289,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Roof_A_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_A_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_A_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_A_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_InCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_InCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_InCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_OutCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_OutCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Metal_OutCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_InCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_InCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_InCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_OutCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_OutCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Orange_OutCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_InCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_InCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_InCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_OutCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_OutCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Tar_OutCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_InCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_InCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_InCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_OutCorner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_OutCorner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Roof_Window_OutCorner_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Rotor": {
    "form": "solid",
    "name": "Rotor",
    "points": 140,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Rubber": {
    "form": "solid",
    "name": "Rubber",
    "points": 60,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "SAM": {
    "form": "solid",
    "name": "SAM",
    "points": 20,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "SAMFluctuator": {
    "form": "solid",
    "name": "SAM Fluctuator",
    "points": 1968,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SAMIngot": {
    "form": "solid",
    "name": "Reanimated SAM",
    "points": 160,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Shroom": {
    "form": "solid",
    "name": "Bacon Agaric",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Silica": {
    "form": "solid",
    "name": "Silica",
    "points": 20,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "SingularityCell": {
    "form": "solid",
    "name": "Singularity Cell",
    "points": 114675,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SmelterMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Snow": {
    "form": "solid",
    "name": "FICSMAS Actual Snow",
    "points": 5,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "SnowCannon": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "SnowDispenser": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Snowman": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SpaceElevator": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SpaceElevatorPart_1": {
    "form": "solid",
    "name": "Smart Plating",
    "points": 520,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_10": {
    "form": "solid",
    "name": "Biochemical Sculptor",
    "points": 301778,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_11": {
    "form": "solid",
    "name": "Ballistic Warp Drive",
    "points": 2895334,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_12": {
    "form": "solid",
    "name": "AI Expansion Server",
    "points": 597652,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_2": {
    "form": "solid",
    "name": "Versatile Framework",
    "points": 1176,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_3": {
    "form": "solid",
    "name": "Automated Wiring",
    "points": 1440,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_4": {
    "form": "solid",
    "name": "Modular Engine",
    "points": 9960,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_5": {
    "form": "solid",
    "name": "Adaptive Control Unit",
    "points": 76368,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_6": {
    "form": "solid",
    "name": "Magnetic Field Generator",
    "points": 11000,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_7": {
    "form": "solid",
    "name": "Assembly Director System",
    "points": 500176,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_8": {
    "form": "solid",
    "name": "Thermal Propulsion Rocket",
    "points": 728508,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpaceElevatorPart_9": {
    "form": "solid",
    "name": "Nuclear Pasta",
    "points": 538976,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "SpitterParts": {
    "form": "solid",
    "name": "Spitter Remains",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "StackableShelf": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Asphalt_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Asphalt_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Asphalt_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Concrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_FicsitSet_8x1_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_FicsitSet_8x2_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_FicsitSet_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_GripMetal_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_GripMetal_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_GripMetal_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_PolishedConcrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_PolishedConcrete_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stair_PolishedConcrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stairs_Left_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stairs_Right_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Huge": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Large": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Medium": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Portrait": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Small": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_SmallVeryWide": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_SmallWide": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Square": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Square_Small": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StandaloneWidgetSign_Square_Tiny": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Stator": {
    "form": "solid",
    "name": "Stator",
    "points": 240,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelIngot": {
    "form": "solid",
    "name": "Steel Ingot",
    "points": 8,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelPipe": {
    "form": "solid",
    "name": "Steel Pipe",
    "points": 24,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "SteelPlate": {
    "form": "solid",
    "name": "Steel Beam",
    "points": 64,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "SteelPlateReinforced": {
    "form": "solid",
    "name": "Encased Industrial Beam",
    "points": 528,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4_Gate_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4_Window_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4_Window_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4_Window_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_8x4_Window_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_FlipTris_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_FlipTris_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_FlipTris_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_FlipTris_8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_Tris_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_Tris_8x2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_Tris_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "SteelWall_Tris_8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StingerParts": {
    "form": "solid",
    "name": "Stinger Remains",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "Stone": {
    "form": "solid",
    "name": "Limestone",
    "points": 2,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "StorageContainerMk1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StorageContainerMk2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StorageHazard": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StorageMedkit": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StoragePlayer": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "StreetLight": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Sulfur": {
    "form": "solid",
    "name": "Sulfur",
    "points": 11,
-   "raw": true
+   "raw": true,
+   "stack": 100.0
   },
   "SulfuricAcid": {
    "form": "liquid",
    "name": "Sulfuric Acid",
    "points": 16,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "TarpFence": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TemporalProcessor": {
    "form": "solid",
    "name": "Neural-Quantum Processor",
    "points": 248034,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TimeCrystal": {
    "form": "solid",
    "name": "Time Crystal",
    "points": 960,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Tractor": {
    "form": "solid",
    "name": "Tractor",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "TradingPost": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "TrainDockingStation": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TrainDockingStationLiquid": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TrainPlatformEmpty": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TrainPlatformEmpty_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TrainStation": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TreeGiftProducer": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Truck": {
    "form": "solid",
    "name": "Truck",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "TruckStation": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "TurboFuel": {
    "energy": 2000.0,
    "form": "solid",
    "name": "Packaged Turbofuel",
    "points": 570,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "UraniumCell": {
    "form": "solid",
    "name": "Encased Uranium Cell",
    "points": 147,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "Valve": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "VehiclePath_Explorer": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "VehiclePath_FactoryCart": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "VehiclePath_Tractor": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "VehiclePath_Truck": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "VehiclePath_Universal": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WAT1": {
    "form": "solid",
    "name": "Somersloop",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "WAT2": {
    "form": "solid",
    "name": "Mercer Sphere",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "WalkwayCross": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WalkwayRamp": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WalkwayStraight": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WalkwayT": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WalkwayTurn": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WallSet_Steel_Angular_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WallSet_Steel_Angular_8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_8x4_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x1_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x1_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x2_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x2_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_ConveyorHole_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_ConveyorHole_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_ConveyorHole_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Corner_2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Window_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Window_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Window_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x4_Window_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x8_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x8_Corner_2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x8_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_8x8_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_Angular_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_Angular_8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_CDoor_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_Gate_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Concrete_SDoor_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_01_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_02_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_03_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Conveyor_8x4_04_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Door_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Door_8x4_01_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Door_8x4_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Door_8x4_03_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Frame_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Gate_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x1": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x1_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x1_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x2_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x2_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x4_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x4_Corner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x4_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x4_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x8_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x8_Corner_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x8_FlipTris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_8x8_Tris": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_Angular_8x4": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Orange_Angular_8x8": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Steel_8x4_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Steel_8x4_Corner_2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Steel_8x8_Corner_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Steel_8x8_Corner_2": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_03": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_03_Steel": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_04": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_05": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_06": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_8x4_07": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_Thin_8x4_01": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wall_Window_Thin_8x4_02": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Water": {
    "form": "liquid",
    "name": "Water",
    "points": 5,
-   "raw": true
+   "raw": true,
+   "stack": 50.0
   },
   "WaterPump": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Wire": {
    "form": "solid",
    "name": "Wire",
    "points": 6,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "Wood": {
    "energy": 100.0,
    "form": "solid",
    "name": "Wood",
    "points": 30,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "WorkBench": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "Workshop": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "WreathDecor": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "XMassTree": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "XmasBall1": {
    "form": "solid",
    "name": "Red FICSMAS Ornament",
    "points": 2,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "XmasBall2": {
    "form": "solid",
    "name": "Blue FICSMAS Ornament",
    "points": 1,
-   "raw": false
+   "raw": false,
+   "stack": 200.0
   },
   "XmasBall3": {
    "form": "solid",
    "name": "Copper FICSMAS Ornament",
    "points": 32,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "XmasBall4": {
    "form": "solid",
    "name": "Iron FICSMAS Ornament",
    "points": 18,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "XmasBallCluster": {
    "form": "solid",
    "name": "FICSMAS Ornament Bundle",
    "points": 100,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "XmasBow": {
    "form": "solid",
    "name": "FICSMAS Bow",
    "points": 4,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   },
   "XmasBranch": {
    "form": "solid",
    "name": "FICSMAS Tree Branch",
    "points": 2,
-   "raw": false
+   "raw": false,
+   "stack": 500.0
   },
   "XmasDataCartridge1": {
    "form": "solid",
    "name": "FICSMAS Data Cartridge Day 1",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "XmasDataCartridge2": {
    "form": "solid",
    "name": "FICSMAS Data Cartridge Day 4",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "XmasDataCartridge3": {
    "form": "solid",
    "name": "FICSMAS Data Cartridge Day 8",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "XmasDataCartridge4": {
    "form": "solid",
    "name": "FICSMAS Data Cartridge Day 14",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 1.0
   },
   "XmasStar": {
    "form": "solid",
    "name": "FICSMAS Wonder Star",
    "points": 6540,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "XmasWreath": {
    "form": "solid",
    "name": "FICSMAS Wreath",
    "points": 630,
-   "raw": false
+   "raw": false,
+   "stack": 50.0
   },
   "xmassLights": {
    "form": "solid",
    "name": "",
    "points": 0,
-   "raw": false
+   "raw": false,
+   "stack": 100.0
   }
  },
  "machines": {

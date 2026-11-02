@@ -281,10 +281,12 @@ def build_production(docs_path):
                 continue
             form = {'RF_LIQUID': 'liquid', 'RF_GAS': 'gas'}.get(c.get('mForm'), 'solid')
             energy = float(c.get('mEnergyValue') or 0) * (1000 if form != 'solid' else 1)   # MJ per item / m³
+            stack = float(c.get('mCachedStackSize') or 0) / (1000 if form != 'solid' else 1)  # items / m³ per slot
             items[short(c['ClassName'])] = dict(name=c.get('mDisplayName', ''), form=form,
                                                 raw=native == 'FGResourceDescriptor',
                                                 points=int(float(c.get('mResourceSinkPoints') or 0)),
-                                                **({'energy': round(energy, 4)} if energy else {}))
+                                                **({'energy': round(energy, 4)} if energy else {}),
+                                                **({'stack': stack} if stack else {}))
     machines = {}
     for native in ('FGBuildableManufacturer', 'FGBuildableManufacturerVariablePower'):
         for c in by.get(native, []):

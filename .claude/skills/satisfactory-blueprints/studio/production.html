@@ -66,7 +66,26 @@
   #legend i { display:inline-block; width:8px; height:8px; background:var(--fg); }
   #legend i.dot { border-radius:50%; } #legend i.dia { transform:rotate(45deg) scale(.8); }
   #legend i.sm { width:4px; height:4px; background:var(--muted); }
+  #legend i.rail { width:14px; height:2px; background:#cdc8be; }
+  #legend i.stn { width:7px; height:7px; outline:1.5px solid #13151a; }
+  #legend i.road { width:14px; height:0; background:none; border-top:2px dashed #7fc8b4; }
+  #legend i.tst { width:0; height:0; background:none; border-left:4px solid transparent; border-right:4px solid transparent; border-bottom:7px solid #7fc8b4; }
+  #legend i.dln { width:14px; height:0; background:none; border-top:2px dotted #b9a6e8; }
+  #legend i.dpt { width:8px; height:8px; border-radius:50%; background:#b9a6e8; }
   #legend i.ring { background:transparent; border:2px solid var(--accent); border-radius:50%; width:11px; height:11px; }
+  #legendStatus { display:contents; }
+  #legendStatus b { font-weight:600; }
+  #board { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:8px; margin:10px 8px 0; }
+  #board:empty { display:none; }
+  .col { background:var(--panel2); border:1px solid var(--line); border-top:3px solid var(--c); border-radius:8px; padding:8px 10px; min-width:0; }
+  .col h5 { margin:0; font-size:13px; display:flex; justify-content:space-between; align-items:baseline; gap:6px; }
+  .col h5 .ic { color:var(--c); margin-right:5px; }
+  .col h5 b { font-size:18px; font-variant-numeric:tabular-nums; }
+  .col .why { color:var(--muted); font-size:11px; margin:1px 0 6px; }
+  .col .f { padding:4px 6px; margin:0 -6px; border-radius:5px; cursor:pointer; font-size:12px; }
+  .col .f:hover { background:#2a2e37; } .col .f.sel { background:#2a2419; }
+  .col .f span { display:block; color:var(--muted); font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .col .more { color:var(--muted); font-size:11px; padding-top:4px; cursor:pointer; }
   #detail { margin:10px 8px 0; }
   #detail .box { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
   #detail .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:4px 18px; margin-top:6px; }
@@ -108,20 +127,31 @@
         <h3>Factory map</h3>
         <div class="note">Machines close together on the same belts and pipes are one factory. Circles show each
           factory's area, what it puts out and the power it needs, counting its pumps, stations, lights, sinks and
-          other powered buildings. Drag to move, scroll to zoom, click a factory for details.</div>
+          other powered buildings. Rail lines, roads and drone links are drawn with their train stations, truck
+          stations and drone ports: point at a factory to see where its trains, trucks and drones go and any import
+          gap; point at a station or port for what arrives and leaves. Drag to move, scroll to zoom, click a factory
+          for details.</div>
         <div class="tools">
           <label>Machines within <input type="range" id="radius" min="10" max="200" step="5" value="40" style="width:120px"> <b id="radiusV">40 m</b></label>
           <label><input type="checkbox" id="byBelts" checked> Split where belts and pipes don't connect</label>
           <label>At least <input type="number" id="minM" min="1" max="50" value="3" style="width:56px"> machines</label>
           <label>Rates <select id="mode" style="width:auto"><option value="full">at full speed</option><option value="now">now</option></select></label>
+          <label><input type="checkbox" id="showRail" checked> Trains</label>
+          <label><input type="checkbox" id="showRoad" checked> Trucks</label>
+          <label><input type="checkbox" id="showDrone" checked> Drones</label>
+          <label><input type="checkbox" id="colorStatus" checked> Colour by transport status</label>
           <button id="fit">Fit</button>
         </div>
         <div id="mapWrap">
           <canvas id="map"></canvas>
           <div id="tip" hidden></div>
           <div id="legend"><span><i class="dot"></i>machine</span><span><i class="sq"></i>miner / extractor</span>
-            <span><i class="dia"></i>generator</span><span><i class="sm"></i>other powered building</span><span><i class="ring"></i>factory</span></div>
+            <span><i class="dia"></i>generator</span><span><i class="sm"></i>other powered building</span><span><i class="ring"></i>factory</span>
+            <span><i class="rail"></i>rail</span><span><i class="stn"></i>train station</span>
+            <span><i class="road"></i>road</span><span><i class="tst"></i>truck station</span>
+            <span><i class="dln"></i>drone link</span><span><i class="dpt"></i>drone port</span><span id="legendStatus"></span></div>
         </div>
+        <div id="board"></div>
         <div id="detail"></div>
         <div class="scroll"><table id="factories"></table></div>
       </div>
@@ -313,7 +343,126 @@ async function loadSites(path) {
   draw();
   try { sites = await api('/api/sites?path=' + encodeURIComponent(path)); }
   catch (e) { $('#factories').innerHTML = `<tr><td class="err">${esc(e.message)}</td></tr>`; return; }
-  cluster(); fit(); loadGround();
+  cluster(); fit(); loadGround(); loadRail(path);
+}
+
+// ---------- transport: trains, trucks/tractors, drones ----------
+// /api/rail (logistics.py): rail lines, train stations (platforms: load = export, unload = import) and trains;
+// roads, truck stations and vehicles (measured items per docking where they have docked); drone ports and
+// their measured trips. Every station, truck station and drone port is a "hub" with imports/exports
+// {item: [per minute, carrier ids]}; carriers are trains (t), vehicles (v) and drones (d, by home port).
+const MODES = {
+  train: { one: 'train', many: 'trains', color: '#e9e6df', line: 'rgba(205,200,190,.55)', box: '#showRail' },
+  truck: { one: 'truck', many: 'trucks', color: '#7fc8b4', line: 'rgba(127,200,180,.5)', box: '#showRoad' },
+  drone: { one: 'drone', many: 'drones', color: '#b9a6e8', line: 'rgba(185,166,232,.55)', box: '#showDrone' },
+};
+let rail = null, hubs = [];
+async function loadRail(path) {
+  rail = null; hubs = [];
+  try { rail = await api('/api/rail?path=' + encodeURIComponent(path)); } catch (e) { rail = null; }
+  if (rail) {
+    const pre = { train: 't', truck: 'v', drone: 'd' };
+    const norm = (s, kind, nets, carriers) => {
+      s.mode = kind; s.nets = nets; s.carriers = carriers;
+      for (const k of ['imports', 'exports']) for (const e of Object.values(s[k])) e[1] = e[1].map(i => pre[kind] + i);
+      hubs.push(s);
+    };
+    rail.stations.forEach(s => norm(s, 'train', s.platforms.map(p => p.network), [...new Set(s.trains)].map(t => 't' + t)));
+    rail.truck_stations.forEach(s => norm(s, 'truck', [s.network], [...new Set(s.vehicles)].map(v => 'v' + v)));
+    rail.drone_ports.forEach(s => norm(s, 'drone', [s.network],
+      rail.drone_ports.filter(p => p.has_drone && (p === s || p.partner === s.id)).map(p => 'd' + p.id)));
+  }
+  linkStations(); listFactories(); showDetail(); draw();
+}
+const carrier = c => c[0] === 't' ? { mode: 'train', ...rail.trains[+c.slice(1)] }
+  : c[0] === 'v' ? { mode: 'truck', ...rail.vehicles[+c.slice(1)] } : { mode: 'drone', port: rail.drone_ports[+c.slice(1)] };
+// the hubs a hub trades with: a train's other stops, a vehicle's other stations, a drone port's partner
+function partners(s) {
+  const out = new Set();
+  for (const c of s.carriers) {
+    const k = carrier(c);
+    if (k.mode === 'train') k.stops.forEach(x => out.add(rail.stations[x.station]));
+    else if (k.mode === 'truck') k.stops.forEach(x => out.add(rail.truck_stations[x]));
+    else { out.add(k.port); if (k.port.partner != null) out.add(rail.drone_ports[k.port.partner]); }
+  }
+  out.delete(s);
+  return [...out];
+}
+const shown = s => $(MODES[s.mode].box).checked;
+
+// each hub belongs to the factory it shares belts or pipes with, else the nearest factory whose area it
+// touches (within 80 m of its edge)
+function linkStations() {
+  for (const g of groups) { g.stations = []; g.logi = null; }
+  if (!rail || !sites) return;
+  const netOf = new Map();
+  groups.forEach(g => g.members.forEach(i => { const n = sites.machines[i][6]; if (n >= 0) netOf.set(n, g); }));
+  for (const s of hubs) {
+    s.factory = null;
+    if (s.mode === 'train' && !s.platforms.length && !s.carriers.length) continue;
+    let g = null;
+    for (const n of s.nets) if (netOf.has(n)) { g = netOf.get(n); break; }
+    if (!g) {
+      let bd = Infinity;
+      for (const h of groups) { const d = Math.hypot(h.x - s.x, h.y - s.y) - h.r; if (d < 80 && d < bd) { bd = d; g = h; } }
+    }
+    if (g) { g.stations.push(s); s.factory = g; }
+  }
+  for (const g of groups) g.logi = logistics(g);
+}
+
+// a factory's trade by train, truck and drone: for every item it needs from outside, what its hubs' carriers
+// bring; for every item it has spare, what they take away; and how many more carriers like the ones already
+// on that run would close a gap
+function logistics(g) {
+  if (!g.stations.length) return null;
+  const sum = key => {
+    const m = new Map();
+    for (const s of g.stations) for (const [it, [v, ids]] of Object.entries(s[key])) {
+      const e = m.get(it) || { v: 0, by: { train: 0, truck: 0, drone: 0 }, ids: { train: new Set(), truck: new Set(), drone: new Set() } };
+      e.v += v; e.by[s.mode] += v; ids.forEach(c => e.ids[s.mode].add(c)); m.set(it, e);
+    }
+    return m;
+  };
+  const inn = sum('imports'), out = sum('exports');
+  const name = it => (rail.items[it] || [])[0] || (sites.items.find(x => x[4] === it) || [it])[0];
+  const row = (it, want, e) => {
+    const v = e ? e.v : 0, gap = want - v;
+    const modes = e ? Object.keys(MODES).filter(m => e.ids[m].size) : [];
+    const main = modes.sort((a, b) => e.by[b] - e.by[a])[0];
+    const per = main ? e.by[main] / e.ids[main].size : 0;
+    return { it, name: name(it), form: (rail.items[it] || sites.items.find(x => x[4] === it) || [, 'solid'])[1], want, got: v,
+             carriers: modes.map(m => [m, e.ids[m].size]), trains: modes.reduce((a, m) => a + e.ids[m].size, 0),
+             gap, more: gap > 0.5 && per > 0 ? Math.ceil(gap / per) : 0, moreMode: main };
+  };
+  const id = k => sites.items[k][4];
+  const imports = g.ins.filter(([k]) => sites.items[k][0] !== 'Water').map(([k, v]) => row(id(k), -v, inn.get(id(k))));
+  const exports = g.outs.filter(([k]) => sites.items[k][0] !== 'Water').map(([k, v]) => row(id(k), v, out.get(id(k))));
+  // what carriers move here that this factory doesn't make or use (passing through, or stock)
+  const known = new Set([...imports, ...exports].map(r => r.it));
+  const other = [...inn].filter(([it]) => !known.has(it)).map(([it, e]) => ({ it, name: name(it), dir: 'in', got: e.v }))
+    .concat([...out].filter(([it]) => !known.has(it)).map(([it, e]) => ({ it, name: name(it), dir: 'out', got: e.v })));
+  const carriers = [...new Set(g.stations.flatMap(s => s.carriers))].map(carrier);
+  const count = m => carriers.filter(c => c.mode === m).length;
+  return { imports, exports, other, carriers, trains: carriers, count,
+           gaps: imports.filter(r => r.gap > 0.5).length, piles: exports.filter(r => r.gap > 0.5).length };
+}
+const moreText = r => r.more ? `+${r.more} ${r.more > 1 ? MODES[r.moreMode].many : MODES[r.moreMode].one}` : '';
+const viaText = r => r.carriers.map(([m, n]) => `${n} ${n > 1 ? MODES[m].many : MODES[m].one}`).join(', ');
+const hubCount = g => Object.keys(MODES).map(m => [m, g.stations.filter(s => s.mode === m).length]).filter(x => x[1]);
+
+// one transport status per factory: imports short (it starves) > exports piling up > covered;
+// without any station, truck station or drone port: "no transport link" if it needs items from outside
+const STATUS = {
+  short: { icon: '▼', label: 'Imports short', note: 'trains, trucks and drones bring less than it needs', color: '#e06c6c' },
+  pile:  { icon: '▲', label: 'Exports piling up', note: 'it makes more than they take away', color: '#e0a84a' },
+  ok:    { icon: '✓', label: 'Covered', note: 'they bring and take what it needs', color: '#5cb87a' },
+  none:  { icon: '–', label: 'No transport link', note: 'no station, truck station or drone port: belts or pipes from elsewhere (not checked)', color: '#8f8b82' },
+};
+function status(g) {
+  if (!rail) return null;
+  if (g.logi) return g.logi.gaps ? 'short' : g.logi.piles ? 'pile' : 'ok';
+  return g.ins.some(([k]) => sites.items[k][0] !== 'Water') && g.name !== 'Power plant' ? 'none' : null;
 }
 
 function cluster() {
@@ -361,7 +510,7 @@ function cluster() {
   groups.forEach((g, i) => g.id = i);
   outside = summarise([], loose);
   if (selected) selected = groups.find(g => g.members.includes(selected.members[0])) || null;
-  listFactories(); showDetail(); draw();
+  linkStations(); listFactories(); showDetail(); draw();
 }
 let outside = null;                            // powered buildings that aren't near any factory
 
@@ -406,8 +555,12 @@ let fSort = 'members';
 function listFactories() {
   const it = sites.items, rate = ([k, v]) => `${esc(it[k][0])} ${num(Math.abs(v))}${it[k][1] !== 'solid' ? ' m³' : ''}`;
   const head = [['name', 'Factory', ''], ['members', 'Machines', 'n'], ['need', 'Power needed', 'n'], ['', 'Puts out (per minute)', ''],
-    ['', 'Takes in from outside', ''], ['ran', 'Ran', 'n']];
-  const val = (g, k) => k === 'ran' ? g.running / g.members.length : k === 'name' ? g.name : g[k].length ?? g[k];
+    ['', 'Takes in from outside', ''], ['gaps', 'Transport', ''], ['ran', 'Ran', 'n']];
+  const val = (g, k) => k === 'ran' ? g.running / g.members.length : k === 'name' ? g.name
+    : k === 'gaps' ? (g.logi ? g.logi.gaps + g.logi.carriers.length / 1000 : -1) : g[k].length ?? g[k];
+  const trainsCell = g => !rail ? '<span class="muted">…</span>' : !g.logi ? '<span class="muted">no station</span>'
+    : Object.keys(MODES).filter(m => g.logi.count(m)).map(m => `${g.logi.count(m)} ${g.logi.count(m) > 1 ? MODES[m].many : MODES[m].one}`).join(' · ')
+      + (g.logi.gaps ? `<div class="short">▼ ${g.logi.gaps} gap${g.logi.gaps > 1 ? 's' : ''}</div>` : '<div class="spare">▲ covered</div>');
   const rows = [...groups].sort((a, b) => fSort === 'name' ? a.name.localeCompare(b.name) : val(b, fSort) - val(a, fSort));
   $('#factories').innerHTML = groups.length ? '<tr>' + head.map(([k, l, c]) =>
       `<th class="${c}${k ? ' sort' : ''}" data-k="${k}">${l}${k && k === fSort ? ' ↓' : ''}</th>`).join('') + '</tr>' +
@@ -417,9 +570,10 @@ function listFactories() {
       <td class="n">${mw(g.need)}</td>
       <td class="small">${g.name === 'Power plant' ? `<span class="spare">▲ makes ${mw(g.power)}</span> · ` : ''}${g.outs.slice(0, 3).map(rate).join(', ') || '–'}</td>
       <td class="small muted">${g.ins.slice(0, 3).map(rate).join(', ') || '–'}</td>
+      <td class="small">${trainsCell(g)}</td>
       <td class="n">${Math.round(g.running / g.members.length * 100)}%</td></tr>`).join('') +
     (outside && outside.extras.length ? `<tr><td class="muted">Not near any factory<div class="small">${outside.uses.slice(0, 4).map(([k, [, c]]) => `${c} ${esc(k)}`).join(', ')}</div></td>
-      <td class="n muted">${outside.extras.length} other</td><td class="n">${mw(outside.need)}</td><td colspan="3"></td></tr>` : '')
+      <td class="n muted">${outside.extras.length} other</td><td class="n">${mw(outside.need)}</td><td colspan="4"></td></tr>` : '')
     : '<tr><td class="empty">No group of machines is big enough. Lower "at least" or raise the distance.</td></tr>';
   document.querySelectorAll('#factories tr.pick').forEach(tr => tr.onclick = () => {
     selected = groups[+tr.dataset.id]; focusOn(selected); listFactories(); showDetail(); draw();
@@ -427,6 +581,41 @@ function listFactories() {
   document.querySelectorAll('#factories th.sort').forEach(th => th.onclick = () => { fSort = th.dataset.k; listFactories(); });
   const total = groups.reduce((a, g) => a + g.need, 0) + (outside ? outside.need : 0);
   $('#factoryMap h3').textContent = `Factory map · ${groups.length} factories · ${mw(total)} needed`;
+  renderBoard();
+}
+
+// the train logistics check under the map: every factory in one of four columns, worst first
+let boardOpen = {};
+function renderBoard() {
+  const on = rail && $('#colorStatus').checked;
+  $('#legendStatus').innerHTML = on ? Object.values(STATUS).map(s =>
+    `<span><b style="color:${s.color}">${s.icon}</b>${s.label.toLowerCase()}</span>`).join('') : '';
+  if (!rail) { $('#board').innerHTML = ''; return; }
+  const cols = { short: [], pile: [], ok: [], none: [] };
+  for (const g of groups) { const s = status(g); if (s) cols[s].push(g); }
+  const worst = (rows) => rows.filter(r => r.gap > 0.5).sort((a, b) => b.gap - a.gap);
+  const line = {
+    short: g => worst(g.logi.imports).map(r => `${r.name} −${per(r.gap, r.form)}${r.more ? ` · ${moreText(r)}` : r.trains ? '' : ' · nothing brings it'}`),
+    pile: g => worst(g.logi.exports).map(r => `${r.name} ${per(r.gap, r.form)} not taken${r.trains ? '' : ' · nothing takes it'}`),
+    ok: g => [Object.keys(MODES).filter(m => g.logi.count(m)).map(m => `${g.logi.count(m)} ${g.logi.count(m) > 1 ? MODES[m].many : MODES[m].one}`).join(' · ')],
+    none: g => g.ins.filter(([k]) => sites.items[k][0] !== 'Water').slice(0, 3).map(([k, v]) => `needs ${sites.items[k][0]} ${per(-v, sites.items[k][1])}`),
+  };
+  const sev = { short: g => Math.max(...worst(g.logi.imports).map(r => r.gap / r.want)) * 1e4 + g.members.length,
+                pile: g => Math.max(...worst(g.logi.exports).map(r => r.gap / r.want)) * 1e4 + g.members.length,
+                ok: g => g.members.length, none: g => g.members.length };
+  $('#board').innerHTML = Object.entries(cols).map(([k, gs]) => {
+    const S = STATUS[k], shown = boardOpen[k] ? gs.length : 6;
+    gs.sort((a, b) => sev[k](b) - sev[k](a));
+    return `<div class="col" style="--c:${S.color}"><h5><span><span class="ic">${S.icon}</span>${S.label}</span><b>${gs.length}</b></h5>
+      <div class="why">${S.note}</div>
+      ${gs.slice(0, shown).map(g => { const ls = line[k](g); return `<div class="f${g === selected ? ' sel' : ''}" data-id="${g.id}" title="${esc(ls.join('\n'))}">${esc(g.name)}
+        <span>${esc(ls[0] || '')}${ls.length > 1 ? ` · ${ls.length - 1} more item${ls.length > 2 ? 's' : ''}` : ''}</span></div>`; }).join('') || '<div class="why">none</div>'}
+      ${gs.length > shown ? `<div class="more" data-k="${k}">show all ${gs.length} ↓</div>` : boardOpen[k] && gs.length > 6 ? `<div class="more" data-k="${k}">show fewer ↑</div>` : ''}</div>`;
+  }).join('');
+  document.querySelectorAll('#board .f').forEach(el => el.onclick = () => {
+    selected = groups[+el.dataset.id]; focusOn(selected); listFactories(); showDetail(); draw();
+  });
+  document.querySelectorAll('#board .more').forEach(el => el.onclick = () => { boardOpen[el.dataset.k] = !boardOpen[el.dataset.k]; renderBoard(); });
 }
 
 function showDetail() {
@@ -441,8 +630,54 @@ function showDetail() {
       ${g.power > 0 ? `<div class="li"><span>Power</span><span>${mw(g.power)}</span></div>` : ''}</div>
     <div><h4>Takes in from outside</h4>${g.ins.map(li).join('') || '<span class="muted small">nothing: makes all it uses</span>'}</div>
     <div><h4>Power needed · ${mw(g.need)}</h4>${g.uses.map(([k, [v, c]]) => `<div class="li"><span>${esc(k)}${c ? ` <span class="muted">×${c}</span>` : ''}</span><span>${mw(v)}</span></div>`).join('') || '<span class="muted small">none</span>'}</div>
-    <div><h4>Machines</h4>${rec.map(([k, n]) => `<div class="li"><span>${esc(k)}</span><span>${n}</span></div>`).join('')}</div></div></div>`;
+    <div><h4>Machines</h4>${rec.map(([k, n]) => `<div class="li"><span>${esc(k)}</span><span>${n}</span></div>`).join('')}</div></div>
+    ${trainDetail(g)}</div>`;
 }
+
+const hubName = s => s ? s.name : '?';
+function hubLine(s) {
+  const kind = { train: 'train station', truck: 'truck station', drone: 'drone port' }[s.mode];
+  const what = s.mode === 'train' ? (() => { const l = s.platforms.filter(p => p.load).length; return `${l} loading, ${s.platforms.length - l} unloading`; })()
+    : s.mode === 'truck' ? (s.load ? 'loads' : 'unloads') : (s.partner != null ? `↔ ${esc(hubName(rail.drone_ports[s.partner]))}` : 'not paired');
+  const n = s.carriers.length;
+  return `<div class="li"><span><b style="color:${MODES[s.mode].color}">${MODE_MARK[s.mode]}</b> ${esc(s.name)} <span class="muted">· ${kind} · ${what}</span></span><span>${n} ${n === 1 ? MODES[s.mode].one : MODES[s.mode].many}</span></div>`;
+}
+function carrierLine(c) {
+  if (c.mode === 'train') return `<div class="li"><span><b style="color:${MODES.train.color}">${MODE_MARK.train}</b> ${esc(c.name)} <span class="muted">· ${c.locos} loco, ${c.wagons} wagon${c.wagons === 1 ? '' : 's'} · ${c.stops.map(x => esc(rail.stations[x.station].name)).join(' → ')}</span></span><span>${tripMin(c)}</span></div>`;
+  if (c.mode === 'truck') {
+    const r = Math.max(0, ...Object.values(c.per_min));
+    return `<div class="li"><span><b style="color:${MODES.truck.color}">${MODE_MARK.truck}</b> ${esc(c.kind)} <span class="muted">· ${c.slots || '?'} slots · ${c.stops.map(k => esc(rail.truck_stations[k].name)).join(' → ')}</span></span><span>${r ? `${c.measured ? '' : '~'}${num(r)}/min${c.measured ? ' measured' : ' est.'}` : 'no data'}</span></div>`;
+  }
+  const p = c.port, q = p.partner != null ? rail.drone_ports[p.partner] : null;
+  return `<div class="li"><span><b style="color:${MODES.drone.color}">${MODE_MARK.drone}</b> Drone <span class="muted">· ${esc(p.name)} ↔ ${esc(hubName(q))}</span></span><span>${p.trip_s ? `${(p.trip_s / 60).toFixed(1)} min trip, measured` : 'no trips yet'}</span></div>`;
+}
+function trainDetail(g) {
+  if (!rail) return '';
+  const L = g.logi;
+  if (!L) return `<h4>Transport</h4><span class="muted small">No train station, truck station or drone port near this factory: everything it
+    needs from outside (${g.ins.length} items) comes by belt or pipe from somewhere else.</span>`;
+  const status = (r, out) => r.gap > 0.5
+    ? `<span class="short">▼ ${per(r.gap, r.form)} ${out ? 'not taken away' : 'short'}</span>${r.more ? ` · <b>${moreText(r)}</b>` : r.trains ? '' : out ? ' · nothing takes it' : ' · nothing brings it'}`
+    : `<span class="spare">▲ covered</span>`;
+  const table = (rows, head, out) => rows.length ? `<table class="small" style="margin-top:4px"><tr><th>${head}</th><th class="n">Factory</th><th class="n">Moved</th><th>By</th><th>Gap</th></tr>` +
+    rows.sort((a, b) => b.gap - a.gap).map(r => `<tr><td>${esc(r.name)}${r.form !== 'solid' ? ' <span class="fluid">m³</span>' : ''}</td>
+      <td class="n">${per(r.want, r.form)}</td><td class="n">${r.got ? per(r.got, r.form) : '–'}</td><td>${viaText(r) || '–'}</td><td>${status(r, out)}</td></tr>`).join('') + '</table>'
+    : '<span class="muted small">none</span>';
+  const order = { train: 0, truck: 1, drone: 2 };
+  const st = [...g.stations].sort((a, b) => order[a.mode] - order[b.mode]).map(hubLine).join('');
+  const tr = [...L.carriers].sort((a, b) => order[a.mode] - order[b.mode]).map(carrierLine).join('');
+  return `<h4>Transport · imports (what it needs from outside)</h4>${table(L.imports, 'Item')}
+    <h4>Transport · exports (what it has spare)</h4>${table(L.exports, 'Item', true)}
+    <div class="small muted">Spare items nothing takes away pile up unless a belt or a sink takes them.</div>
+    ${L.other.length ? `<h4>Also moved here</h4><div class="small muted">${L.other.map(o => `${o.dir === 'in' ? '▼' : '▲'} ${esc(o.name)} ~${per(o.got, itemForm(o.it))}`).join(' · ')}</div>` : ''}
+    <div class="cols"><div><h4>Stations and ports</h4>${st}</div><div><h4>Serving it</h4>${tr || '<span class="muted small">nothing stops here</span>'}</div></div>
+    <div class="note" style="margin:6px 0 0">Moved = per minute. <b>Drones</b>: from their measured trips. <b>Trucks and tractors</b>: measured items
+    per docking and time between dockings where they have docked, else a full load per round trip (straight distance × 1.3 at ~50 km/h, 30 s per stop).
+    <b>Trains</b>: estimated, each train's wagons (32 stacks, or 1,600 m³) shared between the items it carries, at
+    ~${Math.round(rail.assumptions.speed_m_s * 3.6)} km/h along the tracks plus ${rail.assumptions.dock_s} s per stop.
+    "+N" = more carriers like the ones already on that run.</div>`;
+}
+const MODE_MARK = { train: '■', truck: '▴', drone: '○' };
 
 // view
 const toScreen = (x, y) => [(x - view.x) * view.s + cv.width / 2, (y - view.y) * view.s + cv.height / 2];
@@ -548,13 +783,29 @@ function draw() {
     ctx.globalAlpha = 1;
   }
   if (!sites) return;
-  // factory areas
+  // rail lines, roads (dashed) and drone links (thin straight lines between paired ports)
+  const lines = (list, style, width, dash) => {
+    ctx.strokeStyle = style; ctx.lineWidth = width * d; ctx.setLineDash(dash.map(v => v * d));
+    ctx.beginPath();
+    for (const t of list) for (let k = 0; k < t.length; k += 2) {
+      const [x, y] = toScreen(t[k], t[k + 1]);
+      k ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  };
+  if (rail && $('#showRoad').checked) lines(rail.roads, MODES.truck.line, Math.max(1, Math.min(2.5, view.s)), [4, 3]);
+  if (rail && $('#showRail').checked) lines(rail.tracks, MODES.train.line, Math.max(1, Math.min(3, view.s * 1.2)), []);
+  if (rail && $('#showDrone').checked) lines(rail.drone_ports.filter(p => p.has_drone && p.partner != null)
+    .map(p => { const q = rail.drone_ports[p.partner]; return [p.x, p.y, q.x, q.y]; }), MODES.drone.line, 1.2, [2, 4]);
+  // factory areas, coloured by transport status when that's on
+  const byStatus = rail && $('#colorStatus').checked;
   for (const g of groups) {
     const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
+    const st = byStatus && status(g), c = st ? STATUS[st].color : '#f39c3c';
     ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = g === selected ? 'rgba(243,156,60,.28)' : g === hover ? 'rgba(243,156,60,.2)' : 'rgba(243,156,60,.1)';
-    ctx.fill();
-    ctx.lineWidth = (g === selected ? 2.5 : 1.5) * d; ctx.strokeStyle = g === selected ? '#ffb45e' : 'rgba(243,156,60,.85)'; ctx.stroke();
+    ctx.globalAlpha = g === selected ? 0.3 : g === hover ? 0.22 : 0.12; ctx.fillStyle = c; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.lineWidth = (g === selected ? 3 : 1.8) * d; ctx.strokeStyle = c; ctx.stroke();
+    if (g === selected) { ctx.lineWidth = 1 * d; ctx.strokeStyle = '#fff'; ctx.beginPath(); ctx.arc(x, y, r + 3 * d, 0, Math.PI * 2); ctx.stroke(); }
   }
   // machines
   const ms = sites.machines, sz = Math.max(1.5, Math.min(4, view.s * 4)) * d;
@@ -574,23 +825,105 @@ function draw() {
     else if (m[2] === 'e') ctx.fillRect(x - sz * .6, y - sz * .6, sz * 1.2, sz * 1.2);
     else { ctx.beginPath(); ctx.moveTo(x, y - sz); ctx.lineTo(x + sz, y); ctx.lineTo(x, y + sz); ctx.lineTo(x - sz, y); ctx.fill(); }
   }
-  // labels, biggest factories first, skipped where they would overlap
-  ctx.font = `${12 * d}px system-ui, sans-serif`; ctx.textBaseline = 'top';
+  // hubs (train stations ■, truck stations ▲, drone ports ○); the focused factory's own ringed, with
+  // dashed lines to the hubs its trains, vehicles and drones trade with
   const boxes = [];
+  ctx.font = `${12 * d}px system-ui, sans-serif`; ctx.textBaseline = 'top';
+  if (rail) {
+    const focus = selected || hover, mine = new Set(focus && focus.stations ? focus.stations.filter(shown) : []);
+    const partners = new Set();
+    ctx.setLineDash([6 * d, 5 * d]); ctx.lineWidth = 1.5 * d; ctx.strokeStyle = 'rgba(255,180,94,.85)';
+    for (const s of mine) for (const p of partners_of(s)) {
+      if (!shown(p)) continue;
+      if (!mine.has(p)) partners.add(p);
+      const [x1, y1] = toScreen(s.x, s.y), [x2, y2] = toScreen(p.x, p.y);
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    const ss = Math.max(3, Math.min(7, view.s * 6)) * d;
+    for (const s of hubs) {
+      if (!shown(s)) continue;
+      const [x, y] = toScreen(s.x, s.y);
+      if (x < -20 || y < -20 || x > cv.width + 20 || y > cv.height + 20) continue;
+      ctx.fillStyle = s.carriers.length ? MODES[s.mode].color : '#6d6a64';
+      ctx.strokeStyle = '#13151a'; ctx.lineWidth = 1.5 * d;
+      ctx.beginPath();
+      if (s.mode === 'train') ctx.rect(x - ss / 2, y - ss / 2, ss, ss);
+      else if (s.mode === 'truck') { ctx.moveTo(x, y - ss * .65); ctx.lineTo(x + ss * .6, y + ss * .45); ctx.lineTo(x - ss * .6, y + ss * .45); ctx.closePath(); }
+      else ctx.arc(x, y, ss * .5, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+      if (mine.has(s) || partners.has(s) || s === hoverStation) {
+        ctx.strokeStyle = mine.has(s) ? '#ffb45e' : 'rgba(255,180,94,.7)'; ctx.lineWidth = 2 * d;
+        ctx.strokeRect(x - ss, y - ss, ss * 2, ss * 2);
+      }
+      if (mine.has(s) || partners.has(s) || s === hoverStation || view.s > 1.2) {
+        const w = ctx.measureText(s.name).width + 8 * d, bx = x + ss, by = y - 8 * d;
+        boxes.push([bx, by, w, 16 * d]);
+        ctx.fillStyle = 'rgba(19,21,26,.85)'; ctx.fillRect(bx, by, w, 16 * d);
+        ctx.fillStyle = mine.has(s) ? '#ffb45e' : '#c9c5bc'; ctx.fillText(s.name, bx + 4 * d, by + 2 * d);
+      }
+    }
+  }
+  // labels, biggest factories first, skipped where they would overlap
   for (const g of [...groups].sort((a, b) => (b === selected) - (a === selected) || b.members.length - a.members.length)) {
     const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
     if (x < 0 || x > cv.width || y < -r || y > cv.height) continue;      // label only factories in view
     const top = g.name === 'Power plant' ? `makes ${mw(g.power)}` : g.top ? `${num(g.top[1])}/min` : '';
-    const t1 = g.name, t2 = `${top}${top ? ' · ' : ''}needs ${mw(g.need)} · ${g.members.length} machines`;
+    const st = byStatus && status(g);
+    const t1 = (st ? STATUS[st].icon + ' ' : '') + g.name;
+    const t2 = `${top}${top ? ' · ' : ''}needs ${mw(g.need)} · ${g.members.length} machines`;
     const w = Math.max(ctx.measureText(t1).width, ctx.measureText(t2).width) + 10 * d, h = 32 * d;
     const bx = Math.max(2 * d, Math.min(cv.width - w - 2 * d, x - w / 2)), by = y + r + 4 * d;
     if (bx > cv.width || by > cv.height || bx + w < 0 || by + h < 0) continue;
-    if (boxes.some(b => bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1])) continue;
+    if (g !== selected && boxes.some(b => bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1])) continue;
     boxes.push([bx, by, w, h]);
     ctx.fillStyle = 'rgba(19,21,26,.88)'; ctx.fillRect(bx, by, w, h);
-    ctx.fillStyle = g === selected ? '#ffb45e' : '#e9e6df'; ctx.fillText(t1, bx + 5 * d, by + 3 * d);
+    if (st) { ctx.fillStyle = STATUS[st].color; ctx.fillRect(bx, by, 3 * d, h); }
+    ctx.fillStyle = g === selected ? '#ffb45e' : '#e9e6df'; ctx.fillText(t1, bx + 6 * d, by + 3 * d);
     ctx.fillStyle = '#9a968d'; ctx.fillText(t2, bx + 5 * d, by + 17 * d);
   }
+}
+
+const partners_of = s => partners(s);
+let hoverStation = null;
+function stationAt(px, py) {
+  if (!rail) return null;
+  const d = devicePixelRatio || 1;
+  let best = null, bd = 10 * d;
+  for (const s of hubs) {
+    if (!shown(s)) continue;
+    const [x, y] = toScreen(s.x, s.y), dd = Math.hypot(x - px, y - py);
+    if (dd < bd) { bd = dd; best = s; }
+  }
+  return best;
+}
+const per = (v, f) => `${num(v)}${f && f !== 'solid' ? ' m³' : ''}/min`;
+const itemForm = it => (rail.items[it] || [, 'solid'])[1];
+const tripMin = t => t.trip_s ? `${(t.trip_s / 60).toFixed(1)} min round trip` : 'route unknown';
+function stationTip(s) {
+  const M = MODES[s.mode], n = s.carriers.length;
+  const head = s.mode === 'train'
+    ? (() => { const l = s.platforms.filter(p => p.load).length, u = s.platforms.length - l; return `Train station · ${l} loading · ${u} unloading platform${u === 1 ? '' : 's'}`; })()
+    : s.mode === 'truck' ? `Truck station · ${s.load ? 'loads (export)' : 'unloads (import)'}`
+    : `Drone port${s.partner != null ? ` · paired with ${esc(hubName(rail.drone_ports[s.partner]))}` : ' · not paired'}${s.trip_s ? ` · ${(s.trip_s / 60).toFixed(1)} min trips` : ''}`;
+  const rows = (o, arrow) => Object.entries(o).sort((a, b) => b[1][0] - a[1][0]).slice(0, 5)
+    .map(([it, [v, ids]]) => `${arrow} ${esc((rail.items[it] || [it])[0])} ~${per(v, itemForm(it))}`).join('<br>');
+  return `<b>${esc(s.name)}</b>${head} · ${n} ${n === 1 ? M.one : M.many}` +
+    (s.factory ? `<br><span class="muted">serves ${esc(s.factory.name)}</span>` : '') +
+    (Object.keys(s.imports).length ? '<br>' + rows(s.imports, '▼ in') : '') +
+    (Object.keys(s.exports).length ? '<br>' + rows(s.exports, '▲ out') : '') +
+    (!n ? `<br><span class="muted">no ${M.one} uses it</span>` : '');
+}
+function trainTip(g) {
+  const L = g.logi;
+  if (!rail) return '';
+  if (!L) return '<br><span class="muted">No train station, truck station or drone port nearby</span>';
+  const short = L.imports.filter(r => r.gap > 0.5).sort((a, b) => b.gap - a.gap).slice(0, 4);
+  const hubsText = hubCount(g).map(([m, n]) => `${n} ${m === 'drone' ? 'drone port' : m + ' station'}${n > 1 ? 's' : ''}`).join(', ');
+  const carriersText = Object.keys(MODES).filter(m => L.count(m)).map(m => `${L.count(m)} ${L.count(m) > 1 ? MODES[m].many : MODES[m].one}`).join(', ');
+  return `<br><b style="margin-top:6px">Transport · ${hubsText}${carriersText ? ' · ' + carriersText : ''}</b>` +
+    (short.length ? short.map(r => `<span class="short">▼ ${esc(r.name)}: short ${per(r.gap, r.form)}</span>${r.more ? ` · ${moreText(r)}` : r.trains ? '' : ' · nothing brings it'}`).join('<br>')
+      : '<span class="spare">▲ covered</span>');
 }
 
 function groupAt(px, py) {
@@ -612,14 +945,17 @@ cv.addEventListener('pointermove', e => {
     if (Math.abs(dx) + Math.abs(dy) > 3) { drag.moved = true; cv.classList.add('drag'); }
     view.x = drag.vx - dx * d / view.s; view.y = drag.vy - dy * d / view.s; draw(); return;
   }
-  const g = sites && groupAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
-  if (g !== hover) { hover = g; draw(); }
+  const px = (e.clientX - r.left) * d, py = (e.clientY - r.top) * d;
+  const st = sites && stationAt(px, py), g = !st && sites && groupAt(px, py);
+  if (g !== hover || st !== hoverStation) { hover = g; hoverStation = st; draw(); }
   const tip = $('#tip');
-  if (!g) { tip.hidden = true; return; }
+  if (!g && !st) { tip.hidden = true; return; }
   const it = sites.items;
-  tip.innerHTML = `<b>${esc(g.name)}</b>${g.members.length} machines${g.extras.length ? ` + ${g.extras.length} other` : ''} · ${Math.round(g.running / g.members.length * 100)}% ran<br>` +
+  if (st) tip.innerHTML = stationTip(st);
+  else tip.innerHTML = `<b>${esc(g.name)}</b>${g.members.length} machines${g.extras.length ? ` + ${g.extras.length} other` : ''} · ${Math.round(g.running / g.members.length * 100)}% ran<br>` +
     `Needs ${mw(g.need)}${g.power > 0 ? ` · makes ${mw(g.power)}` : ''}<br>` +
-    g.outs.slice(0, 5).map(([k, v]) => `${esc(it[k][0])}: ${num(v)}${it[k][1] !== 'solid' ? ' m³' : ''}/min`).join('<br>');
+    g.outs.slice(0, 4).map(([k, v]) => `${esc(it[k][0])}: ${num(v)}${it[k][1] !== 'solid' ? ' m³' : ''}/min`).join('<br>') +
+    trainTip(g);
   tip.hidden = false;
   const x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
   tip.style.left = Math.min(x, r.width - tip.offsetWidth - 6) + 'px'; tip.style.top = Math.min(y, r.height - tip.offsetHeight - 6) + 'px';
@@ -627,13 +963,14 @@ cv.addEventListener('pointermove', e => {
 cv.addEventListener('pointerup', e => {
   const d = devicePixelRatio || 1, r = cv.getBoundingClientRect();
   if (drag && !drag.moved && sites) {
-    selected = groupAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
+    const st = stationAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
+    selected = st ? st.factory : groupAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
     listFactories(); showDetail(); draw();
     if (selected) document.querySelector(`#factories tr[data-id="${selected.id}"]`)?.scrollIntoView({ block: 'nearest' });
   }
   drag = null; cv.classList.remove('drag');
 });
-cv.addEventListener('pointerleave', () => { hover = null; $('#tip').hidden = true; draw(); });
+cv.addEventListener('pointerleave', () => { hover = null; hoverStation = null; $('#tip').hidden = true; draw(); });
 cv.addEventListener('wheel', e => {
   e.preventDefault();
   const d = devicePixelRatio || 1, r = cv.getBoundingClientRect(), px = (e.clientX - r.left) * d, py = (e.clientY - r.top) * d;
@@ -644,6 +981,8 @@ cv.addEventListener('wheel', e => {
 }, { passive: false });
 new ResizeObserver(() => { sizeCanvas(); draw(); }).observe(cv);
 ['#radius', '#byBelts', '#minM', '#mode'].forEach(s => $(s).addEventListener('input', cluster));
+['#showRail', '#showRoad', '#showDrone'].forEach(s => $(s).addEventListener('input', draw));
+$('#colorStatus').addEventListener('input', () => { renderBoard(); draw(); });
 $('#fit').onclick = fit;
 
 loadSaves().catch(e => $('#loading').innerHTML = `<span class="err">${esc(e.message)}</span>`);

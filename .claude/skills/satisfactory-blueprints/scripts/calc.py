@@ -88,7 +88,10 @@ def producible(item):
 
 def default_recipe(item):
     """The recipe a new player would use: standard (not alternate), the item as its main output,
-    not packaging/unpackaging or ore conversion."""
+    not packaging/unpackaging or ore conversion. Never a recipe that can't make the item from
+    scratch: unpacking (it needs the packaged fluid, made from the fluid) or a byproduct recipe whose
+    inputs need the item back (Compacted Coal from Ionized Fuel <- Rocket Fuel <- Turbofuel <-
+    Compacted Coal). Those items take their alternate (Compacted Coal, Turbofuel)."""
     rs = db()['recipes']
     cands = producers(item)
     if not cands:
@@ -96,12 +99,32 @@ def default_recipe(item):
 
     def score(k):
         r = rs[k]
-        return (r['alternate'],
+        return (k.startswith('Unpackage'),
+                r['outputs'][0][0] != item and _needs(r, item),
+                r['alternate'],
                 r['outputs'][0][0] != item,
                 r['machine'] in ('Packager', 'Converter'),
                 k.startswith(('Unpackage', 'Packaged')),
                 len(r['inputs']), k)
     return min(cands, key=score)
+
+
+def _needs(recipe, item, depth=6, seen=()):
+    """Whether making this recipe's inputs (each the usual way: a standard main-output recipe if there
+    is one) comes back to needing `item`."""
+    rs, items = db()['recipes'], db()['items']
+    for j, _ in recipe['inputs']:
+        if j == item:
+            return True
+        if depth == 0 or j in seen or items.get(j, {}).get('raw'):
+            continue
+        ks = [k for k in producers(j) if not k.startswith('Unpackage')]
+        if not ks:
+            continue
+        k = min(ks, key=lambda k: (rs[k]['alternate'], rs[k]['outputs'][0][0] != j, len(rs[k]['inputs']), k))
+        if _needs(rs[k], item, depth - 1, seen + (j,)):
+            return True
+    return False
 
 
 def per_minute(recipe, item, side='outputs'):

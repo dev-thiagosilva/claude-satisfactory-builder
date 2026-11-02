@@ -255,6 +255,60 @@ first, any otherwise. They never form a factory alone. Whatever isn't near a fac
 groups below the minimum, is listed as "Not near any factory". The map total therefore always
 equals the report's total. The report also has a **Power use at full speed** table, by kind.
 
+**Trains on the factory map** come from `scripts/logistics.py` (`rail(sav)`, `/api/rail`; also a CLI:
+`python -I scripts/logistics.py "<save>"`). It draws every track and every station, and works out:
+- **Each station's platforms.** Load = export: belts feed it. Unload = import. The save stores
+  `mIsInLoadMode` only when false (unload). Platforms chain to the station through
+  `PlatformConnection` components.
+- **Each train.** Its name, locomotives and wagons (coupled vehicles from `FirstVehicle`), and its
+  timetable stops with load/unload filters. `Desc_None` means nothing; `Desc_Wildcard` means
+  anything.
+- **What each train carries.** Items waiting on its loading platforms, or, when the factory is
+  idle, what that platform's belt network has spare, limited by the filters. It drops them at its
+  unloading stops.
+- **Capacity per item.** 32 stacks per wagon (fluids 32 × 50 m³), shared evenly between the items
+  the train carries. Round trip = route length along the rail graph at 25 m/s, plus 27 s per stop.
+
+A station belongs to the factory its platforms share belts or pipes with, otherwise the nearest
+factory within 80 m. On the page:
+- **Hover a factory:** its stations, the stations its trains trade with (dashed lines), and every
+  import that's short.
+- **Click a factory:** an import table and an export table. Each row shows what the factory needs
+  or has spare, what trains move, the gap, and "+N trains": more trains like the ones already on
+  that run. Also the stations and the serving trains with their round trips.
+- **Hover a station:** what arrives and what leaves.
+
+**Train status per factory.** It's shown as the colour of the factory's circle and a mark on its
+label, with "Colour by train status" on; status always comes with its icon and words, never colour
+alone. Under the map, a **Train logistics check** board lists every factory in one of four columns:
+- ▼ **Imports short:** trains bring less than it needs.
+- ▲ **Exports piling up:** trains take less than it has spare.
+- ✓ **Covered.**
+- – **No train link:** it needs items from outside but has no station, so belts, trucks or drones
+  bring them. That isn't checked.
+
+Each column puts the worst factory first, and each row shows its biggest gap. Click a row to
+select that factory on the map. **Trucks, tractors and drones** come from `logistics.roads_and_drones` and are on the map too.
+- **Roads:** `Build_VehiclePath_*` segments with `mSplinePoints`, drawn as dashed teal lines.
+- **Truck stations** (teal triangles) load or unload with the same rule as train platforms. In 1.2
+  a vehicle has no stored route. Each station records the vehicles that dock there in
+  `mVehicleTracking`: `AverageTimeBetweenDocks` and `AverageItemsTransferredPerDock`, which give
+  **measured** items per minute. A vehicle that never docked gets a full load
+  (`VehicleInventorySizeLinear` slots) per round trip: straight distance × 1.3 at ~50 km/h plus
+  30 s per stop. Show this as an estimate.
+- **Drone ports** (lavender circles, dotted links between pairs). `FGDroneStationInfo` gives the name
+  (`mBuildingTag`), the partner (`mPairedStation`), and the latest measured trips
+  (`TripDuration`, `OutgoingItemCount` from home to partner, `IncomingItemCount` back).
+- **Items carried:** what sits at the receiving end (an unloading truck station's inventory, or a
+  drone port's output inventory). Otherwise the sending end's inventory, or its factory's spare
+  items.
+
+Every train station, truck station and drone port is a "hub" on the page. A factory's imports and
+exports add up all three, with the carriers listed per item ("2 trucks, 1 train"). "+N" suggests
+more of the main carrier on that run. The status "No transport link" means no hub of any kind:
+belts or pipes from elsewhere, which isn't checked. Trains, Trucks and Drones each have their own
+show/hide switch.
+
 It reports:
 - **made / used / net per item, two ways.** "Now" is rate × the game's last measured productivity,
   i.e. what really ran. "Full" is every machine running non-stop at its clock: the demand the

@@ -23,6 +23,7 @@ Serves studio/index.html and a small JSON API on 127.0.0.1 only:
   GET  /production                    what a save produces per minute, power, what's missing
   GET  /api/production?path=          that report for one save (scripts/production.py)
   GET  /api/sites?path=               every producing building: position, recipe, flows, belt network (factory map)
+  GET  /api/rail?path=                tracks, stations + platforms, trains + timetables, est. imports/exports (logistics.py)
 Each build is a folder: <creations>/<folder>/<Name>.sbp (+ .sbpcfg, build.py, history/).
 """
 import argparse, json, math, re, shutil, struct, sys, time
@@ -36,6 +37,7 @@ sys.path.insert(0, str(HERE.parent / 'scripts'))
 from sbp import (Blueprint, spline_points, wire_ends, short, get_float, get_color, set_color, paint_key, sessions,
                  blueprints_root, install, size_name, qmul)
 import calc
+import logistics
 import production
 import world as worldlib
 
@@ -232,6 +234,18 @@ def sites_of(path):
     return hit[1]
 
 
+RAIL = {}     # save path -> (mtime, tracks, stations, trains)
+
+
+def rail_of(path):
+    p = known_save(path)
+    mt = p.stat().st_mtime
+    hit = RAIL.get(str(p))
+    if not hit or hit[0] != mt:
+        hit = RAIL[str(p)] = (mt, logistics.rail(p))
+    return hit[1]
+
+
 def world_of(path):
     p = known_save(path)
     mt = p.stat().st_mtime
@@ -393,6 +407,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, production_of(q['path'][0]))
             if u.path == '/api/sites':
                 return self.send(200, sites_of(q['path'][0]))
+            if u.path == '/api/rail':
+                return self.send(200, rail_of(q['path'][0]))
             if u.path in ('/map', '/map.html'):
                 return self.send(200, (HERE / 'map.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path == '/pieces.js':
