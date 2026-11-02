@@ -145,7 +145,12 @@ trucks and tractors are on the map too, and so are drone ports with their links.
 rates come from what the save measured: items per docking and time between dockings, or drone
 trips. Trucks that never docked are estimated. Each factory's status (imports short, exports
 piling up, covered, no transport link) counts trains, trucks and drones. A "Transport check"
-board under the map lists every factory by status. Node purity needs
+board under the map lists every factory by status. **"Colour by: power connection"**
+(`scripts/power.py`, from the game's own circuits) shows which buildings reach the generator
+grid. The generator grid is the one with the most generators; a building is either on it, on its
+own generator grid, wired with no generator, or not wired. Each factory shows the wires, poles
+and cable needed to connect it, with a dashed feeder line to the nearest point of the grid.
+Node purity needs
 `.local/terrain/data/nodes.json` (`terrain.exe nodes`, see the World map section). Details are in
 the skill's "What a save produces".
 
