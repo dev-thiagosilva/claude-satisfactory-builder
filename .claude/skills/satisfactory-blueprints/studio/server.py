@@ -20,6 +20,8 @@ Serves studio/index.html and a small JSON API on 127.0.0.1 only:
   GET  /planner                       production planner page (machines, resources, power)
   GET  /api/items, /api/recipes?item= items that can be produced; recipes for one item
   POST /api/plan                      {targets: [[item, rate]], use: [recipe], clock, miner, purity}
+  GET  /production                    what a save produces per minute, power, what's missing
+  GET  /api/production?path=          that report for one save (scripts/production.py)
 Each build is a folder: <creations>/<folder>/<Name>.sbp (+ .sbpcfg, build.py, history/).
 """
 import argparse, json, math, re, shutil, struct, sys, time
@@ -33,6 +35,7 @@ sys.path.insert(0, str(HERE.parent / 'scripts'))
 from sbp import (Blueprint, spline_points, wire_ends, short, get_float, get_color, set_color, paint_key, sessions,
                  blueprints_root, install, size_name, qmul)
 import calc
+import production
 import world as worldlib
 
 CREATIONS = None
@@ -203,6 +206,19 @@ def known_save(path):
     raise ValueError('not one of your game 1.2 saves')
 
 
+REPORTS = {}  # save path -> (mtime, production report)
+
+
+def production_of(path):
+    """production.report for one of the player's saves, re-read when the save changes."""
+    p = known_save(path)
+    mt = p.stat().st_mtime
+    hit = REPORTS.get(str(p))
+    if not hit or hit[0] != mt:
+        hit = REPORTS[str(p)] = (mt, production.report(p))
+    return dict(hit[1], name=p.stem, modified=mt)
+
+
 def world_of(path):
     p = known_save(path)
     mt = p.stat().st_mtime
@@ -358,6 +374,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, (HERE / 'index.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path in ('/planner', '/planner.html'):
                 return self.send(200, (HERE / 'planner.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path in ('/production', '/production.html'):
+                return self.send(200, (HERE / 'production.html').read_bytes(), 'text/html; charset=utf-8')
+            if u.path == '/api/production':
+                return self.send(200, production_of(q['path'][0]))
             if u.path in ('/map', '/map.html'):
                 return self.send(200, (HERE / 'map.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path == '/pieces.js':

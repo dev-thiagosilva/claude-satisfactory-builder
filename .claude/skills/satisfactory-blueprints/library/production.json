@@ -77,6 +77,127 @@
    "solid": false
   }
  },
+ "generators": {
+  "GeneratorBiomass_Automated": {
+   "fuels": [
+    [
+     "Leaves",
+     null,
+     0.0
+    ],
+    [
+     "Wood",
+     null,
+     0.0
+    ],
+    [
+     "Mycelia",
+     null,
+     0.0
+    ],
+    [
+     "GenericBiomass",
+     null,
+     0.0
+    ],
+    [
+     "Biofuel",
+     null,
+     0.0
+    ],
+    [
+     "PackagedBiofuel",
+     null,
+     0.0
+    ]
+   ],
+   "name": "Biomass Burner",
+   "power": 30.0,
+   "water_ratio": 0.0
+  },
+  "GeneratorCoal": {
+   "fuels": [
+    [
+     "Coal",
+     null,
+     0.0
+    ],
+    [
+     "CompactedCoal",
+     null,
+     0.0
+    ],
+    [
+     "PetroleumCoke",
+     null,
+     0.0
+    ]
+   ],
+   "name": "Coal-Powered Generator",
+   "power": 75.0,
+   "water_ratio": 10.0
+  },
+  "GeneratorFuel": {
+   "fuels": [
+    [
+     "LiquidFuel",
+     null,
+     0.0
+    ],
+    [
+     "LiquidTurboFuel",
+     null,
+     0.0
+    ],
+    [
+     "LiquidBiofuel",
+     null,
+     0.0
+    ],
+    [
+     "RocketFuel",
+     null,
+     0.0
+    ],
+    [
+     "IonizedFuel",
+     null,
+     0.0
+    ]
+   ],
+   "name": "Fuel-Powered Generator",
+   "power": 250.0,
+   "water_ratio": 0.0
+  },
+  "GeneratorGeoThermal": {
+   "fuels": [],
+   "name": "Geothermal Generator",
+   "power": 200.0,
+   "water_ratio": 0.0
+  },
+  "GeneratorNuclear": {
+   "fuels": [
+    [
+     "NuclearFuelRod",
+     "NuclearWaste",
+     50.0
+    ],
+    [
+     "PlutoniumFuelRod",
+     "PlutoniumWaste",
+     10.0
+    ],
+    [
+     "FicsoniumFuelRod",
+     null,
+     0.0
+    ]
+   ],
+   "name": "Nuclear Power Plant",
+   "power": 2500.0,
+   "water_ratio": 1.6
+  }
+ },
  "items": {
   "AlienDNACapsule": {
    "form": "solid",
@@ -163,6 +284,7 @@
    "raw": false
   },
   "Battery": {
+   "energy": 6000.0,
    "form": "solid",
    "name": "Battery",
    "points": 465,
@@ -259,6 +381,7 @@
    "raw": false
   },
   "Biofuel": {
+   "energy": 450.0,
    "form": "solid",
    "name": "Solid Biofuel",
    "points": 48,
@@ -385,12 +508,14 @@
    "raw": false
   },
   "Coal": {
+   "energy": 300.0,
    "form": "solid",
    "name": "Coal",
    "points": 3,
    "raw": true
   },
   "CompactedCoal": {
+   "energy": 630.0,
    "form": "solid",
    "name": "Compacted Coal",
    "points": 28,
@@ -787,6 +912,7 @@
    "raw": false
   },
   "FicsoniumFuelRod": {
+   "energy": 150000.0,
    "form": "solid",
    "name": "Ficsonium Fuel Rod",
    "points": 0,
@@ -967,6 +1093,7 @@
    "raw": false
   },
   "Fuel": {
+   "energy": 750.0,
    "form": "solid",
    "name": "Packaged Fuel",
    "points": 270,
@@ -1015,6 +1142,7 @@
    "raw": false
   },
   "GenericBiomass": {
+   "energy": 180.0,
    "form": "solid",
    "name": "Biomass",
    "points": 12,
@@ -1075,6 +1203,7 @@
    "raw": false
   },
   "HeavyOilResidue": {
+   "energy": 400.0,
    "form": "liquid",
    "name": "Heavy Oil Residue",
    "points": 30,
@@ -1351,6 +1480,7 @@
    "raw": false
   },
   "IonizedFuel": {
+   "energy": 5000.0,
    "form": "gas",
    "name": "Ionized Fuel",
    "points": 2398,
@@ -1429,6 +1559,7 @@
    "raw": false
   },
   "Leaves": {
+   "energy": 15.0,
    "form": "solid",
    "name": "Leaves",
    "points": 3,
@@ -1441,24 +1572,28 @@
    "raw": false
   },
   "LiquidBiofuel": {
+   "energy": 750.0,
    "form": "liquid",
    "name": "Liquid Biofuel",
    "points": 261,
    "raw": false
   },
   "LiquidFuel": {
+   "energy": 750.0,
    "form": "liquid",
    "name": "Fuel",
    "points": 75,
    "raw": false
   },
   "LiquidOil": {
+   "energy": 320.0,
    "form": "liquid",
    "name": "Crude Oil",
    "points": 30,
    "raw": true
   },
   "LiquidTurboFuel": {
+   "energy": 2000.0,
    "form": "liquid",
    "name": "Turbofuel",
    "points": 225,
@@ -1549,6 +1684,7 @@
    "raw": false
   },
   "Mycelia": {
+   "energy": 20.0,
    "form": "solid",
    "name": "Mycelia",
    "points": 10,
@@ -1573,6 +1709,7 @@
    "raw": false
   },
   "NuclearFuelRod": {
+   "energy": 750000.0,
    "form": "solid",
    "name": "Uranium Fuel Rod",
    "points": 43468,
@@ -1639,12 +1776,14 @@
    "raw": false
   },
   "PackagedBiofuel": {
+   "energy": 750.0,
    "form": "solid",
    "name": "Packaged Liquid Biofuel",
    "points": 370,
    "raw": false
   },
   "PackagedIonizedFuel": {
+   "energy": 10000.0,
    "form": "solid",
    "name": "Packaged Ionized Fuel",
    "points": 5246,
@@ -1663,18 +1802,21 @@
    "raw": false
   },
   "PackagedOil": {
+   "energy": 320.0,
    "form": "solid",
    "name": "Packaged Oil",
    "points": 180,
    "raw": false
   },
   "PackagedOilResidue": {
+   "energy": 400.0,
    "form": "solid",
    "name": "Packaged Heavy Oil Residue",
    "points": 180,
    "raw": false
   },
   "PackagedRocketFuel": {
+   "energy": 7200.0,
    "form": "solid",
    "name": "Packaged Rocket Fuel",
    "points": 1028,
@@ -1705,6 +1847,7 @@
    "raw": false
   },
   "PetroleumCoke": {
+   "energy": 180.0,
    "form": "solid",
    "name": "Petroleum Coke",
    "points": 20,
@@ -1873,6 +2016,7 @@
    "raw": false
   },
   "PlutoniumFuelRod": {
+   "energy": 1500000.0,
    "form": "solid",
    "name": "Plutonium Fuel Rod",
    "points": 153184,
@@ -2899,6 +3043,7 @@
    "raw": false
   },
   "RocketFuel": {
+   "energy": 3600.0,
    "form": "gas",
    "name": "Rocket Fuel",
    "points": 289,
@@ -3733,6 +3878,7 @@
    "raw": false
   },
   "TurboFuel": {
+   "energy": 2000.0,
    "form": "solid",
    "name": "Packaged Turbofuel",
    "points": 570,
@@ -4279,6 +4425,7 @@
    "raw": false
   },
   "Wood": {
+   "energy": 100.0,
    "form": "solid",
    "name": "Wood",
    "points": 30,

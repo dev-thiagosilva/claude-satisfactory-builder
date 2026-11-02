@@ -13,6 +13,7 @@ using Serilog;
 //   extract <out dir>  ground heights of every landscape tile (heights.bin, tiles.json)
 //   hlod <out dir>     cliffs and rocks: the game's simplified far-view models, world space (rocks.bin, rocks.json)
 //   water <out dir>    top faces of every water volume (water.json)
+//   nodes <out dir>    resource nodes, wells and geysers: resource and purity by save name (nodes.json)
 //   probe <filter>     list game files whose path contains filter
 //   cells [n]          classes of exports in the world-partition cells (first n with landscape shown)
 //   classes|meshes|dump <package> [type]   look inside one package; reflect <name> lists library types
@@ -232,6 +233,34 @@ else if (mode == "water")
     }
     File.WriteAllText(Path.Combine(outDir, "water.json"), Newtonsoft.Json.JsonConvert.SerializeObject(result));
     Console.WriteLine($"water volumes {volumes}");
+}
+else if (mode == "nodes")
+{
+    // nodes <out dir>: every resource node, resource well (satellite and core) and geyser, by the name the
+    // save uses for it (mExtractableResource of a miner, pump or extractor), with its purity and resource.
+    //   nodes.json: {name: [resource class, purity (impure|normal|pure), x, y, z (cm)]}
+    var outDir = arg;
+    Directory.CreateDirectory(outDir);
+    var packages = new List<string> { "FactoryGame/Content/FactoryGame/Map/GameLevel01/Persistent_Level.umap" };
+    packages.AddRange(provider.Files.Keys.Where(k => k.Contains("GameLevel01/Persistent_Level/_Generated_/") && k.EndsWith(".umap")));
+    var nodes = new SortedDictionary<string, object[]>();
+    foreach (var p in packages)
+    {
+        List<CUE4Parse.UE4.Assets.Exports.UObject> exports;
+        try { exports = provider.LoadPackage(p).GetExports().ToList(); } catch { continue; }
+        foreach (var n in exports.Where(e => e.ExportType.StartsWith("BP_ResourceNode") || e.ExportType.StartsWith("BP_Fracking")))
+        {
+            // purity left at the class default (normal) isn't stored on the node
+            var purity = n.GetOrDefault<CUE4Parse.UE4.Objects.UObject.FName>("mPurity").Text switch
+                { "RP_Inpure" => "impure", "RP_Pure" => "pure", _ => "normal" };
+            var res = n.GetOrDefault<CUE4Parse.UE4.Objects.UObject.FPackageIndex>("mResourceClass");
+            var root = n.GetOrDefault<CUE4Parse.UE4.Objects.UObject.FPackageIndex>("RootComponent")?.Load();
+            var loc = root?.GetOrDefault<CUE4Parse.UE4.Objects.Core.Math.FVector>("RelativeLocation") ?? new CUE4Parse.UE4.Objects.Core.Math.FVector(0, 0, 0);
+            nodes[n.Name] = new object[] { res?.Name ?? "", purity, Math.Round(loc.X), Math.Round(loc.Y), Math.Round(loc.Z) };
+        }
+    }
+    File.WriteAllText(Path.Combine(outDir, "nodes.json"), Newtonsoft.Json.JsonConvert.SerializeObject(nodes));
+    Console.WriteLine($"nodes {nodes.Count}: " + string.Join(", ", nodes.Values.GroupBy(v => (string)v[1]).Select(g => $"{g.Key} {g.Count()}")));
 }
 else if (mode == "objects")
 {

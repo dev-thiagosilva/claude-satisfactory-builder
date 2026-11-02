@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Report</title>
+<style>
+  :root {
+    --bg:#13151a; --panel:#1b1e25; --panel2:#22262e; --fg:#e9e6df; --muted:#9a968d; --line:#2e333c;
+    --accent:#f39c3c; --accent-ink:#1b1206; --ok:#5cb87a; --err:#e06c6c; --fluid:#5aa9e6; --bar:#4a505c;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; min-height:100%; background:var(--bg); color:var(--fg); font:13px/1.45 system-ui, sans-serif; }
+  #app { display:grid; grid-template-columns:300px 1fr; min-height:100vh; }
+  aside { background:var(--panel); border-right:1px solid var(--line); padding:14px; }
+  main { padding:18px 22px; overflow:auto; min-width:0; }
+  h1 { font-size:15px; margin:0 0 2px; }
+  h2 { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin:18px 0 8px; font-weight:600; }
+  .sub { color:var(--muted); font-size:12px; }
+  a { color:var(--accent); text-decoration:none; }
+  input, select, button { font:inherit; color:var(--fg); background:var(--panel2); border:1px solid var(--line); border-radius:7px; padding:6px 8px; }
+  input:focus, select:focus { outline:1px solid var(--accent); border-color:var(--accent); }
+  button { cursor:pointer; }
+  select { width:100%; }
+  .note { color:var(--muted); font-size:12px; margin:8px 0; }
+  .note b { color:var(--fg); font-weight:600; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:10px; margin-bottom:18px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .card b { display:block; font-size:22px; font-weight:650; font-variant-numeric:tabular-nums; }
+  .card span { color:var(--muted); font-size:12px; }
+  .banner { background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:8px; padding:10px 12px; margin-bottom:16px; }
+  .section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:4px 6px 8px; margin-bottom:18px; }
+  .section h3 { margin:10px 8px 2px; font-size:13px; }
+  .section .note { margin:0 8px 6px; }
+  .scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  th { text-align:left; color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.6px; padding:6px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th.sort { cursor:pointer; user-select:none; }
+  th.sort:hover { color:var(--fg); }
+  th.n, td.n { text-align:right; white-space:nowrap; }
+  td { padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:last-child td { border-bottom:0; }
+  .fluid { color:var(--fluid); font-size:11px; margin-left:3px; }
+  .short { color:var(--err); }
+  .spare { color:var(--ok); }
+  .muted { color:var(--muted); }
+  .small { font-size:12px; }
+  .meter { position:relative; height:6px; background:var(--panel2); border-radius:3px; min-width:90px; margin-top:6px; }
+  .meter i { position:absolute; left:0; top:0; bottom:0; border-radius:3px; background:var(--bar); }
+  .meter i.need { background:var(--err); opacity:.85; }
+  .tools { display:flex; gap:8px; align-items:center; margin:8px; flex-wrap:wrap; }
+  .tools input { flex:1; min-width:160px; }
+  .tools label { color:var(--muted); font-size:12px; display:flex; gap:5px; align-items:center; }
+  .empty { color:var(--muted); padding:40px 0; text-align:center; }
+  .err { color:var(--err); }
+  #loading { color:var(--muted); padding:60px 0; text-align:center; }
+  @media (max-width: 860px) { #app { grid-template-columns:1fr; } aside { border-right:0; border-bottom:1px solid var(--line); } main { padding:14px 16px; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>Production Report</h1>
+    <div class="sub">What one of your saves makes and uses per minute, and what's missing.
+      <a href="/">← Blueprint Studio</a> · <a href="/planner">Planner</a> · <a href="/map">World map</a></div>
+
+    <h2>Save</h2>
+    <select id="save"><option>Loading your saves…</option></select>
+    <div class="note" id="saveInfo"></div>
+
+    <h2>How to read it</h2>
+    <div class="note"><b>Full speed</b>: every machine running non-stop at its clock. That's the demand
+      your factory was built for, and what "missing" is based on.</div>
+    <div class="note"><b>Now</b>: what the machines did during the game's last 5-minute productivity check.</div>
+    <div class="note">Fluids are in m³ per minute. Not counted: items in storage, items on trains,
+      trucks and drones, what AWESOME Sinks take, and hand crafting.</div>
+    <div class="note">Node purity comes from your game files; machine rates come from the game's own recipes.</div>
+  </aside>
+
+  <main>
+    <div id="loading">Pick a save to read it.</div>
+    <div id="report" hidden>
+      <div id="banners"></div>
+      <div class="cards" id="cards"></div>
+
+      <div class="section">
+        <h3>Missing at full speed</h3>
+        <div class="note">Items your machines need more of than they make, and the machines waiting on them.
+          Bars: grey = made, red = still needed.</div>
+        <div class="scroll"><table id="missing"></table></div>
+      </div>
+
+      <div class="section">
+        <h3>Raw resources still missing</h3>
+        <div class="note">What it takes to close every gap above. Your spare items go first, then the recipes you already use.</div>
+        <div class="scroll"><table id="raw"></table></div>
+      </div>
+
+      <div class="section">
+        <h3>Every item</h3>
+        <div class="tools">
+          <input id="filter" placeholder="Find an item…">
+          <label><input type="checkbox" id="rawOnly"> Raw resources only</label>
+          <label><input type="checkbox" id="shortOnly"> Short only</label>
+        </div>
+        <div class="scroll"><table id="items"></table></div>
+      </div>
+
+      <div class="section">
+        <h3>Machines held up</h3>
+        <div class="note">Recipes whose machines ran below 90% during the last check.</div>
+        <div class="scroll"><table id="held"></table></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const num = v => Math.abs(v) >= 100 ? Math.round(v).toLocaleString() : (+v.toFixed(1)).toLocaleString();
+const unit = f => f !== 'solid' ? '<span class="fluid">m³</span>' : '';
+const net = v => Math.abs(v) < 0.05 ? '<span class="muted">0</span>'
+  : v < 0 ? `<span class="short">▼ ${num(v)} short</span>` : `<span class="spare">▲ +${num(v)}</span>`;
+async function api(url) {
+  const r = await fetch(url); const j = await r.json();
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+
+let data = null, sortKey = 'made_full', sortDir = -1;
+
+async function loadSaves() {
+  const saves = (await api('/api/saves')).filter(s => s.ok);
+  const sel = $('#save');
+  sel.innerHTML = saves.map(s => `<option value="${esc(s.path)}">${esc(s.name)} · ${new Date(s.modified * 1000).toLocaleDateString()}</option>`).join('')
+    || '<option value="">No game 1.2 saves found</option>';
+  const want = new URLSearchParams(location.search).get('save');
+  const hit = saves.find(s => s.path === want || s.name === want);
+  if (hit) sel.value = hit.path;
+  if (sel.value) load(sel.value);
+}
+$('#save').onchange = () => load($('#save').value);
+
+async function load(path) {
+  $('#report').hidden = true;
+  $('#loading').hidden = false;
+  $('#loading').textContent = 'Reading every machine in the save…';
+  try {
+    data = await api('/api/production?path=' + encodeURIComponent(path));
+  } catch (e) {
+    $('#loading').innerHTML = `<span class="err">Couldn't read that save: ${esc(e.message)}</span>`;
+    return;
+  }
+  const u = new URL(location); u.searchParams.set('save', data.name); history.replaceState(null, '', u);
+  $('#saveInfo').textContent = `Saved ${new Date(data.modified * 1000).toLocaleString()}`;
+  render();
+  $('#loading').hidden = true;
+  $('#report').hidden = false;
+}
+
+function render() {
+  const r = data, run = r.running, pw = r.power;
+  const machines = Object.values(r.machines).reduce((a, b) => a + b, 0);
+  const noPower = r.rules.includes('NoPower');
+
+  const banners = [];
+  if (run.of && run.any / run.of < 0.25)
+    banners.push(`<b>Most of the factory wasn't running when you saved.</b> Only ${run.any.toLocaleString()} of ${run.of.toLocaleString()}
+      machines made anything during the game's last check, so "now" is close to zero. Go by the full-speed numbers.`);
+  if (r.rules.length)
+    banners.push(`Game rules on: <b>${r.rules.map(x => ({NoPower:'No Power', NoFuel:'No Fuel', NoCost:'No Build Cost'})[x] || x).join(', ')}</b>${
+      noPower ? '. Machines need no power, so the power numbers are for reference only.' : '.'}`);
+  if (!r.nodes_file)
+    banners.push('Node purity is unknown, so every miner is counted on a normal node. Ask Claude to read the nodes from your game files.');
+  const idle = Object.entries(r.idle_no_recipe);
+  if (idle.length)
+    banners.push('No recipe set: ' + idle.map(([t, n]) => `${n} ${esc(t.replace(/Mk1$/, ''))}`).join(', ') + '.');
+  $('#banners').innerHTML = banners.map(b => `<div class="banner">${b}</div>`).join('');
+
+  const shortPower = !noPower && pw.machines_full > pw.generators_full;
+  $('#cards').innerHTML = [
+    [machines.toLocaleString(), 'machines, extractors and generators'],
+    [`${run.any.toLocaleString()} / ${run.of.toLocaleString()}`, 'ran during the last check'],
+    [r.missing.length, 'items short at full speed'],
+    [`${num(pw.generators_full / 1000)} GW`, 'generators at full speed'],
+    [`${num(pw.machines_full / 1000)} GW`, 'machines need at full speed' + (shortPower ? ' · <span class="short">▼ more than you make</span>' : '')],
+  ].map(([v, l]) => `<div class="card"><b>${v}</b><span>${l}</span></div>`).join('');
+
+  const maxNeed = Math.max(1, ...r.missing.map(m => m.used_full));
+  $('#missing').innerHTML = r.missing.length ? `<tr><th>Item</th><th class="n">Makes</th><th class="n">Needs</th><th class="n">Short by</th><th>Waiting on it</th></tr>` +
+    r.missing.map(m => `<tr title="${esc(m.name)}: makes ${num(m.made_full)}, needs ${num(m.used_full)} per minute">
+      <td>${esc(m.name)}${unit(m.form)}<div class="meter"><i class="need" style="width:${m.used_full / maxNeed * 100}%"></i><i style="width:${m.made_full / maxNeed * 100}%"></i></div></td>
+      <td class="n">${num(m.made_full)}</td><td class="n">${num(m.used_full)}</td>
+      <td class="n short">▼ ${num(m.short_by)}</td>
+      <td class="small muted">${m.held_up.map(([k, n]) => `${n} on ${esc(k)}`).join(', ') || '–'}</td></tr>`).join('')
+    : '<tr><td class="empty">Nothing is short. Every item is made at least as fast as it is used.</td></tr>';
+
+  $('#raw').innerHTML = r.raw_extra.length ? `<tr><th>Resource</th><th class="n">Still needed</th><th>Unused nodes on the map</th><th class="n">They could give</th></tr>` +
+    r.raw_extra.map(([id, name, v, f]) => {
+      const fr = r.free_nodes[id] || {};
+      const nodes = Object.entries(fr.nodes || {}).sort().map(([p, c]) => `${c} ${p}`).join(', ');
+      const enough = fr.max_rate >= v;
+      return `<tr><td>${esc(name)}${unit(f)}</td><td class="n short">▼ ${num(v)}</td>
+        <td class="small">${id === 'Water' ? 'any water' : (nodes || 'none')}</td>
+        <td class="n">${id === 'Water' ? '–' : `${num(fr.max_rate || 0)} <span class="${enough ? 'spare' : 'short'} small">${enough ? '▲ enough' : '▼ not enough'}</span>`}</td></tr>`;
+    }).join('') + `<tr><td colspan="4" class="small muted">Node output assumes ${esc((Object.values(r.free_nodes)[0] || {}).extractor || 'Miner Mk.3')} at 250%.</td></tr>`
+    + (r.unmade.length ? `<tr><td colspan="4" class="small">No machine makes: ${r.unmade.map(([, n, v]) => `${esc(n)} ${num(v)}/min`).join(', ')}</td></tr>` : '')
+    : '<tr><td class="empty">None: your spare items cover every gap.</td></tr>';
+
+  $('#held').innerHTML = r.held_up.length ? `<tr><th>Recipe</th><th class="n">Held up</th></tr>` +
+    r.held_up.map(([k, n, total]) => `<tr><td>${esc(k)}</td><td class="n">${n} of ${total}</td></tr>`).join('')
+    : '<tr><td class="empty">Every machine ran at 90% or more.</td></tr>';
+
+  renderItems();
+}
+
+const COLS = [
+  ['name', 'Item', false], ['made_now', 'Made now', true], ['used_now', 'Used now', true], ['net_now', 'Net now', true],
+  ['made_full', 'Made full', true], ['used_full', 'Used full', true], ['net_full', 'Net full', true],
+];
+function renderItems() {
+  const q = $('#filter').value.trim().toLowerCase();
+  let rows = data.items.filter(t => (t.made_full > 0.01 || t.used_full > 0.01)
+    && (!q || t.name.toLowerCase().includes(q))
+    && (!$('#rawOnly').checked || t.raw) && (!$('#shortOnly').checked || t.net_full < -0.05));
+  rows.sort((a, b) => sortKey === 'name' ? sortDir * a.name.localeCompare(b.name) : sortDir * (a[sortKey] - b[sortKey]));
+  const head = '<tr>' + COLS.map(([k, l, n]) => `<th class="sort${n ? ' n' : ''}" data-k="${k}">${l}${sortKey === k ? (sortDir < 0 ? ' ↓' : ' ↑') : ''}</th>`).join('') + '</tr>';
+  $('#items').innerHTML = head + (rows.length ? rows.map(t => `<tr>
+    <td>${esc(t.name)}${unit(t.form)}${t.raw ? ' <span class="muted small">raw</span>' : ''}</td>
+    <td class="n">${num(t.made_now)}</td><td class="n">${num(t.used_now)}</td><td class="n">${net(t.net_now)}</td>
+    <td class="n">${num(t.made_full)}</td><td class="n">${num(t.used_full)}</td><td class="n">${net(t.net_full)}</td></tr>`).join('')
+    : `<tr><td colspan="7" class="empty">No items match.</td></tr>`);
+  document.querySelectorAll('#items th.sort').forEach(th => th.onclick = () => {
+    const k = th.dataset.k;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = k === 'name' ? 1 : -1; }
+    renderItems();
+  });
+}
+['#filter', '#rawOnly', '#shortOnly'].forEach(s => $(s).addEventListener('input', () => data && renderItems()));
+
+loadSaves().catch(e => $('#loading').innerHTML = `<span class="err">${esc(e.message)}</span>`);
+</script>
+</body>
+</html>

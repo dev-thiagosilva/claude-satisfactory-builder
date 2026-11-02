@@ -1,6 +1,6 @@
 ---
 name: satisfactory-blueprints
-description: Read, visualize in 3D, edit and create Satisfactory blueprint files (.sbp / .sbpcfg) directly on disk, without opening the game, using a shipped library of building pieces. Use this whenever the user mentions Satisfactory blueprints, .sbp files, the blueprint designer, their blueprints folder, or wants to see, inspect, count pieces of, cost out, modify, duplicate, mirror, stack, or generate a building/factory layout as a blueprint, even if they don't say ".sbp".
+description: Read, visualize in 3D, edit and create Satisfactory blueprint files (.sbp / .sbpcfg) directly on disk, without opening the game, using a shipped library of building pieces. Use this whenever the user mentions Satisfactory blueprints, .sbp files, the blueprint designer, their blueprints folder, or wants to see, inspect, count pieces of, cost out, modify, duplicate, mirror, stack, or generate a building/factory layout as a blueprint, even if they don't say ".sbp". Also for production questions about their saves (what they produce per minute, what resources are missing, power balance).
 ---
 
 # Satisfactory blueprints
@@ -217,6 +217,42 @@ python -I scripts/calc.py --alternates "Reinforced Iron Plate"         # list re
 In code, use `from calc import plan, find_item, find_recipe, format_plan`, or add `--json`. The
 studio also serves a visual **Production planner** at `/planner`, like satisfactory-calculator.com:
 add items, switch each step's recipe, and set max clock, miner tier and node purity.
+
+### What a save produces, and what's missing
+
+When the player asks "how much am I producing" or "what am I missing", run `scripts/production.py`
+on their save (by name or path). It reads every machine, extractor and generator: recipe, clock,
+Somersloop boost (output ×boost, power ×boost²), the productivity the game last measured, the
+node each miner sits on, and each generator's fuel. Then it adds up the game's recipe rates.
+
+```bash
+python -I scripts/production.py "here again too"                  # save name, newest first
+python -I scripts/production.py "<save>.sav" --json out.json       # everything as data
+```
+
+The studio shows the same report as a page: **Production report** at
+`/production?save=<save name>`, with a save picker, the missing list, raw resources with unused
+nodes, and a sortable, searchable table of every item.
+
+It reports:
+- **made / used / net per item, two ways.** "Now" is rate × the game's last measured productivity,
+  i.e. what really ran. "Full" is every machine running non-stop at its clock: the demand the
+  factory was built for.
+- **Power**: generators now and at full speed, against what machines and extractors draw at full
+  speed.
+- **Missing**: items whose full-speed use is above their full-speed production, with the
+  machines waiting on them.
+- **Raw resources still missing**: shortfalls are covered from the factory's own surpluses first,
+  then made with the player's most-used recipe for each item (default recipe otherwise). The
+  report also lists unused nodes of each missing raw resource and what they'd give with Mk.3 miners
+  at 250%.
+
+Node purity comes from the game files: `terrain.exe nodes "<game dir>" managed .local/terrain/data`
+writes `nodes.json` (~80 s, once per game update). Without it every node counts as normal; say
+so. Tell the player what isn't counted: items in storage or moving on trains, trucks and drones,
+what AWESOME Sinks take, and hand crafting. If almost nothing ran in the last measurement (power
+off, fuse blown, or the save was only open briefly), the "now" view is near zero. Then go by the
+full view and say why.
 
 ## Production lines
 

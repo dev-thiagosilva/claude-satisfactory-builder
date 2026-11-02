@@ -280,9 +280,11 @@ def build_production(docs_path):
             if not c.get('ClassName', '').startswith('Desc_'):
                 continue
             form = {'RF_LIQUID': 'liquid', 'RF_GAS': 'gas'}.get(c.get('mForm'), 'solid')
+            energy = float(c.get('mEnergyValue') or 0) * (1000 if form != 'solid' else 1)   # MJ per item / m³
             items[short(c['ClassName'])] = dict(name=c.get('mDisplayName', ''), form=form,
                                                 raw=native == 'FGResourceDescriptor',
-                                                points=int(float(c.get('mResourceSinkPoints') or 0)))
+                                                points=int(float(c.get('mResourceSinkPoints') or 0)),
+                                                **({'energy': round(energy, 4)} if energy else {}))
     machines = {}
     for native in ('FGBuildableManufacturer', 'FGBuildableManufacturerVariablePower'):
         for c in by.get(native, []):
@@ -323,11 +325,21 @@ def build_production(docs_path):
             extractors[short(c['ClassName'])] = dict(name=c['mDisplayName'], rate=round(rate, 4),
                                                     power=float(c.get('mPowerConsumption') or 0),
                                                     solid=not fluid, allowed=allowed)
+    generators = {}               # MW at 100%; water m³/min = MW * water_ratio * 60 / 1000; fuel by its energy
+    for native in ('FGBuildableGeneratorFuel', 'FGBuildableGeneratorNuclear', 'FGBuildableGeneratorGeoThermal'):
+        for c in by.get(native, []):
+            fuels = [[short(f), short(b) if b else None, float(n or 0)] for f, b, n in re.findall(
+                r"'mFuelClass': '(\w+)', 'mSupplementalResourceClass': '\w*', 'mByproduct': '(\w*)', 'mByproductAmount': '(\w*)'",
+                str(c.get('mFuel', '')))]
+            generators[short(c['ClassName'])] = dict(
+                name=c['mDisplayName'], power=float(c.get('mPowerProduction') or 0) or float(
+                    c.get('mVariablePowerProductionFactor') or 0),
+                water_ratio=float(c.get('mSupplementalToPowerRatio') or 0), fuels=fuels)
     belts = sorted(([c['mDisplayName'], float(c['mSpeed']) / 2] for c in by.get('FGBuildableConveyorBelt', [])),
                    key=lambda b: b[1])
     pipes = sorted({(c['mDisplayName'].replace('Clean ', ''), float(c['mFlowLimit']) * 60)
                     for c in by.get('FGBuildablePipeline', [])}, key=lambda p: p[1])
-    return dict(items=items, recipes=recipes, machines=machines, extractors=extractors,
+    return dict(items=items, recipes=recipes, machines=machines, extractors=extractors, generators=generators,
                 belts=belts, pipes=[list(p) for p in pipes],
                 source='CommunityResources/Docs/en-US.json')
 

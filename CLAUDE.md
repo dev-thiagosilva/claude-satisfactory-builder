@@ -75,6 +75,7 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `  library/assets.json` | The same data for code (`assets()`, `estimate_cost(bp)` in `sbp.py`) |
 | `  library/donors-v60.sbp` | Sample pieces in game-1.2 format that builds copy from (`index.json` lists them). The project targets **game 1.2 only** |
 | `  scripts/sav.py` | Reader for 1.2 save files (building samples; offsets for the writer) |
+| `  scripts/production.py` | What a save produces/uses per minute, power balance, missing resources |
 | `  scripts/world.py` | Builds straight into a **new copy** of a 1.2 save: `World(sav).add_blueprint(bp, pos, yaw)`, `write()` |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds; `map.html` is the **World map**, `pieces.js` the shapes both share |
 | `  tools/terrain/` | C# tool (CUE4Parse) that reads the ground heights from the player's game install into `.local/terrain/data` for the World map |
@@ -122,6 +123,15 @@ byproducts, power, and belt/pipe tiers.
 `--total 500 --minutes 60` for an amount, `--alternates ITEM` to list recipes. For the visual
 version, point them to the studio's **Production planner** at `http://localhost:8770/planner`
 (add items, switch alternate recipes per row, set clock/miner/purity).
+
+When a player asks what one of their saves produces or what it's missing, run
+`python -I .claude/skills/satisfactory-blueprints/scripts/production.py "<save name>"`. It gives
+per-item made/used/net "now" (the game's measured productivity) and at full speed, the power
+balance, shortfalls with the machines waiting on them, and the raw resources still missing after
+the factory's own surpluses, plus unused nodes that could supply them. The same report is a
+studio page, **Production report** at `http://localhost:8770/production?save=<save name>`. Node purity needs
+`.local/terrain/data/nodes.json` (`terrain.exe nodes`, see the World map section). Details are in
+the skill's "What a save produces".
 
 ## Production lines (factories)
 
@@ -299,7 +309,11 @@ see how many existing pieces it overlaps, and **Put in a copy of my save**. Or c
   .local\terrain\bin\Release\net10.0\terrain.exe hlod    "<game dir>" managed .local/terrain/data
   .local\terrain\bin\Release\net10.0\terrain.exe water   "<game dir>" managed .local/terrain/data
   .local\terrain\bin\Release\net10.0\terrain.exe objects "<game dir>" managed .local/terrain/data
+  .local\terrain\bin\Release\net10.0\terrain.exe nodes   "<game dir>" managed .local/terrain/data
   ```
+  `nodes` writes `nodes.json`: every resource node, well and geyser by the name saves use for it
+  (a miner's `mExtractableResource`), with its resource and purity (625 in 1.2). A node with
+  no `mPurity` is at the class default, normal.
   Each tile's world position comes from its own section (`RootComponent` + (SectionBase −
   LandscapeSectionOffset) × scale), not the parent Landscape actor. **A cell can hold two
   sections, and texture names (`Heightmap_0`…) repeat in each**: match a tile's height texture
