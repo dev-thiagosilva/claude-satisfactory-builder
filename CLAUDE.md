@@ -76,6 +76,7 @@ they ask. If they later want it bigger or smaller, regenerate at the new size.
 | `  library/donors-v60.sbp` | Sample pieces in game-1.2 format that builds copy from (`index.json` lists them). The project targets **game 1.2 only** |
 | `  scripts/sav.py` | Reader for 1.2 save files (building samples; offsets for the writer) |
 | `  scripts/production.py` | What a save produces/uses per minute, power balance, missing resources |
+| `  scripts/power.py` | A save's power grids: which buildings reach the generators, wires, poles, what's left to connect |
 | `  scripts/logistics.py` | A save's trains, trucks/tractors and drones: tracks, roads, stations, ports, what each moves per minute |
 | `  scripts/world.py` | Builds straight into a **new copy** of a 1.2 save: `World(sav).add_blueprint(bp, pos, yaw)`, `write()` |
 | `  studio/` | **Blueprint Studio**: local three.js app (`server.py` + `index.html`) to view, edit and install builds; `map.html` is the **World map**, `pieces.js` the shapes both share |

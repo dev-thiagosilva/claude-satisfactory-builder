@@ -288,7 +288,37 @@ alone. Under the map, a **Train logistics check** board lists every factory in o
   bring them. That isn't checked.
 
 Each column puts the worst factory first, and each row shows its biggest gap. Click a row to
-select that factory on the map. **Trucks, tractors and drones** come from `logistics.roads_and_drones` and are on the map too.
+select that factory on the map. **Power connection** comes from `scripts/power.py` (`grid(save)`; also a CLI:
+`python -I scripts/power.py "<save>"`). It works from the game's own circuits:
+- **Circuits.** Each `FGPowerCircuit` lists every power connection on it in `mComponents`. That
+  includes links the game makes itself, such as train stations passing power along the rails.
+- **Switches.** A power switch sits in the two circuits it joins. When it's on (`mIsSwitchOn`), the
+  two count as one grid here.
+- **The generator grid** is the grid with the most generator power: the one to connect everything
+  to.
+- **Each building's status:** on the generator grid; on a grid with its own generators; island
+  (wired, but no generator on its circuit); or loose (no wire at all).
+- **Wires and poles.** Each `Build_PowerLine` has its two ends as the references after its
+  property list. Poles have their free slots (`POLE_LINKS` minus the wires on them).
+
+`production.sites` adds each building's grid and the wires and poles. With **"Colour by: power
+connection"**, the page shows:
+- **The map:** wires, each building coloured by its status, and each factory coloured
+  ✕ not connected / ◐ partly / ⚡ own generators / ✓ connected. A dashed yellow feeder line runs
+  from the focused factory to the nearest point of the generator grid, with its length and poles.
+- **The power board under the map:** a total across all factories, then a column per status.
+- **The factory detail:** a "Power connection" section with the plan to connect it.
+
+The plan is an estimate:
+- one wire per building without one, on free pole slots in its area, else on new Mk.3 poles
+  (9 buildings each plus 1 uplink);
+- one link per separate circuit in it;
+- a feeder with a pole every 100 m (the longest wire) when nothing in it reaches the grid yet.
+
+On the player's Dopamine world, no factory machine reached the 233 GW generator grid:
+1,163 machines were on islands and 401 had no wire at all.
+
+**Trucks, tractors and drones** come from `logistics.roads_and_drones` and are on the map too.
 - **Roads:** `Build_VehiclePath_*` segments with `mSplinePoints`, drawn as dashed teal lines.
 - **Truck stations** (teal triangles) load or unload with the same rule as train platforms. In 1.2
   a vehicle has no stored route. Each station records the vehicles that dock there in

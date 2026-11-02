@@ -179,11 +179,14 @@ def networks(save):
 
 def sites(sav):
     """Every producing building for the factory map: position (m), what it is, its recipe, the
-    productivity the game measured, its belt network, and its full-speed flows. Items are indexes
+    productivity the game measured, its belt network, its full-speed flows, and the power grid it's
+    wired to (power.grid; -1 = no wire). Items are indexes
     into `items` ([name, form, raw, sink points, id]) to keep the list small."""
+    import power
     D = calc.db()
     save = Save(sav)
     net = networks(save)
+    grid = power.grid(save)
     names, index = [], {}
 
     def ix(i):
@@ -209,9 +212,11 @@ def sites(sav):
         out.append([round(m['pos'][0] / 100, 1), round(m['pos'][1] / 100, 1), m['kind'][0], m['type'], label,
                     None if m['productivity'] is None else round(m['productivity'], 3), net.get(m['path'], -1),
                     [[ix(i), round(v, 3)] for i, v in fl if i != '_power'],
-                    round(sum(v for i, v in fl if i == '_power'), 1)])
-    return dict(fields=['x', 'y', 'kind', 'type', 'label', 'productivity', 'network', 'flows', 'power'],
-                machines=out, items=names, rules=rules(save))
+                    round(sum(v for i, v in fl if i == '_power'), 1), grid['group_of'].get(m['path'], -1)])
+    return dict(fields=['x', 'y', 'kind', 'type', 'label', 'productivity', 'network', 'flows', 'power', 'grid'],
+                machines=out, items=names, rules=rules(save),
+                power=dict(main=grid['main'], groups=grid['groups'], lines=grid['lines'], poles=grid['poles'],
+                           assumptions=grid['assumptions']))
 
 
 def close_gaps(net, prefer):

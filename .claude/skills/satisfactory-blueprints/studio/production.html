@@ -73,7 +73,8 @@
   #legend i.dln { width:14px; height:0; background:none; border-top:2px dotted #b9a6e8; }
   #legend i.dpt { width:8px; height:8px; border-radius:50%; background:#b9a6e8; }
   #legend i.ring { background:transparent; border:2px solid var(--accent); border-radius:50%; width:11px; height:11px; }
-  #legendStatus { display:contents; }
+  #legendStatus, #legendTransport { display:contents; }
+  #legendTransport.off { display:none; }
   #legendStatus b { font-weight:600; }
   #board { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:8px; margin:10px 8px 0; }
   #board:empty { display:none; }
@@ -139,7 +140,8 @@
           <label><input type="checkbox" id="showRail" checked> Trains</label>
           <label><input type="checkbox" id="showRoad" checked> Trucks</label>
           <label><input type="checkbox" id="showDrone" checked> Drones</label>
-          <label><input type="checkbox" id="colorStatus" checked> Colour by transport status</label>
+          <label>Colour by <select id="colorBy" style="width:auto"><option value="transport">transport status</option>
+            <option value="power">power connection</option><option value="none">nothing</option></select></label>
           <button id="fit">Fit</button>
         </div>
         <div id="mapWrap">
@@ -147,9 +149,9 @@
           <div id="tip" hidden></div>
           <div id="legend"><span><i class="dot"></i>machine</span><span><i class="sq"></i>miner / extractor</span>
             <span><i class="dia"></i>generator</span><span><i class="sm"></i>other powered building</span><span><i class="ring"></i>factory</span>
-            <span><i class="rail"></i>rail</span><span><i class="stn"></i>train station</span>
+            <span id="legendTransport"><span><i class="rail"></i>rail</span><span><i class="stn"></i>train station</span>
             <span><i class="road"></i>road</span><span><i class="tst"></i>truck station</span>
-            <span><i class="dln"></i>drone link</span><span><i class="dpt"></i>drone port</span><span id="legendStatus"></span></div>
+            <span><i class="dln"></i>drone link</span><span><i class="dpt"></i>drone port</span></span><span id="legendStatus"></span></div>
         </div>
         <div id="board"></div>
         <div id="detail"></div>
@@ -337,7 +339,7 @@ let view = { s: 0.2, x: 0, y: 0 };            // pixels per metre, world point a
 let ground = null;                             // { img, x0, y0, mpp } shaded terrain + water, built once
 
 async function loadSites(path) {
-  sites = null; groups = []; selected = null;
+  sites = null; groups = []; selected = null; mainNodes = null;
   $('#factories').innerHTML = '<tr><td class="empty">Finding your factories…</td></tr>';
   $('#detail').innerHTML = '';
   draw();
@@ -465,6 +467,86 @@ function status(g) {
   return g.ins.some(([k]) => sites.items[k][0] !== 'Water') && g.name !== 'Power plant' ? 'none' : null;
 }
 
+// ---------- power connection ----------
+// sites.power (power.py): every building's grid (machines[i][9]: -1 = no wire), the grids with what they
+// generate, wires and poles with free slots. The "main" grid is the one with the most generator power:
+// the one to connect everything to.
+const PSTATUS = {
+  off:  { icon: '✕', label: 'Not connected', note: 'none of its machines reach the generator grid', color: '#e06c6c' },
+  part: { icon: '◐', label: 'Partly connected', note: 'some machines reach the generator grid, some don\'t', color: '#e0a84a' },
+  own:  { icon: '⚡', label: 'Own generators', note: 'runs on a separate grid with its own generators', color: '#8fb3e0' },
+  on:   { icon: '✓', label: 'Connected', note: 'every machine reaches the generator grid', color: '#5cb87a' },
+};
+const BSTAT = {   // one building
+  main:   { label: 'on the generator grid', color: '#5cb87a' },
+  other:  { label: 'on a grid with its own generators', color: '#8fb3e0' },
+  island: { label: 'wired, but no generator on its circuit', color: '#e0a84a' },
+  loose:  { label: 'no wire at all', color: '#e06c6c' },
+};
+function bstat(m) {
+  const P = sites.power;
+  if (!P || m[9] < 0) return 'loose';
+  return m[9] === P.main ? 'main' : (P.groups[m[9]] || {}).gen_mw > 0 ? 'other' : 'island';
+}
+// what it takes to wire a factory to the generator grid (an estimate): one wire per building with none,
+// hung on free slots of poles in its area or on new Mk.3 poles (9 buildings each + 1 uplink); one link per
+// separate wired circuit in it; and, if nothing in it reaches the grid yet, a feeder line from its nearest
+// building or pole to the nearest point of the grid, a pole every 100 m (the longest wire)
+let mainNodes = null;
+function powerPlan(g) {
+  const P = sites.power;
+  if (!P) return null;
+  const ms = sites.machines, all = [...g.members, ...g.extras].filter(i => ms[i][8] < 0 || ms[i][2] === 'g');
+  const count = { main: 0, other: 0, island: 0, loose: 0 }, offMw = { main: 0, other: 0, island: 0, loose: 0 };
+  const islands = new Set();
+  for (const i of all) {
+    const s = bstat(ms[i]); count[s]++; offMw[s] += Math.max(0, -ms[i][8]);
+    if (s === 'island' || s === 'other') islands.add(ms[i][9]);
+  }
+  const poles = P.poles.filter(p => Math.hypot(p[0] - g.x, p[1] - g.y) <= g.r + 15);
+  poles.forEach(p => { if (p[2] >= 0 && p[2] !== P.main && (P.groups[p[2]] || {}).gen_mw === 0) islands.add(p[2]); });
+  const hasMain = count.main > 0 || poles.some(p => p[2] === P.main);
+  // nearest point of the main grid to anything in this factory
+  let feeder = null;
+  if (!hasMain && (count.loose + count.island) > 0 && mainNodes) {
+    let best = Infinity, a = null, b = null;
+    const mine = [...all.map(i => [ms[i][0], ms[i][1]]), ...poles.map(p => [p[0], p[1]])];
+    for (const n of mainNodes) {
+      const dc = Math.hypot(n[0] - g.x, n[1] - g.y) - g.r;
+      if (dc > best) continue;
+      for (const q of mine) { const d = Math.hypot(n[0] - q[0], n[1] - q[1]); if (d < best) { best = d; a = q; b = n; } }
+    }
+    if (a) feeder = { from: a, to: b, m: best, wires: Math.max(1, Math.ceil(best / P.assumptions.wire_max_m)),
+                      poles: Math.max(0, Math.ceil(best / P.assumptions.wire_max_m) - 1) };
+  }
+  const free = poles.reduce((s, p) => s + p[3], 0);
+  const newPoles = Math.ceil(Math.max(0, count.loose - free) / 9);
+  const links = Math.max(0, islands.size - (feeder ? 1 : 0));
+  const wires = count.loose + newPoles + links + (feeder ? feeder.wires : 0);
+  const cable = count.loose * 12 + newPoles * 15 + links * 25 + (feeder ? feeder.m : 0);
+  const total = all.length, off = total - count.main;
+  const st = !total ? null : !off ? 'on' : count.main ? 'part'
+    : count.other && !count.island && !count.loose ? 'own' : 'off';
+  return { count, offMw: offMw.other + offMw.island + offMw.loose, total, off, islands: islands.size, feeder, free,
+           newPoles, links, wires, poles: newPoles + (feeder ? feeder.poles : 0), cable, status: st };
+}
+const pstatus = g => g.pw ? g.pw.status : null;
+const COLOR_MODES = {
+  transport: { table: STATUS, of: status, ready: () => !!rail },
+  power: { table: PSTATUS, of: pstatus, ready: () => !!(sites && sites.power) },
+};
+const colorBy = () => { const k = $('#colorBy').value; return COLOR_MODES[k] && COLOR_MODES[k].ready() ? k : null; };
+const statusOf = g => { const k = colorBy(); return k ? COLOR_MODES[k].of(g) : null; };
+const tableOf = () => COLOR_MODES[colorBy()].table;
+function planText(p) {
+  if (!p || !p.off) return '';
+  const bits = [];
+  if (p.feeder) bits.push(`grid ${num(p.feeder.m)} m away`);
+  bits.push(`~${p.wires} wire${p.wires === 1 ? '' : 's'}`);
+  if (p.poles) bits.push(`${p.poles} new pole${p.poles === 1 ? '' : 's'}`);
+  return bits.join(' · ');
+}
+
 function cluster() {
   if (!sites) return;
   const R = +$('#radius').value, byBelts = $('#byBelts').checked, minM = Math.max(1, +$('#minM').value || 1);
@@ -510,6 +592,12 @@ function cluster() {
   groups.forEach((g, i) => g.id = i);
   outside = summarise([], loose);
   if (selected) selected = groups.find(g => g.members.includes(selected.members[0])) || null;
+  if (sites.power && !mainNodes) {
+    const P = sites.power;
+    mainNodes = [...P.poles.filter(p => p[2] === P.main).map(p => [p[0], p[1]]),
+                 ...sites.machines.filter(m => m[9] === P.main).map(m => [m[0], m[1]])];
+  }
+  groups.forEach(g => g.pw = powerPlan(g));
   linkStations(); listFactories(); showDetail(); draw();
 }
 let outside = null;                            // powered buildings that aren't near any factory
@@ -584,27 +672,45 @@ function listFactories() {
   renderBoard();
 }
 
-// the train logistics check under the map: every factory in one of four columns, worst first
+// the check under the map (transport or power, whichever colours the map): every factory in one of four
+// columns, worst first
 let boardOpen = {};
 function renderBoard() {
-  const on = rail && $('#colorStatus').checked;
-  $('#legendStatus').innerHTML = on ? Object.values(STATUS).map(s =>
-    `<span><b style="color:${s.color}">${s.icon}</b>${s.label.toLowerCase()}</span>`).join('') : '';
-  if (!rail) { $('#board').innerHTML = ''; return; }
-  const cols = { short: [], pile: [], ok: [], none: [] };
-  for (const g of groups) { const s = status(g); if (s) cols[s].push(g); }
+  const mode = colorBy(), T = mode ? tableOf() : null;
+  // legend: transport symbols in transport mode; in power mode the building colours, wires and the feeder
+  $('#legendTransport').classList.toggle('off', mode === 'power');
+  $('#legendStatus').innerHTML = mode === 'power'
+    ? Object.values(BSTAT).map(s => `<span><b style="color:${s.color}">●</b>${s.label}</span>`).join('') +
+      '<span><i style="width:14px;height:1px;background:#e8d27a"></i>power line</span><span><i style="width:14px;height:0;background:none;border-top:2px dashed #f2d16b"></i>feeder to the grid</span>'
+    : '';
+  if (!T) { $('#board').innerHTML = ''; return; }
+  const cols = Object.fromEntries(Object.keys(T).map(k => [k, []]));
+  for (const g of groups) { const s = statusOf(g); if (s) cols[s].push(g); }
   const worst = (rows) => rows.filter(r => r.gap > 0.5).sort((a, b) => b.gap - a.gap);
+  const pline = g => [`${g.pw.off} of ${g.pw.total} not on the grid · ${mw(g.pw.offMw)}`, planText(g.pw)].filter(Boolean);
   const line = {
     short: g => worst(g.logi.imports).map(r => `${r.name} −${per(r.gap, r.form)}${r.more ? ` · ${moreText(r)}` : r.trains ? '' : ' · nothing brings it'}`),
     pile: g => worst(g.logi.exports).map(r => `${r.name} ${per(r.gap, r.form)} not taken${r.trains ? '' : ' · nothing takes it'}`),
     ok: g => [Object.keys(MODES).filter(m => g.logi.count(m)).map(m => `${g.logi.count(m)} ${g.logi.count(m) > 1 ? MODES[m].many : MODES[m].one}`).join(' · ')],
     none: g => g.ins.filter(([k]) => sites.items[k][0] !== 'Water').slice(0, 3).map(([k, v]) => `needs ${sites.items[k][0]} ${per(-v, sites.items[k][1])}`),
+    off: pline, part: pline,
+    own: g => [`${g.pw.count.other} on their own grid · ${mw(g.pw.offMw)}`],
+    on: g => [`${g.pw.total} building${g.pw.total === 1 ? '' : 's'} · ${mw(g.need)}`],
   };
   const sev = { short: g => Math.max(...worst(g.logi.imports).map(r => r.gap / r.want)) * 1e4 + g.members.length,
                 pile: g => Math.max(...worst(g.logi.exports).map(r => r.gap / r.want)) * 1e4 + g.members.length,
-                ok: g => g.members.length, none: g => g.members.length };
-  $('#board').innerHTML = Object.entries(cols).map(([k, gs]) => {
-    const S = STATUS[k], shown = boardOpen[k] ? gs.length : 6;
+                ok: g => g.members.length, none: g => g.members.length,
+                off: g => g.pw.offMw, part: g => g.pw.offMw, own: g => g.pw.offMw, on: g => g.need };
+  let head = '';
+  if (mode === 'power') {
+    const ps = groups.map(g => g.pw).filter(Boolean), sum = f => ps.reduce((a, p) => a + f(p), 0);
+    const off = sum(p => p.off), total = sum(p => p.total);
+    head = `<div class="why" style="grid-column:1/-1;font-size:12px;color:var(--fg)">Across all factories: <b>${off.toLocaleString()} of
+      ${total.toLocaleString()}</b> powered buildings don't reach the generator grid (${mw(sum(p => p.offMw))} at full speed). To connect them all:
+      ~${sum(p => p.wires).toLocaleString()} wires, ${sum(p => p.poles).toLocaleString()} new poles, ~${num(sum(p => p.cable) / 1000)} km of cable.</div>`;
+  }
+  $('#board').innerHTML = head + Object.entries(cols).map(([k, gs]) => {
+    const S = T[k], shown = boardOpen[k] ? gs.length : 6;
     gs.sort((a, b) => sev[k](b) - sev[k](a));
     return `<div class="col" style="--c:${S.color}"><h5><span><span class="ic">${S.icon}</span>${S.label}</span><b>${gs.length}</b></h5>
       <div class="why">${S.note}</div>
@@ -631,7 +737,30 @@ function showDetail() {
     <div><h4>Takes in from outside</h4>${g.ins.map(li).join('') || '<span class="muted small">nothing: makes all it uses</span>'}</div>
     <div><h4>Power needed · ${mw(g.need)}</h4>${g.uses.map(([k, [v, c]]) => `<div class="li"><span>${esc(k)}${c ? ` <span class="muted">×${c}</span>` : ''}</span><span>${mw(v)}</span></div>`).join('') || '<span class="muted small">none</span>'}</div>
     <div><h4>Machines</h4>${rec.map(([k, n]) => `<div class="li"><span>${esc(k)}</span><span>${n}</span></div>`).join('')}</div></div>
+    ${powerDetail(g)}
     ${trainDetail(g)}</div>`;
+}
+
+function powerDetail(g) {
+  const p = g.pw;
+  if (!p || !p.total) return '';
+  const S = p.status ? PSTATUS[p.status] : null;
+  const row = (k, v, note) => `<div class="li"><span>${k}</span><span>${v}${note ? ` <span class="muted">${note}</span>` : ''}</span></div>`;
+  const counts = Object.keys(BSTAT).filter(k => p.count[k]).map(k =>
+    row(`<b style="color:${BSTAT[k].color}">●</b> ${BSTAT[k].label}`, p.count[k])).join('');
+  const plan = !p.off ? '<span class="spare small">✓ every building here is on the generator grid</span>' : [
+    p.feeder ? row('Feeder line to the generator grid', `${num(p.feeder.m)} m`, `${p.feeder.wires} wire${p.feeder.wires === 1 ? '' : 's'}, ${p.feeder.poles} pole${p.feeder.poles === 1 ? '' : 's'}`) : '',
+    p.links ? row('Links between its separate circuits', p.links, `wire${p.links === 1 ? '' : 's'}`) : '',
+    p.count.loose ? row('Buildings with no wire', p.count.loose, `${p.count.loose} wires · ${Math.min(p.free, p.count.loose)} on free pole slots here`) : '',
+    p.newPoles ? row('New Mk.3 poles for them', p.newPoles, '9 buildings each + 1 uplink') : '',
+    row('<b>Total</b>', `<b>~${p.wires} wires · ${p.poles} poles · ~${num(p.cable)} m of cable</b>`),
+  ].join('');
+  return `<h4>Power connection${S ? ` · <span style="color:${S.color}">${S.icon} ${S.label}</span>` : ''}</h4>
+    <div class="cols"><div>${counts}${row('Power not on the generator grid', mw(p.offMw))}</div><div>${plan}</div></div>
+    <div class="note" style="margin:4px 0 0">Estimate: one wire per building without one, on free slots of poles in its area or new Mk.3 poles;
+    one link per separate circuit; a feeder with a pole every ${sites.power.assumptions.wire_max_m} m (the longest wire) when nothing here
+    reaches the grid yet (dashed yellow on the map, with "Colour by power connection"). The generator grid is the one with the most generators:
+    ${mw(sites.power.groups[sites.power.main].gen_mw)} from ${sites.power.groups[sites.power.main].generators} generators.</div>`;
 }
 
 const hubName = s => s ? s.name : '?';
@@ -797,11 +926,14 @@ function draw() {
   if (rail && $('#showRail').checked) lines(rail.tracks, MODES.train.line, Math.max(1, Math.min(3, view.s * 1.2)), []);
   if (rail && $('#showDrone').checked) lines(rail.drone_ports.filter(p => p.has_drone && p.partner != null)
     .map(p => { const q = rail.drone_ports[p.partner]; return [p.x, p.y, q.x, q.y]; }), MODES.drone.line, 1.2, [2, 4]);
-  // factory areas, coloured by transport status when that's on
-  const byStatus = rail && $('#colorStatus').checked;
+  // power lines (power mode)
+  const powerMode = colorBy() === 'power';
+  if (powerMode) lines(sites.power.lines.map(l => l), 'rgba(232,210,122,.32)', 1, []);
+  // factory areas, coloured by transport or power status
+  const T = colorBy() ? tableOf() : null;
   for (const g of groups) {
     const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
-    const st = byStatus && status(g), c = st ? STATUS[st].color : '#f39c3c';
+    const st = T && statusOf(g), c = st ? T[st].color : '#f39c3c';
     ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
     ctx.globalAlpha = g === selected ? 0.3 : g === hover ? 0.22 : 0.12; ctx.fillStyle = c; ctx.fill(); ctx.globalAlpha = 1;
     ctx.lineWidth = (g === selected ? 3 : 1.8) * d; ctx.strokeStyle = c; ctx.stroke();
@@ -810,10 +942,11 @@ function draw() {
   // machines
   const ms = sites.machines, sz = Math.max(1.5, Math.min(4, view.s * 4)) * d;
   ctx.fillStyle = 'rgba(154,150,141,.6)';               // other powered buildings: small and faint
-  if (view.s > 0.15) for (const m of ms) {
+  if (view.s > 0.15 || powerMode) for (const m of ms) {
     if (m[2] !== 'c') continue;
     const [x, y] = toScreen(m[0], m[1]);
     if (x < -10 || y < -10 || x > cv.width + 10 || y > cv.height + 10) continue;
+    if (powerMode) ctx.fillStyle = BSTAT[bstat(m)].color;
     ctx.fillRect(x - sz * .3, y - sz * .3, sz * .6, sz * .6);
   }
   ctx.fillStyle = 'rgba(233,230,223,.85)';
@@ -821,6 +954,7 @@ function draw() {
     if (m[2] === 'c') continue;
     const [x, y] = toScreen(m[0], m[1]);
     if (x < -10 || y < -10 || x > cv.width + 10 || y > cv.height + 10) continue;
+    if (powerMode) ctx.fillStyle = BSTAT[bstat(m)].color;
     if (m[2] === 'm') { ctx.beginPath(); ctx.arc(x, y, sz * .6, 0, 7); ctx.fill(); }
     else if (m[2] === 'e') ctx.fillRect(x - sz * .6, y - sz * .6, sz * 1.2, sz * 1.2);
     else { ctx.beginPath(); ctx.moveTo(x, y - sz); ctx.lineTo(x + sz, y); ctx.lineTo(x, y + sz); ctx.lineTo(x - sz, y); ctx.fill(); }
@@ -830,7 +964,8 @@ function draw() {
   const boxes = [];
   ctx.font = `${12 * d}px system-ui, sans-serif`; ctx.textBaseline = 'top';
   if (rail) {
-    const focus = selected || hover, mine = new Set(focus && focus.stations ? focus.stations.filter(shown) : []);
+    const focus = selected || hover;   // in power mode routes and hub labels stay off: the wiring is what matters there
+    const mine = new Set(!powerMode && focus && focus.stations ? focus.stations.filter(shown) : []);
     const partners = new Set();
     ctx.setLineDash([6 * d, 5 * d]); ctx.lineWidth = 1.5 * d; ctx.strokeStyle = 'rgba(255,180,94,.85)';
     for (const s of mine) for (const p of partners_of(s)) {
@@ -856,7 +991,7 @@ function draw() {
         ctx.strokeStyle = mine.has(s) ? '#ffb45e' : 'rgba(255,180,94,.7)'; ctx.lineWidth = 2 * d;
         ctx.strokeRect(x - ss, y - ss, ss * 2, ss * 2);
       }
-      if (mine.has(s) || partners.has(s) || s === hoverStation || view.s > 1.2) {
+      if (mine.has(s) || partners.has(s) || s === hoverStation || (view.s > 1.2 && !powerMode)) {
         const w = ctx.measureText(s.name).width + 8 * d, bx = x + ss, by = y - 8 * d;
         boxes.push([bx, by, w, 16 * d]);
         ctx.fillStyle = 'rgba(19,21,26,.85)'; ctx.fillRect(bx, by, w, 16 * d);
@@ -869,8 +1004,8 @@ function draw() {
     const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
     if (x < 0 || x > cv.width || y < -r || y > cv.height) continue;      // label only factories in view
     const top = g.name === 'Power plant' ? `makes ${mw(g.power)}` : g.top ? `${num(g.top[1])}/min` : '';
-    const st = byStatus && status(g);
-    const t1 = (st ? STATUS[st].icon + ' ' : '') + g.name;
+    const st = T && statusOf(g);
+    const t1 = (st ? T[st].icon + ' ' : '') + g.name;
     const t2 = `${top}${top ? ' · ' : ''}needs ${mw(g.need)} · ${g.members.length} machines`;
     const w = Math.max(ctx.measureText(t1).width, ctx.measureText(t2).width) + 10 * d, h = 32 * d;
     const bx = Math.max(2 * d, Math.min(cv.width - w - 2 * d, x - w / 2)), by = y + r + 4 * d;
@@ -878,9 +1013,21 @@ function draw() {
     if (g !== selected && boxes.some(b => bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1])) continue;
     boxes.push([bx, by, w, h]);
     ctx.fillStyle = 'rgba(19,21,26,.88)'; ctx.fillRect(bx, by, w, h);
-    if (st) { ctx.fillStyle = STATUS[st].color; ctx.fillRect(bx, by, 3 * d, h); }
+    if (st) { ctx.fillStyle = T[st].color; ctx.fillRect(bx, by, 3 * d, h); }
     ctx.fillStyle = g === selected ? '#ffb45e' : '#e9e6df'; ctx.fillText(t1, bx + 6 * d, by + 3 * d);
     ctx.fillStyle = '#9a968d'; ctx.fillText(t2, bx + 5 * d, by + 17 * d);
+  }
+  // power mode: the feeder line the focused factory would need to reach the generator grid (drawn last, on top)
+  const focusG = selected || hover;
+  if (powerMode && focusG && focusG.pw && focusG.pw.feeder) {
+    const f = focusG.pw.feeder, [x1, y1] = toScreen(f.from[0], f.from[1]), [x2, y2] = toScreen(f.to[0], f.to[1]);
+    ctx.setLineDash([8 * d, 5 * d]); ctx.lineWidth = 2.5 * d; ctx.strokeStyle = '#f2d16b';
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#f2d16b'; ctx.beginPath(); ctx.arc(x2, y2, 5 * d, 0, 7); ctx.fill();
+    const t = `${num(f.m)} m to the generator grid · ${f.poles} pole${f.poles === 1 ? '' : 's'}`, w = ctx.measureText(t).width + 8 * d;
+    const lx = Math.max(2 * d, Math.min(cv.width - w - 2 * d, (x1 + x2) / 2 - w / 2)), ly = Math.min(y1, y2) - 22 * d;
+    ctx.fillStyle = 'rgba(19,21,26,.92)'; ctx.fillRect(lx, ly, w, 18 * d);
+    ctx.fillStyle = '#f2d16b'; ctx.fillText(t, lx + 4 * d, ly + 2 * d);
   }
 }
 
@@ -913,6 +1060,12 @@ function stationTip(s) {
     (Object.keys(s.imports).length ? '<br>' + rows(s.imports, '▼ in') : '') +
     (Object.keys(s.exports).length ? '<br>' + rows(s.exports, '▲ out') : '') +
     (!n ? `<br><span class="muted">no ${M.one} uses it</span>` : '');
+}
+function powerTip(g) {
+  const p = g.pw, S = p.status ? PSTATUS[p.status] : null;
+  return `<br><b style="margin-top:6px">Power · ${S ? `<span style="color:${S.color}">${S.icon} ${S.label}</span>` : '–'}</b>` +
+    Object.keys(BSTAT).filter(k => p.count[k]).map(k => `<b style="color:${BSTAT[k].color}">●</b> ${p.count[k]} ${BSTAT[k].label}`).join('<br>') +
+    (p.off ? `<br>${mw(p.offMw)} not on the generator grid<br>To connect: ${planText(p)}` : '');
 }
 function trainTip(g) {
   const L = g.logi;
@@ -955,7 +1108,7 @@ cv.addEventListener('pointermove', e => {
   else tip.innerHTML = `<b>${esc(g.name)}</b>${g.members.length} machines${g.extras.length ? ` + ${g.extras.length} other` : ''} · ${Math.round(g.running / g.members.length * 100)}% ran<br>` +
     `Needs ${mw(g.need)}${g.power > 0 ? ` · makes ${mw(g.power)}` : ''}<br>` +
     g.outs.slice(0, 4).map(([k, v]) => `${esc(it[k][0])}: ${num(v)}${it[k][1] !== 'solid' ? ' m³' : ''}/min`).join('<br>') +
-    trainTip(g);
+    (colorBy() === 'power' && g.pw ? powerTip(g) : trainTip(g));
   tip.hidden = false;
   const x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
   tip.style.left = Math.min(x, r.width - tip.offsetWidth - 6) + 'px'; tip.style.top = Math.min(y, r.height - tip.offsetHeight - 6) + 'px';
@@ -982,7 +1135,7 @@ cv.addEventListener('wheel', e => {
 new ResizeObserver(() => { sizeCanvas(); draw(); }).observe(cv);
 ['#radius', '#byBelts', '#minM', '#mode'].forEach(s => $(s).addEventListener('input', cluster));
 ['#showRail', '#showRoad', '#showDrone'].forEach(s => $(s).addEventListener('input', draw));
-$('#colorStatus').addEventListener('input', () => { renderBoard(); draw(); });
+$('#colorBy').addEventListener('input', () => { renderBoard(); draw(); });
 $('#fit').onclick = fit;
 
 loadSaves().catch(e => $('#loading').innerHTML = `<span class="err">${esc(e.message)}</span>`);
