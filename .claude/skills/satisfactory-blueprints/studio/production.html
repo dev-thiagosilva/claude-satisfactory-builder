@@ -49,11 +49,32 @@
   .meter i { position:absolute; left:0; top:0; bottom:0; border-radius:3px; background:var(--bar); }
   .meter i.need { background:var(--err); opacity:.85; }
   .tools { display:flex; gap:8px; align-items:center; margin:8px; flex-wrap:wrap; }
-  .tools input { flex:1; min-width:160px; }
+  .tools input:not([type]) { flex:1; min-width:160px; }
   .tools label { color:var(--muted); font-size:12px; display:flex; gap:5px; align-items:center; }
   .empty { color:var(--muted); padding:40px 0; text-align:center; }
   .err { color:var(--err); }
   #loading { color:var(--muted); padding:60px 0; text-align:center; }
+  #mapWrap { position:relative; margin:0 8px; height:540px; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#0e1014; }
+  #map { width:100%; height:100%; display:block; cursor:grab; touch-action:none; }
+  #map.drag { cursor:grabbing; }
+  #tip { position:absolute; pointer-events:none; background:rgba(19,21,26,.95); border:1px solid var(--line); border-radius:7px;
+         padding:7px 9px; font-size:12px; max-width:280px; z-index:2; }
+  #tip b { display:block; margin-bottom:2px; }
+  #legend { position:absolute; left:8px; bottom:8px; display:flex; gap:12px; flex-wrap:wrap; background:rgba(19,21,26,.85);
+            border:1px solid var(--line); border-radius:7px; padding:5px 9px; font-size:11px; color:var(--muted); }
+  #legend span { display:flex; align-items:center; gap:5px; }
+  #legend i { display:inline-block; width:8px; height:8px; background:var(--fg); }
+  #legend i.dot { border-radius:50%; } #legend i.dia { transform:rotate(45deg) scale(.8); }
+  #legend i.sm { width:4px; height:4px; background:var(--muted); }
+  #legend i.ring { background:transparent; border:2px solid var(--accent); border-radius:50%; width:11px; height:11px; }
+  #detail { margin:10px 8px 0; }
+  #detail .box { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  #detail .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:4px 18px; margin-top:6px; }
+  #detail h4 { margin:8px 0 4px; font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); font-weight:600; }
+  #detail .li { display:flex; justify-content:space-between; gap:10px; font-variant-numeric:tabular-nums; font-size:12px; padding:1px 0; }
+  #factories tr.pick { cursor:pointer; } #factories tr.pick:hover td { background:#20242c; }
+  #factories tr.sel td { background:#2a2419; }
+  @media (max-width: 860px) { #mapWrap { height:420px; } }
   @media (max-width: 860px) { #app { grid-template-columns:1fr; } aside { border-right:0; border-bottom:1px solid var(--line); } main { padding:14px 16px; } }
 </style>
 </head>
@@ -82,6 +103,35 @@
     <div id="report" hidden>
       <div id="banners"></div>
       <div class="cards" id="cards"></div>
+
+      <div class="section" id="factoryMap">
+        <h3>Factory map</h3>
+        <div class="note">Machines close together on the same belts and pipes are one factory. Circles show each
+          factory's area, what it puts out and the power it needs, counting its pumps, stations, lights, sinks and
+          other powered buildings. Drag to move, scroll to zoom, click a factory for details.</div>
+        <div class="tools">
+          <label>Machines within <input type="range" id="radius" min="10" max="200" step="5" value="40" style="width:120px"> <b id="radiusV">40 m</b></label>
+          <label><input type="checkbox" id="byBelts" checked> Split where belts and pipes don't connect</label>
+          <label>At least <input type="number" id="minM" min="1" max="50" value="3" style="width:56px"> machines</label>
+          <label>Rates <select id="mode" style="width:auto"><option value="full">at full speed</option><option value="now">now</option></select></label>
+          <button id="fit">Fit</button>
+        </div>
+        <div id="mapWrap">
+          <canvas id="map"></canvas>
+          <div id="tip" hidden></div>
+          <div id="legend"><span><i class="dot"></i>machine</span><span><i class="sq"></i>miner / extractor</span>
+            <span><i class="dia"></i>generator</span><span><i class="sm"></i>other powered building</span><span><i class="ring"></i>factory</span></div>
+        </div>
+        <div id="detail"></div>
+        <div class="scroll"><table id="factories"></table></div>
+      </div>
+
+      <div class="section">
+        <h3>Power use at full speed</h3>
+        <div class="note">Every building that draws power, at its clock speed. "Making items" and "Mining and pumping" include
+          overclocking (power ×clock<sup>1.32</sup>) and Somersloops (power ×boost²).</div>
+        <div class="scroll"><table id="power"></table></div>
+      </div>
 
       <div class="section">
         <h3>Missing at full speed</h3>
@@ -157,6 +207,7 @@ async function load(path) {
   render();
   $('#loading').hidden = true;
   $('#report').hidden = false;
+  loadSites(path);
 }
 
 function render() {
@@ -184,8 +235,15 @@ function render() {
     [`${run.any.toLocaleString()} / ${run.of.toLocaleString()}`, 'ran during the last check'],
     [r.missing.length, 'items short at full speed'],
     [`${num(pw.generators_full / 1000)} GW`, 'generators at full speed'],
-    [`${num(pw.machines_full / 1000)} GW`, 'machines need at full speed' + (shortPower ? ' · <span class="short">▼ more than you make</span>' : '')],
+    [`${num(pw.machines_full / 1000)} GW`, 'everything needs at full speed' + (shortPower ? ' · <span class="short">▼ more than you make</span>' : '')],
   ].map(([v, l]) => `<div class="card"><b>${v}</b><span>${l}</span></div>`).join('');
+
+  const pmax = Math.max(1, ...pw.by.map(b => b[1]));
+  $('#power').innerHTML = `<tr><th>Used by</th><th class="n">Buildings</th><th class="n">Power</th><th class="n">Share</th><th style="width:30%"></th></tr>` +
+    pw.by.map(([k, v, n]) => `<tr><td>${esc(k)}</td><td class="n">${n ? n.toLocaleString() : '–'}</td><td class="n">${mw(v)}</td>
+      <td class="n">${(v / pw.machines_full * 100).toFixed(1)}%</td>
+      <td><div class="meter" style="margin-top:5px"><i style="width:${v / pmax * 100}%"></i></div></td></tr>`).join('') +
+    `<tr><td><b>Total</b></td><td></td><td class="n"><b>${mw(pw.machines_full)}</b></td><td></td><td class="small muted">generators make ${mw(pw.generators_full)} at full speed</td></tr>`;
 
   const maxNeed = Math.max(1, ...r.missing.map(m => m.used_full));
   $('#missing').innerHTML = r.missing.length ? `<tr><th>Item</th><th class="n">Makes</th><th class="n">Needs</th><th class="n">Short by</th><th>Waiting on it</th></tr>` +
@@ -238,6 +296,355 @@ function renderItems() {
   });
 }
 ['#filter', '#rawOnly', '#shortOnly'].forEach(s => $(s).addEventListener('input', () => data && renderItems()));
+
+// ---------- factory map ----------
+// Machines come from /api/sites (positions in metres, +X east, +Y south). Factories are worked out here so
+// the radius and belt switch apply at once: two machines belong together when they are within the radius
+// (and, with the switch on, on the same belt/pipe network); groups below the minimum size aren't factories.
+const cv = $('#map'), ctx = cv.getContext('2d');
+let sites = null, groups = [], selected = null, hover = null;
+let view = { s: 0.2, x: 0, y: 0 };            // pixels per metre, world point at the canvas centre
+let ground = null;                             // { img, x0, y0, mpp } shaded terrain + water, built once
+
+async function loadSites(path) {
+  sites = null; groups = []; selected = null;
+  $('#factories').innerHTML = '<tr><td class="empty">Finding your factories…</td></tr>';
+  $('#detail').innerHTML = '';
+  draw();
+  try { sites = await api('/api/sites?path=' + encodeURIComponent(path)); }
+  catch (e) { $('#factories').innerHTML = `<tr><td class="err">${esc(e.message)}</td></tr>`; return; }
+  cluster(); fit(); loadGround();
+}
+
+function cluster() {
+  if (!sites) return;
+  const R = +$('#radius').value, byBelts = $('#byBelts').checked, minM = Math.max(1, +$('#minM').value || 1);
+  $('#radiusV').textContent = R + ' m';
+  const ms = sites.machines, n = ms.length, parent = Int32Array.from({ length: n }, (_, i) => i);
+  const find = a => { while (parent[a] !== a) { parent[a] = parent[parent[a]]; a = parent[a]; } return a; };
+  const cell = new Map(), key = (cx, cy) => cx * 100003 + cy;
+  const near = (m, fn) => {                    // every producing building within R of m
+    const cx = Math.floor(m[0] / R), cy = Math.floor(m[1] / R);
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) for (const j of cell.get(key(cx + dx, cy + dy)) || []) {
+      const o = ms[j], d2 = (m[0] - o[0]) ** 2 + (m[1] - o[1]) ** 2;
+      if (d2 <= R * R) fn(j, d2);
+    }
+  };
+  // factories are made of producing buildings (machines, extractors, generators) ...
+  ms.forEach((m, i) => { if (m[2] !== 'c') { const k = key(Math.floor(m[0] / R), Math.floor(m[1] / R)); (cell.get(k) || cell.set(k, []).get(k)).push(i); } });
+  ms.forEach((m, i) => {
+    if (m[2] === 'c') return;
+    near(m, j => {
+      if (j <= i || (byBelts && (m[6] !== ms[j][6] || m[6] < 0))) return;
+      const a = find(i), b = find(j); if (a !== b) parent[a] = b;
+    });
+  });
+  const by = new Map();
+  ms.forEach((m, i) => { if (m[2] !== 'c') { const r = find(i); (by.get(r) || by.set(r, []).get(r)).push(i); } });
+  const keep = [...by.values()].filter(g => g.length >= minM);
+  let loose = [...by.values()].filter(g => g.length < minM).flat();     // too few to be a factory
+  // ... and every other powered building (pumps, stations, lights, sinks...) joins the factory of the
+  // nearest producing building within R: one on its own belts/pipes first, else any.
+  const owner = new Map(); keep.forEach((g, k) => g.forEach(i => owner.set(i, k)));
+  const extras = keep.map(() => []);
+  ms.forEach((m, i) => {
+    if (m[2] !== 'c') return;
+    let best = -1, bd = Infinity, same = false;
+    near(m, (j, d2) => {
+      if (!owner.has(j)) return;
+      const s = byBelts && m[6] >= 0 && ms[j][6] === m[6];
+      if ((s && !same) || (s === same && d2 < bd)) { best = j; bd = d2; same = s; }
+    });
+    if (best >= 0) extras[owner.get(best)].push(i); else loose.push(i);
+  });
+  groups = keep.map((g, k) => summarise(g, extras[k])).sort((a, b) => b.members.length - a.members.length);
+  groups.forEach((g, i) => g.id = i);
+  outside = summarise([], loose);
+  if (selected) selected = groups.find(g => g.members.includes(selected.members[0])) || null;
+  listFactories(); showDetail(); draw();
+}
+let outside = null;                            // powered buildings that aren't near any factory
+
+function summarise(members, extras = []) {
+  const ms = sites.machines, now = $('#mode').value === 'now';
+  let x = 0, y = 0, running = 0, power = 0, need = 0;
+  const made = new Map(), used = new Map(), kinds = { m: 0, e: 0, g: 0 }, recipes = new Map(), uses = new Map();
+  const use = (k, mw, count) => { const u = uses.get(k) || [0, 0]; u[0] += mw; u[1] += count; uses.set(k, u); };
+  for (const i of members) {
+    const m = ms[i], p = now ? (m[5] || 0) : 1;
+    x += m[0]; y += m[1]; kinds[m[2]]++; running += (m[5] || 0) > 0;
+    recipes.set(m[4], (recipes.get(m[4]) || 0) + 1);
+    if (m[8] > 0) power += m[8] * p;
+    else if (m[8] < 0) { need -= m[8] * p; use(m[2] === 'e' ? 'Mining and pumping' : 'Making items', -m[8] * p, 0); }
+    for (const [it, v] of m[7]) { const t = v > 0 ? made : used; t.set(it, (t.get(it) || 0) + Math.abs(v) * p); }
+  }
+  for (const i of extras) {                    // other powered buildings (and, outside factories, lone machines)
+    const m = ms[i];
+    if (m[8] >= 0) continue;
+    need -= m[8];
+    use(m[2] === 'c' ? m[4] : m[2] === 'e' ? 'Mining and pumping' : 'Making items', -m[8], 1);
+  }
+  if (!members.length) return { members, extras, need, uses: [...uses].sort((a, b) => b[1][0] - a[1][0]) };
+  x /= members.length; y /= members.length;
+  let r = 0; for (const i of members) r = Math.max(r, Math.hypot(ms[i][0] - x, ms[i][1] - y));
+  const net = new Map(); for (const k of new Set([...made.keys(), ...used.keys()])) net.set(k, (made.get(k) || 0) - (used.get(k) || 0));
+  const outs = [...net].filter(([, v]) => v > 0.01).sort((a, b) => b[1] - a[1]);
+  const ins = [...net].filter(([, v]) => v < -0.01).sort((a, b) => a[1] - b[1]);
+  // named after its most valuable output (rate x sink points), so a line isn't called after its screws
+  const value = ([k, v]) => v * Math.max(1, sites.items[k][3] || 0);
+  const top = outs.filter(([k]) => sites.items[k][0] !== 'Water').sort((a, b) => value(b) - value(a))[0] || outs[0];
+  let name = top ? sites.items[top[0]][0] : 'Idle machines';
+  if (kinds.g && kinds.g >= members.length / 2) name = 'Power plant';
+  else if (kinds.e === members.length) name = name + ' mining';
+  for (const i of extras) r = Math.max(r, Math.hypot(ms[i][0] - x, ms[i][1] - y));
+  return { members, extras, x, y, r: r + 12, outs, ins, kinds, running, power, need, name, recipes, top,
+           uses: [...uses].sort((a, b) => b[1][0] - a[1][0]) };
+}
+const mw = v => v >= 1000 ? `${num(v / 1000)} GW` : `${num(v)} MW`;
+let fSort = 'members';
+
+function listFactories() {
+  const it = sites.items, rate = ([k, v]) => `${esc(it[k][0])} ${num(Math.abs(v))}${it[k][1] !== 'solid' ? ' m³' : ''}`;
+  const head = [['name', 'Factory', ''], ['members', 'Machines', 'n'], ['need', 'Power needed', 'n'], ['', 'Puts out (per minute)', ''],
+    ['', 'Takes in from outside', ''], ['ran', 'Ran', 'n']];
+  const val = (g, k) => k === 'ran' ? g.running / g.members.length : k === 'name' ? g.name : g[k].length ?? g[k];
+  const rows = [...groups].sort((a, b) => fSort === 'name' ? a.name.localeCompare(b.name) : val(b, fSort) - val(a, fSort));
+  $('#factories').innerHTML = groups.length ? '<tr>' + head.map(([k, l, c]) =>
+      `<th class="${c}${k ? ' sort' : ''}" data-k="${k}">${l}${k && k === fSort ? ' ↓' : ''}</th>`).join('') + '</tr>' +
+    rows.map(g => `<tr class="pick${g === selected ? ' sel' : ''}" data-id="${g.id}">
+      <td>${esc(g.name)}<div class="small muted">${Math.round(g.x)}, ${Math.round(g.y)} m · ${Math.round(g.r)} m across</div></td>
+      <td class="n">${g.members.length}${g.extras.length ? `<div class="small muted">+${g.extras.length} other</div>` : ''}</td>
+      <td class="n">${mw(g.need)}</td>
+      <td class="small">${g.name === 'Power plant' ? `<span class="spare">▲ makes ${mw(g.power)}</span> · ` : ''}${g.outs.slice(0, 3).map(rate).join(', ') || '–'}</td>
+      <td class="small muted">${g.ins.slice(0, 3).map(rate).join(', ') || '–'}</td>
+      <td class="n">${Math.round(g.running / g.members.length * 100)}%</td></tr>`).join('') +
+    (outside && outside.extras.length ? `<tr><td class="muted">Not near any factory<div class="small">${outside.uses.slice(0, 4).map(([k, [, c]]) => `${c} ${esc(k)}`).join(', ')}</div></td>
+      <td class="n muted">${outside.extras.length} other</td><td class="n">${mw(outside.need)}</td><td colspan="3"></td></tr>` : '')
+    : '<tr><td class="empty">No group of machines is big enough. Lower "at least" or raise the distance.</td></tr>';
+  document.querySelectorAll('#factories tr.pick').forEach(tr => tr.onclick = () => {
+    selected = groups[+tr.dataset.id]; focusOn(selected); listFactories(); showDetail(); draw();
+  });
+  document.querySelectorAll('#factories th.sort').forEach(th => th.onclick = () => { fSort = th.dataset.k; listFactories(); });
+  const total = groups.reduce((a, g) => a + g.need, 0) + (outside ? outside.need : 0);
+  $('#factoryMap h3').textContent = `Factory map · ${groups.length} factories · ${mw(total)} needed`;
+}
+
+function showDetail() {
+  const g = selected;
+  if (!g) { $('#detail').innerHTML = ''; return; }
+  const it = sites.items, li = ([k, v]) => `<div class="li"><span>${esc(it[k][0])}${it[k][1] !== 'solid' ? ' <span class="fluid">m³</span>' : ''}</span><span>${num(Math.abs(v))}</span></div>`;
+  const rec = [...g.recipes].sort((a, b) => b[1] - a[1]);
+  $('#detail').innerHTML = `<div class="box"><b>${esc(g.name)}</b> <span class="muted small">· ${g.members.length} machines
+    (${g.kinds.m} making, ${g.kinds.e} extracting, ${g.kinds.g} generating) · ${Math.round(g.running / g.members.length * 100)}% ran in the last check
+    · per minute ${$('#mode').value === 'now' ? 'now' : 'at full speed'}</span>
+    <div class="cols"><div><h4>Puts out</h4>${g.outs.map(li).join('') || '<span class="muted small">nothing extra</span>'}
+      ${g.power > 0 ? `<div class="li"><span>Power</span><span>${mw(g.power)}</span></div>` : ''}</div>
+    <div><h4>Takes in from outside</h4>${g.ins.map(li).join('') || '<span class="muted small">nothing: makes all it uses</span>'}</div>
+    <div><h4>Power needed · ${mw(g.need)}</h4>${g.uses.map(([k, [v, c]]) => `<div class="li"><span>${esc(k)}${c ? ` <span class="muted">×${c}</span>` : ''}</span><span>${mw(v)}</span></div>`).join('') || '<span class="muted small">none</span>'}</div>
+    <div><h4>Machines</h4>${rec.map(([k, n]) => `<div class="li"><span>${esc(k)}</span><span>${n}</span></div>`).join('')}</div></div></div>`;
+}
+
+// view
+const toScreen = (x, y) => [(x - view.x) * view.s + cv.width / 2, (y - view.y) * view.s + cv.height / 2];
+const toWorld = (px, py) => [(px - cv.width / 2) / view.s + view.x, (py - cv.height / 2) / view.s + view.y];
+function sizeCanvas() {
+  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+  cv.width = Math.max(1, r.width * d); cv.height = Math.max(1, r.height * d);
+}
+function fit() {
+  if (!sites || !sites.machines.length) return;
+  sizeCanvas();
+  const pts = groups.length ? groups : sites.machines.map(m => ({ x: m[0], y: m[1], r: 0 }));
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  for (const p of pts) { x0 = Math.min(x0, p.x - p.r); x1 = Math.max(x1, p.x + p.r); y0 = Math.min(y0, p.y - p.r); y1 = Math.max(y1, p.y + p.r); }
+  view.x = (x0 + x1) / 2; view.y = (y0 + y1) / 2;
+  view.s = Math.min(cv.width / Math.max(200, x1 - x0), cv.height / Math.max(200, y1 - y0)) * 0.9;
+  draw();
+}
+function focusOn(g) { view.x = g.x; view.y = g.y; view.s = Math.max(view.s, Math.min(cv.width, cv.height) / (g.r * 5)); }
+
+async function loadGround() {
+  if (ground !== null) return draw();
+  ground = false;
+  try {
+    const meta = await api('/api/terrain');
+    if (meta.missing) return;
+    const over = new Uint16Array(await (await fetch('/api/terrain.bin')).arrayBuffer());
+    const picks = meta.picks, m = picks.length, MPP = 4;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const t of meta.tiles) { x0 = Math.min(x0, t[0]); y0 = Math.min(y0, t[1]); x1 = Math.max(x1, t[0] + 127 * t[3]); y1 = Math.max(y1, t[1] + 127 * t[3]); }
+    x0 /= 100; y0 /= 100; x1 /= 100; y1 /= 100;
+    const W = Math.ceil((x1 - x0) / MPP) + 1, H = Math.ceil((y1 - y0) / MPP) + 1;
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'), img = g.createImageData(W, H), px = img.data;
+    const zg = new Float32Array(W * H).fill(1e9);              // ground height (m) per pixel, for the water test
+    meta.tiles.forEach((t, k) => {
+      const [wx, wy, zb, sc, zs] = t, h = over.subarray(k * m * m, (k + 1) * m * m);
+      const z = (j, i) => h[j * m + i] ? zb + (h[j * m + i] - 32768) / 128 * zs : null;
+      for (let j = 0; j < m - 1; j++) for (let i = 0; i < m - 1; i++) {
+        const a = z(j, i), b = z(j, i + 1), d = z(j + 1, i);
+        const X = Math.round((wx + picks[i] * sc) / 100 - x0) / MPP | 0, Y = Math.round((wy + picks[j] * sc) / 100 - y0) / MPP | 0;
+        let r = 20, gg = 22, bb = 26;
+        if (a !== null && b !== null && d !== null) {
+          const span = (picks[i + 1] - picks[i]) * sc;
+          const sx = (b - a) / span, sy = (d - a) / span, shade = Math.max(0.35, Math.min(1.25, 0.85 - (sx + sy) * 1.6));
+          const hh = Math.max(0, Math.min(1, (a / 100 + 100) / 600));       // -100 m .. 500 m
+          r = (52 + 70 * hh) * shade; gg = (60 + 52 * hh) * shade; bb = (48 + 40 * hh) * shade;
+        }
+        const span = Math.ceil((picks[i + 1] - picks[i]) * sc / 100 / MPP);
+        for (let yy = 0; yy < span; yy++) for (let xx = 0; xx < span; xx++) {
+          const o = ((Y + yy) * W + X + xx) * 4;
+          if (X + xx < W && Y + yy < H) {
+            px[o] = r; px[o + 1] = gg; px[o + 2] = bb; px[o + 3] = 255;
+            zg[(Y + yy) * W + X + xx] = a === null ? -1e9 : a / 100;
+          }
+        }
+      }
+    });
+    // Water volumes are boxes that reach under the ground; only where their surface is above the ground is
+    // it water. Their surface heights are drawn into a second canvas (height packed into RGB, lowest first so
+    // the highest surface wins), then compared with the ground pixel by pixel.
+    try {
+      const water = await api('/api/water.json');
+      const wc = document.createElement('canvas'); wc.width = W; wc.height = H;
+      const wg = wc.getContext('2d');
+      const vols = water.map(([, tris]) => { let z = 0; for (let q = 2; q < tris.length; q += 3) z += tris[q]; return [tris, z / (tris.length / 3) / 100]; })
+        .sort((a, b) => a[1] - b[1]);
+      for (const [tris, z] of vols) {
+        const v = Math.max(0, Math.min(0xffffff, Math.round((z + 1000) * 10)));   // decimetres above -1000 m
+        wg.fillStyle = `rgb(${v >> 16 & 255},${v >> 8 & 255},${v & 255})`;
+        wg.beginPath();
+        for (let q = 0; q + 8 < tris.length; q += 9) {
+          wg.moveTo((tris[q] / 100 - x0) / MPP, (tris[q + 1] / 100 - y0) / MPP);
+          wg.lineTo((tris[q + 3] / 100 - x0) / MPP, (tris[q + 4] / 100 - y0) / MPP);
+          wg.lineTo((tris[q + 6] / 100 - x0) / MPP, (tris[q + 7] / 100 - y0) / MPP);
+          wg.closePath();
+        }
+        wg.fill();
+      }
+      const wd = wg.getImageData(0, 0, W, H).data;
+      for (let p = 0; p < W * H; p++) {
+        if (wd[p * 4 + 3] < 250) continue;                    // outside every volume (or an antialiased edge)
+        const z = ((wd[p * 4] << 16) | (wd[p * 4 + 1] << 8) | wd[p * 4 + 2]) / 10 - 1000;
+        if (z > zg[p] + 0.3 && zg[p] > -1e8) { px[p * 4] = 46; px[p * 4 + 1] = 84; px[p * 4 + 2] = 120; px[p * 4 + 3] = 255; }
+      }
+    } catch (e) { /* no water extracted: ground only */ }
+    g.putImageData(img, 0, 0);
+    ground = { img: c, x0, y0, mpp: MPP };
+  } catch (e) { ground = false; }
+  draw();
+}
+
+function draw() {
+  if (!cv.width) sizeCanvas();
+  const d = devicePixelRatio || 1;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = '#0e1014'; ctx.fillRect(0, 0, cv.width, cv.height);
+  if (ground) {
+    const [sx, sy] = toScreen(ground.x0, ground.y0);
+    ctx.imageSmoothingEnabled = view.s * ground.mpp < 2;
+    ctx.globalAlpha = 0.9;
+    ctx.drawImage(ground.img, sx, sy, ground.img.width * ground.mpp * view.s, ground.img.height * ground.mpp * view.s);
+    ctx.globalAlpha = 1;
+  }
+  if (!sites) return;
+  // factory areas
+  for (const g of groups) {
+    const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = g === selected ? 'rgba(243,156,60,.28)' : g === hover ? 'rgba(243,156,60,.2)' : 'rgba(243,156,60,.1)';
+    ctx.fill();
+    ctx.lineWidth = (g === selected ? 2.5 : 1.5) * d; ctx.strokeStyle = g === selected ? '#ffb45e' : 'rgba(243,156,60,.85)'; ctx.stroke();
+  }
+  // machines
+  const ms = sites.machines, sz = Math.max(1.5, Math.min(4, view.s * 4)) * d;
+  ctx.fillStyle = 'rgba(154,150,141,.6)';               // other powered buildings: small and faint
+  if (view.s > 0.15) for (const m of ms) {
+    if (m[2] !== 'c') continue;
+    const [x, y] = toScreen(m[0], m[1]);
+    if (x < -10 || y < -10 || x > cv.width + 10 || y > cv.height + 10) continue;
+    ctx.fillRect(x - sz * .3, y - sz * .3, sz * .6, sz * .6);
+  }
+  ctx.fillStyle = 'rgba(233,230,223,.85)';
+  for (const m of ms) {
+    if (m[2] === 'c') continue;
+    const [x, y] = toScreen(m[0], m[1]);
+    if (x < -10 || y < -10 || x > cv.width + 10 || y > cv.height + 10) continue;
+    if (m[2] === 'm') { ctx.beginPath(); ctx.arc(x, y, sz * .6, 0, 7); ctx.fill(); }
+    else if (m[2] === 'e') ctx.fillRect(x - sz * .6, y - sz * .6, sz * 1.2, sz * 1.2);
+    else { ctx.beginPath(); ctx.moveTo(x, y - sz); ctx.lineTo(x + sz, y); ctx.lineTo(x, y + sz); ctx.lineTo(x - sz, y); ctx.fill(); }
+  }
+  // labels, biggest factories first, skipped where they would overlap
+  ctx.font = `${12 * d}px system-ui, sans-serif`; ctx.textBaseline = 'top';
+  const boxes = [];
+  for (const g of [...groups].sort((a, b) => (b === selected) - (a === selected) || b.members.length - a.members.length)) {
+    const [x, y] = toScreen(g.x, g.y), r = Math.max(5 * d, g.r * view.s);
+    if (x < 0 || x > cv.width || y < -r || y > cv.height) continue;      // label only factories in view
+    const top = g.name === 'Power plant' ? `makes ${mw(g.power)}` : g.top ? `${num(g.top[1])}/min` : '';
+    const t1 = g.name, t2 = `${top}${top ? ' · ' : ''}needs ${mw(g.need)} · ${g.members.length} machines`;
+    const w = Math.max(ctx.measureText(t1).width, ctx.measureText(t2).width) + 10 * d, h = 32 * d;
+    const bx = Math.max(2 * d, Math.min(cv.width - w - 2 * d, x - w / 2)), by = y + r + 4 * d;
+    if (bx > cv.width || by > cv.height || bx + w < 0 || by + h < 0) continue;
+    if (boxes.some(b => bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1])) continue;
+    boxes.push([bx, by, w, h]);
+    ctx.fillStyle = 'rgba(19,21,26,.88)'; ctx.fillRect(bx, by, w, h);
+    ctx.fillStyle = g === selected ? '#ffb45e' : '#e9e6df'; ctx.fillText(t1, bx + 5 * d, by + 3 * d);
+    ctx.fillStyle = '#9a968d'; ctx.fillText(t2, bx + 5 * d, by + 17 * d);
+  }
+}
+
+function groupAt(px, py) {
+  const [wx, wy] = toWorld(px, py);
+  let best = null, bd = Infinity;
+  for (const g of groups) {
+    const dd = Math.hypot(g.x - wx, g.y - wy), r = Math.max(g.r, 6 / view.s);
+    if (dd <= r && dd / r < bd) { bd = dd / r; best = g; }
+  }
+  return best;
+}
+
+let drag = null;
+cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y, moved: false }; cv.setPointerCapture(e.pointerId); });
+cv.addEventListener('pointermove', e => {
+  const d = devicePixelRatio || 1, r = cv.getBoundingClientRect();
+  if (drag) {
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 3) { drag.moved = true; cv.classList.add('drag'); }
+    view.x = drag.vx - dx * d / view.s; view.y = drag.vy - dy * d / view.s; draw(); return;
+  }
+  const g = sites && groupAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
+  if (g !== hover) { hover = g; draw(); }
+  const tip = $('#tip');
+  if (!g) { tip.hidden = true; return; }
+  const it = sites.items;
+  tip.innerHTML = `<b>${esc(g.name)}</b>${g.members.length} machines${g.extras.length ? ` + ${g.extras.length} other` : ''} · ${Math.round(g.running / g.members.length * 100)}% ran<br>` +
+    `Needs ${mw(g.need)}${g.power > 0 ? ` · makes ${mw(g.power)}` : ''}<br>` +
+    g.outs.slice(0, 5).map(([k, v]) => `${esc(it[k][0])}: ${num(v)}${it[k][1] !== 'solid' ? ' m³' : ''}/min`).join('<br>');
+  tip.hidden = false;
+  const x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
+  tip.style.left = Math.min(x, r.width - tip.offsetWidth - 6) + 'px'; tip.style.top = Math.min(y, r.height - tip.offsetHeight - 6) + 'px';
+});
+cv.addEventListener('pointerup', e => {
+  const d = devicePixelRatio || 1, r = cv.getBoundingClientRect();
+  if (drag && !drag.moved && sites) {
+    selected = groupAt((e.clientX - r.left) * d, (e.clientY - r.top) * d);
+    listFactories(); showDetail(); draw();
+    if (selected) document.querySelector(`#factories tr[data-id="${selected.id}"]`)?.scrollIntoView({ block: 'nearest' });
+  }
+  drag = null; cv.classList.remove('drag');
+});
+cv.addEventListener('pointerleave', () => { hover = null; $('#tip').hidden = true; draw(); });
+cv.addEventListener('wheel', e => {
+  e.preventDefault();
+  const d = devicePixelRatio || 1, r = cv.getBoundingClientRect(), px = (e.clientX - r.left) * d, py = (e.clientY - r.top) * d;
+  const [wx, wy] = toWorld(px, py);
+  view.s = Math.max(0.02, Math.min(20, view.s * Math.exp(-e.deltaY * 0.0015)));
+  view.x = wx - (px - cv.width / 2) / view.s; view.y = wy - (py - cv.height / 2) / view.s;
+  draw();
+}, { passive: false });
+new ResizeObserver(() => { sizeCanvas(); draw(); }).observe(cv);
+['#radius', '#byBelts', '#minM', '#mode'].forEach(s => $(s).addEventListener('input', cluster));
+$('#fit').onclick = fit;
 
 loadSaves().catch(e => $('#loading').innerHTML = `<span class="err">${esc(e.message)}</span>`);
 </script>

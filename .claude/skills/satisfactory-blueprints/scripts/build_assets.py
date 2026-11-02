@@ -335,11 +335,25 @@ def build_production(docs_path):
                 name=c['mDisplayName'], power=float(c.get('mPowerProduction') or 0) or float(
                     c.get('mVariablePowerProductionFactor') or 0),
                 water_ratio=float(c.get('mSupplementalToPowerRatio') or 0), fuels=fuels)
+    consumers = {}                # every other building that draws power: pumps, stations, sinks, lights...
+    for native, classes in by.items():
+        for c in classes:
+            k = short(c.get('ClassName', ''))
+            if not c.get('ClassName', '').startswith('Build_') or k in machines or k in extractors or k in generators:
+                continue
+            try:
+                mw = float(c.get('mPowerConsumption') or 0)
+            except ValueError:
+                continue          # ranges like (Min=..,Max=..) are vehicles, not buildings
+            if mw > 0:
+                consumers[k] = dict(name=c.get('mDisplayName', k), power=mw,
+                                    exponent=float(c.get('mPowerConsumptionExponent') or 1.321929))
     belts = sorted(([c['mDisplayName'], float(c['mSpeed']) / 2] for c in by.get('FGBuildableConveyorBelt', [])),
                    key=lambda b: b[1])
     pipes = sorted({(c['mDisplayName'].replace('Clean ', ''), float(c['mFlowLimit']) * 60)
                     for c in by.get('FGBuildablePipeline', [])}, key=lambda p: p[1])
     return dict(items=items, recipes=recipes, machines=machines, extractors=extractors, generators=generators,
+                consumers=consumers,
                 belts=belts, pipes=[list(p) for p in pipes],
                 source='CommunityResources/Docs/en-US.json')
 

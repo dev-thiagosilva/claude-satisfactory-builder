@@ -25,6 +25,123 @@
    1200.0
   ]
  ],
+ "consumers": {
+  "CeilingLight": {
+   "exponent": 1.321929,
+   "name": "Ceiling Light",
+   "power": 2.0
+  },
+  "DroneStation": {
+   "exponent": 1.6,
+   "name": "Drone Port",
+   "power": 100.0
+  },
+  "Elevator": {
+   "exponent": 1.6,
+   "name": "Personnel Elevator",
+   "power": 20.0
+  },
+  "FloodlightPole": {
+   "exponent": 1.321929,
+   "name": "Flood Light Tower",
+   "power": 6.0
+  },
+  "FloodlightWall": {
+   "exponent": 1.321929,
+   "name": "Wall-Mounted Flood Light",
+   "power": 6.0
+  },
+  "FluidTruckStation": {
+   "exponent": 1.6,
+   "name": "Fluid Truck Station",
+   "power": 20.0
+  },
+  "FrackingSmasher": {
+   "exponent": 1.321929,
+   "name": "Resource Well Pressurizer",
+   "power": 150.0
+  },
+  "JumpPad": {
+   "exponent": 1.6,
+   "name": "Old Jump Pad",
+   "power": 2.0
+  },
+  "JumpPadAdjustable": {
+   "exponent": 1.6,
+   "name": "Jump Pad",
+   "power": 5.0
+  },
+  "JumpPadTilted": {
+   "exponent": 1.6,
+   "name": "Old Tilted Jump Pad",
+   "power": 2.0
+  },
+  "LandingPad": {
+   "exponent": 1.6,
+   "name": "U-Jelly Landing Pad",
+   "power": 5.0
+  },
+  "PipeHyperStart": {
+   "exponent": 1.6,
+   "name": "Hypertube Entrance",
+   "power": 10.0
+  },
+  "PipelinePump": {
+   "exponent": 1.6,
+   "name": "Pipeline Pump Mk.1",
+   "power": 4.0
+  },
+  "PipelinePumpMk2": {
+   "exponent": 1.6,
+   "name": "Pipeline Pump Mk.2",
+   "power": 8.0
+  },
+  "Portal": {
+   "exponent": 1.321929,
+   "name": "Main Portal",
+   "power": 250.0
+  },
+  "PortalSatellite": {
+   "exponent": 1.321929,
+   "name": "Satellite Portal",
+   "power": 250.0
+  },
+  "RadarTower": {
+   "exponent": 1.6,
+   "name": "Radar Tower",
+   "power": 30.0
+  },
+  "ResourceSink": {
+   "exponent": 1.6,
+   "name": "AWESOME Sink",
+   "power": 30.0
+  },
+  "StreetLight": {
+   "exponent": 1.321929,
+   "name": "Street Light",
+   "power": 1.0
+  },
+  "TrainDockingStation": {
+   "exponent": 1.6,
+   "name": "Freight Platform",
+   "power": 50.0
+  },
+  "TrainDockingStationLiquid": {
+   "exponent": 1.6,
+   "name": "Fluid Freight Platform",
+   "power": 50.0
+  },
+  "TrainStation": {
+   "exponent": 1.6,
+   "name": "Train Station",
+   "power": 50.0
+  },
+  "TruckStation": {
+   "exponent": 1.6,
+   "name": "Truck Station",
+   "power": 20.0
+  }
+ },
  "extractors": {
   "FrackingExtractor": {
    "allowed": [

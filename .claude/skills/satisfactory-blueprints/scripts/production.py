@@ -2,7 +2,8 @@
 
 Reads every machine, extractor and generator in a game-1.2 save: its recipe (or resource node, or
 fuel), clock speed, Somersloop boost and the productivity the game measured, then adds up the
-game's own recipe rates (library/production.json). Rates are per minute; fluids in m³/min.
+game's own recipe rates (library/production.json). Every other building that draws power (pumps,
+stations, sinks, lights...: `consumers`) counts toward power. Rates are per minute; fluids in m³/min.
 
   python -I production.py "here again too"              # a save by name (or a path to a .sav)
   python -I production.py "here again too" --json out.json
@@ -89,7 +90,7 @@ def machines(save):
         clock = _f(o, 'mCurrentPotential', 1.0)
         dur = _f(o, 'mLastProductivityMeasurementDuration', 0.0)
         prod = _f(o, 'mLastProductivityMeasurementProduceDuration', 0.0) / dur if dur > 0 else None
-        m = dict(type=t, clock=clock, productivity=prod, pos=o['pos'])
+        m = dict(type=t, clock=clock, productivity=prod, pos=o['pos'], path=o['path'])
         if t in D['machines']:
             m.update(kind='machine', recipe=_recipe(_object_prop(d, 'mCurrentRecipe')),
                      boost=_f(o, 'mCurrentProductionBoost', 1.0))
@@ -108,6 +109,8 @@ def machines(save):
             if t == 'GeneratorGeoThermal':
                 node = (_object_prop(d, 'mExtractableResource') or '').split('.')[-1]
                 m['purity'] = (nodes.get(node) or [None, 'normal'])[1]
+        elif t in D.get('consumers', {}):
+            m.update(kind='consumer')                # pumps, stations, sinks, lights...: power only
         else:
             continue
         yield m
@@ -133,6 +136,9 @@ def flows(m):
         if m['resource']:
             out.append((m['resource'], e['rate'] * mult * m['clock']))
         out.append(('_power', -e['power'] * m['clock'] ** 1.321929))
+    elif m['kind'] == 'consumer':
+        c = D['consumers'][m['type']]
+        out.append(('_power', -c['power'] * m['clock'] ** c['exponent']))
     else:
         g = D['generators'][m['type']]
         mw = g['power'] * m['clock'] * (PURITY[m.get('purity', 'normal')] if m['type'] == 'GeneratorGeoThermal' else 1)
@@ -147,6 +153,65 @@ def flows(m):
         if g['water_ratio']:
             out.append(('Water', -mw * g['water_ratio'] * 60 / 1000))
     return out
+
+
+def networks(save):
+    """{actor path: network id}: buildings joined by belts, lifts, pipes, pumps, splitters and mergers
+    (every connector's mConnectedComponent, both ends). Hypertubes link places, not factories: skipped."""
+    parent = {}
+
+    def find(a):
+        while parent.setdefault(a, a) != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+    for o in save.objects():
+        if o['type'] != 0 or b'mConnectedComponent\x00' not in o['data'] or 'PipeHyper' in o['outer']:
+            continue
+        to = _object_prop(o['data'], 'mConnectedComponent')
+        if to and 'PipeHyper' not in to:
+            a, b = find(o['outer']), find(to.rsplit('.', 1)[0])
+            if a != b:
+                parent[a] = b
+    ids = {}
+    return {a: ids.setdefault(find(a), len(ids)) for a in list(parent)}
+
+
+def sites(sav):
+    """Every producing building for the factory map: position (m), what it is, its recipe, the
+    productivity the game measured, its belt network, and its full-speed flows. Items are indexes
+    into `items` ([name, form, raw, sink points]) to keep the list small."""
+    D = calc.db()
+    save = Save(sav)
+    net = networks(save)
+    names, index = [], {}
+
+    def ix(i):
+        if i not in index:
+            index[i] = len(names)
+            it = D['items'].get(i, {})
+            names.append([it.get('name') or i, it.get('form', 'solid'), bool(it.get('raw')), it.get('points', 0)])
+        return index[i]
+    out = []
+    for m in machines(save):
+        if m['kind'] == 'machine' and not m['recipe']:
+            label = 'no recipe'
+        elif m['kind'] == 'machine':
+            label = D['recipes'].get(m['recipe'], {}).get('name', m['recipe'])
+        elif m['kind'] == 'extractor':
+            label = (D['items'].get(m['resource'] or '', {}).get('name') or '?') + \
+                    ('' if m['type'] == 'WaterPump' else ' (%s)' % m['purity'])
+        elif m['kind'] == 'consumer':
+            label = D['consumers'][m['type']]['name']
+        else:
+            label = D['items'].get(m['fuel'] or '', {}).get('name') or 'fuel'
+        fl = [] if label == 'no recipe' else flows(m)
+        out.append([round(m['pos'][0] / 100, 1), round(m['pos'][1] / 100, 1), m['kind'][0], m['type'], label,
+                    None if m['productivity'] is None else round(m['productivity'], 3), net.get(m['path'], -1),
+                    [[ix(i), round(v, 3)] for i, v in fl if i != '_power'],
+                    round(sum(v for i, v in fl if i == '_power'), 1)])
+    return dict(fields=['x', 'y', 'kind', 'type', 'label', 'productivity', 'network', 'flows', 'power'],
+                machines=out, items=names, rules=rules(save))
 
 
 def close_gaps(net, prefer):
@@ -187,24 +252,28 @@ def report(sav):
     ms = list(machines(save))
     made_full, used_full, made_now, used_now = (defaultdict(float) for _ in range(4))
     power = dict(generated_now=0.0, generators_full=0.0, machines_full=0.0)
+    power_by = defaultdict(float)                  # MW at full speed: making, extracting, then each other type
     users = defaultdict(list)                      # item -> [(recipe or kind, productivity)] of its consumers
     counts, idle, unknown_nodes, running = Counter(), Counter(), Counter(), Counter()
     recipe_use = defaultdict(Counter)              # item -> recipes making it, by machine count
     for m in ms:
-        counts[m['type']] += 1
+        counts[m['type']] += m['kind'] != 'consumer'
         if m['kind'] == 'machine' and not m['recipe']:
             idle[m['type']] += 1
             continue
         if m['kind'] == 'extractor' and not m['known']:
             unknown_nodes[m['type']] += 1
         p = m['productivity'] or 0.0
-        running[m['kind']] += p > 0
+        if m['kind'] != 'consumer':
+            running[m['kind']] += p > 0
         for i, v in flows(m):
             if i == '_power':
                 if v > 0:
                     power['generators_full'] += v; power['generated_now'] += v * p
                 else:
                     power['machines_full'] -= v
+                    power_by[{'machine': 'Making items', 'extractor': 'Mining and pumping'}.get(
+                        m['kind']) or D['consumers'][m['type']]['name']] -= v
                 continue
             (made_full if v > 0 else used_full)[i] += abs(v)
             (made_now if v > 0 else used_now)[i] += abs(v) * p
@@ -254,12 +323,16 @@ def report(sav):
         if m['kind'] == 'machine' and m['recipe']:
             per_recipe[m['recipe']] += 1
             held[m['recipe']] += (m['productivity'] or 0) < SLOW
-    total = sum(n for t, n in counts.items()) - sum(idle.values())
+    total = sum(1 for m in ms if m['kind'] != 'consumer') - sum(idle.values())
+    power['by'] = sorted(([k, round(v, 1), sum(1 for m in ms if m['kind'] == 'consumer' and
+                                                  D['consumers'][m['type']]['name'] == k)]
+                          for k, v in power_by.items()), key=lambda r: -r[1])
     return dict(
-        save=str(sav), rules=rules(save), machines=dict(counts.most_common()), idle_no_recipe=dict(idle),
+        save=str(sav), rules=rules(save), machines={t: n for t, n in counts.most_common() if n},
+        idle_no_recipe=dict(idle),
         running=dict(any=sum(running.values()), of=total, **running),
         unknown_nodes=dict(unknown_nodes), nodes_file=NODES.exists(),
-        power={k: round(v, 1) for k, v in power.items()},
+        power={k: round(v, 1) if isinstance(v, float) else v for k, v in power.items()},
         items=table, missing=missing,
         raw_extra=[[i, name(i), round(v, 2), items.get(i, {}).get('form', 'solid')]
                    for i, v in sorted(raw_extra.items(), key=lambda kv: -kv[1]) if v > .01],
@@ -278,13 +351,15 @@ def format_report(r):
          'Machines: ' + ', '.join('%d %s' % (n, t) for t, n in list(r['machines'].items())[:12]) + ' ...',
          'Running: %d of %d made something during the game\'s last measurement (%d machines, %d extractors, '
          '%d generators)' % (run['any'], run['of'], run.get('machine', 0), run.get('extractor', 0), run.get('generator', 0)),
-         'Power: generators %s MW now, %s MW at full speed; machines and extractors need %s MW at full speed%s' % (
+         'Power: generators %s MW now, %s MW at full speed; everything that uses power needs %s MW at full speed%s' % (
              fmt(pw['generated_now']), fmt(pw['generators_full']), fmt(pw['machines_full']),
              ' (SHORT by %s MW)' % fmt(pw['machines_full'] - pw['generators_full'])
              if pw['machines_full'] > pw['generators_full'] and 'NoPower' not in r['rules'] else ''), '']
     if r['rules']:
         L[-1:-1] = ['Game rules on: %s%s' % (', '.join(r['rules']), ' (machines need no power: the power lines '
                                              'are for reference only)' if 'NoPower' in r['rules'] else '')]
+    L[-1:-1] = ['  power use at full speed: ' + ', '.join(
+        '%s %s MW%s' % (k, fmt(v), ' (%d)' % n if n else '') for k, v, n in pw['by'])]
     if r['idle_no_recipe']:
         L += ['No recipe set: ' + ', '.join('%d %s' % (n, t) for t, n in r['idle_no_recipe'].items()), '']
     if not r['nodes_file']:

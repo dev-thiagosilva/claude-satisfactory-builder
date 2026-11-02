@@ -22,6 +22,7 @@ Serves studio/index.html and a small JSON API on 127.0.0.1 only:
   POST /api/plan                      {targets: [[item, rate]], use: [recipe], clock, miner, purity}
   GET  /production                    what a save produces per minute, power, what's missing
   GET  /api/production?path=          that report for one save (scripts/production.py)
+  GET  /api/sites?path=               every producing building: position, recipe, flows, belt network (factory map)
 Each build is a folder: <creations>/<folder>/<Name>.sbp (+ .sbpcfg, build.py, history/).
 """
 import argparse, json, math, re, shutil, struct, sys, time
@@ -219,6 +220,18 @@ def production_of(path):
     return dict(hit[1], name=p.stem, modified=mt)
 
 
+SITES = {}    # save path -> (mtime, machines for the factory map)
+
+
+def sites_of(path):
+    p = known_save(path)
+    mt = p.stat().st_mtime
+    hit = SITES.get(str(p))
+    if not hit or hit[0] != mt:
+        hit = SITES[str(p)] = (mt, production.sites(p))
+    return hit[1]
+
+
 def world_of(path):
     p = known_save(path)
     mt = p.stat().st_mtime
@@ -378,6 +391,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, (HERE / 'production.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path == '/api/production':
                 return self.send(200, production_of(q['path'][0]))
+            if u.path == '/api/sites':
+                return self.send(200, sites_of(q['path'][0]))
             if u.path in ('/map', '/map.html'):
                 return self.send(200, (HERE / 'map.html').read_bytes(), 'text/html; charset=utf-8')
             if u.path == '/pieces.js':

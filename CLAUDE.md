@@ -129,7 +129,12 @@ When a player asks what one of their saves produces or what it's missing, run
 per-item made/used/net "now" (the game's measured productivity) and at full speed, the power
 balance, shortfalls with the machines waiting on them, and the raw resources still missing after
 the factory's own surpluses, plus unused nodes that could supply them. The same report is a
-studio page, **Production report** at `http://localhost:8770/production?save=<save name>`. Node purity needs
+studio page, **Production report** at `http://localhost:8770/production?save=<save name>`. Its
+**Factory map** shows every factory on a 2D map of the world. A factory is the machines within a
+chosen distance (default 40 m) that share a belt and pipe network, so one area can hold several.
+Each is labelled with what it puts out and the power it needs, counting its pumps, freight
+platforms, stations, lights, sinks and other powered buildings (`consumers` in
+`production.json`). Click it for its outputs, inputs, power breakdown and machines. Node purity needs
 `.local/terrain/data/nodes.json` (`terrain.exe nodes`, see the World map section). Details are in
 the skill's "What a save produces".
 

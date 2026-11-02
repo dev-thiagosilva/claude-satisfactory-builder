@@ -234,6 +234,27 @@ The studio shows the same report as a page: **Production report** at
 `/production?save=<save name>`, with a save picker, the missing list, raw resources with unused
 nodes, and a sortable, searchable table of every item.
 
+Its **Factory map** is a 2D map of the world with every producing building on it, grouped into
+factories. Shading comes from the ground heights, and lakes are drawn only where the water
+surface is above the ground. Two buildings belong to the same factory when they're within the
+distance slider (default 40 m) **and** on the same belt and pipe network. That network is
+`production.networks`: every connector's `mConnectedComponent`, with hypertubes skipped. So two
+lines side by side are two factories. Clear the checkbox to group by distance only. Each factory
+is a circle labelled with its most valuable output (rate × sink points), or "Power plant". Click
+one for what it puts out, what it takes in from outside, and its machines by recipe. Rates are at
+full speed, or "now" with the game's measured productivity. The data comes from
+`production.sites(sav)` via `/api/sites`.
+
+**Power per factory** counts everything that draws power, not only machines. Making items and
+mining use clock^1.32 × boost². Other buildings use `consumers` in `production.json`, built by
+`build_assets.py` from each `Build_` class's `mPowerConsumption` and exponent: pumps, freight
+platforms, stations, drone ports, sinks, lights, radar towers, hypertube entrances, pressurizers,
+elevators and portals. Locomotives are vehicles and aren't counted. Those buildings join the
+factory of the nearest producing building within range: one on their own belt or pipe network
+first, any otherwise. They never form a factory alone. Whatever isn't near a factory, including
+groups below the minimum, is listed as "Not near any factory". The map total therefore always
+equals the report's total. The report also has a **Power use at full speed** table, by kind.
+
 It reports:
 - **made / used / net per item, two ways.** "Now" is rate × the game's last measured productivity,
   i.e. what really ran. "Full" is every machine running non-stop at its clock: the demand the
